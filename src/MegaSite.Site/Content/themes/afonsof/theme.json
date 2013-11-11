@@ -1,0 +1,81 @@
+﻿{
+	RootUser:
+	{
+		Email: 'teste@megasiteapp.com.br',
+		Password: 'teste123'
+	},
+
+	Options:
+	{
+		SiteTitle : "Afonso França - Portifólio",
+		SiteDescription : "Olá! Meu nome é Afonso França, tenho 28 anos, sou curioso e maluco por criação desde de menino. Meu formei em Ciência da Computação e Pós-graduei em Gerenciamento de Projetos. Trabalho como coordenador de projetos de Software na GAS Tecnologia. Também gosto de trabalhar com sites e peças de arte por mim mesmo. Abaixo, você pode conferir um pouco mais do meu trabalho",
+		AdminEmail : "afonso.franca@gmail.com",
+		FacebookId : "491046120957636",
+		GoogleAnalyticsTracker : "UA-38182597-1",
+		SiteLanguage : "pt-br",
+		Color1 : "#666666",
+		Color2 : "#555555",
+		DefaultAlbumImportingPostTypeId : "@postType[Projeto]",
+		DefaultVideoImportingPostTypeId : "@postType[Projeto]",
+		DefaultPostTypeId : "@postType[Projeto]",
+		ThemeName: "afonsof",
+		AllowImportMediaFiles: true,
+
+		SmtpServer: "smtp.gmail.com",
+		SmtpUserName: "naoresponda@megasiteapp.com.br",
+		SmtpPassword: "ms555511"
+	},
+
+	PostTypes:
+	[
+		{
+			SingularName: "Projeto",
+			PluralName: "Projetos",
+			IconId : "suitcase",
+
+			BehaviorStr: "AllowPhotos, AllowDescription, AllowCategories",
+
+			Posts:
+			[
+				{
+					Title: 'Santidade: Curta e Compartilhe!',
+					Content: "Cliente: Grupo de Jovens da Igreja Batista Central em Barra Mansa",
+					Published: true
+				},
+			]
+		},
+		{
+			SingularName: "Página",
+			PluralName: "Páginas",
+			IconId : "file",
+
+			BehaviorStr: "AllowDescription",
+
+			Posts:
+			[
+				{
+					Title: 'Empresa',
+					Content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					Published: true
+				},
+				{
+					Title: 'Orçamento',
+					Content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+					Published: true
+				},
+				{
+					Title: 'Contato',
+					Content: "Travessa Santa Luzia, 65 Ano Bom - Barra Mansa/RJ<br />Tel: (24) 2242-0000<br/>(24) 9999-9999",
+					Published: true
+				}
+			]
+		}
+	],
+	
+	Plugins:
+	[
+		{
+			Title: "EmailFormAction"
+		}
+	]
+}

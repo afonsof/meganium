@@ -1,0 +1,22 @@
+@model MegaSite.Api.ViewModels.SiteViewModel
+<div id="single-page" class="clearfix left-sidebar">
+    <div id="primary" style="margin-top: 0px;">
+        <h1 class="entry-title">
+            Blog</h1>
+        @foreach (var post in Model.CurrentPosts)
+        {
+            <article>
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="@Url.Content(@post.UrlPath)">@post.Title</a></h2>
+                </header>
+                <div class="post-header">
+                    <p class="post-author">
+                        <span>Em <b>@post.PublishedAt.Value.ToString("d \"de\" MMMM \"de\" yyyy")</b> por <strong>@post.CreatedBy.DisplayName</strong></span>
+                    </p>
+                </div>
+                @Html.Raw(post.PreviewContent) <a href="@Url.Content(@post.UrlPath)">[ler postagem...]</a>
+            </article>
+        }
+    </div>
+</div>

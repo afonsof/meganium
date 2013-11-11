@@ -1,0 +1,35 @@
+﻿@using MegaSite.Api.Resources
+@model IEnumerable<MegaSite.Api.Entities.PostType>
+@{
+    ViewBag.Title = Resource.PostTypeAdmin;
+}
+<div class="btn-toolbar">
+    <a class="btn btn-primary"href="@Url.Action("Create")">@Resource.CreatePostType</a>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Resource.SingularName
+        </th>
+        <th>
+            @Resource.PluralName
+        </th>
+        <th>@Resource.Actions
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SingularName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PluralName)
+            </td>
+            <td>
+                @Html.ActionLink(Resource.Edit, "Edit", new {id = item.Id}) |
+                @Html.ActionLink(Resource.Delete, "Delete", new {id = item.Id}, new {@class = "delete-button"})
+            </td>
+        </tr>
+    }
+</table>

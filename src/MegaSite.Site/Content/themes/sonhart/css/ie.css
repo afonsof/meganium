@@ -1,0 +1,4 @@
+.item-caption, #thumbnails a .overlay { filter: Alpha(Opacity=0); }
+
+#thumbnails { background: none; position: fixed; bottom: 0; padding-top: 30px; }
+#thumbnails .controls { margin-top: 1px; }

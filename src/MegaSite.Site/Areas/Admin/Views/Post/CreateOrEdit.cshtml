@@ -1,0 +1,161 @@
+﻿@using MegaSite.Api.Entities
+@using MegaSite.Api.Trash
+@using MegaSite.Api.Resources
+@model MegaSite.Api.ViewModels.PostCreateEditVm
+@{
+    var verb = Model.Id > 0 ? Resource.EditCustomEntity : Resource.CreateCustomEntity;
+    ViewBag.Title = String.Format(verb, Model.PostType.SingularName);
+    ViewBag.Icon = Model.PostType.IconId;
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="btn-toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index", new { postTypeId = Model.PostType.Id })" class="btn">@Resource.Back</a>
+        </div>
+        @Html.Hidden("PostTypeId", Model.PostType.Id)
+        @Html.HiddenFor(model => model.Id)
+        <div style="background-color: #EEEEEE; border-radius: 10px" class="row-fluid">
+            <div class="span8 row-fluid" style="padding: 15px">
+                <div class="span12">
+                    @Html.LabelFor(model => model.Title)
+                    @Html.TextBoxFor(model => model.Title, new { style = "width: 540px" })
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        @Html.LabelFor(model => model.Published, "Visibilidade")
+                        @Html.DropDownListFor(model => model.Published, Model.PrivacySelect)
+                        @Html.ValidationMessageFor(model => model.Published)
+                    </div>
+                    <div class="span6">
+                        @Html.LabelFor(model => model.PublishedAt)
+                        @Html.TextBoxFor(model => model.PublishedAt, new { @class = "datetimepicker" })
+                        @Html.ValidationMessageFor(model => model.PublishedAt)
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowCategories))
+                    {
+                        <div class="span6">
+                            @Html.Label(Resource.Categories)
+                            @Html.ListBox("CategoryIds", Model.CategoriesMultiselect, new { @class = "multiselect", data_placeholder = Resource.SelectSomeCategories })
+                        </div>
+                    }
+                    @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowTree))
+                    {
+                        <div class="span6">
+                            @Html.Label(Resource.ParentName)
+                            @Html.DropDownList("ParentId", Model.ParentSelect, "[" + String.Format(Resource.RootPage, Model.PostType.SingularName) + "]")
+                        </div>
+                    }
+                    @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowHash) && Model.Id > 0)
+                    {
+                        <div class="span6">
+                            @Html.Label(Resource.Code)
+                            <span class="label label-info" style="font-size: 38px; line-height: 38px">@Model.Hash</span>
+                            @Html.HiddenFor(model => model.Hash)
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="span4 featured-media-file">
+                @Html.TextBoxFor(model => model.FeaturedMediaFileJson, new { @class = "media-picker-control" })
+            </div>
+        </div>
+        @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowDescription))
+        {
+            <fieldset>
+                <legend style="margin-bottom: 0; border: none">Conteúdo</legend>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.Content, new { @class = "wysihtml5 m-wrap", rows = 12, style = "width:100%" })
+                    @Html.ValidationMessageFor(model => model.Content)
+                </div>
+            </fieldset>
+        }
+        @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowTimeBox))
+        {
+            <fieldset>
+                <legend>Data e hora</legend>
+                <div class="row-fluid">
+                    @Html.HiddenFor(model => model.StartedAt)
+                    @Html.HiddenFor(model => model.EndedAt)
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                        <input type="text" id="daterange" data-start="#StartedAt" data-end="#EndedAt" style="width: 250px" value="@Model.StartedAt.ToString("dd/MM/yyyy hh:mm") - @Model.EndedAt.ToString("dd/MM/yyyy hh:mm")"/>
+                    </div>
+                    <script type=""></script>
+
+                </div>
+            </fieldset>
+        }
+        @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowLocation))
+        {
+            <fieldset class="gllpLatlonPicker">
+                <legend>Localização</legend>
+                <div class="row-fluid">
+                    <div class="span4">
+                        @Html.TextBoxFor(model => model.Location)
+                        @Html.ValidationMessageFor(model => model.Location)
+                    </div>
+                </div>
+            </fieldset>
+        }
+        @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowPhotos))
+        {
+            <fieldset>
+                <legend>Fotos</legend>
+                <div>
+                    @Html.TextBoxFor(model => model.MediaFilesJson)
+                </div>
+            </fieldset>
+        }
+        @if (Model.Fields.Any())
+        {
+            <fieldset>
+                <legend>Outros valores</legend>
+                @Html.FieldsInputs(Model.Fields)
+            </fieldset>
+        }
+        <div class="btn-toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index", new { postTypeId = Model.PostType.Id })" class="btn">@Resource.Back</a>
+        </div>
+    </fieldset>
+}
+
+<style>
+    .featured-media-file {
+        padding: 17px;
+        width: 240px !important;
+        height: 240px;
+        margin-left: 57px !important;
+    }
+</style>
+
+<script type="text/javascript">
+    $(".media-picker-control").mediaFileManager({
+        rootUrl: "@Url.Content("~")",
+        uploadUrl: "@Url.Action("Upload", "MediaFile")",
+        listItemsUrl: "@Url.Action("Recents", "MediaFile")",
+        thumbUrl: "@Url.Content("~/Content/Uploads/Thumbs")",
+        selectText: 'Selecionar imagem',
+        changeText: 'Alterar imagem',
+        removeText: 'Remover imagem',
+        okText: 'Ok',
+        uploadText: 'Fazer upload',
+        type: MediaFileManagerModule.MediaFileManagerType.Picker
+    });
+
+    $('#MediaFilesJson').mediaFileManager({
+        rootUrl: "@Url.Content("~")",
+        uploadUrl: "@Url.Action("Upload", "MediaFile")",
+        thumbUrl: "@Url.Content("~/Content/Uploads/Thumbs")",
+        selectText: 'Selecionar imagem',
+        removeText: 'Remover imagem',
+        uploadText: 'Fazer upload',
+        type: MediaFileManagerModule.MediaFileManagerType.Album
+    });
+</script>

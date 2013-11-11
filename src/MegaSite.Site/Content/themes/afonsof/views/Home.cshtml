@@ -1,0 +1,35 @@
+@using MegaSite.Api.Trash
+@model MegaSite.Api.ViewModels.SiteViewModel
+<!-- Banners End -->
+
+<div id="post-area" class="masonry">
+    @foreach (var post in Model.Managers.PostManager.GetPublishedByPostType("Projeto"))
+    {
+        <div class="post">
+            <div class="gridly-image">
+                <a href="@Url.Content(@post.UrlPath)">
+                    @Url.Thumbnail(post.FeaturedMediaFile, 310, 0)</a>
+            </div>
+            <div class="gridly-category">
+                <p>
+                    @{
+                        var len = post.Categories.Count();
+                        var i = 0;
+                    }
+                    @foreach (var cat in post.Categories)
+                    {
+                        i++;
+                        var comma = (i != len) ? "," : "";
+                        <a href="~/projetos/@cat.Slug">@cat.Title @comma</a>
+                    }
+
+                </p>
+            </div>
+
+            <div class="gridly-copy">
+                <h2><a href="@Url.Content(@post.UrlPath)">@post.Title</a></h2>
+                <p class="gridly-date">@post.PublishedAt.Value.ToString("MMMM' de 'yyyy")</p>
+            </div>
+        </div>
+    }
+</div>

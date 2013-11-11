@@ -1,0 +1,48 @@
+﻿@using MegaSite.Api.Entities
+@using MegaSite.Api.Resources
+@model IEnumerable<MegaSite.Api.Entities.Category>
+@{
+    ViewBag.Title = Resource.CategoryAdmin;
+    ViewBag.Icon = "tags";
+}
+<div class="btn-toolbar">
+    <a class="btn btn-primary" href="@Url.Action("Create")">@Resource.CreateCategory</a>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Resource.Name
+        </th>
+        <th>
+            @Resource.Slug
+        </th>
+        <th>
+            @Resource.PostType
+        </th>
+        <th>
+            @Resource.PostCount
+        </th>
+        <th>@Resource.Actions</th>
+    </tr>
+    @foreach (Category item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                @(item.PostType != null?item.PostType.SingularName: "")
+            </td>
+            <td>
+                @item.Posts.Count()
+            </td>
+            <td>
+                @Html.ActionLink(Resource.Edit, "Edit", new {id = item.Id}) |
+                @Html.ActionLink(Resource.Delete, "Delete", new {id = item.Id}, new {@class = "delete-button"})
+            </td>
+        </tr>
+    }
+</table>

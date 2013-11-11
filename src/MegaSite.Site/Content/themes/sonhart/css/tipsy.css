@@ -1,0 +1,10 @@
+/*------------------------------
+=TIPSY TOOLTIP
+------------------------------*/
+.tipsy { padding: 5px; font-size: 12px; opacity: 0.8; filter: alpha(opacity=80); background-repeat: no-repeat;  background-image: url(images/tipsy.gif); }
+  .tipsy-inner { padding: 5px 8px 6px; background-color: black; color: white; max-width: 200px; text-align: center; line-height: 1.2; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+  .tipsy-inner { }
+  .tipsy-north { background-position: top center; }
+  .tipsy-south { background-position: bottom center; }
+  .tipsy-east { background-position: right center; }
+  .tipsy-west { background-position: left center; }

@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="alert alert-danger">
+    <strong>Atenção:</strong> Ao prosseguir você estará apagando todas as informações do site. Esta operação é irreversível. Deseja continuar?
+</div>
+
+@using(Html.BeginForm())
+{
+    @Html.TextBox("username")
+    @Html.Password("password")
+    <button type="submit" class="btn btn-danger">Sim</button>
+    <a href="~/Admin" class="btn">Não</a>
+}

@@ -1,0 +1,46 @@
+﻿@using MegaSite.Api.Resources
+@model MegaSite.Site.Controllers.ImportingController.ImportVm
+@{
+    ViewBag.Title = Resource.Importing;
+    ViewBag.Icon = "download-alt";
+}
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        function testPluginType() {
+            if ($('#PluginName').val() == "FacebookPhotos") {
+                $("#extra-columns").hide();
+            } else {
+                $("#extra-columns").show();
+            }
+        }
+
+        $('#PluginName').change(testPluginType);
+        testPluginType();
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="editor-label">
+            @Html.Label(Resource.WhatDoYouWantToImport)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.PluginName, Model.Items)
+        </div>
+        <div id="extra-columns">
+            <div class="editor-label">
+                @Html.Label(Resource.ServiceUserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBox("username")
+            </div>
+        </div>
+        <div class="toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Next</button>
+        </div>
+    </fieldset>
+}

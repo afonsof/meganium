@@ -1,0 +1,45 @@
+﻿@using MegaSite.Api.Entities
+@model MegaSite.Api.ViewModels.SiteViewModel
+@{
+    if (Model.CurrentPost.FeaturedMediaFile != null)
+    {
+        ViewBag.BackgroundPhoto = Model.CurrentPost.FeaturedMediaFile.Url;
+    }
+}
+<script type="text/javascript">
+
+    jQuery(function ($) {
+        // Options for SuperBGImage
+        $.fn.superbgimage.options = {
+            slideshow: 0, // 0-none, 1-autostart slideshow
+            randomimage: 0,
+            preload: 1,
+            z_index: 5
+        };
+
+        // initialize SuperBGImage
+        $('#superbgimage').superbgimage().hide();
+
+    });
+
+</script>
+<div id="single-page" class="clearfix left-sidebar">
+    <div id="primary" style="margin-top: 0px;">
+        <h1 class="entry-title">
+            @Model.CurrentPost.Title</h1>
+        <article>
+            <div id="content">
+                @Html.Raw(Model.CurrentPost.Content)
+            </div>
+            @if (Model.CurrentPost.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowComments))
+            {
+                <div class="fb-like" data-href="@Request.Url" data-send="true" data-layout="button_count"
+                     data-width="620" data-show-faces="true" data-font="arial" data-colorscheme="dark">
+                </div>
+                <div class="fb-comments" data-href="@Request.Url" data-width="620" data-num-posts="10"
+                     data-colorscheme="dark">
+                </div>
+            }
+        </article>
+    </div>
+</div>

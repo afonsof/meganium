@@ -1,0 +1,36 @@
+﻿@model MegaSite.Api.ViewModels.SiteViewModel
+@{
+    if (Model.CurrentPosts.Any() && Model.CurrentPosts.First().FeaturedMediaFile != null)
+    {
+        ViewBag.BackgroundPhoto = Model.CurrentPosts.First().FeaturedMediaFile.Url;
+    }
+}
+<div id="single-page" class="clearfix left-sidebar">
+    <div id="primary" class="portfolio-three-columns" style="display: block; margin-top: 0px;">
+        <h1 class="page-title">
+            Vídeos de @Model.CurrentCategory.Title</h1>
+        @foreach (var post in Model.CurrentPosts)
+        {
+            if (post.FeaturedMediaFile != null)
+            {
+            <article>
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="@Url.Content(@post.UrlPath)">@post.Title</a></h2>
+                </header>
+                @Html.Video(post.FeaturedMediaFile, 620, 350)
+                <div id="fb-root">
+                </div>
+                @if (post.PostType.BehaviorStr.Contains("AllowComments"))
+                {
+                    <div class="fb-like" data-href="@Request.Url.Scheme://@Request.Url.Authority@Url.Content(post.UrlPath)" data-send="true" data-layout="button_count"
+                     data-width="620" data-show-faces="true" data-font="arial" data-colorscheme="dark">
+                    </div>
+                }
+            </article>
+            }
+        }
+    </div>
+    <div id="sidebar" style="display: block; margin-top: 95px;">
+    </div>
+</div>

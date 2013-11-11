@@ -1,0 +1,28 @@
+#primary, #sidebar .widget, .external-video {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EE000000,endColorstr=#EE000000)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EE000000,endColorstr=#EE000000);   /* IE6 & 7 */      
+	zoom: 1;
+}
+
+nav#navigation { background: #000 url(../images/bg-content.png) 0 0 repeat }
+
+#welcomeTeaser, .max_widget_teaser, #site-title, #showtitle, #showlink, #thumbnails .controls {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#DD000000,endColorstr=#DD000000)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#DD000000,endColorstr=#DD000000);   /* IE6 & 7 */     
+	zoom: 1;
+}
+
+#thumbnails .rel {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#DD000000,endColorstr=#DD000000)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#DD000000,endColorstr=#DD000000);   /* IE6 & 7 */     
+	zoom: 1;
+}
+
+/** template-grid-fullsize.php **/
+#primary.template-fullsize-gallery, 
+#primary.template-fullsize-video,
+#primary.portfolio-fullsize-scroller,
+#primary.portfolio-fullsize-grid { -ms-filter: none; filter: none; background: none !important; }

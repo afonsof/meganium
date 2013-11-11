@@ -1,0 +1,65 @@
+﻿@using MegaSite.Api.Resources
+@model string
+@{
+    Layout = null;
+}
+<script src="~/Content/admin/script/filemanager.js" type="text/javascript"></script>
+<style>
+    #media-picker-modal {
+        width: 94%;
+        margin-left: -47%;
+        height: 80%;
+    }
+
+        #media-picker-modal.fade.in {
+            top: 5%;
+        }
+
+        #media-picker-modal .modal-body {
+            max-height: inherit;
+        }
+</style>
+<div id="media-picker-modal" class="modal hide fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            ×</button>
+        <h3 id="myModalLabel">
+            @Resource.MediaSelect</h3>
+    </div>
+    <div class="modal-body">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#home">@Resource.LoadFromComputer</a></li>
+            <li><a href="#profile">@Resource.Import</a></li>
+            <li><a href="#messages">@Resource.Collections</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="attachments-browser row-fluid media-picker">
+                    <ul class="attachments span9">
+                    </ul>
+                    <div class="media-sidebar span3">
+                        <div class="media-uploader-status">
+                            <h4>
+                                @Resource.LoadFromComputer</h4>
+                            <div>
+                                <input type="file" name="File" id="file" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="profile">...</div>
+            <div class="tab-pane" id="messages">...</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">
+            @Resource.Cancel</button>
+        <button class="btn btn-primary">
+            @Resource.Save</button>
+    </div>
+</div>
+<script>
+    var mediaFileManager = new MediaFileManager($('#media-picker-modal'), 'input', '@Url.Content("~/")');
+</script>

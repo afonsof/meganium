@@ -1,0 +1,34 @@
+﻿@using MegaSite.Api.Resources
+@model MultiSelectList
+@{
+    ViewBag.Title = Resource.ManageFeatureds;
+    ViewBag.Icon = "star";
+}
+@using (Html.BeginForm())
+{
+    <style>
+        .ms-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+    <fieldset>
+        <div class="editor-label">
+            <div class="alert alert-info">@Resource.InformationTextFeatureds</div>
+        </div>
+        <div class="editor-field">
+            @Html.ListBox("featuredPages", Model)
+            <script type="text/javascript">
+                $('#featuredPages').multiSelect({
+                    selectableHeader: "<div class='custom-header'>Itens ocultos</div>",
+                    selectionHeader: "<div class='custom-header'><strong>Itens em Destaque</strong></div>",
+                    keepOrder: true
+                });
+            </script>
+        </div>
+        <div class="toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index")" class="btn">@Resource.Back</a>
+        </div>
+    </fieldset>
+}

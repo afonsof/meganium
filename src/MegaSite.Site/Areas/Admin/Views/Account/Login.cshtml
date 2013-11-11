@@ -1,0 +1,51 @@
+@using MegaSite.Api.Trash
+@using MegaSite.Api.Resources
+@model MegaSite.Api.ViewModels.AccountLoginVm
+@{
+    ViewBag.Title = Resource.UserLogin;
+    Layout = null;
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - @Html.Option("SiteTitle") - @Resource.ProjectName</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link rel="icon" type="image/png" href="~/Content/admin/images/favicon.png">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+
+    @Scripts.Render("~/bundles/libs")
+
+    @Styles.Render("~/bundles/css")
+
+    @Html.Partial("_Script")
+
+    @Scripts.Render("~/bundles/validate")
+</head>
+
+<body class="default-color" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.5));">
+        <div class="container" style="padding-top: 100px;">
+            <div class="row">
+                <div class="span4 offset4 well">
+                    <legend>
+                        <div class="default-color" style="-webkit-mask-image: url('/Content/admin/images/logo.png'); width: 94px; height: 40px"></div></legend>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.TextBoxFor(model => model.Email, new { placeholder = @Resource.Email, @class = "span4" })
+                        @Html.PasswordFor(model => model.Password, new { placeholder = @Resource.Password, @class = "span4" })
+                        @Html.ValidationSummary(true)
+                        <button type="submit" name="submit" class="btn btn-primary btn-block">@Resource.Login</button>
+                    }
+                </div>
+                <div class="span4 offset4">Digite o seus dados abaixo para entrar na administração do site @Html.Option("SiteTitle")</div>
+            </div>
+        </div>
+</body>

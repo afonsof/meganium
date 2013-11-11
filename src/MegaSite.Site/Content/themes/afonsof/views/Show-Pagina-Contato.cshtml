@@ -1,0 +1,43 @@
+﻿@model MegaSite.Api.ViewModels.SiteViewModel
+<div class="post type-post">
+    <div class="gridly-copy">
+        <h1>@Model.CurrentPost.Title</h1>
+        <p>@Html.Raw(Model.CurrentPost.Content)</p>
+
+        <h2>Ou se preferir, preencha o formulário abaixo</h2>
+        <form action="~/plugin/EmailFormAction/Send" method="post">
+            <div style="text-align: left; padding-top: 5px;">
+                <label for="Name">Seu nome</label>
+            </div>
+            <div style="text-align: left;">
+                <input data-val="true" size="40" data-val-required="Campo requerido" id="Name" name="Name" type="text">
+                <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+            </div>
+
+            <div style="text-align: left;">
+                <label for="Email">Seu e-mail</label>
+            </div>
+            <div style="text-align: left;">
+                <input data-val="true" size="40" data-val-regex="o e-mail digitado é inválido." data-val-regex-pattern="[a-zA-Z0-9._%-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" data-val-required="Campo requerido" id="Email" name="Email" type="text" value="">
+                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+            </div>
+            <div style="text-align: left;">
+                <label for="Subject">Assunto</label>
+            </div>
+            <div style="text-align: left;">
+                <input id="Subject" size="40" name="Subject" type="text">
+                <span class="field-validation-valid" data-valmsg-for="Subject" data-valmsg-replace="true"></span>
+            </div>
+            <div style="text-align: left;">
+                <label for="Message">Mensagem</label>
+            </div>
+            <div style="text-align: left;">
+                <textarea rows="5" cols="30" data-val="true" data-val-required="Campo requerido" id="Message" name="Message" rows="2"></textarea>
+                <span class="field-validation-valid" data-valmsg-for="Message" data-valmsg-replace="true"></span>
+            </div>
+            <div style="text-align: left; padding-top: 8px;">
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+</div>

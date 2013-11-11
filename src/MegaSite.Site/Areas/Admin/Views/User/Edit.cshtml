@@ -1,0 +1,53 @@
+﻿@using MegaSite.Api.Resources
+@model MegaSite.Api.ViewModels.UserEditVm
+@{
+    ViewBag.Title = Resource.EditUser;
+    ViewBag.Icon = "user";
+}
+@using (Html.BeginForm("Edit", "User"))
+{
+    @Html.ValidationSummary(true) 
+    @Html.HiddenFor(model => model.Id)
+
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FullName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FullName, new { autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.FullName)
+        </div>
+
+        @if (Model.Email != User.Identity.Name)
+        {
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Enabled)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.Enabled)
+            </div>
+        }
+        else
+        {
+            @Html.HiddenFor(model => model.Enabled)
+        }
+        <div class="toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index")" class="btn">@Resource.Back</a>
+        </div>
+    </fieldset>
+}

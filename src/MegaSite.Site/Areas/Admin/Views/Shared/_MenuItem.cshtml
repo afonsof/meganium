@@ -1,0 +1,15 @@
+﻿@model Tuple<string,string,string>
+
+@{
+
+    var className = Model.Item1.ToLower();
+    if (Model.Item1.IndexOf("/") > -1)
+    {
+        className = Model.Item1.Substring(0, Model.Item1.IndexOf("/")).ToLower();
+    }
+    var action = Url.Action("Index", Model.Item1);
+    var selected = (Request.Url.PathAndQuery == action) ? "active" : "";
+
+    <li class="menu-item-@className @selected"> <a href="@action" ><i class="icon-@Model.Item3"></i> @Model.Item2</a>
+    </li>
+}

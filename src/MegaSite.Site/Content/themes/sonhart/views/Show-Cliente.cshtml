@@ -1,0 +1,55 @@
+﻿@using MegaSite.Api
+@using MegaSite.Api.Entities
+@using MegaSite.Api.Trash
+@model MegaSite.Api.ViewModels.SiteViewModel
+@{
+    if (Model.CurrentPost.FeaturedMediaFile != null)
+    {
+        ViewBag.BackgroundPhoto = Model.CurrentPost.FeaturedMediaFile.Url;
+    }
+}
+
+@section sidebar
+{
+    <script>
+        var limit = @Model.CurrentPost.GetFieldValue("Limite de fotos")
+    </script>
+    <div id="welcomeTeaser">
+        <span class="inner" style="text-align: left"><span style="font-size: 90px; text-align: right; display: block; margin-bottom: 16px; color: #d5b03f;">→</span><br />
+            Selecione ao lado as fotos para serem inseridas no seu álbum.
+            <br />
+            <br />
+            Você selecionou <span id="photoSelection" style="color: #d5b03f"><span>0 de @Model.CurrentPost.GetFieldValue("Limite de fotos") fotos</span><br />
+                <small style="display: none">(isto pode gerar custos extra)</small></span></span>
+        <form action="~/plugin/PhotoSelectorAction/Send" method="post">
+            <input type="hidden" name="postId" id="postId" value="@Model.CurrentPost.Id" />
+            <input type="hidden" id="titles" name="titles" />
+            <input type="button" id="submit-button" class="btn" value="Enviar dados" style="width: 215px; margin: 10px" />
+        </form>
+    </div>
+}
+
+
+<div id="single-page" class="clearfix left-sidebar">
+    <div id="primary" style="margin-top: 0px;" class="portfolio-three-columns">
+        <h1 class="entry-title">Escolha de Fotos de <small>@Model.CurrentPost.Title</small></h1>
+        <article>
+            <ul id="portfolioList" class="clearfix portfolio-list isotope">
+                @foreach (var media in Model.CurrentPost.MediaFiles)
+                {
+                    <li class="item isotope-item" style="width: 140px; margin-left: 5px">
+                        <div class="shadow">
+                            <div style="background-color: #222; position: absolute; top: 3px; width: 30px; height: 30px; z-index: 1000; left: 3px;">
+                                <input type="checkbox" style="display: block; width: 23px; height: 24px;" />
+                            </div>
+                            <a href="@media.Url"
+                               data-rel="prettyPhoto[gal]" title="@media.Title">
+                                @Url.DefaultThumbnail(media)</a>
+                        </div>
+                    </li> 
+                }
+            </ul>
+        </article>
+    </div>
+    <script src="~/Content/themes/sonhart/js/app.js"></script>
+</div>

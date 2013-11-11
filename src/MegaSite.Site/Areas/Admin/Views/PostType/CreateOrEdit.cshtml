@@ -1,0 +1,111 @@
+﻿@model MegaSite.Api.ViewModels.PostTypeCreateEditVm
+@using Dongle.Serialization
+@using MegaSite.Api.Entities
+@using MegaSite.Api.Resources
+@{
+    ViewBag.Title = Model.Id > 0 ? Resource.EditPostType : Resource.CreatePostType;
+}
+<style>
+    #extra-columns fieldset {
+        border: 1px solid black;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        @Html.HiddenFor(model => model.Id)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SingularName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SingularName)
+            @Html.ValidationMessageFor(model => model.SingularName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PluralName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PluralName)
+            @Html.ValidationMessageFor(model => model.PluralName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IconId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IconId)
+            @Html.ValidationMessageFor(model => model.IconId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BehaviorItems)
+        </div>
+        <div class="editor-field">
+            @Html.ListBoxFor(model=>model.BehaviorItems, Model.BehaviorsMultiselect, new { @class = "multiselect" })
+        </div>
+        <div id="extra-columns-field">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FieldsJson)
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.FieldsJson)
+                @Html.ValidationMessageFor(model => model.FieldsJson)
+            </div>
+        </div>
+        <h2>Colunas Extra
+            <div id="add-extra-column-button" class="btn">@Resource.Add</div>
+        </h2>
+        <script type="text/javascript">
+
+            $('#extra-columns-field').hide();
+
+            function verifySelect($element) {
+                if ($element.val() == 4) {
+                    $element.closest('fieldset').find(".select-list-panel").show();
+                } else {
+                    $element.closest('fieldset').find(".select-list-panel").hide();
+                }
+            }
+
+            $(document).ready(function () {
+                $('#extra-columns').on('click', '.btn-remove', function () {
+                    $(this).closest('fieldset').fadeOut(500, function () {
+                        $(this).remove();
+                    });
+                });
+
+                $('#add-extra-column-button').click(function () {
+                    var clone = $('#clone fieldset').clone();
+                    $('#extra-columns').append(clone);
+                });
+
+                $('#extra-columns').on('change', '#Item_Type', function () {
+                    verifySelect($(this));
+                });
+
+                $('.item-type-panel').each(function () {
+                    verifySelect($(this).find('#Item_Type'));
+                });
+            });
+        </script>
+        @{
+    var items = JsonSimpleSerializer.UnserializeFromString<List<Field>>(Model.FieldsJson);
+
+        }
+        <div id="extra-columns">
+            @if (items != null)
+            {
+                foreach (var item in items)
+                {
+                @Html.Partial("_FieldBox", item)
+                }
+            }
+        </div>
+        <div id="clone" style="display: none">
+            @Html.Partial("_FieldBox", new Field())
+        </div>
+        <div class="toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index")" class="btn">@Resource.Back</a>
+        </div>
+    </fieldset>
+}

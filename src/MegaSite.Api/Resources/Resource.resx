@@ -1,0 +1,900 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Ação</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Ações</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Endereço</value>
+  </data>
+  <data name="AddressCity" xml:space="preserve">
+    <value>Cidade</value>
+  </data>
+  <data name="AddressNeighborhood" xml:space="preserve">
+    <value>Bairro</value>
+  </data>
+  <data name="AddressNumber" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="AddressState" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="AddressStreet" xml:space="preserve">
+    <value>Rua</value>
+  </data>
+  <data name="AdminCustomEntity" xml:space="preserve">
+    <value>Administração de {0}</value>
+  </data>
+  <data name="AdminEmail" xml:space="preserve">
+    <value>E-mail do Administrador</value>
+  </data>
+  <data name="Album" xml:space="preserve">
+    <value>Album</value>
+  </data>
+  <data name="AlbumImporting" xml:space="preserve">
+    <value>Importação de Albuns de Fotos</value>
+  </data>
+  <data name="AlbumTitle" xml:space="preserve">
+    <value>Título do Álbum</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>Anônimo</value>
+  </data>
+  <data name="AnotherItemAlreadyExistsWithThisId" xml:space="preserve">
+    <value>Já existe outro item com este Id</value>
+  </data>
+  <data name="April" xml:space="preserve">
+    <value>Abril</value>
+  </data>
+  <data name="AreYouSureYouWantDeleteThisItem" xml:space="preserve">
+    <value>Você tem certeza que deseja excluir este item</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>Agosto</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Voltar</value>
+  </data>
+  <data name="BackToWidgetGroup" xml:space="preserve">
+    <value>Voltar para Grupo de Widget</value>
+  </data>
+  <data name="BannerUri" xml:space="preserve">
+    <value>Banner</value>
+  </data>
+  <data name="BaseUrl" xml:space="preserve">
+    <value>Url Base</value>
+  </data>
+  <data name="Basic" xml:space="preserve">
+    <value>Básico</value>
+  </data>
+  <data name="BasicAdmin" xml:space="preserve">
+    <value>Administração Básica</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Data de nascimento</value>
+  </data>
+  <data name="Boolean" xml:space="preserve">
+    <value>Booleano</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CantDeleteBecauseThisTypeContainsObjects" xml:space="preserve">
+    <value>Não pode ser excluído pois este tipo contém objetos associados</value>
+  </data>
+  <data name="CantRemoveBecauseThisUserHavePosts" xml:space="preserve">
+    <value>Não pode ser excluído pois este usuário tem objetos cadastrados em seu nome</value>
+  </data>
+  <data name="CantSaveBecauseAItemWithSameNameAlreadyExists" xml:space="preserve">
+    <value>O usuário não pode ser salvo pois já existe alguém cadastrado com este nome de usuário</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categorias</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="CategoryAdmin" xml:space="preserve">
+    <value>Administração de Categorias</value>
+  </data>
+  <data name="CategoryList" xml:space="preserve">
+    <value>Lista de Categorias</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Coleções</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Cor</value>
+  </data>
+  <data name="Configurations" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirmar senha</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Conteúdo</value>
+  </data>
+  <data name="CreateCategory" xml:space="preserve">
+    <value>Criar Categoria</value>
+  </data>
+  <data name="CreateCustomEntity" xml:space="preserve">
+    <value>Criar {0}</value>
+  </data>
+  <data name="CreatedAt" xml:space="preserve">
+    <value>Criado em</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Autor</value>
+  </data>
+  <data name="CreateEvent" xml:space="preserve">
+    <value>Criar Evento</value>
+  </data>
+  <data name="CreatePage" xml:space="preserve">
+    <value>Criar Página</value>
+  </data>
+  <data name="CreatePost" xml:space="preserve">
+    <value>Criar Postagem</value>
+  </data>
+  <data name="CreatePostType" xml:space="preserve">
+    <value>Criar Tipo de objeto</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Criar Usuário</value>
+  </data>
+  <data name="CreateWidget" xml:space="preserve">
+    <value>Criar Widget</value>
+  </data>
+  <data name="CreateWidgetGroup" xml:space="preserve">
+    <value>Criar Grupo de Widgets</value>
+  </data>
+  <data name="CustomEntityItem" xml:space="preserve">
+    <value>Objeto</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="DateTime" xml:space="preserve">
+    <value>Data e Hora</value>
+  </data>
+  <data name="December" xml:space="preserve">
+    <value>Dezembro</value>
+  </data>
+  <data name="DefaultAlbumImportingPostTypeId" xml:space="preserve">
+    <value>Objeto padrão para importação de Fotos</value>
+  </data>
+  <data name="DefaultVideoImportingPostTypeId" xml:space="preserve">
+    <value>Objeto padrão para importação de Videos</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Excluindo</value>
+  </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Rascunho</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="EditCategory" xml:space="preserve">
+    <value>Editar Categoria</value>
+  </data>
+  <data name="EditCustomEntity" xml:space="preserve">
+    <value>Editar {0}</value>
+  </data>
+  <data name="EditEvent" xml:space="preserve">
+    <value>Editar Evento</value>
+  </data>
+  <data name="EditPage" xml:space="preserve">
+    <value>Editar Página</value>
+  </data>
+  <data name="EditPost" xml:space="preserve">
+    <value>Editar Postagem</value>
+  </data>
+  <data name="EditPostType" xml:space="preserve">
+    <value>Editar tipo de objeto</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Editar Usuário</value>
+  </data>
+  <data name="EditWidget" xml:space="preserve">
+    <value>Editar Widget</value>
+  </data>
+  <data name="EditWidgetGroup" xml:space="preserve">
+    <value>Editar Grupo de Widgets</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Habilitado</value>
+  </data>
+  <data name="EndedAt" xml:space="preserve">
+    <value>Finaliza em</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erro: </value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="EventAdmin" xml:space="preserve">
+    <value>Administração de Eventos</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Eventos</value>
+  </data>
+  <data name="FacebookComments" xml:space="preserve">
+    <value>Comentários do Facebook</value>
+  </data>
+  <data name="FacebookId" xml:space="preserve">
+    <value>Identificação do Facebook</value>
+  </data>
+  <data name="FacebookPhotos" xml:space="preserve">
+    <value>Fotos do Facebook</value>
+  </data>
+  <data name="Featureds" xml:space="preserve">
+    <value>Destaques</value>
+  </data>
+  <data name="FeaturedsAdmin" xml:space="preserve">
+    <value>Administração de Destaques</value>
+  </data>
+  <data name="February" xml:space="preserve">
+    <value>Fevereiro</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Feminino</value>
+  </data>
+  <data name="FieldMustHaveBetween6And12Chars" xml:space="preserve">
+    <value>O campo precisa ter entre 6 e 12 caracteres</value>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>Campo obrigatório</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Arquivo</value>
+  </data>
+  <data name="FileAdmin" xml:space="preserve">
+    <value>Administração de Arquivos</value>
+  </data>
+  <data name="FilePicker" xml:space="preserve">
+    <value>Seletor de Arquivo</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Arquivos</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Nome completo</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Sexo</value>
+  </data>
+  <data name="GoogleAnalyticsTracker" xml:space="preserve">
+    <value>Tracker do Google Analytics</value>
+  </data>
+  <data name="HasTitleBar" xml:space="preserve">
+    <value>Possui barra de título</value>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>Oculto</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Ocultar</value>
+  </data>
+  <data name="HtmlOrTextWidget" xml:space="preserve">
+    <value>Widget de Html ou de Texto</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Imagem</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Imagem de capa</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="ImportAll" xml:space="preserve">
+    <value>Importar tudo</value>
+  </data>
+  <data name="ImportFromFacebook" xml:space="preserve">
+    <value>Importar do Facebook</value>
+  </data>
+  <data name="ImportFromPicasa" xml:space="preserve">
+    <value>Importar do Google+</value>
+  </data>
+  <data name="ImportFromVimeo" xml:space="preserve">
+    <value>Importar do Vimeo</value>
+  </data>
+  <data name="ImportFromYouTube" xml:space="preserve">
+    <value>Importar do YouTube</value>
+  </data>
+  <data name="Importing" xml:space="preserve">
+    <value>Importação</value>
+  </data>
+  <data name="ImportSelected" xml:space="preserve">
+    <value>Importar selecionados</value>
+  </data>
+  <data name="InformationTextFeatureds" xml:space="preserve">
+    <value>Selecione os itens que estarão em destaque clicando na coluna à esquerda. Remova os itens do destaque clicando na coluna à direita. É recomendado que seja utilizado no máximo 6 destaques por questões de desempenho.</value>
+  </data>
+  <data name="InitalPassword" xml:space="preserve">
+    <value>Senha inicial</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Inserir</value>
+  </data>
+  <data name="InsideOf" xml:space="preserve">
+    <value>Dentro de</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>E-mail inválido</value>
+  </data>
+  <data name="InvalidUrl" xml:space="preserve">
+    <value>Url inválida</value>
+  </data>
+  <data name="IsMainCalendar" xml:space="preserve">
+    <value>É do calendário principal</value>
+  </data>
+  <data name="ItemNotFound" xml:space="preserve">
+    <value>Item não encontrado</value>
+  </data>
+  <data name="ItemSuccessfullyAdd" xml:space="preserve">
+    <value>Item adicionado com sucesso</value>
+  </data>
+  <data name="ItemSuccessfullySaved" xml:space="preserve">
+    <value>Item salvo com sucesso</value>
+  </data>
+  <data name="January" xml:space="preserve">
+    <value>Janeiro</value>
+  </data>
+  <data name="July" xml:space="preserve">
+    <value>Julho</value>
+  </data>
+  <data name="June" xml:space="preserve">
+    <value>Junho</value>
+  </data>
+  <data name="LoadFromComputer" xml:space="preserve">
+    <value>Carregar do Computador</value>
+  </data>
+  <data name="Local" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Localização</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Sair</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Masculino</value>
+  </data>
+  <data name="ManageFeatureds" xml:space="preserve">
+    <value>Gerenciar Destaques</value>
+  </data>
+  <data name="March" xml:space="preserve">
+    <value>Março</value>
+  </data>
+  <data name="May" xml:space="preserve">
+    <value>Maio</value>
+  </data>
+  <data name="Media" xml:space="preserve">
+    <value>Mídia</value>
+  </data>
+  <data name="MediaSelect" xml:space="preserve">
+    <value>Selecionar Mídia</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensagem</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Celular</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Mais</value>
+  </data>
+  <data name="MustBeANumber" xml:space="preserve">
+    <value>Precisa ser um número</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Avançar</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="NoResultsMatch" xml:space="preserve">
+    <value>Sem resultados encontrados</value>
+  </data>
+  <data name="NormalText" xml:space="preserve">
+    <value>Texto normal</value>
+  </data>
+  <data name="November" xml:space="preserve">
+    <value>Novembro</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Objeto</value>
+  </data>
+  <data name="ObjectTypes" xml:space="preserve">
+    <value>Tipos de objeto</value>
+  </data>
+  <data name="October" xml:space="preserve">
+    <value>Outubro</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Pagina</value>
+  </data>
+  <data name="PageAdmin" xml:space="preserve">
+    <value>Administração de Páginas</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Páginas</value>
+  </data>
+  <data name="ParentId" xml:space="preserve">
+    <value>Dentro de</value>
+  </data>
+  <data name="ParentName" xml:space="preserve">
+    <value>Está dentro de</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="PasswordMustBeEqual" xml:space="preserve">
+    <value>A senha precisa ser igual</value>
+  </data>
+  <data name="PersonalData" xml:space="preserve">
+    <value>Dados pessoais</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Residencial</value>
+  </data>
+  <data name="Phones" xml:space="preserve">
+    <value>Telefones</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="PhotoCount" xml:space="preserve">
+    <value>Fotos</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>Fotos</value>
+  </data>
+  <data name="PhotosAdmin" xml:space="preserve">
+    <value>Administração de Fotos</value>
+  </data>
+  <data name="PicasaId" xml:space="preserve">
+    <value>Identificador do Picasa</value>
+  </data>
+  <data name="PicasaUser" xml:space="preserve">
+    <value>Usuário do Picasa</value>
+  </data>
+  <data name="PluralName" xml:space="preserve">
+    <value>Nome no plural</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Postagem</value>
+  </data>
+  <data name="PostAdmin" xml:space="preserve">
+    <value>Administração de Postagens</value>
+  </data>
+  <data name="PostCount" xml:space="preserve">
+    <value>Quantidade de objetos</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Postagens</value>
+  </data>
+  <data name="PostsArchive" xml:space="preserve">
+    <value>Arquivo de Postagens</value>
+  </data>
+  <data name="PostType" xml:space="preserve">
+    <value>Tipo de Objeto</value>
+  </data>
+  <data name="PostTypeAdmin" xml:space="preserve">
+    <value>Administração de Tipos de objeto</value>
+  </data>
+  <data name="Private" xml:space="preserve">
+    <value>Privado</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Mega Site</value>
+  </data>
+  <data name="Public" xml:space="preserve">
+    <value>Público</value>
+  </data>
+  <data name="Publish" xml:space="preserve">
+    <value>Publicar</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Publicado</value>
+  </data>
+  <data name="PublishedAt" xml:space="preserve">
+    <value>Publicado em</value>
+  </data>
+  <data name="RandomCustomEntityThumbs" xml:space="preserve">
+    <value>Objetos sorteados de um tipo</value>
+  </data>
+  <data name="RecentPosts" xml:space="preserve">
+    <value>Postagens recentes</value>
+  </data>
+  <data name="Recents" xml:space="preserve">
+    <value>Recentes</value>
+  </data>
+  <data name="ResetTheme" xml:space="preserve">
+    <value>Reiniciar Tema</value>
+  </data>
+  <data name="RevertToDraft" xml:space="preserve">
+    <value>Reverter para rascunho</value>
+  </data>
+  <data name="RichText" xml:space="preserve">
+    <value>Texto Formatado</value>
+  </data>
+  <data name="RootPage" xml:space="preserve">
+    <value>{0} Raiz</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="SaveButNotPublish" xml:space="preserve">
+    <value>Salvar mas não publicar</value>
+  </data>
+  <data name="SaveToDraft" xml:space="preserve">
+    <value>Salvar no rascunho</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Selecione</value>
+  </data>
+  <data name="SelectAnOption" xml:space="preserve">
+    <value>Selecione uma opção</value>
+  </data>
+  <data name="SelectedItems" xml:space="preserve">
+    <value>Itens Selecionados</value>
+  </data>
+  <data name="SelectImage" xml:space="preserve">
+    <value>Selecionar Imagem</value>
+  </data>
+  <data name="SelectList" xml:space="preserve">
+    <value>Lista de Seleção</value>
+  </data>
+  <data name="SelectSomeCategories" xml:space="preserve">
+    <value>Selecione as categorias</value>
+  </data>
+  <data name="SelectSomeOptions" xml:space="preserve">
+    <value>Selecione as opções</value>
+  </data>
+  <data name="September" xml:space="preserve">
+    <value>Setembro</value>
+  </data>
+  <data name="ServiceUserName" xml:space="preserve">
+    <value>Nome do usuário no serviço</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Criar conta</value>
+  </data>
+  <data name="SignUpNewAccount" xml:space="preserve">
+    <value>Criar uma nova conta</value>
+  </data>
+  <data name="SingularName" xml:space="preserve">
+    <value>Nome no singular</value>
+  </data>
+  <data name="SiteDescription" xml:space="preserve">
+    <value>Descrição do Site</value>
+  </data>
+  <data name="SiteTitle" xml:space="preserve">
+    <value>Título do Site</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="Slider" xml:space="preserve">
+    <value>Painel de Destaques</value>
+  </data>
+  <data name="Slug" xml:space="preserve">
+    <value>Slug</value>
+  </data>
+  <data name="SocialNetworkProfileLink" xml:space="preserve">
+    <value>Link para o seu perfil na sua rede social preferida</value>
+  </data>
+  <data name="StartedAt" xml:space="preserve">
+    <value>Inicia em</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Assunto</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="Synchronize" xml:space="preserve">
+    <value>Sincronizar</value>
+  </data>
+  <data name="SynchronizeWithPicasa" xml:space="preserve">
+    <value>Sincronizar com Álbuns do Picasa</value>
+  </data>
+  <data name="SynchronizeWithYouTube" xml:space="preserve">
+    <value>Sincronizar com YouTube</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="ThereAreValidationErrors" xml:space="preserve">
+    <value>Existem erros  de validação</value>
+  </data>
+  <data name="ThereIsAlreadyAnotherItemLinkedToXWithIdY" xml:space="preserve">
+    <value>Já existe outro item vinculado ao {0} com o id {1}</value>
+  </data>
+  <data name="ThereIsNothingToBeShowed" xml:space="preserve">
+    <value>Não existem itens a serem exibidos</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>Q</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Até</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="TypeYourUser" xml:space="preserve">
+    <value>Digite o nome do usuário</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Enviar arquivo</value>
+  </data>
+  <data name="UserAdmin" xml:space="preserve">
+    <value>Administração de Usuários</value>
+  </data>
+  <data name="UserLogin" xml:space="preserve">
+    <value>Login do Usuário</value>
+  </data>
+  <data name="UserNameOrPasswordProvidedIsIncorrect" xml:space="preserve">
+    <value>O nome de usuário ou a senha estão incorretos</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuários</value>
+  </data>
+  <data name="UserWasSavedHeNeedsToLoginAgain" xml:space="preserve">
+    <value>Usuário foi salvo e precisa efetuar login novamente</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="VideoAdmin" xml:space="preserve">
+    <value>Administração de Vídeos</value>
+  </data>
+  <data name="Videos" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="VideoUrl" xml:space="preserve">
+    <value>URL do Vídeo</value>
+  </data>
+  <data name="VimeoVideos" xml:space="preserve">
+    <value>Vídeos do Vimeo</value>
+  </data>
+  <data name="VisitSite" xml:space="preserve">
+    <value>Visitar Site</value>
+  </data>
+  <data name="Wall" xml:space="preserve">
+    <value>Mural de Recados</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Q</value>
+  </data>
+  <data name="WhatDoYouWantToImport" xml:space="preserve">
+    <value>O que você quer importar</value>
+  </data>
+  <data name="WidgetAdmin" xml:space="preserve">
+    <value>Administrar Widget</value>
+  </data>
+  <data name="WidgetAdminOfGroup" xml:space="preserve">
+    <value>Administração de Widgets do grupo</value>
+  </data>
+  <data name="WidgetCount" xml:space="preserve">
+    <value>Quantidade de Widgets</value>
+  </data>
+  <data name="WidgetGroupAdmin" xml:space="preserve">
+    <value>Administração de Grupo de Widgets</value>
+  </data>
+  <data name="Widgets" xml:space="preserve">
+    <value>Widgets</value>
+  </data>
+  <data name="WidgetType" xml:space="preserve">
+    <value>Tipo de Widget</value>
+  </data>
+  <data name="XImporting" xml:space="preserve">
+    <value>Importação de {0}</value>
+  </data>
+  <data name="XItemsWasImported" xml:space="preserve">
+    <value>{0} itens foram importados</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="YouTubeId" xml:space="preserve">
+    <value>Identificador do YouTube</value>
+  </data>
+  <data name="YouTubeUser" xml:space="preserve">
+    <value>Usuário do YouTube</value>
+  </data>
+  <data name="YouTubeVideos" xml:space="preserve">
+    <value>Vídeos do YouTube</value>
+  </data>
+  <data name="ItemSuccessfullyDeleted" xml:space="preserve">
+    <value>Item excluído com sucesso</value>
+  </data>
+  <data name="CantSaveBecauseAItemWithSameEmailAlreadyExists" xml:space="preserve">
+    <value>O usuário não pode ser salvo pois já existe alguém cadastrado com este e-mail</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Nome de usuário</value>
+  </data>
+</root>

@@ -1,0 +1,35 @@
+#primary, #sidebar .widget, .external-video {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#EEFFFFFF,endColorstr=#EEFFFFFF)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EEFFFFFF,endColorstr=#EEFFFFFF);   /* IE6 & 7 */      
+	zoom: 1;
+}
+
+nav#navigation { background: #fff url(white/bg-content.png) 0 0 repeat }
+
+#primary.portfolio-fullsize-scroller, #primary.template-fullsize-gallery, #primary.template-fullsize-video {
+	background: none;
+	padding: 0;
+	border: 0 none;
+}
+
+
+#welcomeTeaser, .max_widget_teaser,  #showtitle, #showlink, #thumbnails .controls, #site-title {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FFFFFFF,endColorstr=#7FFFFFFF)"; /* IE8 */    
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FFFFFFF,endColorstr=#7FFFFFFF);   /* IE6 & 7 */      
+	zoom: 1;
+}
+
+#thumbnails .rel {
+	background: none;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#DDFFFFFF,endColorstr=#DDFFFFFF)"; /* IE8 */  
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#DDFFFFFF,endColorstr=#DDFFFFFF);   /* IE6 & 7 */     
+	zoom: 1;
+}
+
+/** template-grid-fullsize.php **/
+#primary.template-fullsize-gallery, 
+#primary.template-fullsize-video,
+#primary.portfolio-fullsize-scroller,
+#primary.portfolio-fullsize-grid { -ms-filter: none; filter: none; background: none !important; }

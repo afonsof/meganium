@@ -1,0 +1,14 @@
+﻿@model MegaSite.Api.ViewModels.SiteViewModel
+<div class="container row" style="margin: 20px 10px">
+    <div class="sixteen columns left">
+        <h1 class="heading">@Model.CurrentPost.Title</h1>
+        <!-- Static Page Start -->
+        <div class="in-sec">
+            <div class="static">
+                @Html.Raw(Model.CurrentPost.Content)
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- Static Page End -->
+    </div>
+</div>
