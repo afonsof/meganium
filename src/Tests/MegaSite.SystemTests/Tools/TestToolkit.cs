@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Dongle.System.IO;
+using Ionic.Zip;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
 using NUnit.Framework;
@@ -41,6 +43,16 @@ namespace MegaSite.SystemTests.Tools
 
                     var chromeOptions = new ChromeOptions();
                     chromeOptions.AddArgument("--start-maximized");
+
+                    var path = ApplicationPaths.RootDirectory + "\\chromedriver.exe";
+                    var fileName = ApplicationPaths.RootDirectory + "\\chromedriver.zip";
+                    if (!File.Exists(path))
+                    {
+                        var client = new WebClient();
+                        client.DownloadFile("http://chromedriver.storage.googleapis.com/2.6/chromedriver_win32.zip", fileName);
+                        var zip = new ZipFile(fileName);
+                        zip.ExtractAll(ApplicationPaths.RootDirectory);
+                    }
 
                     _driver = new ChromeDriver(chromeOptions);
                 }
