@@ -13,7 +13,7 @@ namespace MegaSite.Api.Repositories
         {
             if (obj.PostType == null)
             {
-                obj.PostType = Uow.PostTypeRepository.AsQueryable().FirstOrDefault();
+                obj.PostType = Uow.PostTypeRepository.AsQueryable().FirstOrDefault(pt => pt.Id == Uow.ClientManager.GetOptions().GetInt("DefaultPostTypeId"));
             }
             base.Add(obj);
         }

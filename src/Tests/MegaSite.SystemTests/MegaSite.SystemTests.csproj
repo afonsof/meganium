@@ -120,6 +120,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GerenciamentoDeTiposDeObjetos.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Postagens\EditarPostagem.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditarPostagem.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Usuarios\CriarUsuario.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -164,6 +169,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>GerenciamentoDeTiposDeObjetos.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\Postagens\EditarPostagem.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EditarPostagem.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Usuarios\EditarUsuario.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>EditarUsuario.feature.cs</LastGenOutput>
@@ -191,6 +200,11 @@
       <Project>{FED6BCFF-72E6-403D-989C-0E35E6F8AA58}</Project>
       <Name>MegaSite.Site</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\bala-de-coco.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

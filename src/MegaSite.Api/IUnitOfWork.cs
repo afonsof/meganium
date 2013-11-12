@@ -14,14 +14,5 @@ namespace MegaSite.Api
         IRepository<Plugin> PluginRepository { get; }
 
         void Commit();
-
-        //todo:
-        /* IQueryable<Post> CurrentPosts { get; set; }
-            Post CurrentPost { get; set; }
-            Category CurrentCategory { get; set; }
-            ActionPluginComposite Plugin { get; set; }
-            string Title { get; set; }
-
-            void SaveCategoriesToPost(Post post, List<int> categoriesIds);*/
     }
 }

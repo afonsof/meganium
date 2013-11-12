@@ -16,6 +16,14 @@ Cenário: Criar postagem com sucesso
 	|  | Título           |
 	|  | Postagem inicial |
 
+Cenário: Criar postagem inserindo imagem sucesso
+	Dado que estou logado
+	E que o existe um tipo de objeto com todos os comportamentos
+	Quando entro na página "/Admin/Post/Create"
+	E digito "Receita Bala de coco" no campo "Título"
+	E insiro a imagem "bala-de-coco.jpg"
+	E clico no botão "Salvar"
+
 Cenário: Criar postagem com campos vazios
 	Dado que estou logado
 	E que o existe um tipo de objeto com todos os comportamentos

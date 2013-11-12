@@ -316,7 +316,7 @@ namespace MegaSite.SystemTests.Tools
 
         public static void CleanField(string name)
         {
-            Driver.FindElement(By.Name(name)).Clear();
+            FindElementByNameOrLabelName(name).Clear();
         }
     }
 }

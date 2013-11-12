@@ -80,7 +80,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             {
                 return ReturnValidationError(vm, categoryIds, parentId, postType, fieldValues);
             }
-            var post = _managers.PostManager.GetById(parentId);
+            var post = _managers.PostManager.GetById(vm.Id);
             ObjectFiller<PostCreateEditVm, Post>.Fill(vm, post);
             _managers.PostManager.Change(post, user, postType, parent, categoryIds, fieldValues);
             return RedirectToAction("Index", "Post", new { postTypeId = postType.Id }, Resource.ItemSuccessfullySaved, MessageType.Success);

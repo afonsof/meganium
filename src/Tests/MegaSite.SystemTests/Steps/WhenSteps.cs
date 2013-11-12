@@ -1,4 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Web.Mvc;
+using Dongle.System.IO;
 using MegaSite.SystemTests.Tools;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -65,6 +69,26 @@ namespace MegaSite.SystemTests.Steps
             TestToolkit.Driver.SwitchTo().Alert().Dismiss();
         }
 
+        [When(@"insiro a imagem ""(.*)""")]
+        public void QuandoInsiroAImagem(string filename)
+        {
+            var button = TestToolkit.Driver.FindElement(By.ClassName("media-file-picker-control"));
+            button.Click();
 
+            var modal = TestToolkit.Driver.FindElement(By.ClassName("media-picker-modal"));
+            var button2 = modal.FindElement(By.ClassName("uploadifive-button"));
+            var input = button2.FindElements(By.TagName("input"));
+            ShowElement(input[1]);
+            input[1].SendKeys(ApplicationPaths.RootDirectory + "\\TestData\\" + filename);
+            var buttonOk = modal.FindElement(By.ClassName("btn-ok"));
+            Thread.Sleep(1000);
+            buttonOk.Click();
+        }
+
+        public void ShowElement(IWebElement element)
+        {
+            var js = (IJavaScriptExecutor)TestToolkit.Driver;
+            js.ExecuteScript("arguments[0].setAttribute('style', arguments[1]);", element, "opacity: 1; position: absolute; z-index: 999; left: 0; top: 0");
+        }
     }
 }

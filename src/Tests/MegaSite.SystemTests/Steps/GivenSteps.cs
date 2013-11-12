@@ -95,6 +95,21 @@ namespace MegaSite.SystemTests.Steps
             }
         }
 
+        [Given(@"as seguintes postagens existem")]
+        public void DadoAsSeguintesPostagensExistem(Table table)
+        {
+            foreach (var row in table.Rows)
+            {
+                if (!TestToolkit.Uow.PostRepository.AsQueryable().Any(p => p.Title == row["Título"]))
+                {
+                    TestToolkit.Uow.PostRepository.Add(new Post
+                    {
+                        Title = row["Título"]
+                    });
+                    TestToolkit.Uow.Commit();
+                }
+            }
+        }
 
     }
 }
