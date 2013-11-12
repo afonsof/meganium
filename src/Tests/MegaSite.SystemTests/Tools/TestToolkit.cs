@@ -217,7 +217,20 @@ namespace MegaSite.SystemTests.Tools
                                     var equal = true;
                                     foreach (var item in row)
                                     {
-                                        equal &= tds[i].Text == item.Value;
+                                        var itemEqual = tds[i].Text == item.Value;
+                                        if (!itemEqual)
+                                        {
+                                            try
+                                            {
+                                                var img = tds[i].FindElement(By.TagName("img"));
+                                                itemEqual = img.GetAttribute("title") == item.Value;
+                                            }
+                                            catch
+                                            {
+                                            }
+                                        }
+
+                                        equal &= itemEqual;
                                         i++;
                                     }
                                     return equal;

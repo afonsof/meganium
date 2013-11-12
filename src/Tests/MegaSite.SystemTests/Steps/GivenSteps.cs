@@ -71,8 +71,8 @@ namespace MegaSite.SystemTests.Steps
             {
                 var postType = new PostType
                 {
-                    SingularName = "AllInOne",
-                    PluralName = "AllInOnes",
+                    SingularName = "Receita",
+                    PluralName = "Receitas",
                     IconId = "book"
                 };
                 postType.SetBehavior(

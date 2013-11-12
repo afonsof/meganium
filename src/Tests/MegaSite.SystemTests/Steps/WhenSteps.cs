@@ -78,17 +78,15 @@ namespace MegaSite.SystemTests.Steps
             var modal = TestToolkit.Driver.FindElement(By.ClassName("media-picker-modal"));
             var button2 = modal.FindElement(By.ClassName("uploadifive-button"));
             var input = button2.FindElements(By.TagName("input"));
-            ShowElement(input[1]);
+
+            var js = (IJavaScriptExecutor)TestToolkit.Driver;
+            js.ExecuteScript("arguments[0].setAttribute('style', arguments[1]);", input[1], "opacity: 1; position: absolute; z-index: 999; left: 0; top: 0");
+        
             input[1].SendKeys(ApplicationPaths.RootDirectory + "\\TestData\\" + filename);
             var buttonOk = modal.FindElement(By.ClassName("btn-ok"));
             Thread.Sleep(1000);
             buttonOk.Click();
-        }
-
-        public void ShowElement(IWebElement element)
-        {
-            var js = (IJavaScriptExecutor)TestToolkit.Driver;
-            js.ExecuteScript("arguments[0].setAttribute('style', arguments[1]);", element, "opacity: 1; position: absolute; z-index: 999; left: 0; top: 0");
+            Thread.Sleep(1000);
         }
     }
 }

@@ -66,10 +66,10 @@ namespace MegaSite.SystemTests.Features.Postagens
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Criar postagem com sucesso")]
-        public virtual void CriarPostagemComSucesso()
+        [NUnit.Framework.DescriptionAttribute("Criar postagem inserindo imagem com sucesso")]
+        public virtual void CriarPostagemInserindoImagemComSucesso()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Criar postagem com sucesso", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Criar postagem inserindo imagem com sucesso", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
@@ -79,45 +79,24 @@ this.ScenarioSetup(scenarioInfo);
 #line 10
  testRunner.When("entro na página \"/Admin/Post/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line 11
- testRunner.And("digito \"Postagem inicial\" no campo \"Título\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("digito \"Receita de bala de coco\" no campo \"Título\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 12
- testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("insiro a imagem \"bala-de-coco.jpg\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 13
- testRunner.Then("estou na página \"/Admin\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+ testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 14
+ testRunner.Then("estou na página \"/Admin\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+#line 15
  testRunner.And("deu uma mensagem de sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         "Título"});
             table1.AddRow(new string[] {
-                        "",
-                        "Postagem inicial"});
-#line 15
+                        "bala-de-coco.jpg",
+                        "Receita de bala de coco"});
+#line 16
  testRunner.And("verifico que o seguinte item existe", ((string)(null)), table1, "E ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Criar postagem inserindo imagem sucesso")]
-        public virtual void CriarPostagemInserindoImagemSucesso()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Criar postagem inserindo imagem sucesso", ((string[])(null)));
-#line 19
-this.ScenarioSetup(scenarioInfo);
-#line 20
- testRunner.Given("que estou logado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-#line 21
- testRunner.And("que o existe um tipo de objeto com todos os comportamentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 22
- testRunner.When("entro na página \"/Admin/Post/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-#line 23
- testRunner.And("digito \"Receita Bala de coco\" no campo \"Título\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 24
- testRunner.And("insiro a imagem \"bala-de-coco.jpg\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 25
- testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -127,19 +106,19 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void CriarPostagemComCamposVazios()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Criar postagem com campos vazios", ((string[])(null)));
-#line 27
+#line 20
 this.ScenarioSetup(scenarioInfo);
-#line 28
+#line 21
  testRunner.Given("que estou logado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-#line 29
+#line 22
  testRunner.And("que o existe um tipo de objeto com todos os comportamentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 30
+#line 23
  testRunner.When("entro na página \"/Admin/Post/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-#line 31
+#line 24
  testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 32
+#line 25
  testRunner.Then("estou na página \"/Admin/Post/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
-#line 33
+#line 26
  testRunner.And("verifico uma mensagem de erro \"Campo obrigatório\" para o campo \"Título\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             this.ScenarioCleanup();

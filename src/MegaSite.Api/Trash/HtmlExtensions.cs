@@ -99,7 +99,7 @@ namespace MegaSite.Api.Trash
 
         public static HtmlString DefaultThumbnail(this UrlHelper helper, MediaFile mediaFile)
         {
-            return Thumbnail(helper, mediaFile, 240, 240, true, null, "img-rounded");
+            return Thumbnail(helper, mediaFile, 240, 240, true, mediaFile.Title, "img-rounded");
         }
 
         public static MvcHtmlString DateTimeSpan(this HtmlHelper htmlHelper, DateTime? datetime)
