@@ -1,4 +1,4 @@
-﻿/// <reference path="./jquery/jquery.d.ts"/>
+﻿declare /// <reference path="./jquery/jquery.d.ts"/>
 
 
 /*interface JQueryStatic {

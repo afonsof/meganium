@@ -119,7 +119,7 @@ namespace MegaSite.Api
 
         private static IUnitOfWork CreateUnitOfWork()
         {
-            return new UnitOfWork(null, ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            return new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         }
     }
 }

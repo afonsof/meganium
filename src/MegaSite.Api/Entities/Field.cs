@@ -12,7 +12,7 @@ namespace MegaSite.Api.Entities
         public int Order { get; set; }
 
 
-        //TODO: Isto faz sentido?
+        //refactor: Isto faz sentido?
         public object Clone()
         {
             return new Field

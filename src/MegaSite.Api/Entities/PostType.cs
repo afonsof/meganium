@@ -25,6 +25,8 @@ namespace MegaSite.Api.Entities
         [Length(1024)]
         public virtual string FieldsJson { get; set; }
 
+        public virtual string ViewName { get; set; }
+
         #region Behavior
 
         public virtual void SetBehavior(BehaviorFlags behavior)
@@ -39,7 +41,7 @@ namespace MegaSite.Api.Entities
             {
                 if (_behavior == null && !string.IsNullOrEmpty(BehaviorStr))
                 {
-                    _behavior = (BehaviorFlags)System.Enum.Parse(typeof(BehaviorFlags), BehaviorStr, true);
+                    _behavior = (BehaviorFlags)Enum.Parse(typeof(BehaviorFlags), BehaviorStr, true);
                 }
                 if (_behavior == null)
                 {

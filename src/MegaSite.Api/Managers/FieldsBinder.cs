@@ -23,7 +23,8 @@ namespace MegaSite.Api.Managers
                     }
                 }
             }
-            return fields.Select(item => (Field)item.Clone()).ToList();
+            //return fields.Select(item => (Field)item.Clone()).ToList();
+            return fields.ToList();
         }
 
         public Dictionary<string, string> FillDictionary(FormCollection form, List<Field> fields)

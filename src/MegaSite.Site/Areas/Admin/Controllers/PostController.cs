@@ -101,7 +101,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             vm.Fields = _managers.FieldManager.Bind(postType.FieldsJson, JsonSimpleSerializer.SerializeToString(fieldValues));
             FillSelects(postType, vm, vm.Id, parentId, categoryIds);
             SetMessage(Resource.ThereAreValidationErrors, MessageType.Error);
-            return View("CreateOrEdit", vm);
+            return View(GetViewName(postType), vm);
         }
 
         private ViewResult ViewPost(Post post)
@@ -109,7 +109,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             var vm = ObjectFiller<Post, PostCreateEditVm>.Fill(post);
             vm.Fields = _managers.FieldManager.Bind(post.PostType.FieldsJson, post.FieldsValuesJson);
             FillSelects(post.PostType, vm, vm.Id, post.Parent == null ? null : (int?)post.Parent.Id, post.Categories.Select(c => c.Id));
-            return View("CreateOrEdit", vm);
+            return View(GetViewName(post.PostType), vm);
         }
 
         private void FillSelects(IHaveId postType, PostCreateEditVm vm, int postId, int? postParentId, IEnumerable<int> selectedIds = null)
@@ -117,6 +117,15 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             vm.PrivacySelect = new SelectList(new Dictionary<string, string> { { "false", Resource.Private }, { "true", Resource.Public } }, "Key", "Value");
             vm.CategoriesMultiselect = new MultiSelectList(_managers.CategoryManager.GetFromType(postType.Id), "Id", "Title", selectedIds);
             vm.ParentSelect = new SelectList(_managers.PostManager.GetWithoutParentFromType(postId, postType.Id), "Id", "Title", postParentId);
+        }
+
+        private static string GetViewName(PostType postType)
+        {
+            if (string.IsNullOrEmpty(postType.ViewName))
+            {
+                return "Default";
+            }
+            return postType.ViewName;
         }
 
         #endregion

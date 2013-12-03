@@ -28,7 +28,7 @@ namespace MegaSite.Site.App_Start
 
             try
             {
-                using (var data = new UnitOfWork(null, ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+                using (var data = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
                 {
                     foreach (var postType in data.PostTypeManager.GetAll())
                     {

@@ -20,6 +20,7 @@ public static class BundleConfig
             "~/Content/admin/js/libs/bootstrap-daterangepicker/moment.js",
             "~/Content/admin/js/libs/base64/base64.js",
             "~/Content/admin/js/src/mediafile.js",
+            "~/Content/admin/js/src/videomanager.js",
             "~/Content/admin/js/main.js"));
 
         bundles.Add(new ScriptBundle("~/bundles/validate").Include(

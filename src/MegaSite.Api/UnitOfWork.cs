@@ -10,12 +10,10 @@ namespace MegaSite.Api
     public sealed class UnitOfWork : IUnitOfWork, IManagers
     {
         private ITransaction _transaction;
-        private readonly Lazy<AuthenticatedUser> _user;
         private readonly string _connectionString;
 
-        public UnitOfWork(Lazy<AuthenticatedUser> user, string connectionString)
+        public UnitOfWork(string connectionString)
         {
-            _user = user;
             _connectionString = connectionString;
         }
 

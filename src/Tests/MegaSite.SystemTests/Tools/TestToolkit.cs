@@ -62,12 +62,12 @@ namespace MegaSite.SystemTests.Tools
 
         public static IUnitOfWork Uow
         {
-            get { return _bundle ?? (_bundle = new UnitOfWork(null, ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)); }
+            get { return _bundle ?? (_bundle = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)); }
         }
 
         public static IManagers Managers
         {
-            get { return _bundle ?? (_bundle = new UnitOfWork(null, ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)); }
+            get { return _bundle ?? (_bundle = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)); }
         }
 
         private static string MountUrl(string page)

@@ -27,20 +27,16 @@ namespace MegaSite.Site.App_Start
         private static void InitializeContainer(Container container)
         {
             var webLifestyle = new WebRequestLifestyle();
-            container.Register(() => new Lazy<AuthenticatedUser>(() =>
-            {
-                var session = HttpContext.Current.Session;
-                return (AuthenticatedUser)session["User"];
-            }));
             container.Register(() => Options.Instance);
             container.Register(() => CreateManagers(container), webLifestyle);
         }
 
         private static IManagers CreateManagers(Container container)
         {
-            IManagers managers = new UnitOfWork(container.GetInstance<Lazy<AuthenticatedUser>>(), ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            IManagers managers = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             return managers;
             
+            //todo:
             //var pluginComposite = new ActionPluginComposite(d);
             /*var allTypes = Assembly.GetAssembly(typeof(EmailFormAction)).GetTypes();
             var allPlugins = allTypes.Where(p => typeof(IActionPlugin).IsAssignableFrom(p));

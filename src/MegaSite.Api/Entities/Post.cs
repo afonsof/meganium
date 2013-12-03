@@ -8,7 +8,7 @@ using NHibernate.Validator.Constraints;
 
 namespace MegaSite.Api.Entities
 {
-    //todo: rever metodos desta classe
+    //refactor: rever metodos desta classe
     public class Post : IHaveId, IHaveSlug
     {
         public virtual int Id { get; set; }

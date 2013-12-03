@@ -1,6 +1,6 @@
 ﻿namespace MegaSite.Api
 {
-    //TODO: Refatorar este cara para tirar este monte de opções
+    //Refactor: tirar este monte de opções
     public interface IOptions
     {
         string Get(string name);

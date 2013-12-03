@@ -112,7 +112,7 @@ namespace MegaSite.Api.Managers
                 .ToList();
         }
 
-        //TODO: Refactor this man
+        //Refactor: Rancar connection strings daqui e talvez sqls
         private static void SaveCategoriesToPost(IHaveId post, IEnumerable<int> categoriesIds)
         {
             using (var con = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))

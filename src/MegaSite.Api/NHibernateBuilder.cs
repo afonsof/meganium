@@ -11,7 +11,7 @@ using NHibernate.Validator.Engine;
 
 namespace MegaSite.Api
 {
-    //TODO: Repensar neste cara aqui
+    //Refactor: Repensar neste cara aqui
     public static class NHibernateBuilder
     {
         public static void Reset(string connectionString)

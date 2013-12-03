@@ -19,7 +19,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            //TODO: Que loucura é essa no controller???
+            //Refactor: Que loucura é essa no controller???
             var vm = new BasicIndexVm
             {
                 FacebookId = _options.GetLong("FacebookId"),

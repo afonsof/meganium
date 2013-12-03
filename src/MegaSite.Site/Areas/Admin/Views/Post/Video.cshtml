@@ -1,0 +1,29 @@
+﻿@using MegaSite.Api.Resources
+@model MegaSite.Api.ViewModels.PostCreateEditVm
+@{
+    var verb = Model.Id > 0 ? Resource.EditCustomEntity : Resource.CreateCustomEntity;
+    ViewBag.Title = String.Format(verb, Model.PostType.SingularName);
+    ViewBag.Icon = Model.PostType.IconId;
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        @Html.Hidden("PostTypeId", Model.PostType.Id)
+        @Html.HiddenFor(model => model.Id)
+        @Html.Label("Url")
+        @Html.TextBox("Url")
+
+        <div id="video">
+        </div>
+
+        <div class="btn-toolbar">
+            <button type="submit" id="submit-button" class="btn btn-primary" disabled="disabled">@Resource.Save</button>
+            <a href="@Url.Action("Index", new { postTypeId = Model.PostType.Id })" class="btn">@Resource.Back</a>
+        </div>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    new VideoManager($('#Url'), $('#video'), $('#submit-button'));
+</script>

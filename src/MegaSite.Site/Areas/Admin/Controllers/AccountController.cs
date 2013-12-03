@@ -1,9 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using Dongle.Reflection;
 using MegaSite.Api;
-using MegaSite.Api.Entities;
-using MegaSite.Api.Messaging;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
 using MegaSite.Api.Resources;
@@ -53,7 +50,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             return Redirect(url);
         }
 
-        //TODO: Revisar isto aqui
+        //Refactor: Revisar isto aqui
         public JsonResult Ping()
         {
             try

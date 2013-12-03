@@ -5,7 +5,7 @@
 @using MegaSite.Api.Resources
 
 @{
-    IManagers managers = new UnitOfWork(null, ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+    IManagers managers = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 }
 <!DOCTYPE html>
 <html>
@@ -74,8 +74,7 @@
     </script>
 
     <div id="wrap">
-        <!-- Navbar
-                ================================================== -->
+        <!-- Navbar ================================================== -->
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -105,16 +104,14 @@
         </div>
         <div id="push">
         </div>
-        <!-- Subhead
-                ================================================== -->
+        <!-- Subhead ================================================== -->
         <header class="header subhead" id="overview">
             <div class="container">
                 <h1>@Html.Option("SiteTitle")</h1>
             </div>
         </header>
         <div class="container">
-            <!-- Docs nav
-                    ================================================== -->
+            <!-- Docs nav ================================================== -->
             <div class="row">
                 <div class="span3 nav-collapse collapse">
                     <ul class="nav nav-list bs-docs-sidenav" id="postTypesMenu">

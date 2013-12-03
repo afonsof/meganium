@@ -7,7 +7,7 @@ namespace MegaSite.Api
     {
         public IUnitOfWork CreateInstance()
         {
-            return new UnitOfWork(new Lazy<AuthenticatedUser>(), ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            return new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         }
     }
 }

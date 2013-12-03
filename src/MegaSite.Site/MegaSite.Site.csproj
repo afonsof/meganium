@@ -228,6 +228,7 @@
     <Content Include="Content\admin\js\libs\jquery-uploadifive\uploadifive-cancel.png" />
     <Content Include="Content\admin\js\libs\jquery-uploadifive\uploadifive.css" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Video.cshtml" />
     <None Include="Content\admin\js\libs\jquery-validate\jquery.validate-vsdoc.js" />
     <Content Include="Content\admin\js\libs\jquery-validate\jquery.validate.js" />
     <Content Include="Content\admin\js\libs\jquery-validate\jquery.validate.min.js" />
@@ -236,9 +237,8 @@
     <None Include="Content\admin\js\libs\jquery\jquery-1.9.1-vsdoc.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.js" />
-    <Content Include="Content\admin\js\src\MediaFile.js" />
-    <Content Include="Content\admin\js\src\MediaFile.min.js" />
-    <Content Include="Content\admin\js\src\MediaFile.ts" />
+    <TypeScriptCompile Include="Content\admin\js\src\MediaFile.ts" />
+    <TypeScriptCompile Include="Content\admin\js\src\VideoManager.ts" />
     <Content Include="Content\themes\afonsof\css\light.css" />
     <Content Include="Content\themes\afonsof\css\mobile.css" />
     <Content Include="Content\themes\afonsof\css\reset.css" />
@@ -665,7 +665,9 @@
     <Content Include="Content\Uploads\Thumbs\ed8abd8b42a2551c01c7574c1d4170f1-240x240-crop.jpg" />
     <Content Include="Content\Uploads\Thumbs\f0a40c61736d064d9eae606c243887cf-240x240-crop.jpg" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -708,7 +710,7 @@
     <Content Include="Areas\Admin\Views\PostType\CreateOrEdit.cshtml" />
     <Content Include="Areas\Admin\Views\PostType\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PostType\_FieldBox.cshtml" />
-    <Content Include="Areas\Admin\Views\Post\CreateOrEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Default.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Panel.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -733,7 +735,6 @@
     <Content Include="Content\admin\js\libs\font-awesome\font\fontawesome-webfont.woff" />
     <Content Include="Content\admin\js\libs\font-awesome\font\FontAwesome.otf" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.map" />
-    <Content Include="Content\admin\js\src\MediaFile.js.map" />
     <Content Include="Content\themes\afonsof\theme.json" />
     <Content Include="Content\themes\afonsof\views\Home.cshtml" />
     <Content Include="Content\themes\afonsof\views\Index.cshtml" />
@@ -785,7 +786,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>49529</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:56766/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
@@ -797,10 +798,25 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
 </Project>

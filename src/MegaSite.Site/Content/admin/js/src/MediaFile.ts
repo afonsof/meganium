@@ -176,7 +176,7 @@ module MediaFileManagerModule {
             return '<img class="img-rounded" src="' + url + '" />';
         }
 
-        private galleryListHtml(data: Array): JQuery[] {
+        private galleryListHtml(data: Array<IMediaFile>): JQuery[] {
             var items = [];
             for (var i = 0; i < data.length; i++) {
                 var item = data[i];
@@ -214,7 +214,7 @@ module MediaFileManagerModule {
                 }
             }
             else {
-                var items: IMediaFile[] = new IMediaFile[];
+                var items: IMediaFile[] = new Array<IMediaFile>();
                 this._element.find('.item').each(function () {
                     items.push($(this).data('mediaFile'));
                 });

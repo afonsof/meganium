@@ -91,7 +91,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthenticatedUser.cs" />
     <Compile Include="IManagers.cs" />
     <Compile Include="Managers\MediaFileManager.cs" />
     <Compile Include="NHibernateBuilder.cs" />
@@ -103,6 +102,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Tools\Mailer.cs" />
+    <Compile Include="Trash\UrlUtil.cs" />
     <Compile Include="Trash\HtmlExtensions.cs" />
     <Compile Include="Trash\PathResolver.cs" />
     <Compile Include="UnitOfWork.cs" />
