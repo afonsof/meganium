@@ -45,7 +45,7 @@ namespace MegaSite.SystemTests.Steps
         {
             foreach (var row in table.Rows)
             {
-                TestToolkit.EnsureUserExists(row["Nome"], row["Nome de usuário"], row["E-mail"]);    
+                TestToolkit.EnsureUserExists(row["Nome"], row["Nome de usuário"], row["E-mail"]);
             }
         }
 
@@ -67,7 +67,7 @@ namespace MegaSite.SystemTests.Steps
         [Given(@"que o existe um tipo de objeto com todos os comportamentos")]
         public void DadoQueOExisteUmTipoDeObjetoComTodosOsComportamentos()
         {
-            if (!TestToolkit.Uow.PostTypeRepository.AsQueryable().Any(p => p.SingularName == "AllInOne"))
+            if (!TestToolkit.Uow.PostTypeRepository.AsQueryable().Any(p => p.SingularName == "Receita"))
             {
                 var postType = new PostType
                 {
@@ -104,7 +104,9 @@ namespace MegaSite.SystemTests.Steps
                 {
                     TestToolkit.Uow.PostRepository.Add(new Post
                     {
-                        Title = row["Título"]
+                        Title = row["Título"],
+                        IsFeatured = row.ContainsKey("Destaque") && row["Destaque"] == "Sim",
+                        Published = true
                     });
                     TestToolkit.Uow.Commit();
                 }

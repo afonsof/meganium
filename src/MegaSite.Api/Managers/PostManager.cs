@@ -154,14 +154,13 @@ namespace MegaSite.Api.Managers
         {
             return _uow.PostRepository
                 .AsQueryable()
-                .Where(p => p.Published && p.PostType != null && p.PostType.BehaviorStr.Contains("AllowMarkAsFeatured"))
+                .Where(p => p.Published && p.PostType != null && p.PostType.BehaviorStr.Contains("MarkAsFeatured"))
                 .OrderByDescending(bp => bp.PublishedAt)
                 .ThenBy(bp => bp.FeaturedOrder);
         }
 
         public void SetFeatureds(List<int> featuredPosts)
         {
-
             foreach (var post in _uow.PostRepository.AsQueryable().Where(p => p.IsFeatured))
             {
                 post.IsFeatured = false;

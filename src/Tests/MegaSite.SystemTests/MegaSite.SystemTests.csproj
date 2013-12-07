@@ -105,6 +105,11 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Features\Postagens\GerenciarDestaques.feature.cs">
+      <DependentUpon>GerenciarDestaques.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Postagens\CriarPostagem.feature.cs">
       <DependentUpon>CriarPostagem.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -156,6 +161,10 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Postagens\GerenciarDestaques.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>GerenciarDestaques.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Postagens\CriarPostagem.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

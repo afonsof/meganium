@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Web.Mvc;
 using MegaSite.Api;
+using MegaSite.Api.Messaging;
+using MegaSite.Api.Resources;
 using MegaSite.Api.Web;
 
 namespace MegaSite.Site.Areas.Admin.Controllers
@@ -23,8 +25,8 @@ namespace MegaSite.Site.Areas.Admin.Controllers
 
         public ActionResult Manage()
         {
-            var allPosts = _managers.PostManager
-                .GetWhatAllowsMarkAsFeatured()
+            var whatAllowsMarkAsFeatured = _managers.PostManager.GetWhatAllowsMarkAsFeatured();
+            var allPosts = whatAllowsMarkAsFeatured
                 .ToList();
 
             var featuredPosts = _managers.PostManager
@@ -36,10 +38,10 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Manage(List<int> featuredPosts)
+        public ActionResult Manage(List<int> featureds)
         {
-            _managers.PostManager.SetFeatureds(featuredPosts);
-            return RedirectToAction("Index");
+            _managers.PostManager.SetFeatureds(featureds);
+            return RedirectToAction("Index", Resource.ItemSuccessfullySaved, MessageType.Success);
         }
     }
 }

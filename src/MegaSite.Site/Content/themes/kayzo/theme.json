@@ -37,7 +37,7 @@
 			PluralName: "Eventos",
 			IconId : "calendar",
 
-			BehaviorStr: "AllowLocation, AllowTimeBox, AllowPhotos, AllowDescription",
+			BehaviorStr: "AllowLocation, AllowTimeBox, AllowPhotos, AllowDescription, AllowMarkAsFeatured",
 
 			Posts:
 			[

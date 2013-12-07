@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Web.Mvc;
 using Dongle.System.IO;
 using MegaSite.SystemTests.Tools;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
@@ -81,12 +83,47 @@ namespace MegaSite.SystemTests.Steps
 
             var js = (IJavaScriptExecutor)TestToolkit.Driver;
             js.ExecuteScript("arguments[0].setAttribute('style', arguments[1]);", input[1], "opacity: 1; position: absolute; z-index: 999; left: 0; top: 0");
-        
+
             input[1].SendKeys(ApplicationPaths.RootDirectory + "\\TestData\\" + filename);
             var buttonOk = modal.FindElement(By.ClassName("btn-ok"));
             Thread.Sleep(1000);
             buttonOk.Click();
             Thread.Sleep(1000);
         }
+
+        [When(@"limpo a seleção da caixa de multiseleção")]
+        public void QuandoLimpoASelecaoDaCaixaDeMultiselecao()
+        {
+            var list = TestToolkit.Driver.FindElement(By.XPath("//*[contains(@class, 'ms-selection')]/ul"));
+            var elements = list.FindElements(By.TagName("li"));
+            foreach (var element in elements)
+            {
+                if (element.Displayed)
+                {
+                    element.Click();
+                }
+            }
+        }
+
+        [When(@"seleciono os itens na caixa de multiseleção")]
+        public void QuandoSelecionoOsItensNaCaixaDeMultiselecao(Table table)
+        {
+            var list = TestToolkit.Driver.FindElement(By.XPath("//*[contains(@class, 'ms-selectable')]/ul"));
+            var elements = list.FindElements(By.TagName("li"));
+            var count = 0;
+
+            foreach (var element in elements)
+            {
+                if (table.Rows.Any(r => element.Text.EndsWith(r["Título"])) && element.Displayed)
+                {
+                    element.Click();
+                    count++;
+                }
+            }
+            Assert.AreEqual(count, table.Rows.Count);
+        }
+
     }
+
+
 }
