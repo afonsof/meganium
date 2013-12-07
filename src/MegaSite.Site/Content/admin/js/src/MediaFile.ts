@@ -84,7 +84,7 @@ module MediaFileManagerModule {
                 });
 
                 this._element.on('click', '.btn-ok', () => this.onOkClick());
-                jQuery.getJSON(this._listItemsUrl, (data: Array) => this.fillGallery(data));
+                jQuery.getJSON(this._listItemsUrl, (data: Array<IMediaFile>) => this.fillGallery(data));
                 this.registerField(field);
             }
             else if (this._type == MediaFileManagerType.Album) {
@@ -196,7 +196,7 @@ module MediaFileManagerModule {
             this._element.modal('hide');
         }
 
-        private fillGallery(data: Array): void {
+        private fillGallery(data: Array<IMediaFile>): void {
             jQuery(this._element.find('.media-picker-gallery').append(this.galleryListHtml(data)));
         }
 

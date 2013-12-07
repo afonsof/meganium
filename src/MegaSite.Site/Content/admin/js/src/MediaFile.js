@@ -37,7 +37,7 @@ var MediaFileManagerModule;
 
             var self = this;
 
-            if (this._type == MediaFileManagerType.Picker) {
+            if (this._type == 0 /* Picker */) {
                 this._element = this.pickerHtml();
                 jQuery(document.body).append(this._element);
 
@@ -56,7 +56,7 @@ var MediaFileManagerModule;
                     return _this.fillGallery(data);
                 });
                 this.registerField(field);
-            } else if (this._type == MediaFileManagerType.Album) {
+            } else if (this._type == 1 /* Album */) {
                 this._element = this.bodyHtml();
                 this._element.addClass('album');
                 this._element.data('field', field);
@@ -118,7 +118,7 @@ var MediaFileManagerModule;
 
         MediaFileManager.prototype.itemHtml = function (mediaFile) {
             var item = $('<div class="span2 item">' + this.thumbHtml(mediaFile) + '</div>');
-            if (this._type == MediaFileManagerType.Album) {
+            if (this._type == 1 /* Album */) {
                 item.append('<button type="button" class="btn btn-danger">×</button>');
             }
             item.data('mediaFile', mediaFile);
@@ -167,7 +167,7 @@ var MediaFileManagerModule;
         };
 
         MediaFileManager.prototype.fillCurrentControl = function (mediaFile) {
-            if (this._type == MediaFileManagerType.Picker) {
+            if (this._type == 0 /* Picker */) {
                 if (mediaFile) {
                     this._currentControl.data('field').val(JSON.stringify(mediaFile));
                     this._currentControl.html("");
@@ -208,9 +208,9 @@ var MediaFileManagerModule;
                     if (obj.FileName != null) {
                         var item = $(self.itemHtml(obj));
                         jQuery(element.find('.media-picker-gallery').prepend(item));
-                        if (self._type == MediaFileManagerType.Picker) {
+                        if (self._type == 0 /* Picker */) {
                             self.checkItem(item);
-                        } else if (self._type == MediaFileManagerType.Album) {
+                        } else if (self._type == 1 /* Album */) {
                             self.fillCurrentControl(null);
                         }
                     }
