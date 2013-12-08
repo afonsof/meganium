@@ -14,8 +14,8 @@ Cenário: Criar postagem inserindo imagem com sucesso
 	Então estou na página "/Admin"
 	E deu uma mensagem de sucesso
 	E verifico que o seguinte item existe
-	|                  | Título                  |
-	| bala-de-coco.jpg | Receita de bala de coco |
+	|                  | Título                  | Autor            |
+	| bala-de-coco.jpg | Receita de bala de coco | Usuário de Teste |
 
 Cenário: Criar postagem com campos vazios
 	Dado que estou logado

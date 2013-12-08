@@ -16,11 +16,13 @@
 }
 <table class="table table-striped">
     <tr>
-        <th>
-        </th>
+        <th></th>
         <th>
             @Resource.Title
         </th>
+        <th>@Resource.CreatedBy
+        </th>
+
         @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowPhotos))
         {
             <th>@Resource.PhotoCount
@@ -36,8 +38,6 @@
             <th>@Resource.Code
             </th>
         }
-        <th>@Resource.CreatedBy
-        </th>
         <th>@Resource.PublishedAt
         </th>
         <th>@Resource.Actions
@@ -57,6 +57,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy.DisplayName)
+                </td>
                 @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowPhotos))
                 {
                     <td>@item.MediaFiles.Count
@@ -67,14 +70,12 @@
                     <td>@item.CategoriesCsv
                     </td>
                 }
-                 @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowHash))
+                @if (Model.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowHash))
                 {
                     <td>@item.Hash
                     </td>
                 }
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedBy.DisplayName)
-                </td>
+
                 <td>
                     @Html.DateTimeSpan(item.PublishedAt)
                 </td>

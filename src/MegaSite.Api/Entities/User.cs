@@ -9,8 +9,6 @@ namespace MegaSite.Api.Entities
         public virtual string Email { get; set; }
 
         public virtual string Password { get; set; }
-
-        public virtual string NickName { get; set; }
         public virtual string FullName { get; set; }
 
         public virtual int UserType { get; set; }
@@ -24,13 +22,13 @@ namespace MegaSite.Api.Entities
         {
             get
             {
-                if (String.IsNullOrEmpty(NickName) == false)
-                {
-                    return NickName;
-                }
                 if (String.IsNullOrEmpty(FullName) == false)
                 {
                     return FullName;
+                }
+                if (String.IsNullOrEmpty(UserName) == false)
+                {
+                    return UserName;
                 }
                 if (String.IsNullOrEmpty(ExternalServiceUser) == false)
                 {

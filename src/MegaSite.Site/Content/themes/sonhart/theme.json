@@ -2,7 +2,9 @@
 	RootUser:
 	{
 		Email: 'teste@megasiteapp.com.br',
-		Password: 'teste123'
+		Password: 'teste123',
+		UserName: 'userteste',
+		FullName: 'Usuário de Teste',
 	},
 
 	Options:

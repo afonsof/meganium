@@ -91,10 +91,12 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
-                        "Título"});
+                        "Título",
+                        "Autor"});
             table1.AddRow(new string[] {
                         "bala-de-coco.jpg",
-                        "Receita de bala de coco"});
+                        "Receita de bala de coco",
+                        "Usuário de Teste"});
 #line 16
  testRunner.And("verifico que o seguinte item existe", ((string)(null)), table1, "E ");
 #line hidden
