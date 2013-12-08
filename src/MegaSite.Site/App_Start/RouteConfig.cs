@@ -32,6 +32,10 @@ namespace MegaSite.Site.App_Start
                 {
                     foreach (var postType in data.PostTypeManager.GetAll())
                     {
+                        if (string.IsNullOrEmpty(postType.SingularName) || string.IsNullOrEmpty(postType.PluralName))
+                        {
+                            continue;
+                        }
                         var singular = postType.SingularName.ToSlug();
                         var plural = postType.PluralName.ToSlug();
 

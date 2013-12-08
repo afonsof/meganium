@@ -70,5 +70,5 @@ namespace MegaSite.Api.Trash
                 return UrlRoot + VirtualPath;
             }
         }
-    }
+    }    
 }

@@ -7,6 +7,7 @@ using Dongle.Serialization;
 using Dongle.System;
 using MegaSite.Api.Entities;
 using MySql.Data.MySqlClient;
+using MegaSite.Api.Trash;
 
 namespace MegaSite.Api.Managers
 {
@@ -43,6 +44,10 @@ namespace MegaSite.Api.Managers
             post.PostType = postType;
             post.FieldsValuesJson = JsonSimpleSerializer.SerializeToString(fieldValues);
             post.Parent = parent;
+
+            var slugCreator = new SlugCreator<Post>(_uow.PostRepository);
+            post.Slug = slugCreator.Create(post);
+
             _uow.PostRepository.Add(post);
             _uow.Commit();
             SaveCategoriesToPost(post, categoriesIds);
