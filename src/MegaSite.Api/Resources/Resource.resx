@@ -897,4 +897,7 @@
   <data name="UserName" xml:space="preserve">
     <value>Nome de usuário</value>
   </data>
+  <data name="TypeOrPasteAYoutubeOrVimeoUrl" xml:space="preserve">
+    <value>Digite ou cole um vídeo do Youtube ou do Vimeo</value>
+  </data>
 </root>

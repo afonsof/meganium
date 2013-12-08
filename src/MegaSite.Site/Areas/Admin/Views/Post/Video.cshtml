@@ -10,12 +10,40 @@
     @Html.ValidationSummary(true)
     <fieldset>
         @Html.Hidden("PostTypeId", Model.PostType.Id)
-        @Html.HiddenFor(model => model.Id)
-        @Html.Label("Url")
-        @Html.TextBox("Url")
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.FeaturedMediaFileJson)
+        @Html.HiddenFor(m => m.Title)
+        @Html.HiddenFor(m => m.Content)
 
-        <div id="video">
+        <div style="background-color: #EEEEEE; border-radius: 10px" class="row-fluid">
+            <div class="row-fluid">
+                <div class="span8 row-fluid" style="padding: 15px">
+                    <div class="span12">
+                        @Html.Label("Url", Resource.TypeOrPasteAYoutubeOrVimeoUrl)
+                        @Html.TextBox("Url", "", new { style = "width: 540px" })
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            @Html.LabelFor(model => model.Published, "Visibilidade")
+                            @Html.DropDownListFor(model => model.Published, Model.PrivacySelect)
+                            @Html.ValidationMessageFor(model => model.Published)
+                        </div>
+                        <div class="span6">
+                            @Html.LabelFor(model => model.PublishedAt)
+                            @Html.TextBoxFor(model => model.PublishedAt, new { @class = "datetimepicker" })
+                            @Html.ValidationMessageFor(model => model.PublishedAt)
+                        </div>
+                    </div>
+                </div>
+                <div class="span4 featured-media-file">
+                    <div id="video" style="padding: 15px 0">
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
 
         <div class="btn-toolbar">
             <button type="submit" id="submit-button" class="btn btn-primary" disabled="disabled">@Resource.Save</button>
@@ -25,5 +53,5 @@
 }
 
 <script type="text/javascript">
-    new VideoManager($('#Url'), $('#video'), $('#submit-button'));
+    new VideoManager($('#Url'), $('#video'), $('#submit-button'), $('#FeaturedMediaFileJson'), $('#Title'), $('#Content'));
 </script>

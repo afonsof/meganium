@@ -26,5 +26,7 @@ namespace MegaSite.Api.ViewModels
         public string[] item_Name { get; set; }
         public int[] item_Type { get; set; }
         public string[] item_SelectList { get; set; }
+
+        public string ViewName { get; set; }
     }
 }
