@@ -115,15 +115,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Features\GerenciamentoDeArquivosDeMídia.feature.cs">
+    <Compile Include="Features\Tipos de Objetos\CriarTipoDeObjeto.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GerenciamentoDeArquivosDeMídia.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Features\GerenciamentoDeTiposDeObjetos.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GerenciamentoDeTiposDeObjetos.feature</DependentUpon>
+      <DependentUpon>CriarTipoDeObjeto.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Postagens\EditarPostagem.feature.cs">
       <AutoGen>True</AutoGen>
@@ -170,13 +165,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CriarPostagem.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\GerenciamentoDeArquivosDeMídia.feature">
+    <None Include="Features\Tipos de Objetos\CriarTipoDeObjeto.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>GerenciamentoDeArquivosDeMídia.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Features\GerenciamentoDeTiposDeObjetos.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>GerenciamentoDeTiposDeObjetos.feature.cs</LastGenOutput>
+      <LastGenOutput>CriarTipoDeObjeto.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Postagens\EditarPostagem.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

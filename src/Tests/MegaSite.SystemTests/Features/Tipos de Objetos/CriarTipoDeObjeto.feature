@@ -1,5 +1,5 @@
 ﻿#language: pt-br
-Funcionalidade: Gerenciamento de tipos de objetos
+Funcionalidade: Criar tipo de objeto
 	Como um dono do sistema
 	Gostaria de criar um tipo de objeto
 	De modo que adapte o sistema às necessidades do cliente
