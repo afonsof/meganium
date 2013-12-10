@@ -33,7 +33,6 @@ namespace MegaSite.Api.ViewModels
         public string Location { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public string ExternalServiceId { get; set; }
         public string FeaturedMediaFileJson { get; set; }
         public string MediaFilesJson { get; set; }
         public string Hash { get; set; }

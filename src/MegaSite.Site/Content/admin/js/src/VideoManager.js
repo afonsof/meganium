@@ -44,7 +44,7 @@ var VideoManager = (function () {
     VideoManager.prototype.loadVideo = function (videoData) {
         var _this = this;
 
-        if (videoData.ExternalServiceName == 'Youtube') {
+        if (videoData.ExternalServiceName == 'YoutubeVideos') {
             $.ajax({
                 url: 'https://gdata.youtube.com/feeds/api/videos/' + videoData.ExternalServiceId + '?v=2&alt=json',
                 type: 'GET',
@@ -69,7 +69,7 @@ var VideoManager = (function () {
                     _this.renderVideo(videoData);
                 }
             });
-        } else if (videoData.ExternalServiceName == 'Vimeo') {
+        } else if (videoData.ExternalServiceName == 'VimeoVideos') {
             $.ajax({
                 url: 'http://vimeo.com/api/v2/video/' + videoData.ExternalServiceId + '.json',
                 type: 'GET',
@@ -93,9 +93,9 @@ var VideoManager = (function () {
 
     VideoManager.prototype.renderVideo = function (videoData) {
         var html = '';
-        if (videoData.ExternalServiceName == 'Youtube') {
+        if (videoData.ExternalServiceName == 'YoutubeVideos') {
             html = '<iframe width="260" height="160" src="//www.youtube.com/embed/' + videoData.ExternalServiceId + '" frameborder="0" allowfullscreen></iframe>';
-        } else if (videoData.ExternalServiceName == 'Vimeo') {
+        } else if (videoData.ExternalServiceName == 'VimeoVideos') {
             html = '<iframe src = "//player.vimeo.com/video/' + videoData.ExternalServiceId + '?byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff" width="260" height="160" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         }
         this.video.html(html);
@@ -110,7 +110,7 @@ var VideoManager = (function () {
         if (id) {
             return {
                 ExternalServiceId: id,
-                ExternalServiceName: 'Youtube',
+                ExternalServiceName: 'YoutubeVideos',
                 Description: null,
                 Title: null,
                 Url: null
@@ -124,7 +124,7 @@ var VideoManager = (function () {
         if (id) {
             return {
                 ExternalServiceId: id,
-                ExternalServiceName: 'Vimeo',
+                ExternalServiceName: 'VimeoVideos',
                 Description: null,
                 Title: null,
                 Url: null

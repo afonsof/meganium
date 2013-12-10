@@ -94,14 +94,18 @@
     <Compile Include="IManagers.cs" />
     <Compile Include="Managers\MediaFileManager.cs" />
     <Compile Include="NHibernateBuilder.cs" />
-    <Compile Include="Managers\PluginManager.cs" />
     <Compile Include="Options.cs" />
+    <Compile Include="Plugins\IActionPlugin.cs" />
+    <Compile Include="Plugins\IImportPlugin.cs" />
+    <Compile Include="Plugins\ImportPluginType.cs" />
+    <Compile Include="Plugins\ImportPost.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <DependentUpon>Resource.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Tools\ImportHandler.cs" />
     <Compile Include="Tools\Mailer.cs" />
     <Compile Include="Trash\SlugCreator.cs" />
     <Compile Include="Trash\UrlUtil.cs" />
@@ -130,12 +134,12 @@
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Entities\Plugin.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\PostType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BasicIndexVm.cs" />
     <Compile Include="ViewModels\CategoryVm.cs" />
+    <Compile Include="ViewModels\ImportVm.cs" />
     <Compile Include="ViewModels\InstallResetThemeVm.cs" />
     <Compile Include="ViewModels\PostCreateEditVm.cs" />
     <Compile Include="ViewModels\PostIndexVm.cs" />

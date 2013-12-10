@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
+using Dongle.Serialization;
 using MegaSite.Api;
+using MegaSite.Api.Plugins;
+using RestSharp;
 
 namespace MegaSite.Plugins.FacebookPhotosImporter
 {
-    public class FacebookPhotos// : IImportPlugin
+    public class FacebookPhotos : IImportPlugin
     {
-        /*private const string FacebookOauthUrl = "https://www.facebook.com/dialog/oauth";
+        private const string FacebookOauthUrl = "https://www.facebook.com/dialog/oauth";
         private const string FacebookFormat = "{0}?client_id={1}&redirect_uri={2}?back=true&response_type=token&scope=user_photos,manage_pages,friends_photos";
         private const string FacebookScriptRedirect = "<script>window.location='{0}?' + window.location.hash.substr(1);</script>";
         private IRestClient _restClient;
@@ -30,6 +34,14 @@ namespace MegaSite.Plugins.FacebookPhotosImporter
             var photos = response.Data.data;
 
             return photos.Select(ConvertPhotoToMediaFile).ToList();
+        }
+
+        public ImportPluginType Type
+        {
+            get
+            {
+                return ImportPluginType.Album;
+            }
         }
 
         private ImportPost ConvertAlbumToPost(FbAlbum album, string accessToken)
@@ -88,7 +100,7 @@ namespace MegaSite.Plugins.FacebookPhotosImporter
         }
         
         #endregion
-        */
+        
         #region Classes
         public class FbAlbum
         {

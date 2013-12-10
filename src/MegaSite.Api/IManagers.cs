@@ -11,7 +11,6 @@ namespace MegaSite.Api
         FieldManager FieldManager { get; }
         UserManager UserManager { get; }
         MediaFileManager MediaFileManager { get; }
-        PluginManager PluginManager { get; }
         ClientManager ClientManager { get; }
     }
 

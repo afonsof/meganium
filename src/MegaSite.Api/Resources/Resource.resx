@@ -879,14 +879,14 @@
   <data name="Yes" xml:space="preserve">
     <value>Sim</value>
   </data>
-  <data name="YouTubeId" xml:space="preserve">
-    <value>Identificador do YouTube</value>
+  <data name="YoutubeId" xml:space="preserve">
+    <value>Identificador do Youtube</value>
   </data>
-  <data name="YouTubeUser" xml:space="preserve">
-    <value>Usuário do YouTube</value>
+  <data name="YoutubeUser" xml:space="preserve">
+    <value>Usuário do Youtube</value>
   </data>
-  <data name="YouTubeVideos" xml:space="preserve">
-    <value>Vídeos do YouTube</value>
+  <data name="YoutubeVideos" xml:space="preserve">
+    <value>Vídeos do Youtube</value>
   </data>
   <data name="ItemSuccessfullyDeleted" xml:space="preserve">
     <value>Item excluído com sucesso</value>
@@ -899,5 +899,8 @@
   </data>
   <data name="TypeOrPasteAYoutubeOrVimeoUrl" xml:space="preserve">
     <value>Digite ou cole um vídeo do Youtube ou do Vimeo</value>
+  </data>
+  <data name="NothingWasImported" xml:space="preserve">
+    <value>Nenhum item foi importado</value>
   </data>
 </root>

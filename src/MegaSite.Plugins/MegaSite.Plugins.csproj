@@ -43,6 +43,9 @@
     <Reference Include="Google.GData.YouTube">
       <HintPath>..\packages\Google.GData.YouTube.2.2.0.0\lib\Google.GData.YouTube.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
@@ -56,15 +59,12 @@
   <ItemGroup>
     <Compile Include="FacebookPhotosImporter\FacebookPhotos.cs" />
     <Compile Include="GoogleAnalyticsTracker\GoogleAnalyticsTrackerAction.cs" />
-    <Compile Include="IActionPlugin.cs" />
     <Compile Include="ContactForm\ContactFormPlugin.cs" />
-    <Compile Include="IImportPlugin.cs" />
-    <Compile Include="ImportPost.cs" />
     <Compile Include="PhotoSelector\PhotoSelectorAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VimeoVideosImporter\VimeoVideos.cs" />
     <Compile Include="WordpressPostsImporter\WordPressPosts.cs" />
-    <Compile Include="YoutubeVideosImporter\YouTubeVideos.cs" />
+    <Compile Include="YoutubeVideosImporter\YoutubeVideos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MegaSite.Api\MegaSite.Api.csproj">

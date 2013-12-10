@@ -6,6 +6,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Dongle.Serialization;
 using MegaSite.Api;
+using MegaSite.Api.Plugins;
 
 namespace MegaSite.Plugins.VimeoVideosImporter
 {
@@ -42,6 +43,14 @@ namespace MegaSite.Plugins.VimeoVideosImporter
         public IEnumerable<MediaFile> ReadMediaFiles(ImportPost post, NameValueCollection values)
         {
             return null;
+        }
+
+        public ImportPluginType Type
+        {
+            get
+            {
+                return ImportPluginType.Video;
+            }
         }
 
         public string CreateMediaFileJson(string videoId)

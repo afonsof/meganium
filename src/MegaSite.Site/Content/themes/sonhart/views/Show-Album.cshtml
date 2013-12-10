@@ -6,7 +6,6 @@
         ViewBag.BackgroundPhoto = Model.CurrentPost.FeaturedMediaFile.Url;
     }
 }
-<script src="http://masonry.desandro.com/jquery.masonry.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
     jQuery(function ($) {
@@ -55,10 +54,12 @@
         </article>
     </div>
     <script type="text/javascript">
-        var $container = $('#portfolioList');
-        $container.imagesLoaded(function() {
-            $container.masonry({
-                itemSelector: '.item'
+        $(document).ready(function() {
+            var $container = $('#portfolioList');
+            imagesLoaded(document.getElementById('portfolioList'), function() {
+                $container.masonry({
+                    itemSelector: '.item'
+                });
             });
         });
     </script>

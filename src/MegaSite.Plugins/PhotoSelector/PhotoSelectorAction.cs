@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Plugins;
 using MegaSite.Api.Tools;
 
 namespace MegaSite.Plugins.PhotoSelector

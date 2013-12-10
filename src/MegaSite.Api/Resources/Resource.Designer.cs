@@ -1375,6 +1375,15 @@ namespace MegaSite.Api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nenhum item foi importado.
+        /// </summary>
+        public static string NothingWasImported {
+            get {
+                return ResourceManager.GetString("NothingWasImported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Novembro.
         /// </summary>
         public static string November {
@@ -2383,29 +2392,29 @@ namespace MegaSite.Api.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Identificador do YouTube.
+        ///   Looks up a localized string similar to Identificador do Youtube.
         /// </summary>
-        public static string YouTubeId {
+        public static string YoutubeId {
             get {
-                return ResourceManager.GetString("YouTubeId", resourceCulture);
+                return ResourceManager.GetString("YoutubeId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuário do YouTube.
+        ///   Looks up a localized string similar to Usuário do Youtube.
         /// </summary>
-        public static string YouTubeUser {
+        public static string YoutubeUser {
             get {
-                return ResourceManager.GetString("YouTubeUser", resourceCulture);
+                return ResourceManager.GetString("YoutubeUser", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vídeos do YouTube.
+        ///   Looks up a localized string similar to Vídeos do Youtube.
         /// </summary>
-        public static string YouTubeVideos {
+        public static string YoutubeVideos {
             get {
-                return ResourceManager.GetString("YouTubeVideos", resourceCulture);
+                return ResourceManager.GetString("YoutubeVideos", resourceCulture);
             }
         }
     }

@@ -11,7 +11,6 @@ namespace MegaSite.Api
         IRepository<PostType> PostTypeRepository { get; }
         IRepository<Category> CategoryRepository { get; }
         IRepository<Client> ClientRepository { get; }
-        IRepository<Plugin> PluginRepository { get; }
 
         void Commit();
     }

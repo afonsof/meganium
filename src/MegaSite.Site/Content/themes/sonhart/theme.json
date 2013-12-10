@@ -20,6 +20,7 @@
 		DefaultAlbumImportingPostTypeId : "@postType[Álbum]",
 		DefaultVideoImportingPostTypeId : "@postType[Vídeo]",
 		DefaultPostTypeId : "@postType[Álbum]",
+		AllowImportMediaFiles: true,
 		ThemeName: "Sonhart",
 		ThemeAuthor: "Afonso França",
 		ThemeAuthorUri: "http://afonsof.com.br",

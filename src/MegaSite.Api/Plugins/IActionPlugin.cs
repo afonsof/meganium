@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web;
-using MegaSite.Api;
 using MegaSite.Api.Entities;
 
-namespace MegaSite.Plugins
+namespace MegaSite.Api.Plugins
 {
     public interface IActionPlugin
     {

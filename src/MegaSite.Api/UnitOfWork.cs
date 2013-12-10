@@ -84,17 +84,6 @@ namespace MegaSite.Api
             }
         }
 
-        private IRepository<Plugin> _pluginRepositoryReader;
-
-        public IRepository<Plugin> PluginRepository
-        {
-            get
-            {
-                return _pluginRepositoryReader ?? (_pluginRepositoryReader = new Repository<Plugin>(this));
-            }
-        }
-
-
         private PostManager _postManager;
         public PostManager PostManager
         {
@@ -124,12 +113,6 @@ namespace MegaSite.Api
         public UserManager UserManager
         {
             get { return _userManager ?? (_userManager = new UserManager(this)); }
-        }
-
-        private PluginManager _pluginManager;
-        public PluginManager PluginManager
-        {
-            get { return _pluginManager ?? (_pluginManager = new PluginManager(this)); }
         }
 
         private ClientManager _clientManager;

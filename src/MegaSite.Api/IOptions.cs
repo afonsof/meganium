@@ -10,6 +10,7 @@
         bool Get(string name, bool defaultValue);
         void Set(string name, int? value);
         void Set(string name, long? value);
+        void Set(string name, bool? value);
         void Set(string name, string value);
     }
 }

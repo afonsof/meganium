@@ -23,31 +23,30 @@
     });
 </script>
 
-@using (Html.BeginForm("Import", "Importing", FormMethod.Post, new { @class = "import-form" }))
+@using (Html.BeginForm("Import", "Import", FormMethod.Post, new { @class = "import-form" }))
 {
-<div class="btn-toolbar">
-    <div class="btn-group">
-        <button type="submit" class="btn btn-primary">@Resource.ImportSelected</button>
-        <div class="btn" id="import-all">@Resource.ImportAll</div>
+    <div class="btn-toolbar">
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">@Resource.ImportSelected</button>
+            <div class="btn" id="import-all">@Resource.ImportAll</div>
+        </div>
+        <a class="btn" href="@Url.Action("Index")">@Resource.Cancel</a>
     </div>
-    <a class="btn" href="@Url.Action("Index")">@Resource.Cancel</a>
-</div>
     
-<table class="table table-striped">
-    <tr>
-        <th>
-            <input type="checkbox" class="all-items-checkbox"/>
-        </th>
-        <th>
-        </th>
-        <th>
-            @Resource.AlbumTitle
-        </th>
-        <th>
-            @Resource.PhotoCount
-        </th>
-        <th>@Resource.Action</th>
-    </tr>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                <input type="checkbox" class="all-items-checkbox" />
+            </th>
+            <th></th>
+            <th>
+                @Resource.AlbumTitle
+            </th>
+            <th>
+                @Resource.PhotoCount
+            </th>
+            <th>@Resource.Action</th>
+        </tr>
         @{
     var i = 0;
         }
@@ -58,7 +57,10 @@
                     <input type="checkbox" class="item-checkbox" value="@i" name="ItemCheckbox"/>
                 </td>
                 <td>
-                    @Url.DefaultThumbnail(JsonSimpleSerializer.UnserializeFromString<MediaFile>(item.FeaturedMediaFileJson))
+                    @if (!string.IsNullOrEmpty(item.FeaturedMediaFileJson))
+                    {
+                        <text>@Url.DefaultThumbnail(JsonSimpleSerializer.UnserializeFromString<MediaFile>(item.FeaturedMediaFileJson))</text>
+                    }
                 </td>
                 <td style="text-align: left">
                     @Html.DisplayFor(modelItem => item.Title)
@@ -69,16 +71,16 @@
                 <td>
                     @if (item.Id == 0)
                     {
-                        <span class="label label-success"><i class="icon icon-plus"></i> @Resource.Import</span>
+                        <span class="label label-success"><i class="icon icon-plus"></i>@Resource.Import</span>
                     }
                     else
                     {
-                        <span class="label"><i class="icon icon-edit"></i> @Resource.Update</span>
+                        <span class="label"><i class="icon icon-edit"></i>@Resource.Update</span>
                     }
                 </td>
             </tr>
                     i++;
         }
-  
-</table> 
+
+    </table> 
 }

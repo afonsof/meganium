@@ -150,6 +150,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BasicController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ImportController.cs" />
     <Compile Include="Areas\Admin\Controllers\InstallController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaFileController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeaturedController.cs" />
@@ -519,6 +520,7 @@
     <Content Include="Content\themes\sonhart\js\jquery.imagesLoaded.min.js" />
     <Content Include="Content\themes\sonhart\js\jquery.isotope.min.js" />
     <Content Include="Content\themes\sonhart\js\jquery.livequery.min.js" />
+    <Content Include="Content\themes\sonhart\js\jquery.masonry.pkgd.min.js" />
     <Content Include="Content\themes\sonhart\js\jquery.mousewheel.min.js" />
     <Content Include="Content\themes\sonhart\js\jquery.prettyPhoto.js" />
     <Content Include="Content\themes\sonhart\js\jquery.superbgimage.min.js" />
@@ -694,6 +696,10 @@
       <Project>{1444bd89-b836-430f-9605-b116549b5957}</Project>
       <Name>MegaSite.Installer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MegaSite.Plugins\MegaSite.Plugins.csproj">
+      <Project>{41864B50-202F-4F0B-B4F8-30689E05656D}</Project>
+      <Name>MegaSite.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Account\DataBaseReset.cshtml" />
@@ -703,8 +709,8 @@
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Featured\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Featured\Manage.cshtml" />
-    <Content Include="Areas\Admin\Views\Importing\Import.cshtml" />
-    <Content Include="Areas\Admin\Views\Importing\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Import\Import.cshtml" />
+    <Content Include="Areas\Admin\Views\Import\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Install\ResetTheme.cshtml" />
     <Content Include="Areas\Admin\Views\Plugin\Contact.cshtml" />
     <Content Include="Areas\Admin\Views\PostType\CreateOrEdit.cshtml" />

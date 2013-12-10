@@ -8,33 +8,34 @@ namespace MegaSite.Site.Areas.Admin.Controllers
     public class BasicController : BaseController
     {
         private readonly IManagers _managers;
-        private readonly IOptions _options;
 
-        public BasicController(IManagers managers, IOptions options)
+        public BasicController(IManagers managers)
         {
             _managers = managers;
-            _options = options;
         }
 
         [Authorize]
         public ActionResult Index()
         {
             //Refactor: Que loucura é essa no controller???
+
+            var options = _managers.ClientManager.GetOptions();
             var vm = new BasicIndexVm
             {
-                FacebookId = _options.GetLong("FacebookId"),
-                GoogleAnalyticsTracker = _options.Get("GoogleAnalyticsTracker"),
-                SiteTitle = _options.Get("SiteTitle"),
-                AdminEmail = _options.Get("AdminEmail"),
-                Theme = _options.Get("Theme"),
-                SiteDescription = _options.Get("SiteDescription"),
-                SiteLanguage = _options.Get("SiteLanguage"),
-                DefaultAlbumImportingPostTypeId = _options.GetInt("DefaultAlbumImportingPostTypeId"),
-                DefaultVideoImportingPostTypeId = _options.GetInt("DefaultVideoImportingPostTypeId"),
-                DefaultPostTypeId = _options.GetInt("DefaultPostTypeId"),
-                Color1 = _options.Get("Color1"),
-                Color2 = _options.Get("Color2"),
-                PostTypeSelect = new SelectList(_managers.PostTypeManager.GetAll(), "Id", "SingularName")
+                FacebookId = options.GetLong("FacebookId"),
+                GoogleAnalyticsTracker = options.Get("GoogleAnalyticsTracker"),
+                SiteTitle = options.Get("SiteTitle"),
+                AdminEmail = options.Get("AdminEmail"),
+                Theme = options.Get("Theme"),
+                SiteDescription = options.Get("SiteDescription"),
+                SiteLanguage = options.Get("SiteLanguage"),
+                DefaultAlbumImportingPostTypeId = options.GetInt("DefaultAlbumImportingPostTypeId"),
+                DefaultVideoImportingPostTypeId = options.GetInt("DefaultVideoImportingPostTypeId"),
+                DefaultPostTypeId = options.GetInt("DefaultPostTypeId"),
+                Color1 = options.Get("Color1"),
+                Color2 = options.Get("Color2"),
+                PostTypeSelect = new SelectList(_managers.PostTypeManager.GetAll(), "Id", "SingularName"),
+                AllowImportMediaFiles = options.Get("AllowImportMediaFiles", false)
             };
             return View(vm);
         }
@@ -43,18 +44,20 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         [Authorize]
         public ActionResult Index(BasicIndexVm vm)
         {
-            _options.Set("FacebookId", vm.FacebookId);
-            _options.Set("GoogleAnalyticsTracker", vm.GoogleAnalyticsTracker);
-            _options.Set("SiteTitle", vm.SiteTitle);
-            _options.Set("AdminEmail", vm.AdminEmail);
-            _options.Set("Theme", vm.Theme);
-            _options.Set("SiteDescription", vm.SiteDescription);
-            _options.Set("DefaultAlbumImportingPostTypeId", vm.DefaultAlbumImportingPostTypeId);
-            _options.Set("DefaultVideoImportingPostTypeId", vm.DefaultVideoImportingPostTypeId);
-            _options.Set("DefaultPostTypeId", vm.DefaultPostTypeId);
-            _options.Set("Color1", vm.Color1);
-            _options.Set("Color2", vm.Color2);
-            _options.Set("SiteLanguage", vm.SiteLanguage);
+            var options = _managers.ClientManager.GetOptions();
+            options.Set("FacebookId", vm.FacebookId);
+            options.Set("GoogleAnalyticsTracker", vm.GoogleAnalyticsTracker);
+            options.Set("SiteTitle", vm.SiteTitle);
+            options.Set("AdminEmail", vm.AdminEmail);
+            options.Set("Theme", vm.Theme);
+            options.Set("SiteDescription", vm.SiteDescription);
+            options.Set("DefaultAlbumImportingPostTypeId", vm.DefaultAlbumImportingPostTypeId);
+            options.Set("DefaultVideoImportingPostTypeId", vm.DefaultVideoImportingPostTypeId);
+            options.Set("DefaultPostTypeId", vm.DefaultPostTypeId);
+            options.Set("Color1", vm.Color1);
+            options.Set("Color2", vm.Color2);
+            options.Set("SiteLanguage", vm.SiteLanguage);
+            options.Set("AllowImportMediaFiles", vm.AllowImportMediaFiles);
             vm.PostTypeSelect = new SelectList(_managers.PostTypeManager.GetAll(), "Id", "SingularName");
             return View(vm);
         }

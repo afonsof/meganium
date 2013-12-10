@@ -72,12 +72,5 @@
 				}
 			]
 		}
-	],
-	
-	Plugins:
-	[
-		{
-			Title: "EmailFormAction"
-		}
 	]
 }

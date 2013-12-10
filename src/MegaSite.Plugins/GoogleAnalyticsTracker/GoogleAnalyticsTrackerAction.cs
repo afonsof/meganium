@@ -2,6 +2,7 @@
 using System.Web;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Plugins;
 using MegaSite.Api.Trash;
 
 namespace MegaSite.Plugins.GoogleAnalyticsTracker

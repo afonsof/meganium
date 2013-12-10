@@ -18,6 +18,32 @@ namespace MegaSite.Api.Trash
             return new MvcHtmlString(Options.Instance.Get(name));
         }
 
+        public static HtmlString Video(this HtmlHelper helper, MediaFile mediaFile, int width = 450, int height = 310)
+        {
+            if (mediaFile == null)
+            {
+                return new HtmlString("");
+            }
+            string url;
+            switch (mediaFile.ExternalServiceName)
+            {
+                case "YoutubeVideos":
+                    url = "http://www.youtube.com/embed/";
+                    break;
+                case "VimeoVideos":
+                    url = "http://player.vimeo.com/video/";
+                    break;
+                default:
+                    return new HtmlString("");
+            }
+            return
+                new HtmlString(
+                    String.Format(
+                        @"<iframe src=""{0}{1}"" width=""{2}"" height=""{3}"" frameborder=""0"" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
+                        url, mediaFile.ExternalServiceId, width, height));
+
+        }
+
         public static MvcHtmlString FieldsInputs(this HtmlHelper helper, IEnumerable<Field> fields)
         {
             var html = "";

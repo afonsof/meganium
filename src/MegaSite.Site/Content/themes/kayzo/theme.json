@@ -121,12 +121,5 @@
 				}
 			]
 		}
-	],
-	
-	Plugins:
-	[
-		{
-			Title: "EmailFormAction"
-		}
 	]
 }

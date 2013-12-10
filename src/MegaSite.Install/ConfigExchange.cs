@@ -8,6 +8,5 @@ namespace MegaSite.Installer
         public Dictionary<string, string> Options { get; set; }
         public List<PostTypeExchange> PostTypes { get; set; }
         public User RootUser { get; set; }
-        public List<Plugin> Plugins { get; set; }
     }
 }

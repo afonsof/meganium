@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Dongle.System;
 using MegaSite.Api;
+using MegaSite.Api.Plugins;
 
 namespace MegaSite.Plugins.WordpressPostsImporter
 {

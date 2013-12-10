@@ -4,6 +4,7 @@ using Dongle.Serialization;
 using Dongle.System;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
+using MegaSite.Api.Plugins;
 using MegaSite.Api.Resources;
 using MegaSite.Api.ViewModels;
 
@@ -18,7 +19,7 @@ namespace MegaSite.Api.Managers
             _uow = uow;
         }
 
-        public PostType GetById(int? id)
+        public PostType GetById(int? id = null)
         {
             id = id ?? Options.Instance.GetInt("DefaultPostTypeId");
             return _uow.PostTypeRepository.GetById(id.Value);
@@ -100,6 +101,21 @@ namespace MegaSite.Api.Managers
                 });
             }
             return JsonSimpleSerializer.SerializeToString(fields);
+        }
+
+        public PostType GetByImportPluginType(ImportPluginType importPluginType)
+        {
+            int? id = null;
+
+            if (importPluginType == ImportPluginType.Album)
+            {
+                id = Options.Instance.GetInt("DefaultAlbumImportingPostTypeId");
+            }
+            else if (importPluginType == ImportPluginType.Video)
+            {
+                id = Options.Instance.GetInt("DefaultVideoImportingPostTypeId");
+            }
+            return GetById(id);
         }
     }
 }

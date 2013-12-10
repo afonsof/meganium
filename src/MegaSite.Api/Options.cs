@@ -91,6 +91,11 @@ namespace MegaSite.Api
             Set(name, value.ToString());
         }
 
+        public void Set(string name, bool? value)
+        {
+            Set(name, value.ToString());
+        }
+
         public void Set(string name, string value)
         {
             Init();

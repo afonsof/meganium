@@ -36,12 +36,16 @@ namespace MegaSite.Api.Managers
             };
         }
 
-        public void CreateAndSave(Post post, PostType postType, User user, IEnumerable<int> categoriesIds, Dictionary<string, string> fieldValues = null, Post parent = null)
+        public void CreateAndSave(Post post, User user, PostType postType, IEnumerable<int> categoriesIds = null, Dictionary<string, string> fieldValues = null, Post parent = null)
         {
             if (post.PublishedAt == null) post.PublishedAt = DateTime.Now;
             post.CreatedAt = DateTime.Now;
-            post.CreatedBy = user;
-            post.PostType = postType;
+                post.CreatedBy = user;
+
+            if (postType != null)
+            {
+                post.PostType = postType;
+            }
             post.FieldsValuesJson = JsonSimpleSerializer.SerializeToString(fieldValues);
             post.Parent = parent;
 
@@ -70,15 +74,19 @@ namespace MegaSite.Api.Managers
             return _uow.PostRepository.GetById(id.Value);
         }
 
-        public void Change(Post post, User user, PostType postType, Post parent, IEnumerable<int> categoriesIds,
-            Dictionary<string, string> fieldValues)
+        public void Change(Post post, User user, PostType postType = null, Post parent = null, IEnumerable<int> categoriesIds = null, Dictionary<string, string> fieldValues = null)
         {
             post.Categories.Clear();
             _uow.Commit();
 
             post.UpdatedAt = DateTime.Now;
             post.UpdatedBy = user;
-            post.PostType = postType;
+
+            if (postType != null)
+            {
+                post.PostType = postType;
+            }
+
             post.Parent = parent;
             post.FieldsValuesJson = JsonSimpleSerializer.SerializeToString(fieldValues);
 
@@ -120,6 +128,10 @@ namespace MegaSite.Api.Managers
         //Refactor: Rancar connection strings daqui e talvez sqls
         private static void SaveCategoriesToPost(IHaveId post, IEnumerable<int> categoriesIds)
         {
+            if (categoriesIds == null)
+            {
+                return;
+            }
             using (var con = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
                 con.Open();
@@ -216,7 +228,7 @@ namespace MegaSite.Api.Managers
             return _uow.PostRepository
                 .AsQueryable()
                 .Where(p => p.PostType.SingularName == singularName && p.Published && p.StartedAt > date)
-                .OrderBy(p=>p.StartedAt);
+                .OrderBy(p => p.StartedAt);
         }
 
         public Post GetLastPublished()
@@ -243,6 +255,14 @@ namespace MegaSite.Api.Managers
         public Post GetByTitle(string title)
         {
             return _uow.PostRepository.AsQueryable().FirstOrDefault(p => p.Title == title);
+        }
+
+        public Post GetByExternalService(string externalServiceId, string externalServiceName)
+        {
+            return _uow.PostRepository
+                .AsQueryable()
+                .FirstOrDefault(p => p.ExternalServiceId == externalServiceId
+                                     && p.ExternalServiceName == externalServiceName);
         }
     }
 }

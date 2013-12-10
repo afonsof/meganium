@@ -105,6 +105,21 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Features\Importação\ImportarVideosDoYoutube.feature.cs">
+      <DependentUpon>ImportarVideosDoYoutube.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\Importação\ImportarVideosDoVimeo.feature.cs">
+      <DependentUpon>ImportarVideosDoVimeo.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Features\Importação\ImportarFotosDoFacebook.feature.cs">
+      <DependentUpon>ImportarFotosDoFacebook.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Postagens\GerenciarDestaques.feature.cs">
       <DependentUpon>GerenciarDestaques.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -156,6 +171,18 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Importação\ImportarVideosDoYoutube.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportarVideosDoYoutube.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Importação\ImportarVideosDoVimeo.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportarVideosDoVimeo.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Importação\ImportarFotosDoFacebook.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportarFotosDoFacebook.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Postagens\GerenciarDestaques.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -6,18 +6,27 @@ using System.Text.RegularExpressions;
 using Dongle.Serialization;
 using Google.YouTube;
 using MegaSite.Api;
+using MegaSite.Api.Plugins;
 
 namespace MegaSite.Plugins.YoutubeVideosImporter
 {
-    public class YouTubeVideos : IImportPlugin
+    public class YoutubeVideos : IImportPlugin
     {
-        const string YouTubeUrlRegex = @"(?:(?:youtube.com(?:.[a-z]{2})?|youtu.be)/(?:watch\?(?:[\w_\-=&]+)?v=|embed\/)?)?([\w_\-]{11})";
+        const string YoutubeUrlRegex = @"(?:(?:youtube.com(?:.[a-z]{2})?|youtu.be)/(?:watch\?(?:[\w_\-=&]+)?v=|embed\/)?)?([\w_\-]{11})";
         private readonly YouTubeRequest _request;
 
-        public YouTubeVideos()
+        public YoutubeVideos()
         {
             var settings = new YouTubeRequestSettings("MegaSite", "AI39si4CDP4K5cWp1AQyAnpEYVFVP1CBXmGr3uQxqlIhCR6d7k26PQm1JU8WJL4A21nrlL74KXtGqUvbDINabqTgEOwnqiMujg");
             _request = new YouTubeRequest(settings);
+        }
+
+        public ImportPluginType Type
+        {
+            get
+            {
+                return ImportPluginType.Video;
+            }
         }
 
 
@@ -48,7 +57,7 @@ namespace MegaSite.Plugins.YoutubeVideosImporter
 
         public string CreateMediaFileJson(string videoId)
         {
-            var match = Regex.Match(videoId, YouTubeUrlRegex);
+            var match = Regex.Match(videoId, YoutubeUrlRegex);
 
             if (match.Captures.Count > 0)
             {

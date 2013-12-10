@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Plugins;
 using MegaSite.Api.Resources;
 using MegaSite.Api.Tools;
 

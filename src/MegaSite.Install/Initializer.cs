@@ -8,7 +8,6 @@ using Dongle.System;
 using Dongle.System.IO;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
-using MegaSite.Api.ViewModels;
 
 namespace MegaSite.Installer
 {
@@ -25,7 +24,6 @@ namespace MegaSite.Installer
         {
             InitRootUser(configExchange);
             InitPostTypes(configExchange);
-            InitPlugins(configExchange);
             InitOptions(theme, configExchange);
         }
 
@@ -60,14 +58,6 @@ namespace MegaSite.Installer
         }
 
         #region Private Methods
-
-        private void InitPlugins(ConfigExchange configExchange)
-        {
-            if (configExchange.Plugins != null)
-            {
-                _managers.PluginManager.CreateAndSave(configExchange.Plugins);
-            }
-        }
 
         private void InitOptions(string theme, ConfigExchange configExchange)
         {
@@ -140,7 +130,7 @@ namespace MegaSite.Installer
                             }
                         }
                         var post = ObjectFiller<PostExchange, Post>.Fill(postExchange);
-                        _managers.PostManager.CreateAndSave(post, postType, configExchange.RootUser, categoryIds);
+                        _managers.PostManager.CreateAndSave(post, user: configExchange.RootUser, postType: postType, categoriesIds: categoryIds);
                     }
                 }
             }

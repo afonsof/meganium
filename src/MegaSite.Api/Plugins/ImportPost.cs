@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MegaSite.Plugins
+namespace MegaSite.Api.Plugins
 {
     public class ImportPost
     {
