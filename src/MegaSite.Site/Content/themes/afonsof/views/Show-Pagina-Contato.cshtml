@@ -5,7 +5,7 @@
         <p>@Html.Raw(Model.CurrentPost.Content)</p>
 
         <h2>Ou se preferir, preencha o formulário abaixo</h2>
-        <form action="~/plugin/EmailFormAction/Send" method="post">
+        <form action="~/Plugin/ContactForm/SendMail" method="post">
             <div style="text-align: left; padding-top: 5px;">
                 <label for="Name">Seu nome</label>
             </div>
@@ -39,5 +39,7 @@
                 <input type="submit" value="Enviar">
             </div>
         </form>
+        <script src="~/Content/themes/afonsof/js/jquery.validate.min.js"></script>
+        <script src="~/Content/themes/afonsof/js/jquery.validate.unobtrusive.min.js"></script>
     </div>
 </div>

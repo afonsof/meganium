@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web;
+using System.Web.Mvc;
 using MegaSite.Api;
-using MegaSite.Api.Entities;
 using MegaSite.Api.Plugins;
 using MegaSite.Api.Tools;
 
@@ -10,11 +9,11 @@ namespace MegaSite.Plugins.PhotoSelector
 {
     public class PhotoSelectorAction : IActionPlugin
     {
-        public object RunAction(string actionName, HttpContextBase context, List<Field> fields, IUnitOfWork data, IOptions pluginOptions)
+        public HtmlString RunAction(string actionName, HttpContextBase context, IManagers managers)
         {
             if (actionName == "send")
             {
-                var post = data.PostRepository.GetById(Convert.ToInt32(context.Request.Form["postId"]));
+                var post = managers.PostManager.GetById(Convert.ToInt32(context.Request.Form["postId"]));
 
                 if (post != null)
                 {
@@ -33,7 +32,7 @@ namespace MegaSite.Plugins.PhotoSelector
             return null;
         }
 
-        public HtmlString OnFooter(IUnitOfWork data, IOptions pluginOptions)
+        public HtmlString OnFooter(IManagers managers)
         {
             return null;
         }

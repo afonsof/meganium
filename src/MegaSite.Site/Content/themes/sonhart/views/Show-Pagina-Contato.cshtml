@@ -1,5 +1,4 @@
-﻿@using MegaSite.Api.Entities
-@model MegaSite.Api.ViewModels.SiteViewModel
+﻿@model MegaSite.Api.ViewModels.SiteViewModel
 @{
     if (Model.CurrentPost.FeaturedMediaFile != null)
     {
@@ -23,6 +22,8 @@
     });
 
 </script>
+<script src="~/Content/themes/sonhart/js/jquery.validate.min.js"></script>
+<script src="~/Content/themes/sonhart/js/jquery.validate.unobtrusive.min.js"></script>
 <div id="single-page" class="clearfix left-sidebar">
     <div id="primary" style="margin-top: 0px;">
         <h1 class="entry-title">
@@ -31,17 +32,39 @@
             <div id="content">
                 @Html.Raw(Model.CurrentPost.Content)
             </div>
-            @Model.Plugin.RunAction("EmailSender", "Form", Context)
-
-            @if (Model.CurrentPost.PostType.Behavior.HasFlag(PostType.BehaviorFlags.AllowComments))
-            {
-                <div class="fb-like" data-href="@Request.Url" data-send="true" data-layout="button_count"
-                     data-width="620" data-show-faces="true" data-font="arial" data-colorscheme="dark">
+            <form action="~/Plugin/ContactForm/SendMail" method="post">
+                <div class="editor-label">
+                    <label for="Name">Seu nome</label>
                 </div>
-                <div class="fb-comments" data-href="@Request.Url" data-width="620" data-num-posts="10"
-                     data-colorscheme="dark">
+                <div class="editor-field">
+                    <input class="text-box single-line" data-val="true" data-val-required="Campo Requerido" id="Name" name="Name" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
                 </div>
-            }
+                <div class="editor-label">
+                    <label for="Email">Seu e-mail</label>
+                </div>
+                <div class="editor-field">
+                    <input class="text-box single-line" data-val="true" data-val-regex="o e-mail digitado é inválido." data-val-regex-pattern="[a-zA-Z0-9._%-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" data-val-required="Campo Requerido" id="Email" name="Email" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+                <div class="editor-label">
+                    <label for="Subject">Sobre o que você quer falar?</label>
+                </div>
+                <div class="editor-field">
+                    <input class="text-box single-line" id="Subject" name="Subject" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Subject" data-valmsg-replace="true"></span>
+                </div>
+                <div class="editor-label">
+                    <label for="Message">Mensagem</label>
+                </div>
+                <div class="editor-field">
+                    <textarea cols="20" data-val="true" data-val-required="Campo Requerido" id="Message" name="Message" rows="2"></textarea>
+                    <span class="field-validation-valid" data-valmsg-for="Message" data-valmsg-replace="true"></span>
+                </div>
+                <p>
+                    <input type="submit" value="Enviar" />
+                </p>
+            </form>
         </article>
     </div>
 </div>

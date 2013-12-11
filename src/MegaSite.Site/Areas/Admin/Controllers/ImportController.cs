@@ -110,7 +110,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
 
         private static IEnumerable<Type> GetPlugins()
         {
-            var items = Assembly.GetAssembly(typeof(ContactFormPlugin))
+            var items = Assembly.GetAssembly(typeof(ContactForm))
                 .GetTypes()
                 .Where(p => typeof(IImportPlugin).IsAssignableFrom(p));
             return items;

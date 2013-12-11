@@ -21,6 +21,7 @@ namespace MegaSite.Api.Tools
             message.From = new MailAddress(name + "<" + smtpUserName + ">");
             message.BodyEncoding = Encoding.UTF8;
             message.ReplyToList.Add(email);
+            message.Body = body;
 
             var smtpClient = new SmtpClient(smtpServer, smtpPort);
             if (smtpUseSsl)

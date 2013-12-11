@@ -4,10 +4,12 @@ using DevTrends.MvcDonutCaching;
 using Dongle.System;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Plugins;
 using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
 using MegaSite.Api.Resources;
+using MegaSite.Plugins;
 
 namespace MegaSite.Site.Areas.Site.Controllers
 {
@@ -17,11 +19,11 @@ namespace MegaSite.Site.Areas.Site.Controllers
         private readonly PathResolver _pathResolver;
         private readonly SiteViewModel _vm;
 
-        public HomeController(IManagers managers, PathResolver pathResolver)
+        public HomeController(IManagers managers, ActionPluginManager pluginManager, PathResolver pathResolver)
         {
             _managers = managers;
             _pathResolver = pathResolver;
-            _vm = new SiteViewModel(managers);
+            _vm = new SiteViewModel(managers, pluginManager);
         }
 
         [DonutOutputCache(Duration = 3600)]
@@ -84,12 +86,11 @@ namespace MegaSite.Site.Areas.Site.Controllers
             return View(GetCategoryFile(category), _vm);
         }
 
-        //TODO:
-        /*public ActionResult SlugPluginAction(string pluginName, string pluginAction)
+        public ActionResult SlugPluginAction(string pluginName, string pluginAction)
         {
-            _vm.Plugin.RunAction(pluginName, pluginAction, HttpContext);
+            _vm.PluginManager.RunAction(pluginName, pluginAction, HttpContext);
             return null;
-        }*/
+        }
 
         #region PrivateMethods
 

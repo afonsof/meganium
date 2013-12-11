@@ -253,6 +253,8 @@
     <Content Include="Content\themes\afonsof\images\scrum.png" />
     <Content Include="Content\themes\afonsof\js\functions.js" />
     <Content Include="Content\themes\afonsof\js\jquery.masonry.min.js" />
+    <Content Include="Content\themes\afonsof\js\jquery.validate.min.js" />
+    <Content Include="Content\themes\afonsof\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\themes\kayzo\css\base.css" />
     <Content Include="Content\themes\kayzo\css\color.css" />
     <Content Include="Content\themes\kayzo\css\fancybox.css" />
@@ -526,6 +528,8 @@
     <Content Include="Content\themes\sonhart\js\jquery.superbgimage.min.js" />
     <Content Include="Content\themes\sonhart\js\jquery.tipsy.min.js" />
     <Content Include="Content\themes\sonhart\js\jquery.touchswipe.min.js" />
+    <Content Include="Content\themes\sonhart\js\jquery.validate.min.js" />
+    <Content Include="Content\themes\sonhart\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\themes\sonhart\js\jwplayer.js" />
     <Content Include="Content\themes\sonhart\js\masonry.pkgd.min.js" />
     <Content Include="Content\themes\sonhart\js\modenizr.min.js" />

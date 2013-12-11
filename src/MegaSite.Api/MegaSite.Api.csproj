@@ -96,6 +96,7 @@
     <Compile Include="NHibernateBuilder.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Plugins\IActionPlugin.cs" />
+    <Compile Include="Plugins\IActionPluginManager.cs" />
     <Compile Include="Plugins\IImportPlugin.cs" />
     <Compile Include="Plugins\ImportPluginType.cs" />
     <Compile Include="Plugins\ImportPost.cs" />

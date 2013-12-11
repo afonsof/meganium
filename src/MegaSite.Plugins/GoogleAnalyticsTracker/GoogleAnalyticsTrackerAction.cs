@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web;
+using System.Web.Mvc;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Plugins;
@@ -9,14 +10,14 @@ namespace MegaSite.Plugins.GoogleAnalyticsTracker
 {
     public class GoogleAnalyticsTrackerAction : IActionPlugin
     {
-        public object RunAction(string actionName, HttpContextBase context, List<Field> fields, IUnitOfWork data, IOptions pluginOptions)
+        public HtmlString RunAction(string actionName, HttpContextBase context, IManagers managers)
         {
             return null;
         }
 
-        public HtmlString OnFooter(IUnitOfWork data, IOptions pluginOptions)
+        public HtmlString OnFooter(IManagers managers)
         {
-            var tracker = pluginOptions.Get("GoogleAnalyticsTracker");
+            var tracker = managers.ClientManager.GetOptions().Get("GoogleAnalyticsTracker");
 
             if (!string.IsNullOrEmpty(tracker))
             {

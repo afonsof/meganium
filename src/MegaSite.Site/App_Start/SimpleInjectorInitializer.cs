@@ -4,6 +4,8 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using MegaSite.Api;
+using MegaSite.Api.Plugins;
+using MegaSite.Plugins;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
@@ -28,24 +30,14 @@ namespace MegaSite.Site.App_Start
         {
             var webLifestyle = new WebRequestLifestyle();
             container.Register(() => Options.Instance);
-            container.Register(() => CreateManagers(container), webLifestyle);
+            container.Register(CreateManagers, webLifestyle);
+            container.Register<IActionPluginManager, ActionPluginManager>();
         }
 
-        private static IManagers CreateManagers(Container container)
+        private static IManagers CreateManagers()
         {
             IManagers managers = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             return managers;
-            
-            //todo:
-            //var pluginComposite = new ActionPluginComposite(d);
-            /*var allTypes = Assembly.GetAssembly(typeof(EmailFormAction)).GetTypes();
-            var allPlugins = allTypes.Where(p => typeof(IActionPlugin).IsAssignableFrom(p));
-            var plugins =
-                allPlugins.Select(
-                    p => Activator.CreateInstance(p) as IActionPlugin);
-
-            pluginComposite.AddRange(plugins);
-            d.Plugin = pluginComposite;*/
         }
     }
 }

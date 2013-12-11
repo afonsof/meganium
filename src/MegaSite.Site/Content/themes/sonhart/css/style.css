@@ -1945,3 +1945,7 @@ hr.shortcode { clear: left; background: none; padding: 0; margin: 10px 0 25px; }
   /* For landscape layouts only */
 
 }
+
+.field-validation-error {
+    color: #A00;
+}
