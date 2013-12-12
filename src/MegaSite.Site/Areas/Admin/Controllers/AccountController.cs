@@ -37,7 +37,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             FormsAuthentication.SetAuthCookie(user.UserName, false);
             if (string.IsNullOrEmpty(url) && !Url.IsLocalUrl(url))
             {
-                return RedirectToAction("Index", "Account");
+                return RedirectToAction("Index", "Post");
             }
             return Redirect(url);
         }

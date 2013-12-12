@@ -11,7 +11,7 @@ namespace MegaSite.Api.Web
             return RedirectToAction(action, controller, routeValues);
         }
 
-        protected ActionResult RedirectToAction(string action, string message, MessageType messageType = MessageType.Info)
+        protected ActionResult RedirectToAction(string action, string message, MessageType messageType)
         {
             SetMessage(message, messageType);
             return RedirectToAction(action);

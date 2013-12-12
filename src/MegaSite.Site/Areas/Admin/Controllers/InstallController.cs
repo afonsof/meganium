@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Web.Mvc;
 using Dongle.Serialization;
@@ -27,7 +28,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult ResetTheme(InstallResetThemeVm vm)
         {
-            if (vm.Password != "macacogordo" + DateTime.Today.Day)
+            if (vm.Password != ConfigurationManager.AppSettings["MasterPassword"])
             {
                 return null;
             }

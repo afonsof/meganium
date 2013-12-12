@@ -76,7 +76,7 @@ namespace MegaSite.Site.App_Start
             routes.MapRoute(
                 "Thumb",
                 "content/uploads/thumbs/{fileName}",
-                new {controller = "Thumb", action = "Index"},
+                new {controller = "Thumb", action = "Create"},
                 new[] { "MegaSite.Site.Areas.Site.Controllers" }
                 );
 

@@ -14,7 +14,7 @@ namespace MegaSite.Site.Areas.Site.Controllers
             _managers = managers;
         }
 
-        public ActionResult Index(string fileName, string url)
+        public ActionResult Create(string fileName, string url)
         {
             var match = Regex.Match(fileName, @"^(.*)-(\d+)x(\d+)(-crop)*.jpg$");
             var name = match.Groups[1].Value;
