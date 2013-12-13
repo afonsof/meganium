@@ -157,6 +157,8 @@
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Extension\Controllers\PhotoSelectorController.cs" />
+    <Compile Include="Areas\Extension\ExtensionAreaRegistration.cs" />
     <Compile Include="Areas\Site\Controllers\HomeController.cs" />
     <Compile Include="Areas\Site\Controllers\RssController.cs" />
     <Compile Include="Areas\Site\Controllers\ThumbController.cs" />
@@ -230,6 +232,10 @@
     <Content Include="Content\admin\js\libs\jquery-uploadifive\uploadifive.css" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Video.cshtml" />
+    <Content Include="Areas\Extension\Views\Web.config" />
+    <Content Include="Areas\Extension\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Extension\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Extension\Views\PhotoSelector\Index.cshtml" />
     <None Include="Content\admin\js\libs\jquery-validate\jquery.validate-vsdoc.js" />
     <Content Include="Content\admin\js\libs\jquery-validate\jquery.validate.js" />
     <Content Include="Content\admin\js\libs\jquery-validate\jquery.validate.min.js" />
@@ -240,6 +246,7 @@
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.js" />
     <TypeScriptCompile Include="Content\admin\js\src\MediaFile.ts" />
     <TypeScriptCompile Include="Content\admin\js\src\VideoManager.ts" />
+    <TypeScriptCompile Include="Content\admin\js\src\FrameModal.ts" />
     <Content Include="Content\themes\afonsof\css\light.css" />
     <Content Include="Content\themes\afonsof\css\mobile.css" />
     <Content Include="Content\themes\afonsof\css\reset.css" />

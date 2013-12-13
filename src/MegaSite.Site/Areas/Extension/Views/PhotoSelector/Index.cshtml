@@ -1,0 +1,71 @@
+﻿@using MegaSite.Api.Resources
+@model dynamic
+
+@{
+    ViewBag.Title = "Seleção de Fotos";
+}
+@section Buttons
+{
+    <button type="button" class="btn btn-default" data-dismiss="modal">@Resource.Cancel</button>
+    <button type="button" class="btn btn-primary">@Resource.Save</button>
+}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-resource.min.js"></script>
+
+<script>
+
+    /*var phonecatApp = angular.module('photoSelector', [
+        
+        'photoSelectorControllers'
+    ]);
+    phonecatApp.config(['$routeProvider', function ($routeProvider) {
+
+    }]);*/
+
+    var phonecatControllers = angular.module('photoSelectorControllers', []);
+
+    phonecatControllers.controller('IndexCtrl', ['$scope', '$http',
+        function ($scope, $http) {
+        }]);
+
+    phonecatControllers.controller('ClientPhotosCtrl', ['$scope', '$http',
+        function ($scope, $http) {
+            $http.get('@Url.Content("~/Extension/PhotoSelector/Data/")' + $scope.clientId).success(function (data) {
+                $scope.phones = data;
+            });
+        }]);
+
+    var phonecatApp = angular.module('photoSelectorApp',
+        ['ngRoute', 'photoSelectorControllers']);
+
+    phonecatApp.config(['$routeProvider',
+        function($routeProvider) {
+           /* $routeProvider.
+                when('/index', {
+                    controller: 'IndexCtrl'
+                }).
+                when('/client/:clientId', {
+                    controller: 'ClientPhotosCtrl'
+                }).
+                otherwise({
+                    redirectTo: '/index'
+                });*/
+        }]);
+
+</script>
+<div ng-app="photoSelectorApp">
+    <div ng-controller="IndexCtrl">
+        <input type="text" ng-model="clientId" />
+        <a href="#/client/{{clientId}}" >OK</a>
+    </div>
+    
+ 
+
+    <div class="step2">
+    </div>
+</div>
+
+<script>
+    
+</script>

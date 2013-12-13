@@ -1,0 +1,60 @@
+﻿@using MegaSite.Api
+<html>
+<head>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: rgba(0,0,0,0.5) !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+        }
+
+        .modal {
+            display: block;
+            overflow: auto;
+        }
+        .modal-dialog {
+            width: 90%;
+        }
+
+        .btn-primary {
+            background-color: @Options.Instance.Get("Color1");
+            border-color: @Options.Instance.Get("Color2");
+        }
+
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:visited{
+            background-color: @Options.Instance.Get("Color2");
+            border-color: @Options.Instance.Get("Color1");
+        }
+    </style>
+    <script>
+        function show(closeFunc) {
+            $('.modal').modal('show');
+            $('.modal').on('hide.bs.modal', function () {
+                closeFunc();
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">@ViewBag.Title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>@RenderBody()</p>
+                </div>
+                <div class="modal-footer">
+                    @RenderSection("Buttons")
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+</body>
+</html>

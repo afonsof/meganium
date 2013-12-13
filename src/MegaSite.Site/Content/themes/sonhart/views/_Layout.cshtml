@@ -197,9 +197,12 @@
                             </li>
                             <li><span><a href="~/blog" title="Blog">Blog</a></span> </li>
                             <li><span><a href="~/pagina/contato" title="Contato">Contato</a></span> </li>
+                            <li><a href="#" class="iframe-dialog" style="color: #d5b03f; font-weight: bold" data-dialog-id="photo-selector" data-url="@Url.Content("~/Extension/PhotoSelector")">Selecionar Fotos</a></li>
+
                         </ul>
                     </div>
                 </nav>
+                <script src="~/Content/admin/js/src/FrameModal.js"></script>
             </header>
             <div id="main" class="clearfix zIndex">
                 @RenderBody()
