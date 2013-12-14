@@ -159,6 +159,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Extension\Controllers\PhotoSelectorController.cs" />
     <Compile Include="Areas\Extension\ExtensionAreaRegistration.cs" />
+    <Compile Include="Areas\Site\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Site\Controllers\HomeController.cs" />
     <Compile Include="Areas\Site\Controllers\RssController.cs" />
     <Compile Include="Areas\Site\Controllers\ThumbController.cs" />
@@ -244,6 +245,7 @@
     <None Include="Content\admin\js\libs\jquery\jquery-1.9.1-vsdoc.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.js" />
+    <Content Include="Content\themes\kayzo\views\Error.cshtml" />
     <TypeScriptCompile Include="Content\admin\js\src\MediaFile.ts" />
     <TypeScriptCompile Include="Content\admin\js\src\VideoManager.ts" />
     <TypeScriptCompile Include="Content\admin\js\src\FrameModal.ts" />
