@@ -204,6 +204,7 @@
     <Content Include="Content\admin\js\libs\bootstrap-switch\mixins.min.css" />
     <Content Include="Content\admin\js\libs\bootstrap-switch\variables.css" />
     <Content Include="Content\admin\js\libs\bootstrap-switch\variables.min.css" />
+    <Content Include="Content\admin\js\libs\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
     <Content Include="Content\admin\js\libs\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
     <Content Include="Content\admin\js\libs\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
     <Content Include="Content\admin\js\libs\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />

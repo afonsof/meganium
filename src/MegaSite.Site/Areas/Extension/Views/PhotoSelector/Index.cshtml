@@ -1,71 +1,176 @@
-﻿@using MegaSite.Api.Resources
+﻿@using MegaSite.Api
 @model dynamic
 
 @{
     ViewBag.Title = "Seleção de Fotos";
 }
-@section Buttons
+
+@section Head
 {
-    <button type="button" class="btn btn-default" data-dismiss="modal">@Resource.Cancel</button>
-    <button type="button" class="btn btn-primary">@Resource.Save</button>
+    <style>
+        .form-wizard .steps {
+            margin-bottom: 0;
+            background-color: #fff;
+            background-image: none;
+            filter: none;
+            border: 0;
+            box-shadow: none;
+        }
+
+        .form-wizard .steps li a {
+            background-color: #fff;
+            background-image: none;
+            filter: none;
+            border: 0px;
+            box-shadow: none;
+        }
+
+            .form-wizard .steps li a:hover {
+                background: none;
+            }
+
+        .form-wizard .step:hover {
+            text-decoration: none;
+        }
+
+        .form-wizard .step .number {
+            background-color: #eee;
+            display: inline-block;
+            text-align: center !important;
+            font-size: 12px;
+            font-weight: 300;
+            padding: 7px 8px 8px 7px;
+            margin-right: 10px;
+            height: 30px;
+            width: 30px;
+            -webkit-border-radius: 50% !important;
+            -moz-border-radius: 50% !important;
+            border-radius: 50% !important;
+        }
+
+        .form-wizard .step .desc {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .form-wizard .active .step .number {
+            background-color: @Options.Instance.Get("Color1");
+            color: #fff;
+        }
+
+        .form-wizard .active .step .desc {
+            color: #333;
+            font-weight: 400;
+        }
+
+        .form-wizard .step i {
+            display: none;
+        }
+
+        .form-wizard .done .step .number {
+            background-color: #f2ae43;
+            color: #fff;
+        }
+
+        .form-wizard .done .step .desc {
+            font-weight: 400;
+        }
+
+        .form-wizard .done .step i {
+            font-size: 12px;
+            font-weight: normal;
+            color: #999;
+            display: inline-block;
+        }
+
+
+        @@media (min-width: 768px) and (max-width: 1280px) {
+            .form-wizard .step .desc {
+                margin-top: 10px;
+                display: block;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .form-wizard .steps > li > a {
+                text-align: left;
+            }
+        }
+    </style>
 }
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-resource.min.js"></script>
 
-<script>
+<div class="form-wizard">
 
-    /*var phonecatApp = angular.module('photoSelector', [
-        
-        'photoSelectorControllers'
-    ]);
-    phonecatApp.config(['$routeProvider', function ($routeProvider) {
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="row">
+            <h4 class="modal-title col-md-4">@ViewBag.Title</h4>
 
-    }]);*/
 
-    var phonecatControllers = angular.module('photoSelectorControllers', []);
-
-    phonecatControllers.controller('IndexCtrl', ['$scope', '$http',
-        function ($scope, $http) {
-        }]);
-
-    phonecatControllers.controller('ClientPhotosCtrl', ['$scope', '$http',
-        function ($scope, $http) {
-            $http.get('@Url.Content("~/Extension/PhotoSelector/Data/")' + $scope.clientId).success(function (data) {
-                $scope.phones = data;
-            });
-        }]);
-
-    var phonecatApp = angular.module('photoSelectorApp',
-        ['ngRoute', 'photoSelectorControllers']);
-
-    phonecatApp.config(['$routeProvider',
-        function($routeProvider) {
-           /* $routeProvider.
-                when('/index', {
-                    controller: 'IndexCtrl'
-                }).
-                when('/client/:clientId', {
-                    controller: 'ClientPhotosCtrl'
-                }).
-                otherwise({
-                    redirectTo: '/index'
-                });*/
-        }]);
-
-</script>
-<div ng-app="photoSelectorApp">
-    <div ng-controller="IndexCtrl">
-        <input type="text" ng-model="clientId" />
-        <a href="#/client/{{clientId}}" >OK</a>
+            <ul class="nav nav-pills nav-justified steps coll-md-8">
+                <li>
+                    <a href="#tab1" data-toggle="tab" class="step">
+                        <span class="number">1
+                        </span>
+                        <span class="desc">
+                            <i class="fa fa-check"></i>Identificação
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab2" data-toggle="tab" class="step">
+                        <span class="number">2
+                        </span>
+                        <span class="desc">
+                            <i class="fa fa-check"></i>Seleção de Fotos
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab3" data-toggle="tab" class="step active">
+                        <span class="number">3
+                        </span>
+                        <span class="desc">
+                            <i class="fa fa-check"></i>Confirmação
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    
- 
+    <div class="modal-body">
+        <div class="form-body">
 
-    <div class="step2">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <h3 class="block">Digite o código recebido para continuar</h3>
+                    <div class="editor-field">
+                        <input id="Hash" name="Hash" type="text" />
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <h3 class="block">Provide your profile details</h3>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    <h3 class="block">Provide your billing and credit card details</h3>
+                </div>
+
+            </div>
+        </div>
     </div>
+    <div class="modal-footer">
+        <a href="javascript:;" class="btn btn-default button-previous">Voltar </a>
+        <a href="javascript:;" class="btn btn-primary  button-next">Avançar</a>
+        <!--<a href="javascript:;" class="btn btn-default button-submit">Enviar</a>-->
+    </div>
+
 </div>
 
 <script>
-    
+    $(document).ready(function () {
+        //$('#rootwizard').bootstrapWizard({ 'tabClass': 'nav nav-pills' });
+
+        $('.form-wizard').bootstrapWizard({ 'tabClass': 'nav nav-pills', 'nextSelector': '.button-next', 'previousSelector': '.button-previous' });
+    });
 </script>

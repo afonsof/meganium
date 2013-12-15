@@ -74,6 +74,15 @@ namespace MegaSite.Api.Managers
             return _uow.PostRepository.GetById(id.Value);
         }
 
+        public Post GetByHash(string hash)
+        {
+            if (string.IsNullOrEmpty(hash))
+            {
+                return null;
+            }
+            return _uow.PostRepository.AsQueryable().FirstOrDefault(p=>p.Hash.ToLowerInvariant() == hash.ToLowerInvariant());
+        }
+
         public void Change(Post post, User user, PostType postType = null, Post parent = null, IEnumerable<int> categoriesIds = null, Dictionary<string, string> fieldValues = null)
         {
             post.Categories.Clear();
