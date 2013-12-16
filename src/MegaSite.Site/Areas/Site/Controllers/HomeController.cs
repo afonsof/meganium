@@ -5,6 +5,7 @@ using Dongle.System;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Plugins;
+using MegaSite.Api.Tools;
 using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
@@ -90,6 +91,13 @@ namespace MegaSite.Site.Areas.Site.Controllers
         {
             _vm.PluginManager.RunAction(pluginName, pluginAction, HttpContext);
             return null;
+        }
+
+        public ActionResult Error()
+        {
+            Mailer.Send("MegaSite", "Sistema@gmail.com", "Alerta de erro MegaSite", "Algum erro muito louco aconteceu!");
+            ViewBag.Title = "Tratamento de erro";
+            return View();
         }
 
         #region PrivateMethods

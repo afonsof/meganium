@@ -159,7 +159,6 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Extension\Controllers\PhotoSelectorController.cs" />
     <Compile Include="Areas\Extension\ExtensionAreaRegistration.cs" />
-    <Compile Include="Areas\Site\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Site\Controllers\HomeController.cs" />
     <Compile Include="Areas\Site\Controllers\RssController.cs" />
     <Compile Include="Areas\Site\Controllers\ThumbController.cs" />
@@ -246,7 +245,8 @@
     <None Include="Content\admin\js\libs\jquery\jquery-1.9.1-vsdoc.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.js" />
-    <Content Include="Content\themes\kayzo\views\Error.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <TypeScriptCompile Include="Content\admin\js\src\MediaFile.ts" />
     <TypeScriptCompile Include="Content\admin\js\src\VideoManager.ts" />
     <TypeScriptCompile Include="Content\admin\js\src\FrameModal.ts" />
@@ -696,7 +696,6 @@
     <Folder Include="Content\admin\js\libs\bootstrap3\css\" />
     <Folder Include="Content\admin\js\libs\bootstrap3\fonts\" />
     <Folder Include="Content\admin\js\libs\bootstrap3\js\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
