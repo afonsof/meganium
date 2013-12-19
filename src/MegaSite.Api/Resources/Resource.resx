@@ -604,7 +604,7 @@
     <value>Foto</value>
   </data>
   <data name="PhotoCount" xml:space="preserve">
-    <value>Fotos</value>
+    <value>Quantidade de Fotos</value>
   </data>
   <data name="Photos" xml:space="preserve">
     <value>Fotos</value>
@@ -902,5 +902,20 @@
   </data>
   <data name="NothingWasImported" xml:space="preserve">
     <value>Nenhum item foi importado</value>
+  </data>
+  <data name="CreateClient" xml:space="preserve">
+    <value>Criar Cliente</value>
+  </data>
+  <data name="EditClient" xml:space="preserve">
+    <value>Editar Cliente</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administração</value>
+  </data>
+  <data name="ClientAdmin" xml:space="preserve">
+    <value>Administração de Clientes</value>
+  </data>
+  <data name="Hash" xml:space="preserve">
+    <value>Código</value>
   </data>
 </root>

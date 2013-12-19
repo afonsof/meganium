@@ -1,0 +1,55 @@
+﻿@using MegaSite.Api.Resources
+@model MegaSite.Api.ViewModels.ClientCreateVm
+@{
+    ViewBag.Title = Resource.CreateClient;
+    ViewBag.Icon = "thumbs-up";
+}
+@using (Html.BeginForm("Create", "Client"))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FullName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FullName, new { autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.FullName)
+        </div>
+        @*
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName, new { autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+        *@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email, new { autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        @*
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password, new { autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        *@
+
+        <fieldset>
+            <legend>Observações</legend>
+            @Html.TextAreaFor(model => model.Memo, new { @class = "wysihtml5 m-wrap", rows = 12, style = "width:100%" })
+        </fieldset>
+
+        <div class="btn-toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index")" class="btn">@Resource.Back</a>
+        </div>
+    </fieldset>
+}

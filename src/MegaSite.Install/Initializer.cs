@@ -61,7 +61,7 @@ namespace MegaSite.Installer
 
         private void InitOptions(string theme, ConfigExchange configExchange)
         {
-            _managers.ClientManager.GetOptions().Set("Theme", theme);
+            _managers.LicenseManager.GetOptions().Set("Theme", theme);
             foreach (var option in configExchange.Options)
             {
                 var value = option.Value;
@@ -78,7 +78,7 @@ namespace MegaSite.Installer
                         }
                     }
                 }
-                _managers.ClientManager.GetOptions().Set(option.Key, value);
+                _managers.LicenseManager.GetOptions().Set(option.Key, value);
             }
         }
 

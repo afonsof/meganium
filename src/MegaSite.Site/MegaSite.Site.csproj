@@ -150,6 +150,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BasicController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClientController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImportController.cs" />
     <Compile Include="Areas\Admin\Controllers\InstallController.cs" />
     <Compile Include="Areas\Admin\Controllers\MediaFileController.cs" />
@@ -179,6 +180,7 @@
     <Content Include="Content\admin\images\docs.css" />
     <Content Include="Content\admin\images\favicon.png" />
     <Content Include="Content\admin\images\logo.png" />
+    <Content Include="Content\admin\js\app.js" />
     <Content Include="Content\admin\js\definitions\bootstrap\bootstrap.d.ts" />
     <Content Include="Content\admin\js\definitions\hacks.d.ts" />
     <Content Include="Content\admin\js\definitions\jquery\jquery.d.ts" />
@@ -208,6 +210,9 @@
     <Content Include="Content\admin\js\libs\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
     <Content Include="Content\admin\js\libs\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
     <Content Include="Content\admin\js\libs\bootstrap-wysihtml5\wysiwyg-color.css" />
+    <Content Include="Content\admin\js\libs\bootstrap3\css\bootstrap.min.css" />
+    <Content Include="Content\admin\js\libs\bootstrap3\js\bootstrap.js" />
+    <Content Include="Content\admin\js\libs\bootstrap3\js\bootstrap.min.js" />
     <Content Include="Content\admin\js\libs\bootstrap\bootstrap-responsive.css" />
     <Content Include="Content\admin\js\libs\bootstrap\bootstrap-responsive.min.css" />
     <Content Include="Content\admin\js\libs\bootstrap\bootstrap.css" />
@@ -237,6 +242,9 @@
     <Content Include="Areas\Extension\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Extension\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Extension\Views\PhotoSelector\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Client\Index.cshtml" />
     <None Include="Content\admin\js\libs\jquery-validate\jquery.validate-vsdoc.js" />
     <Content Include="Content\admin\js\libs\jquery-validate\jquery.validate.js" />
     <Content Include="Content\admin\js\libs\jquery-validate\jquery.validate.min.js" />
@@ -245,8 +253,10 @@
     <None Include="Content\admin\js\libs\jquery\jquery-1.9.1-vsdoc.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.js" />
+    <Content Include="gruntfile.js" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="package.json" />
     <TypeScriptCompile Include="Content\admin\js\src\MediaFile.ts" />
     <TypeScriptCompile Include="Content\admin\js\src\VideoManager.ts" />
     <TypeScriptCompile Include="Content\admin\js\src\FrameModal.ts" />
@@ -693,9 +703,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\admin\js\libs\bootstrap3\css\" />
     <Folder Include="Content\admin\js\libs\bootstrap3\fonts\" />
-    <Folder Include="Content\admin\js\libs\bootstrap3\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -733,7 +741,6 @@
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Panel.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutServices.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_MenuItem.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Script.cshtml" />
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
@@ -793,6 +800,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -818,8 +828,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>cd $(ProjectDir) &amp; npm install &amp; grunt compile</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

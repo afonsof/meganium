@@ -136,6 +136,10 @@
                             }
                         </ul>
                         <ul class="nav nav-list bs-docs-sidenav">
+                            <li class="nav-header">Clientes</li>
+                            @Html.Partial("_MenuItem", new Tuple<string, string, string>("Client", Resource.Administration, "thumbs-up"))
+                        </ul>
+                        <ul class="nav nav-list bs-docs-sidenav">
                             <li class="nav-header">Avançado</li>
                             @Html.Partial("_MenuItem", new Tuple<string, string, string>("User", Resource.Users, "user"))
                             @if (Options.Instance.Get("AllowImportMediaFiles", true))

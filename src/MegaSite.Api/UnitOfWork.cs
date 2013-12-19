@@ -17,8 +17,9 @@ namespace MegaSite.Api
             _connectionString = connectionString;
         }
 
-        private ISession _session;
+        #region Database
 
+        private ISession _session;
         public ISession Session
         {
             get
@@ -41,7 +42,19 @@ namespace MegaSite.Api
             }
         }
 
-        //public string Title { get; set; }
+        public void Commit()
+        {
+            if (_transaction == null) return;
+            _transaction.Commit();
+            _transaction.Dispose();
+            _transaction = null;
+            var cacheManager = new OutputCacheManager();
+            cacheManager.RemoveItems();
+        }
+
+        #endregion
+
+        #region Repositories
 
         private IRepository<User> _users;
         public IRepository<User> UserRepository
@@ -75,6 +88,15 @@ namespace MegaSite.Api
             }
         }
 
+        private IRepository<License> _licenseRepositoryReader;
+        public IRepository<License> LicenseRepository
+        {
+            get
+            {
+                return _licenseRepositoryReader ?? (_licenseRepositoryReader = new Repository<License>(this));
+            }
+        }
+
         private IRepository<Client> _clientRepositoryReader;
         public IRepository<Client> ClientRepository
         {
@@ -83,6 +105,10 @@ namespace MegaSite.Api
                 return _clientRepositoryReader ?? (_clientRepositoryReader = new Repository<Client>(this));
             }
         }
+
+        #endregion
+
+        #region Managers
 
         private PostManager _postManager;
         public PostManager PostManager
@@ -100,7 +126,7 @@ namespace MegaSite.Api
         private CategoryManager _categoryManager;
         public CategoryManager CategoryManager
         {
-            get{ return _categoryManager ?? (_categoryManager = new CategoryManager(this)); }
+            get { return _categoryManager ?? (_categoryManager = new CategoryManager(this)); }
         }
 
         private FieldManager _fieldManager;
@@ -115,10 +141,16 @@ namespace MegaSite.Api
             get { return _userManager ?? (_userManager = new UserManager(this)); }
         }
 
+        private LicenseManager _licenseManager;
+        public LicenseManager LicenseManager
+        {
+            get { return _licenseManager ?? (_licenseManager = new LicenseManager()); }
+        }
+
         private ClientManager _clientManager;
         public ClientManager ClientManager
         {
-            get { return _clientManager ?? (_clientManager = new ClientManager()); }
+            get { return _clientManager ?? (_clientManager = new ClientManager(this)); }
         }
 
         public MediaFileManager MediaFileManager
@@ -126,15 +158,7 @@ namespace MegaSite.Api
             get { return MediaFileManager.Instance; }
         }
 
-        public void Commit()
-        {
-            if (_transaction == null) return;
-            _transaction.Commit();
-            _transaction.Dispose();
-            _transaction = null;
-            var cacheManager = new OutputCacheManager();
-            cacheManager.RemoveItems();
-        }
+        #endregion
 
         public void Dispose()
         {
