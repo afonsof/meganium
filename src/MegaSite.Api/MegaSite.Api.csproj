@@ -137,7 +137,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\License.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="IRepositories.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\PostType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

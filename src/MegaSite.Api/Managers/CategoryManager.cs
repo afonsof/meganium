@@ -7,9 +7,9 @@ namespace MegaSite.Api.Managers
 {
     public class CategoryManager
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IRepositories _uow;
 
-        public CategoryManager(IUnitOfWork uow)
+        public CategoryManager(IRepositories uow)
         {
             _uow = uow;
         }

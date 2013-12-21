@@ -11,47 +11,47 @@ namespace MegaSite.Api.Managers
 {
     public class ClientManager
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IRepositories _repos;
 
-        public ClientManager(IUnitOfWork uow)
+        public ClientManager(IRepositories repos)
         {
-            _uow = uow;
+            _repos = repos;
         }
 
         public object GetAll()
         {
-            return _uow.ClientRepository.AsQueryable().OrderBy(u => u.FullName);
+            return _repos.ClientRepository.AsQueryable().OrderBy(u => u.FullName);
         }
 
         public Message Change(ClientEditVm vm)
         {
-            var client = _uow.ClientRepository.GetById(vm.Id);
+            var client = _repos.ClientRepository.GetById(vm.Id);
             client.FullName = vm.FullName;
             client.Enabled = vm.Enabled;
             client.AvailableMediaFilesJson = vm.AvailableMediaFilesJson;
             client.Memo = vm.Memo;
             client.PhotoCount = vm.PhotoCount;
-            _uow.ClientRepository.Edit(client);
-            _uow.Commit();
+            _repos.ClientRepository.Edit(client);
+            _repos.Commit();
 
             return new Message(Resource.ItemSuccessfullyAdd, MessageType.Success);
         }
 
         public Message Remove(int id)
         {
-            _uow.ClientRepository.Remove(id);
-            _uow.Commit();
+            _repos.ClientRepository.Remove(id);
+            _repos.Commit();
             return new Message(Resource.ItemSuccessfullyDeleted, MessageType.Success);
         }
 
         public Client GetById(int id)
         {
-            return _uow.ClientRepository.GetById(id);
+            return _repos.ClientRepository.GetById(id);
         }
 
         private bool Exists(string userNameOrEmail)
         {
-            return _uow.ClientRepository.AsQueryable().Any(u => u.Email == userNameOrEmail);
+            return _repos.ClientRepository.AsQueryable().Any(u => u.Email == userNameOrEmail);
         }
 
         public Message CreateAndSave(Client client)
@@ -63,8 +63,8 @@ namespace MegaSite.Api.Managers
 
             client.Hash = HumanReadableHash.Compute(new Random().Next().ToString(), Encoding.ASCII);
             client.CreatedAt = DateTime.Now;
-            _uow.ClientRepository.Add(client);
-            _uow.Commit();
+            _repos.ClientRepository.Add(client);
+            _repos.Commit();
 
             return new Message(Resource.ItemSuccessfullyAdd, MessageType.Success);
         }
@@ -75,7 +75,16 @@ namespace MegaSite.Api.Managers
             {
                 return null;
             }
-            return _uow.ClientRepository.AsQueryable().FirstOrDefault(p=>p.Hash.ToLowerInvariant() == hash.ToLowerInvariant());
+            return _repos.ClientRepository.AsQueryable().FirstOrDefault(p=>p.Hash.ToLowerInvariant() == hash.ToLowerInvariant());
+        }
+
+        public Client GetHavingHashInObject(string hash)
+        {
+            if (string.IsNullOrEmpty(hash))
+            {
+                return null;
+            }
+            return _repos.ClientRepository.AsQueryable().FirstOrDefault(c => c.DataJson.ToLowerInvariant().Contains(hash.ToLowerInvariant()));
         }
     }
 }

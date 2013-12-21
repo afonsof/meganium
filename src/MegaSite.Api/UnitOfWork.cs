@@ -1,5 +1,4 @@
-﻿using System;
-using DevTrends.MvcDonutCaching;
+﻿using DevTrends.MvcDonutCaching;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Repositories;
@@ -7,7 +6,7 @@ using NHibernate;
 
 namespace MegaSite.Api
 {
-    public sealed class UnitOfWork : IUnitOfWork, IManagers
+    public sealed class UnitOfWork : IRepositories, IManagers
     {
         private ITransaction _transaction;
         private readonly string _connectionString;

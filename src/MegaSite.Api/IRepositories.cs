@@ -4,7 +4,7 @@ using MegaSite.Api.Repositories;
 
 namespace MegaSite.Api
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IRepositories : IDisposable
     {
         IRepository<User> UserRepository { get; }
         IRepository<Post> PostRepository { get; }

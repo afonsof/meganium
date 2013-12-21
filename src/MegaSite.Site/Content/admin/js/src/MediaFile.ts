@@ -38,7 +38,7 @@ module MediaFileManagerModule {
         Url: string;
     }
 
-    export function thumbHtml(mediaFile: IMediaFile, thumbUrl: string, thumbSize: number): string {
+    export function thumbImgUrl(mediaFile: IMediaFile, thumbUrl: string, thumbSize: number): string {
         if (mediaFile == null) {
             return "";
         }
@@ -53,7 +53,11 @@ module MediaFileManagerModule {
                 url += "?url=" + u1;
             }
         }
-        return '<img class="img-rounded" src="' + url + '" />';
+        return url;
+    }
+
+    export function thumbHtml(mediaFile: IMediaFile, thumbUrl: string, thumbSize: number): string {
+        return '<img class="img-rounded" src="' + thumbImgUrl(mediaFile, thumbUrl, thumbSize) + '" />';
     }
 
     export class MediaFileManager {

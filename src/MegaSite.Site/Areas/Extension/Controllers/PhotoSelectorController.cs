@@ -4,6 +4,7 @@ using Dongle.Reflection;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
+using MegaSite.Api.Tools;
 using MegaSite.Api.ViewModels;
 
 namespace MegaSite.Site.Areas.Extension.Controllers
@@ -53,6 +54,13 @@ namespace MegaSite.Site.Areas.Extension.Controllers
 
             var vm = ObjectFiller<Client, ClientEditVm>.Fill(client);
             _managers.ClientManager.Change(vm);
+
+            var body = "O cliente " + client.FullName + " finalizou a sua escolha de fotos\n";
+            body += "Fotos:\n";
+
+            body = client.SelectedMediaFiles.Aggregate(body, (current, selectedMediaFile) => current + ("+ " + selectedMediaFile.Title));
+
+            Mailer.Send(client.FullName, client.Email, "Escolha de Fotos", body);
 
             //todo: tratar se não tiver cliente e erro de salvar
             return Json(new Message("Fotos enviadas com sucesso", MessageType.Success));

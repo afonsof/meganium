@@ -1,7 +1,8 @@
 ﻿@section Head
 {
     <script src="~/Content/admin/js/libs/base64/base64.js"></script>
-    <script src="~/Content/admin/js/src/mediafile.js"></script>
+    <script src="~/Content/admin/js/app.js"></script>
+    @*<script src="~/Content/admin/js/libs/angularjs/angular.min.js"></script>*@
 
     <style>
         .items {
@@ -20,136 +21,119 @@
 
 <div class="loading hide">Carregando...</div>
 
-
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3 class="modal-title">Seleção de Fotos</h3>
-</div>
-<div class="modal-body">
-    <div class="form-body">
-        <div class="tab-content">
-            <div id="tab1">
-                <h3 class="block">Digite o código recebido para continuar</h3>
-                <div class="editor-field">
-                    <input id="Hash" name="Hash" type="text" />
+<div class="modal" data-ng-app="PhotoSelectorApp">
+    <div class="modal-dialog" data-ng-controller="PhotoSelectorController">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title">Seleção de Fotos - {{client.FullName}}</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-body">
+                    <div class="tab-content">
+                        <div class="tab1" data-ng-show="isTab1Visible">
+                            <h3 class="block">Digite o código recebido para continuar</h3>
+                            <div class="editor-field">
+                                <input class="hash" id="Hash" name="Hash" type="text" data-ng-model="hash" />
+                            </div>
+                        </div>
+                        <div style="display: none" class="tab2" data-ng-show="isTab2Visible">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="available-title">Fotos Disponíveis</h4>
+                                    <div class="items available-items">
+                                        @*<img data-ng-click="go2(mediaFile)" data-ng-repeat="mediaFile in client.AvailableMediaFiles" data-ng-src="{{thumbUrl(mediaFile)}}" />*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="selected-title">Fotos Selecionadas</h4>
+                                    <div class="items selected-items">
+                                        @*<img data-ng-click="go3(mediaFile)" data-ng-repeat="mediaFile in client.SelectedMediaFiles" data-ng-src="{{thumbUrl(mediaFile)}}" />*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div style="display: none" id="tab2">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4 class="available-title">Fotos Disponíveis</h4>
-                        <div class="items available-items"></div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="selected-title">Fotos Selecionadas</h4>
-                        <div class="items selected-items"></div>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <a class="ok-button btn btn-primary" data-ng-click="go1()">Avançar</a>
             </div>
         </div>
     </div>
 </div>
-<div class="modal-footer">
-    <a href="javascript:;" id="next-button" class="btn btn-primary">Avançar</a>
-</div>
 
 <script>
-    var step = 1;
-    var g_client;
-    var data;
+    var resource =
+    {
+        AvailablePhotos: 'Fotos Disponíveis',
+        SelectedPhotos: 'Fotos Selecionadas',
+        PhotosOf: 'Fotos de',
+        CouldNotFindAClientWithThisCode: 'Não foi possível localizar um cliente com este código',
+        AreYouSureYouWanToSendThisPhotoSelection: 'Tem certeza que deseja enviar esta seleção de fotos? Esta ação não poderá ser desfeita.',
+        CantSavePhotos: 'Não foi possível salvar as fotos',
+        YouSignAAlbumWith: 'ATENÇÃO: Você contratou um álbum com ',
+        PhotosButYouAreTryingToSend: ' fotos, porém está tentando enviar ',
+        PhotosItWillAddCost: ' fotos.\n\nIsto acarretará em CUSTOS EXTRAS. Deseja continuar?',
+        Of: 'de'
+    };
+    var dataUrl = '@Url.Action("Data")';
+    var thumbUrl = '@Url.Content("~/Content/Uploads/Thumbs")';
 
-    function refresh() {
-        $('.available-title').html('Fotos Disponíveis (' + $('.available-items img').length + ')');
-        $('.selected-title').html('Fotos Selecionadas (' + $('.selected-items img').length + ' de ' + g_client.PhotoCount + ')');
-        $('.modal-title').html('Fotos de <strong>' + g_client.FullName + '</strong>');
-    }
+    var photoSelector = new PhotoSelector(dataUrl, thumbUrl, $('.modal'), resource);
+    photoSelector.init();
 
-    $(document).ready(function () {
-        $('.available-items').on('click', 'img', function () {
-            var _this = $(this);
-            _this.fadeOut(300, function () {
-                $('.selected-items').append(_this);
-                refresh();
-                _this.fadeIn(300);
-            });
-        });
+    @*todo: migrar esta tela para angularjs
+    
+    var thumbUrl = '@Url.Content("~/Content/Uploads/Thumbs")';
+    var app = angular.module("PhotoSelectorApp", []);
 
-        $('.selected-items').on('click', 'img', function () {
-            var _this = $(this);
-            _this.fadeOut(300, function () {
-                $('.available-items').append(_this);
-                refresh();
-                _this.fadeIn(300);
-            });
-        });
+    app.service("PhotoSelectorService", [
+        "$http", "$q",
+        function ($http, $q) {
 
-        $('#next-button').on('click', function () {
-            if (step == 1) {
-                //todo: arrumar loading e passar para typescript
-                $('.loading').show();
+            this.getData = function (hash) {
+                var dataDeferred = $q.defer();
+                $http.get('@Url.Action("Data")', { params: { hash: hash } }).then(
+                    function (client) {
+                        dataDeferred.resolve(client);
+                    },
+                    function (response) {
+                        dataDeferred.reject(response);
+                    });
+                return dataDeferred.promise;
+            };
 
-                data = {
-                    hash: $('#Hash').val()
+            function getPost(hash) {
+            }
+        }
+    ]);
+
+
+        app.controller("PhotoSelectorController", [
+            "$scope", "PhotoSelectorService",
+            function ($scope, repository) {
+                $scope.hash = "";
+                $scope.isTab1Visible = true;
+                $scope.isTab2Visible = false;
+
+                $scope.go1 = function () {
+                    $scope.isTab1Visible = false;
+                    $scope.isTab2Visible = true;
+                    repository.getData($scope.hash).then(function (response) {
+                        $scope.client = response.data;
+                        $scope.client.SelectedMediaFiles = [];
+                    });
                 };
 
-                $.ajax("@Url.Action("Data")", {
-                    data: data,
-                    error: function () {
-                        alert('Não foi possível localizar um cliente com este código');
-                        $('.loading').hide();
-                    },
-                    success: function (client) {
-                        if (!client.AvailableMediaFiles) {
-                            alert(client.Text);
-                            $('.modal').modal('hide');
-                            return;
-                        }
-                        g_client = client;
-                        var items = client.AvailableMediaFiles;
-                        for (var i = 0; i < items.length; i++) {
-                            var item = $(MediaFileManagerModule.thumbHtml(items[i], '@Url.Content("~/Content/Uploads/Thumbs")', 240));
-                            item.data('mediaFile', items[i]);
-                            $('.available-items').append(item);
-                        }
-                        refresh();
+                $scope.go2 = function(mediaFile) {
+                    //var index = $scope.client.AvailableMediaFiles.indexOf(mediaFile);
+                    $scope.client.SelectedMediaFiles.push(mediaFile);
+                };
 
-                        $('#tab1').hide();
-                        $('#tab2').show();
-                        step = 2;
-                    }
-                });
-            } else if (step == 2) {
-                if (confirm('Tem certeza que deseja enviar esta seleção de fotos? Esta ação não poderá ser desfeita.')) {
-                    $('.loading').show();
-
-                    var $items = $('.selected-items img');
-
-                    if ($items.length <= g_client.PhotoCount || confirm('ATENÇÃO: Você contratou um álbum com ' + g_client.PhotoCount + ' fotos, porém está tentando enviar ' + $items.length + ' fotos.\n\nIsto acarretará em CUSTOS EXTRAS. Deseja continuar?')) {
-                        var items = [];
-                        for (var i = 0; i < $items.length; i++) {
-                            items.push($($items[i]).data('mediaFile'));
-                        }
-
-                        data = {
-                            hash: $('#Hash').val(),
-                            selectedMediaFilesJson: JSON.stringify(items)
-                        };
-
-                        $.ajax("@Url.Action("Data")", {
-                            data: data,
-                            method: 'post',
-                            error: function () {
-                                alert('Não foi possível salvar as fotos');
-                                $('.loading').hide();
-                            },
-                            success: function (message) {
-                                alert(message.Text);
-                                $('.modal').modal('hide');
-                            }
-                        });
-                    }
-                }
+                $scope.thumbUrl = function (mediaFile) {
+                    return MediaFileManagerModule.thumbImgUrl(mediaFile, thumbUrl, 240);
+                };
             }
-        });
-    });
+        ]);*@
 </script>

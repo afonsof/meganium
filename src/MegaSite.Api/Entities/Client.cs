@@ -54,6 +54,8 @@ namespace MegaSite.Api.Entities
             }
         }
 
+        public string DataJson { get; set; }
+
         #endregion
     }
 }

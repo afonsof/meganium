@@ -122,7 +122,7 @@ namespace MegaSite.Api
             Init();
         }
 
-        private static IUnitOfWork CreateUnitOfWork()
+        private static IRepositories CreateUnitOfWork()
         {
             return new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         }

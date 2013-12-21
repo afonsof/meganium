@@ -5,7 +5,7 @@ namespace MegaSite.Api
 {
     public abstract class DataFactory
     {
-        public IUnitOfWork CreateInstance()
+        public IRepositories CreateInstance()
         {
             return new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         }
