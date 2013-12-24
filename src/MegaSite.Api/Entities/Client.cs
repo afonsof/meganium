@@ -15,7 +15,7 @@ namespace MegaSite.Api.Entities
         public virtual bool Enabled { get; set; }
         public virtual DateTime CreatedAt { get; set; }
         /*public virtual string UserName { get; set; }*/
-        public virtual string Hash { get; set; }
+        public virtual string Code { get; set; }
 
         [Length(1024)]
         public virtual string Memo { get; set; }

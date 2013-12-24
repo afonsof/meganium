@@ -83,7 +83,7 @@
                         <div class="tab1" data-ng-show="isTab1Visible">
                             <h3 class="block">Digite o código recebido para continuar</h3>
                             <div class="editor-field">
-                                <input class="hash" id="Hash" name="Hash" type="text" data-ng-model="hash" />
+                                <input class="code" id="Code" name="Code" type="text" data-ng-model="code" />
                             </div>
                         </div>
                         <div style="display: none" class="tab2" data-ng-show="isTab2Visible">
@@ -181,9 +181,9 @@
         "$http", "$q",
         function ($http, $q) {
 
-            this.getData = function (hash) {
+            this.getData = function (code) {
                 var dataDeferred = $q.defer();
-                $http.get('@Url.Action("Data")', { params: { hash: hash } }).then(
+                $http.get('@Url.Action("Data")', { params: { code: code } }).then(
                     function (client) {
                         dataDeferred.resolve(client);
                     },
@@ -193,7 +193,7 @@
                 return dataDeferred.promise;
             };
 
-            function getPost(hash) {
+            function getPost(code) {
             }
         }
     ]);
@@ -202,14 +202,14 @@
         app.controller("PhotoSelectorController", [
             "$scope", "PhotoSelectorService",
             function ($scope, repository) {
-                $scope.hash = "";
+                $scope.code = "";
                 $scope.isTab1Visible = true;
                 $scope.isTab2Visible = false;
 
                 $scope.go1 = function () {
                     $scope.isTab1Visible = false;
                     $scope.isTab2Visible = true;
-                    repository.getData($scope.hash).then(function (response) {
+                    repository.getData($scope.code).then(function (response) {
                         $scope.client = response.data;
                         $scope.client.SelectedMediaFiles = [];
                     });

@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using MegaSite.Api;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Web;
 
 namespace MegaSite.Site.Areas.Admin.Controllers

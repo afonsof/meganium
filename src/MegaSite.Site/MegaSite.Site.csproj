@@ -159,6 +159,7 @@
     <Compile Include="Areas\Admin\Controllers\PostTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Extension\Controllers\PhotoSelectorController.cs" />
+    <Compile Include="Areas\Extension\Controllers\RsvpController.cs" />
     <Compile Include="Areas\Extension\ExtensionAreaRegistration.cs" />
     <Compile Include="Areas\Site\Controllers\HomeController.cs" />
     <Compile Include="Areas\Site\Controllers\RssController.cs" />
@@ -178,7 +179,7 @@
     <Content Include="Content\admin\css\mediafilemanager.min.css" />
     <Content Include="Content\admin\images\buttons.css" />
     <Content Include="Content\admin\images\docs.css" />
-    <Content Include="Content\admin\images\favicon.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Content\admin\images\logo.png" />
     <Content Include="Content\admin\js\app.js" />
     <Content Include="Content\admin\js\app.min.js" />
@@ -306,9 +307,6 @@
     <Content Include="Content\themes\kayzo\images\bg.gif" />
     <Content Include="Content\themes\kayzo\images\bg.jpg" />
     <Content Include="Content\themes\kayzo\images\black.png" />
-    <Content Include="Content\themes\kayzo\images\blog1.jpg" />
-    <Content Include="Content\themes\kayzo\images\blog2.jpg" />
-    <Content Include="Content\themes\kayzo\images\blog3.jpg" />
     <Content Include="Content\themes\kayzo\images\bubble-bg.png" />
     <Content Include="Content\themes\kayzo\images\bullet.gif" />
     <Content Include="Content\themes\kayzo\images\buttonone.gif" />
@@ -380,7 +378,6 @@
     <Content Include="Content\themes\kayzo\images\sun.png" />
     <Content Include="Content\themes\kayzo\images\tab-sep.gif" />
     <Content Include="Content\themes\kayzo\images\volume-bg.gif" />
-    <Content Include="Content\themes\kayzo\images\_notes\dwsync.xml" />
     <Content Include="Content\themes\kayzo\js\animatedcollapse.js" />
     <Content Include="Content\themes\kayzo\js\circle.js" />
     <Content Include="Content\themes\kayzo\js\ddsmoothmenu.js" />

@@ -92,7 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Client.cs" />
-    <Compile Include="IManagers.cs" />
+    <Compile Include="Entities\ClientSubItem.cs" />
+    <Compile Include="Managers\ClientSubItemManager.cs" />
+    <Compile Include="Managers\IManagers.cs" />
     <Compile Include="Managers\ClientManager.cs" />
     <Compile Include="Managers\LicenseManager.cs" />
     <Compile Include="Managers\MediaFileManager.cs" />
@@ -137,7 +139,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\License.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="IRepositories.cs" />
+    <Compile Include="Repositories\IRepositories.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\PostType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

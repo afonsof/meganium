@@ -5,6 +5,7 @@ using Dongle.System;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.Plugins;
+using MegaSite.Api.Repositories;
 using MegaSite.Api.Resources;
 using MegaSite.Api.ViewModels;
 

@@ -67,41 +67,50 @@ namespace MegaSite.Api
             get { return _postRepositoryReader ?? (_postRepositoryReader = new PostRepository(this)); }
         }
 
-        private IRepository<PostType> _postTypeRepositoryReader;
+        private IRepository<PostType> _postTypeRepository;
         public IRepository<PostType> PostTypeRepository
         {
             get
             {
-                return _postTypeRepositoryReader ??
-                       (_postTypeRepositoryReader = new Repository<PostType>(this));
+                return _postTypeRepository ??
+                       (_postTypeRepository = new Repository<PostType>(this));
             }
         }
 
-        private IRepository<Category> _categoryRepositoryReader;
+        private IRepository<Category> _categoryRepository;
         public IRepository<Category> CategoryRepository
         {
             get
             {
-                return _categoryRepositoryReader ??
-                       (_categoryRepositoryReader = new Repository<Category>(this));
+                return _categoryRepository ??
+                       (_categoryRepository = new Repository<Category>(this));
             }
         }
 
-        private IRepository<License> _licenseRepositoryReader;
+        private IRepository<License> _licenseRepository;
         public IRepository<License> LicenseRepository
         {
             get
             {
-                return _licenseRepositoryReader ?? (_licenseRepositoryReader = new Repository<License>(this));
+                return _licenseRepository ?? (_licenseRepository = new Repository<License>(this));
             }
         }
 
-        private IRepository<Client> _clientRepositoryReader;
+        private IRepository<Client> _clientRepository;
         public IRepository<Client> ClientRepository
         {
             get
             {
-                return _clientRepositoryReader ?? (_clientRepositoryReader = new Repository<Client>(this));
+                return _clientRepository ?? (_clientRepository = new Repository<Client>(this));
+            }
+        }
+
+        private IRepository<ClientSubItem> _clientSubItemRepository;
+        public IRepository<ClientSubItem> ClientSubItemRepository
+        {
+            get
+            {
+                return _clientSubItemRepository ?? (_clientSubItemRepository = new Repository<ClientSubItem>(this));
             }
         }
 
@@ -150,6 +159,12 @@ namespace MegaSite.Api
         public ClientManager ClientManager
         {
             get { return _clientManager ?? (_clientManager = new ClientManager(this)); }
+        }
+
+        private ClientSubItemManager _clientSubItemManager;
+        public ClientSubItemManager ClientSubItemManager
+        {
+            get { return _clientSubItemManager ?? (_clientSubItemManager = new ClientSubItemManager(this)); }
         }
 
         public MediaFileManager MediaFileManager

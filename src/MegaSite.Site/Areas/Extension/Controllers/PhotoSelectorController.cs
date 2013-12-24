@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Dongle.Reflection;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.Tools;
 using MegaSite.Api.ViewModels;
@@ -40,7 +41,7 @@ namespace MegaSite.Site.Areas.Extension.Controllers
             return Json(new
             {
                 client.FullName,
-                client.Hash,
+                Hash = client.Code,
                 client.AvailableMediaFiles,
                 client.PhotoCount
             }, JsonRequestBehavior.AllowGet);

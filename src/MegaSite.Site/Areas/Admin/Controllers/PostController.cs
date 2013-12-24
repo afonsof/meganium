@@ -5,6 +5,7 @@ using Dongle.Reflection;
 using Dongle.Serialization;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;

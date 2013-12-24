@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Linq;
 using Dongle.Serialization;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Repositories;
 
 namespace MegaSite.Api
 {

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using DevTrends.MvcDonutCaching;
 using Dongle.System;
 using MegaSite.Api;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Trash;
 using MegaSite.Api.Web;
 using MegaSite.Api.Resources;

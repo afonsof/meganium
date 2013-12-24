@@ -4,6 +4,7 @@ using DevTrends.MvcDonutCaching;
 using Dongle.System;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Tools;
 using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;

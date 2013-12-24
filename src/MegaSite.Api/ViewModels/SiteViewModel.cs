@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Plugins;
 
 namespace MegaSite.Api.ViewModels

@@ -4,6 +4,7 @@ using System.IO;
 using System.Web.Mvc;
 using Dongle.Serialization;
 using MegaSite.Api;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;

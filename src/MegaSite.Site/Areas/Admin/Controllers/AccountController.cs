@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
 using MegaSite.Api;
+using MegaSite.Api.Managers;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
 using MegaSite.Api.Resources;

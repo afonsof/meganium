@@ -4,6 +4,7 @@ using System.Linq;
 using Dongle.Reflection;
 using Dongle.Serialization;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Plugins;
 
 namespace MegaSite.Api.Tools

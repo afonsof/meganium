@@ -9,6 +9,8 @@ using Dongle.System.IO;
 using Ionic.Zip;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
+using MegaSite.Api.Repositories;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;

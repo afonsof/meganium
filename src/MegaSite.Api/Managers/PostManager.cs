@@ -6,6 +6,7 @@ using System.Linq;
 using Dongle.Serialization;
 using Dongle.System;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Repositories;
 using MySql.Data.MySqlClient;
 using MegaSite.Api.Trash;
 

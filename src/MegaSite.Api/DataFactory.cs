@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using MegaSite.Api.Repositories;
 
 namespace MegaSite.Api
 {

@@ -4,6 +4,7 @@ using System.Text;
 using Dongle.Algorithms;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
+using MegaSite.Api.Repositories;
 using MegaSite.Api.Resources;
 using MegaSite.Api.ViewModels;
 
@@ -61,7 +62,7 @@ namespace MegaSite.Api.Managers
                 return new Message(Resource.CantSaveBecauseAItemWithSameEmailAlreadyExists, MessageType.Error);
             }
 
-            client.Hash = HumanReadableHash.Compute(new Random().Next().ToString(), Encoding.ASCII);
+            client.Code = HumanReadableHash.Compute(new Random().Next().ToString(), Encoding.ASCII);
             client.CreatedAt = DateTime.Now;
             _repos.ClientRepository.Add(client);
             _repos.Commit();
@@ -75,7 +76,7 @@ namespace MegaSite.Api.Managers
             {
                 return null;
             }
-            return _repos.ClientRepository.AsQueryable().FirstOrDefault(p=>p.Hash.ToLowerInvariant() == hash.ToLowerInvariant());
+            return _repos.ClientRepository.AsQueryable().FirstOrDefault(p=>p.Code.ToLowerInvariant() == hash.ToLowerInvariant());
         }
 
         public Client GetHavingHashInObject(string hash)
