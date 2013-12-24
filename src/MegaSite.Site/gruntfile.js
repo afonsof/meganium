@@ -30,16 +30,6 @@
                 },
             },
         },
-        
-        /*concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: ['res/*.js', compiledTsFilePath],
-                dest: 'scripts/app.js'
-            }
-        },*/
 
         uglify: {
             my_target: {
@@ -48,32 +38,6 @@
                 }
             }
         },
-        
-        /*'closure-compiler': {
-            frontend: {
-                
-                js: 'scripts/app.js',
-                jsOutputFile: 'scripts/warsaw.pkg.js',
-                options: {
-                    compilation_level: 'ADVANCED_OPTIMIZATIONS',
-                    language_in: 'ECMASCRIPT5_STRICT'
-                }
-            }
-        },*/
-
-        /*copy: {
-            publish: {
-                files: [{ src: ['scripts/**'], dest: appPubDirPath }]
-            }
-        },*/
-
-        /*jshint: {
-            all: ['scripts/app.js', 'test/js/*.js', 'res/*.js']
-        },*/
-        
-        /*qunit: {
-            all: ['test/*.html']
-        }*/
     });
     
     loadTasks(grunt);
