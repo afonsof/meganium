@@ -32,7 +32,7 @@ namespace MegaSite.Api.Entities
             }
         }
 
-        [Length(1024)]
+        [Length(150000)]
         public virtual string MediaFilesJson { get; set; }
         public virtual List<MediaFile> MediaFiles
         {

@@ -1,0 +1,742 @@
+
+/**	BASE **/
+
+
+html {
+  background:#fff;
+}
+
+body {
+	margin: 0;
+	padding: 0;                      
+  font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	line-height: 26px;
+	color: #777580;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-text-size-adjust: 100%;	
+	cursor:default;
+
+  
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Titillium Web', sans-serif; 
+  font-weight: 500;
+	line-height: 1.25;
+ 	color: #fff;
+  margin:0px;
+	padding: 0px;
+  color: #3dadb8; 
+}
+
+h1 {
+  font-size:30px;
+  line-height:30px;
+}
+
+h2 {
+  font-size:22px;
+  line-height:30px;
+} 
+ 
+
+hr {
+  height:1px;
+  border:0px;
+  background:#E8E8E8;
+}
+
+p {
+  margin:15px 0;
+  font-size: 13px;
+	line-height: 26px;
+  overflow:hidden;
+}
+
+a {
+  color: #3dadb8;
+  text-decoration:none;
+}
+
+a:hover {
+  color: #3dadb8;
+  text-decoration:underline;
+}
+
+img {
+  display:block;
+}
+
+header{
+  width:100%;
+  position:relative;
+  height:540px; 
+  color:#000;    
+  display:block;
+    background:url(../img/header.jpg) center top no-repeat;
+background-attachment: fixed;
+}
+
+.container-full {
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  clear:both;
+}
+
+/** HELPER CLASSES FOR COLORS **/
+.blue {
+  color: #3dadb8;
+  line-height:65px;
+  font-size:16px;
+  font-weight:400;
+}
+
+.dark {
+  background: #797880;
+}
+
+/** POSITION **/
+.center {
+  text-align:center;
+}
+
+.fixed {
+  position:fixed;
+}
+.none {
+  display:none;
+}
+
+
+/**  LIST **/
+
+.list {
+  padding:0px;
+  margin:15px 0px;
+  list-style:none;
+} 
+
+.list li {
+  margin-bottom:15px;
+  line-height:24px;
+}
+ 
+
+.list a {
+  color:#83adff;
+  text-decoration:none;
+}
+
+.list a:hover {
+  color:#fff;
+  text-decoration:none;
+}
+
+
+/**  SLIDER  **/
+.slides {
+  width:100%;
+  border-bottom:0px #000 solid;
+}
+
+.slides-top {
+  overflow:hidden;
+  float:left;
+  
+  width: 300px; 
+  height:200px; 
+}
+
+/**  MAIN SLIDER SLIDER1 **/
+.slider1 img {
+display: block;
+  
+  
+}
+
+
+
+/** IMAGES **/
+.img-circle {
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+            border-radius: 50%;
+    width:100%;
+    display:block;
+    margin-left: auto;
+    margin-right:auto;
+    height:auto;
+}
+
+/** FIXED SIZE SMALL IMAGE **/
+.img-210 {
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+  width:210px;
+  height:210px;
+  padding:0px;
+  -webkit-border-radius: 210px;
+     -moz-border-radius: 210px;
+          border-radius: 210px;
+  border: 0px #3DADB8 solid;
+  margin-bottom:15px;
+}
+ 
+
+
+/** MAIN IMAGE CLASSES **/
+.img-container {
+  position:relative;
+}
+
+.square {
+  background: #83adff url(../img/photo-icon-medium.png) center center no-repeat;
+  padding:0px;
+  margin:0px;
+  overflow:hidden;
+}
+
+.square:hover img {
+  opacity:0.5;
+  filter:alpha(opacity=30); /* For IE8 and earlier */
+}
+
+.square-all {
+  overflow:hidden;
+  background: url(../img/circle.png) center center no-repeat;
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+  max-width:370px;
+  max-height:370px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.square-all img {
+  opacity: .6;
+  max-width:370px;
+  max-height:370px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.square-all:hover {
+  background-color:#fff;
+  opacity:1;
+}
+
+.square-all:hover img { 
+  opacity:1;
+}
+
+/** ICONS OVER IMAGES **/
+.about-icon  {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  display:block;
+  background: url(../img/about-icon.png) center center no-repeat;
+  opacity:0.7;
+  cursor:pointer;
+}
+
+.location-icon  {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  display:block;
+  background: url(../img/location-icon.png) center center no-repeat;
+  opacity:0.7;
+}
+
+.gifts-icon  {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  display:block;
+    background: url(../img/gifts-icon.png) center center no-repeat;
+  opacity:0.7;
+}
+
+ .tableware-icon {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  display:block;
+  background: url(../img/group-icon.png) center center no-repeat;
+  opacity:0.7;
+}
+
+.comments-icon  {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  display:block;
+  background: url(../img/comments-icon.png) center center no-repeat;
+  opacity:0.7;
+}
+ 
+.about-icon:hover, .location-icon:hover, .gifts-icon:hover, .tableware-icon:hover, .comments-icon:hover{
+  opacity:.3; 
+}
+
+/** TOP CIRCLE IMAGE **/
+
+.square-all-top {
+  margin:0px auto;
+  overflow:hidden;
+  max-width:370px;
+  max-height:370px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.square-all-top .img-circle {
+    width:100%;
+    height:auto;   
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+            border-radius: 50%;
+    opacity:.5;
+    max-width:370px;
+    height:370px;
+    background-color: rgba(255, 103, 154, 0.8)
+}
+
+/** BOTTOM CIRCLE IMAGE **/
+.square-all-bottom {
+  margin:0px auto;
+  overflow:hidden;
+  max-width:370px;
+  max-height:370px;
+  margin-top:1%;
+}
+
+.square-all-bottom img {
+  width:100%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  max-width:370px;
+  max-height:370px;
+}
+
+/** MAIN TOP CIRCLE **/
+.circle-top {
+  margin: 0px auto;
+  clear: both;
+  border:0px solid;
+  text-align:center;    
+}
+
+
+.circle-top h1{
+  color: #ffffff;
+  top:55%;
+  font-weight:500;
+  clear: both;
+  overflow:hidden;
+  position:absolute;
+  text-align:center;
+  border:0px solid;
+  width:100%;
+  line-height:120%;
+  padding:0px;
+  margin:0px;
+}
+
+.circle-top h2{
+  color: #ffffff;
+  top:30%;
+  font-weight:200;
+  clear: both;
+  overflow:hidden;
+  position:absolute;
+  text-align:center;
+  border:0px solid;
+  width:100%;
+  font-style:italic;
+  line-height:150%;
+  font-family: 'Stalemate', sans-serif;
+  padding:0px;
+  margin:0px;
+}
+
+/** MAIN BOTTOM CIRCLE **/
+.circle-bottom {
+  width:100%;
+  clear: both;
+  border:0px solid;
+  text-align:center;    
+}
+
+.circle-bottom h1{
+  color: #ffffff;
+  top:26%;
+  font-weight:200;
+  clear: both;
+  overflow:hidden;
+  position:absolute;
+  width:100%;
+  font-style:italic;
+  line-height:150%;
+  font-family: 'Stalemate', sans-serif;
+  margin-left:-12px;
+}
+
+.circle-bottom h2{
+  color: #ffffff;
+  top:52%;
+  font-weight:200;
+  clear: both;
+  overflow:hidden;
+  position:absolute;
+  width:100%;
+  line-height:130%;
+}
+
+/**  NAVIGATION  **/
+
+/** mobile menu **/
+.select-menu {
+  display: none; 
+}
+
+#nav {
+ 	background: transparent;
+	width: 100%;
+	position: relative;
+	z-index: 1000;
+	height: 106px;
+	text-align: center;
+	padding-bottom: 0%;
+  padding-top:20px;
+}
+
+ul.navi{
+  background: rgba(61, 70, 84,0.2);
+  width:800px;
+	list-style: none;
+	display: inline-block;		
+  margin: 0px auto; 
+  -webkit-border-radius: 60px;
+     -moz-border-radius: 60px;
+          border-radius: 60px;
+  height:73px;
+  border:0px solid;
+}
+
+ul.navi li {
+  padding-top: 2%;
+	float:left;
+  display:block;
+  margin-left:2.6%;
+  border:0px solid;
+  line-height:80px;
+}
+
+ul.navi li a{
+  color:white;
+  display:block;
+  -webkit-border-radius: 30px;
+     -moz-border-radius: 30px;
+          border-radius: 30px;
+  height:40px;
+  line-height:40px;
+  text-decoration:none;
+  background-color: rgba(255, 103, 154, 0.7);
+  padding: 0px 7px;
+}
+
+ul.navi li a:hover{
+  background-position: 0 -80px;   
+}
+
+ul.navi li a.active{
+  background-position: 0 -160px;
+}
+
+/** ICONS  CUSTOM **/
+[class^="icon-"],
+[class*=" icon-"] {
+  vertical-align:middle;
+}
+
+/** GALLERY - PORTFOLIO **/
+
+.portfolio-big{
+  overflow:hidden; 
+  width:50%;    
+  float: left;
+  display:block;
+} 
+
+.portfolio-big img {   
+  height:auto;
+}
+
+.portfolio{
+  overflow:hidden;
+  width:25%;
+  float: left;
+  display:block;
+}
+
+.portfolio img {   
+  height:auto;
+}
+
+.portfolio-small{
+  width:12.5%; 
+  overflow:hidden; 
+  float:left;
+  display:block;
+}
+
+.portfolio-small img {   
+  height:auto;
+} 
+
+/** COMMENTS SECTION **/
+
+.comment {
+  padding:0px;
+  margin:0px 0px;
+}
+
+.comment-title-top {
+  color: #3b354b;
+  padding:0px;
+  margin:15px 0px 0px 0px;
+  font-weight:500;
+  font-size:16px;
+}
+
+
+.comment-title {
+  font-size:16px;
+  margin:0px 0px;
+  padding:0px;
+  font-weight:500;
+  color: #3b354b;
+}
+
+
+/** CONTACT FORM **/
+#contact-form {
+  margin-top:23px ;
+  padding:0px;
+}
+
+#contact-form input[type="text"], input[type="email"]  {
+  font-size:13px;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+          background-color: #F7F7F7;
+          color:#8a8c8c;
+     -moz-box-shadow: 0px;
+  -webkit-box-shadow: 0px;
+          box-shadow: 0px;
+}
+
+.send-form-input{
+  border: none;
+  width:96%;
+  background-color: #F7F7F7;
+  height:30px !important;
+}
+
+.send-form textarea{
+  padding: 10px 0 0 10px;
+  width:98.5%;
+  height:220px !important;
+  font-size:13px;
+  background-color: #F7F7F7;
+  margin-top:5px;
+  border-radius:0px;
+  color:#8a8c8c;
+}
+
+input[type="submit"] {
+  width:178px;
+}
+
+.send-button {
+  background: url(../img/send-button.png) no-repeat top right;
+  width:178px;
+  height:65px;
+  border:0px;
+  cursor:pointer;
+  border:0px !important;
+  display:inline-block; 
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+  background-position: 0 0px;
+}
+
+.send-button:hover {
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+  background-position: 0 -65px;          
+}
+
+/**	Social Networks Icons **/
+
+.social-network { 
+	display:inline-block; 
+	background: url(../img/social-networks.png) no-repeat top left; 
+	width: 54px; 
+	height: 54px; 
+	background-position-y: 0; 
+	-webkit-transition:all 0.2s ease;
+	-moz-transition:all 0.2s ease;                                             
+	-o-transition:all 0.2s ease;
+	-ms-transition:all 0.2s ease;
+	transition:all 0.2s ease;
+	cursor:pointer;
+  border:0px !important;
+  margin-right:6px;
+}
+
+/* Normal */
+.social-network.aim{ background-position: 0 -54px}
+.social-network.amazon{ background-position: -54px -54px}
+.social-network.apple{ background-position: -108px -54px}
+.social-network.behance{ background-position: -162px -54px}
+.social-network.blogger{ background-position: -216px -54px}
+.social-network.delicious{ background-position: -270px -54px}
+.social-network.deviantart{ background-position: -324px -54px}
+.social-network.digg{ background-position: -378px -54px}
+.social-network.dribbble{ background-position: -432px -54px}
+.social-network.ebay{ background-position: -486px -54px}
+.social-network.evernote{ background-position: -540px -54px}
+.social-network.facebook{ background-position: -594px -54px}
+.social-network.feedburner{ background-position: -648px -54px}
+.social-network.flickr{ background-position: -702px -54px}
+.social-network.forrst{ background-position: -756px -54px}
+.social-network.foursquare{ background-position: -810px -54px}
+.social-network.github{ background-position: -864px -54px}
+.social-network.google{ background-position: -918px -54px}
+.social-network.gowalla{ background-position: -972px -54px}
+.social-network.icq{ background-position: -1026px -54px}
+.social-network.itunes{ background-position: -1080px -54px}
+.social-network.lastfm{ background-position: -1134px -54px}
+.social-network.linkedin{ background-position: -1188px -54px}
+.social-network.meetup{ background-position: -1242px -54px}
+.social-network.myspace{ background-position: -1296px -54px}
+.social-network.newsvine{ background-position: -1350px -54px}
+.social-network.openid{ background-position: -1404px -54px}
+.social-network.paypal{ background-position: -1458px -54px}
+.social-network.picasa{ background-position: -1512px -54px}
+.social-network.pinterest{ background-position: -1566px -54px}
+.social-network.posterous{ background-position: -1620px -54px}
+.social-network.reddit{ background-position: -1674px -54px}
+.social-network.rss{ background-position: -1728px -54px}
+.social-network.skype{ background-position: -1782px -54px}
+.social-network.slashdot{ background-position: -1836px -54px}
+.social-network.soundcloud{ background-position: -1890px -54px}
+.social-network.stumbleupon{ background-position: -1944px -54px}
+.social-network.technorati{ background-position: -1998px -54px}
+.social-network.tumblr{ background-position: -2052px -54px}
+.social-network.twitter{ background-position: -2106px -54px}
+.social-network.viddler{ background-position: -2160px -54px}
+.social-network.vimeo{ background-position: -2214px -54px}
+.social-network.virb{ background-position: -2268px -54px}
+.social-network.wordpress{ background-position: -2322px -54px}
+.social-network.xing{ background-position: -2376px -54px}
+.social-network.yahoo{ background-position: -2430px -54px}
+.social-network.yelp{ background-position: -2484px -54px}
+.social-network.youtube{ background-position: -2538px -54px}
+.social-network.zerply{ background-position: -2592px -54px}
+
+/* Mouseovers */
+.social-network.aim:hover,.active .social-network.aim{ background-position: 0 0px}
+.social-network.amazon:hover,.active .social-network.amazon{ background-position: -54px 0px}
+.social-network.apple:hover,.active .social-network.apple{ background-position: -108px 0px}
+.social-network.behance:hover,.active .social-network.behance{ background-position: -162px 0px}
+.social-network.blogger:hover,.active .social-network.blogger{ background-position: -216px 0px}
+.social-network.delicious:hover,.active .social-network.delicious{ background-position: -270px 0px}
+.social-network.deviantart:hover,.active .social-network.deviantart{ background-position: -324px 0px}
+.social-network.digg:hover,.active .social-network.digg{ background-position: -378px 0px}
+.social-network.dribbble:hover,.active .social-network.dribbble{ background-position: -432px 0px}
+.social-network.ebay:hover,.active .social-network.ebay{ background-position: -486px 0px}
+.social-network.evernote:hover,.active .social-network.evernote{ background-position: -540px 0px}
+.social-network.facebook:hover,.active .social-network.facebook{ background-position: -594px 0px}
+.social-network.feedburner:hover,.active .social-network.feedburner{ background-position: -648px 0px}
+.social-network.flickr:hover,.active .social-network.flickr{ background-position: -702px 0px}
+.social-network.forrst:hover,.active .social-network.forrst{ background-position: -756px 0px}
+.social-network.foursquare:hover,.active .social-network.foursquare{ background-position: -810px 0px}
+.social-network.github:hover,.active .social-network.github{ background-position: -864px 0px}
+.social-network.google:hover,.active .social-network.google{ background-position: -918px 0px}
+.social-network.gowalla:hover,.active .social-network.gowalla{ background-position: -972px 0px}
+.social-network.icq:hover,.active .social-network.icq{ background-position: -1026px 0px}
+.social-network.itunes:hover,.active .social-network.itunes{ background-position: -1080px 0px}
+.social-network.lastfm:hover,.active .social-network.lastfm{ background-position: -1134px 0px}
+.social-network.linkedin:hover,.active .social-network.linkedin{ background-position: -1188px 0px}
+.social-network.meetup:hover,.active .social-network.meetup{ background-position: -1242px 0px}
+.social-network.myspace:hover,.active .social-network.myspace{ background-position: -1296px 0px}
+.social-network.newsvine:hover,.active .social-network.newsvine{ background-position: -1350px 0px}
+.social-network.openid:hover,.active .social-network.openid{ background-position: -1404px 0px}
+.social-network.paypal:hover,.active .social-network.paypal{ background-position: -1458px 0px}
+.social-network.picasa:hover,.active .social-network.picasa{ background-position: -1512px 0px}
+.social-network.pinterest:hover,.active .social-network.pinterest{ background-position: -1566px 0px}
+.social-network.posterous:hover,.active .social-network.posterous{ background-position: -1620px 0px}
+.social-network.reddit:hover,.active .social-network.reddit{ background-position: -1674px 0px}
+.social-network.rss:hover,.active .social-network.rss{ background-position: -1728px 0px}
+.social-network.skype:hover,.active .social-network.skype{ background-position: -1782px 0px}
+.social-network.slashdot:hover,.active .social-network.slashdot{ background-position: -1836px 0px}
+.social-network.soundcloud:hover,.active .social-network.soundcloud{ background-position: -1890px 0px}
+.social-network.stumbleupon:hover,.active .social-network.stumbleupon{ background-position: -1944px 0px}
+.social-network.technorati:hover,.active .social-network.technorati{ background-position: -1998px 0px}
+.social-network.tumblr:hover,.active .social-network.tumblr{ background-position: -2052px 0px}
+.social-network.twitter:hover,.active .social-network.twitter{ background-position: -2106px 0px}
+.social-network.viddler:hover,.active .social-network.viddler{ background-position: -2160px 0px}
+.social-network.vimeo:hover,.active .social-network.vimeo{ background-position: -2214px 0px}
+.social-network.virb:hover,.active .social-network.virb{ background-position: -2268px 0px}
+.social-network.wordpress:hover,.active .social-network.wordpress{ background-position: -2322px 0px}
+.social-network.xing:hover,.active .social-network.xing{ background-position: -2376px 0px}
+.social-network.yahoo:hover,.active .social-network.yahoo{ background-position: -2430px 0px}
+.social-network.yelp:hover,.active .social-network.yelp{ background-position: -2484px 0px}
+.social-network.youtube:hover,.active .social-network.youtube{ background-position: -2538px 0px}
+.social-network.zerply:hover,.active .social-network.zerply{ background-position: -2592px 0px}
+
+/**  SPACERS  **/
+.spacer35 {
+  height:20px;
+  clear:both;
+}
+
+.spacer55 {
+  height:55px;
+  clear:both;
+}
+
+.spacer60 {
+  height:60px;
+  clear:both;
+}
+
+.spacer160 {
+  height:160px;
+  clear:both;
+}

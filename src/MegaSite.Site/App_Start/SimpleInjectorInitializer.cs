@@ -1,19 +1,18 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using MegaSite.Api;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Plugins;
 using MegaSite.Plugins;
+using MegaSite.Site;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 
-[assembly: WebActivator.PostApplicationStartMethod(typeof(MegaSite.Site.App_Start.SimpleInjectorInitializer), "Initialize")]
+[assembly: WebActivator.PostApplicationStartMethod(typeof(SimpleInjectorInitializer), "Initialize")]
 
-namespace MegaSite.Site.App_Start
+namespace MegaSite.Site
 {
     public static class SimpleInjectorInitializer
     {

@@ -21,8 +21,8 @@ namespace MegaSite.Api.ViewModels
         [Display(Name="Enabled", ResourceType = typeof(Resource))]
         public bool Enabled { get; set; }
 
-        [Display(Name = "Hash", ResourceType = typeof(Resource))]
-        public string Hash { get; set; }
+        [Display(Name = "Code", ResourceType = typeof(Resource))]
+        public string Code { get; set; }
 
         public string Memo { get; set; }
 

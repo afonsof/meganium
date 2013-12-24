@@ -78,14 +78,5 @@ namespace MegaSite.Api.Managers
             }
             return _repos.ClientRepository.AsQueryable().FirstOrDefault(p=>p.Code.ToLowerInvariant() == hash.ToLowerInvariant());
         }
-
-        public Client GetHavingHashInObject(string hash)
-        {
-            if (string.IsNullOrEmpty(hash))
-            {
-                return null;
-            }
-            return _repos.ClientRepository.AsQueryable().FirstOrDefault(c => c.DataJson.ToLowerInvariant().Contains(hash.ToLowerInvariant()));
-        }
     }
 }

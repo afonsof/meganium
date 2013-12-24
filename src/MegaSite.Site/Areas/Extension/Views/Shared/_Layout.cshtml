@@ -31,7 +31,16 @@
             background-color: @Options.Instance.Get("Color2");
             border-color: @Options.Instance.Get("Color1");
         }
+
+        .loading-overlay:after {
+            border-color: @Options.Instance.Get("Color2")
+        }
+
+        .loading-overlay div {
+            color: @Options.Instance.Get("Color1")
+        }
     </style>
+    <link href="~/Content/admin/css/loading.css" rel="stylesheet" />
 
     <script src="~/Content/admin/js/libs/jquery/jquery-1.9.1.min.js"></script>
     <script src="~/Content/admin/js/libs/bootstrap3/js/bootstrap.min.js"></script>
@@ -44,7 +53,7 @@
             });
         }
     </script>
-    
+
     @RenderSection("Head")
 
 </head>

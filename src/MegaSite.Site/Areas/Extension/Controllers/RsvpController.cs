@@ -1,26 +1,11 @@
-﻿using System;
+﻿using System.Net;
 using System.Web.Mvc;
-using MegaSite.Api;
 using MegaSite.Api.Managers;
-using Newtonsoft.Json.Linq;
+using MegaSite.Api.Trash;
+using MegaSite.Site.Areas.Extension.Models;
 
 namespace MegaSite.Site.Areas.Extension.Controllers
 {
-    public class RsvpOptions
-    {
-        public DateTime OpenDate { get; set; }
-        public DateTime Deadline { get; set; }
-        public string GreetingMessage { get; set; }
-        public DateTime YesVerbiage { get; set; }
-        public DateTime NoVerbiage { get; set; }
-        public DateTime ThankYouMessage { get; set; }
-    }
-
-    public class RsvpGuest
-    {
-        
-    }
-
     public class RsvpController : Controller
     {
         private IManagers _managers { get; set; }
@@ -35,14 +20,42 @@ namespace MegaSite.Site.Areas.Extension.Controllers
             return View();
         }
 
-        public ActionResult Data(string hash)
+        public ActionResult GetInvitation(string code)
         {
-            var client = _managers.ClientManager.GetHavingHashInObject(hash);
-
-            var jobject = JObject.Parse(client.DataJson);
-
-            return View();
+            var guest = _managers.ClientSubItemManager.GetByCode(code);
+            if (guest == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Este convidado não existe");
+            }
+            if (guest.GetData<RsvpData>().Confirm)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Este convidado já confirmou a presença");
+            }
+            return Content(guest.DataJson, "application/json");
         }
 
+        [HttpPost]
+        public ActionResult AcceptInvitation(string code, string name)
+        {
+            var guest = _managers.ClientSubItemManager.GetByCode(code);
+            if (guest == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Este convidado não existe");
+            }
+            var rsvpData = guest.GetData<RsvpData>();
+            if (string.IsNullOrEmpty(rsvpData.Name))
+            {
+                if (string.IsNullOrEmpty(name))
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "É necessário digitar um nome para este convidado");
+                }
+                rsvpData.Name = name;
+            }
+            rsvpData.Confirm = true;
+            guest.SetData(rsvpData);
+            _managers.ClientSubItemManager.Change(guest);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK, "Presença confirmada com sucesso!");
+        }
     }
 }

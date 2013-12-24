@@ -93,6 +93,8 @@
   <ItemGroup>
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\ClientSubItem.cs" />
+    <Compile Include="Trash\DataJsonExtension.cs" />
+    <Compile Include="Entities\IHaveDataJson.cs" />
     <Compile Include="Managers\ClientSubItemManager.cs" />
     <Compile Include="Managers\IManagers.cs" />
     <Compile Include="Managers\ClientManager.cs" />
@@ -120,7 +122,6 @@
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="ViewModels\AccountLoginVm.cs" />
     <Compile Include="Entities\Category.cs" />
-    <Compile Include="DataFactory.cs" />
     <Compile Include="Entities\Field.cs" />
     <Compile Include="Entities\FieldType.cs" />
     <Compile Include="Entities\IHaveId.cs" />

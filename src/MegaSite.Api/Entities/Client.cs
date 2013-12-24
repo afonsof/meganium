@@ -24,7 +24,7 @@ namespace MegaSite.Api.Entities
 
         public virtual int PhotoCount { get; set; }
 
-        [Length(1024)]
+        [Length(150000)]
         public virtual string AvailableMediaFilesJson { get; set; }
         public virtual List<MediaFile> AvailableMediaFiles
         {
@@ -39,7 +39,7 @@ namespace MegaSite.Api.Entities
             }
         }
 
-        [Length(1024)]
+        [Length(150000)]
         public virtual string SelectedMediaFilesJson { get; set; }
         public virtual IEnumerable<MediaFile> SelectedMediaFiles
         {
@@ -58,5 +58,7 @@ namespace MegaSite.Api.Entities
         public virtual string DataJson { get; set; }
 
         #endregion
+
+        public virtual IEnumerable<ClientSubItem> SubItems { get; set; }
     }
 }
