@@ -21,7 +21,7 @@ namespace MegaSite.Plugins.ContactForm
                     body += name + ": " + context.Request.Form[key] + "\n";
                 }
 
-                Mailer.Send(context.Request["Name"], context.Request["Email"], "Contato do Site " + Options.Instance.Get("SiteTitle"), body);
+                Mailer.SendToAdmin(context.Request["Name"], context.Request["Email"], "Contato do Site " + Options.Instance.Get("SiteTitle"), body);
                 context.Response.Redirect("~/");
             }
             return null;

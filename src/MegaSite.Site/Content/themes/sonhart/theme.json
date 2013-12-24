@@ -66,45 +66,6 @@
 			]
 		},
 		{
-			SingularName: "Cliente",
-			PluralName: "Clientes",
-			IconId : "user",
-			BehaviorStr: "AllowPhotos, AllowHash",
-			Fields:
-			[
-				{"Type":3,"Name":"Dados do Cliente"},
-				{"Type":1,"Name":"Serviços"},
-				{"Type":1,"Name":"Observações"},
-				{"Type":6,"Name":"Limite de Fotos"}
-			]
-		},
-		{
-			SingularName: "Postagem",
-			PluralName: "Blog",
-			IconId : "bullhorn",
-
-			BehaviorStr: "AllowDescription, AllowComments",
-
-			Posts:
-			[
-				{
-					Title: 'Geraldo',
-					Content: "Quero Parabenizar a todos da equipe por todos os Eventos realizados, com muito profissionalismo e bom gosto... Parabéns continuem assim...",
-					Published: true
-				},
-				{
-					Title: 'Afonso França',
-					Content: "Essa temporada de formaturas foi espetacular! Nos sentimos orgulhosos de fazer parte da realização dos sonhos de tanta gente. Os eventos foram PERFEITOS! Parabéns a todos!",
-					Published: true
-				},
-				{
-					Title: 'Juliana Barros',
-					Content: "Parabéns pelo site novo, ficou muito bom, gostei muito do design e das imagens utilizadas, valew!",
-					Published: true
-				}
-			]
-		},
-		{
 			SingularName: "Página",
 			PluralName: "Páginas",
 			IconId : "book",

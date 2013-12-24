@@ -27,7 +27,7 @@ namespace MegaSite.Api.ViewModels
         public string Memo { get; set; }
 
         public string AvailableMediaFilesJson { get; set; }
-        public List<MediaFile> SelectedMediaFiles { get; set; }
+        public IEnumerable<MediaFile> SelectedMediaFiles { get; set; }
 
         [Display(Name = "PhotoCount", ResourceType = typeof(Resource))]
         public int PhotoCount { get; set; }

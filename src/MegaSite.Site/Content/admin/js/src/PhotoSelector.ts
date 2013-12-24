@@ -23,6 +23,8 @@ class PhotoSelector {
     private tab2: JQuery;
     private hash: JQuery;
 
+    private currentPhoto: JQuery;
+
     constructor(private dataUrl: string, private thumbUrl: string, private element: JQuery, private resource: any) {
         this.availableTitle = element.find('.available-title');
         this.selectedTitle = element.find('.selected-title');
@@ -36,6 +38,10 @@ class PhotoSelector {
         this.hash = element.find('.hash');
     }
 
+    public selectCurrentPhoto() {
+        this.currentPhoto.trigger('click');
+    }
+
     refresh() {
         var availableLength = this.availableList.find('img').length;
         var selectedLength = this.selectedList.find('img').length;
@@ -45,27 +51,28 @@ class PhotoSelector {
         $('.modal-title').html(this.resource.PhotosOf + ' <strong>' + this.client.FullName + '</strong>');
     }
 
+    toggleImg(img) {
+        var $destList = $(img).closest('.available-items').length ? this.selectedList : this.availableList;
+        var $element = $(img).closest('div');
+        $element.fadeOut(300, () => {
+            $destList.append($element);
+            this.refresh();
+            $element.fadeIn(300);
+        });
+    }
+
     init() {
         var self = this;
         var data;
 
         this.availableList.on('click', 'img', function () {
-            var $element = $(this);
-            $element.fadeOut(300, () => {
-                self.selectedList.append($element);
-                self.refresh();
-                $element.fadeIn(300);
-            });
+            self.toggleImg(this);
         });
 
-        self.selectedList.on('click', 'img', function () {
-            var $element = $(this);
-            $element.fadeOut(300, () => {
-                self.availableList.append($element);
-                self.refresh();
-                $element.fadeIn(300);
-            });
+        this.selectedList.on('click', 'img', function () {
+            self.toggleImg(this);
         });
+
 
         self.okButton.on('click', () => {
             if (this.step == 1) {
@@ -90,10 +97,11 @@ class PhotoSelector {
                         this.client = client;
                         mediaFiles = client.AvailableMediaFiles;
                         for (i = 0; i < mediaFiles.length; i++) {
-                            var $img = $(MediaFileManagerModule.thumbHtml(mediaFiles[i], this.thumbUrl, 240));
                             var $div = $('<div />');
-                            //$div.append('<button>lupa</button>');
+                            var $img = $(MediaFileManagerModule.thumbHtml(mediaFiles[i], this.thumbUrl, 240));
+                            var $a = $('<a href="' + mediaFiles[i].Url + '" data-gallery><i class="icon-zoom-in"></i></a>');
                             $div.append($img);
+                            $div.append($a);
                             $div.data('mediaFile', mediaFiles[i]);
                             this.availableList.append($div);
                         }

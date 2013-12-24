@@ -41,7 +41,7 @@ namespace MegaSite.Api.Entities
 
         [Length(1024)]
         public virtual string SelectedMediaFilesJson { get; set; }
-        public virtual List<MediaFile> SelectedMediaFiles
+        public virtual IEnumerable<MediaFile> SelectedMediaFiles
         {
             get
             {
@@ -54,7 +54,8 @@ namespace MegaSite.Api.Entities
             }
         }
 
-        public string DataJson { get; set; }
+        [Length(1024)]
+        public virtual string DataJson { get; set; }
 
         #endregion
     }

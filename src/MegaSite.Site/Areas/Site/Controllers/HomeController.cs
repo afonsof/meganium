@@ -95,7 +95,7 @@ namespace MegaSite.Site.Areas.Site.Controllers
 
         public ActionResult Error()
         {
-            Mailer.Send("MegaSite", "Sistema@gmail.com", "Alerta de erro MegaSite", "Algum erro muito louco aconteceu!");
+            Mailer.SendToAdmin("Meganium Site Error", "error@meganium.com.br", "Alerta de erro Meganium", "Algum erro muito louco aconteceu!");
             ViewBag.Title = "Tratamento de erro";
             return View();
         }
