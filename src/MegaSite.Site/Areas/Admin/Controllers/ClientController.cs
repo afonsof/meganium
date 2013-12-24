@@ -30,6 +30,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(ClientCreateVm vm)
         {
             if (!ModelState.IsValid)
@@ -56,6 +57,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(ClientEditVm vm)
         {
             if (!ModelState.IsValid)
