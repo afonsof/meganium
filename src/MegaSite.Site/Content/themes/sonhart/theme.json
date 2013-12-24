@@ -25,7 +25,11 @@
 		ThemeAuthor: "Afonso França",
 		ThemeAuthorUri: "http://afonsof.com.br",
 		ThemeLicense: "Particular License",
-		ThemeLicenseUri: "none"
+		ThemeLicenseUri: "none",
+
+		SmtpServer: "smtp.gmail.com",
+		SmtpUserName: "naoresponda@megasiteapp.com.br",
+		SmtpPassword: "ms555511"
 	},
 
 	PostTypes:

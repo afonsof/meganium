@@ -6,6 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using DevTrends.MvcDonutCaching;
 using MegaSite.Api.Managers;
+using MegaSite.Api.Tools;
 using MegaSite.Api.Trash;
 using MegaSite.Site.App_Start;
 
@@ -38,6 +39,14 @@ namespace MegaSite.Site
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             SimpleInjectorInitializer.Initialize();
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var exc = Server.GetLastError();
+            Mailer.SendToAdmin("Meganium Site Error", "error@meganium.com.br", "Alerta de erro Meganium", exc.Message);
+            Server.Transfer("~/Site/Home/Error");
+            Server.ClearError();
         }
     }
 }

@@ -57,10 +57,9 @@ namespace MegaSite.Site.Areas.Extension.Controllers
 
             var body = "O cliente " + client.FullName + " finalizou a sua escolha de fotos\n";
             body += "Fotos:\n";
+            body = client.SelectedMediaFiles.Aggregate(body, (current, selectedMediaFile) => current + ("\n+ " + selectedMediaFile.Title));
 
-            body = client.SelectedMediaFiles.Aggregate(body, (current, selectedMediaFile) => current + ("+ " + selectedMediaFile.Title));
-
-            Mailer.Send(client.FullName, client.Email, "Escolha de Fotos", body);
+            Mailer.Send(client.FullName, client.Email, "Escolha de Fotos", body, Options.Instance.Get("PhotoSelectorEmailReporter"));
 
             //todo: tratar se não tiver cliente e erro de salvar
             return Json(new Message("Fotos enviadas com sucesso", MessageType.Success));

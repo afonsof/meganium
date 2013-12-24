@@ -4,7 +4,6 @@ using DevTrends.MvcDonutCaching;
 using Dongle.System;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
-using MegaSite.Api.Plugins;
 using MegaSite.Api.Tools;
 using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
@@ -95,8 +94,7 @@ namespace MegaSite.Site.Areas.Site.Controllers
 
         public ActionResult Error()
         {
-            Mailer.SendToAdmin("Meganium Site Error", "error@meganium.com.br", "Alerta de erro Meganium", "Algum erro muito louco aconteceu!");
-            ViewBag.Title = "Tratamento de erro";
+            ViewBag.Title = "Algo de errado aconteceu!";
             return View();
         }
 
