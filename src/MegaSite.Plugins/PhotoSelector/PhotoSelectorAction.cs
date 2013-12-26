@@ -17,6 +17,7 @@ namespace MegaSite.Plugins.PhotoSelector
 
                 if (post != null)
                 {
+                    // TODO: Remover strings
                     var photos = context.Request.Form["titles"];
 
                     var body = "Cliente: " + post.Title + "\n";
