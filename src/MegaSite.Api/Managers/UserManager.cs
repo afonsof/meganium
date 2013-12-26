@@ -11,9 +11,9 @@ namespace MegaSite.Api.Managers
 {
     public class UserManager
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IRepositories _uow;
 
-        public UserManager(IUnitOfWork uow)
+        public UserManager(IRepositories uow)
         {
             _uow = uow;
         }
@@ -57,7 +57,7 @@ namespace MegaSite.Api.Managers
             return _uow.UserRepository.AsQueryable().FirstOrDefault(u => u.Email == userNameOrEmail || u.UserName == userNameOrEmail);
         }
 
-        public bool Exists(string userNameOrEmail)
+        private bool Exists(string userNameOrEmail)
         {
             return _uow.UserRepository.AsQueryable().Any(u => u.Email == userNameOrEmail || u.UserName == userNameOrEmail);
         }

@@ -32,7 +32,7 @@ class FrameModal {
                 iframe.onload = function () {                    
                     overlay.style.display = 'none';
                     iframe.style.display = 'block';
-                    this.contentWindow.show(function () {
+                    this.contentWindow.show(()=> {
                         _this.removeElement(iframe);
                         _this.removeElement(overlay);
                     });

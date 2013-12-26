@@ -44,7 +44,7 @@ namespace MegaSite.Site
         protected void Application_Error(object sender, EventArgs e)
         {
             var exc = Server.GetLastError();
-            Mailer.Send("MegaSite", "Sistema@gmail.com", "Alerta de erro MegaSite", exc.Message);
+            Mailer.SendToAdmin("Meganium Site Error", "error@meganium.com.br", "Alerta de erro Meganium", exc.Message);
             Server.Transfer("~/Site/Home/Error");
             Server.ClearError();
         }

@@ -91,7 +91,7 @@ namespace MegaSite.SystemTests.Steps
                 TestToolkit.Uow.PostTypeRepository.Add(postType);
                 TestToolkit.Uow.Commit();
 
-                TestToolkit.Managers.ClientManager.GetOptions().Set("DefaultPostTypeId", postType.Id);
+                TestToolkit.Managers.LicenseManager.GetOptions().Set("DefaultPostTypeId", postType.Id);
             }
         }
 

@@ -32,13 +32,35 @@ module MediaFileManagerModule {
         type: MediaFileManagerType;
     }
 
-    interface IMediaFile {
+    export interface IMediaFile {
         FileName: string;
         ThumbUrl: string;
         Url: string;
     }
 
-    class MediaFileManager {
+    export function thumbImgUrl(mediaFile: IMediaFile, thumbUrl: string, thumbSize: number): string {
+        if (mediaFile == null) {
+            return "";
+        }
+        var url: string;
+        if (mediaFile.ThumbUrl != null) {
+            url = mediaFile.ThumbUrl;
+        }
+        else {
+            var u1 = (!mediaFile.Url) ? null : base64.encode(mediaFile.Url);
+            url = thumbUrl + '/' + mediaFile.FileName + '-' + thumbSize + 'x' + thumbSize + '-crop.jpg';
+            if (u1 != null) {
+                url += "?url=" + u1;
+            }
+        }
+        return url;
+    }
+
+    export function thumbHtml(mediaFile: IMediaFile, thumbUrl: string, thumbSize: number): string {
+        return '<img class="img-rounded" src="' + thumbImgUrl(mediaFile, thumbUrl, thumbSize) + '" />';
+    }
+
+    export class MediaFileManager {
         private _currentControl: JQuery;
         private _element: JQuery;
 
@@ -150,30 +172,12 @@ module MediaFileManagerModule {
         }
 
         private itemHtml(mediaFile: IMediaFile): JQuery {
-            var item = $('<div class="span2 item">' + this.thumbHtml(mediaFile) + '</div>');
+            var item = $('<div class="span2 item">' + thumbHtml(mediaFile, this._thumbUrl, this._thumbSize) + '</div>');
             if (this._type == MediaFileManagerType.Album) {
                 item.append('<button type="button" class="btn btn-danger">×</button>');
             }
             item.data('mediaFile', mediaFile);
             return item;
-        }
-
-        private thumbHtml(mediaFile: IMediaFile): string {
-            if (mediaFile == null) {
-                return "";
-            }
-            var url: string;
-            if (mediaFile.ThumbUrl != null) {
-                url = mediaFile.ThumbUrl;
-            }
-            else {
-                var u1 = (!mediaFile.Url) ? null : base64.encode(mediaFile.Url);
-                url = this._thumbUrl + '/' + mediaFile.FileName + '-' + this._thumbSize + 'x' + this._thumbSize + '-crop.jpg';
-                if (u1 != null) {
-                    url += "?url=" + u1;
-                }
-            }
-            return '<img class="img-rounded" src="' + url + '" />';
         }
 
         private galleryListHtml(data: Array<IMediaFile>): JQuery[] {
@@ -205,7 +209,7 @@ module MediaFileManagerModule {
                 if (mediaFile) {
                     this._currentControl.data('field').val(JSON.stringify(mediaFile));
                     this._currentControl.html("");
-                    this._currentControl.append(this.thumbHtml(mediaFile));
+                    this._currentControl.append(thumbHtml(mediaFile, this._thumbUrl, this._thumbSize));
                     this._currentControl.append($('<div class="btn btn-change call-modal">' + this._changeText + '...</div>'));
                     this._currentControl.append($('<div class="btn btn-remove btn-danger">' + this._removeText + '...</div>'));
                 }
@@ -278,16 +282,16 @@ module MediaFileManagerModule {
                 self._element.modal('show');
 
             }).on('click', '.btn-remove', function () {
-                $(this).parent().data('field').val('');
-                self._currentControl = control;
-                self.fillCurrentControl(null);
+                    $(this).parent().data('field').val('');
+                    self._currentControl = control;
+                    self.fillCurrentControl(null);
 
-            }).on('mouseover', function () {
-                $(this).find('.btn').show();
+                }).on('mouseover', function () {
+                    $(this).find('.btn').show();
 
-            }).on('mouseout', function () {
-                $(this).find('.btn').hide();
-            });
+                }).on('mouseout', function () {
+                    $(this).find('.btn').hide();
+                });
             control.insertAfter(field);
         }
     }

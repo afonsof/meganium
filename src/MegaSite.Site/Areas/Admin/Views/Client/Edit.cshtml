@@ -1,0 +1,115 @@
+﻿@using MegaSite.Api.Resources
+@using MegaSite.Api.Trash
+@model MegaSite.Api.ViewModels.ClientEditVm
+@{
+    ViewBag.Title = Resource.EditClient;
+    ViewBag.Icon = "thumbs-up";
+}
+@using (Html.BeginForm("Edit", "Client"))
+{
+    @Html.ValidationSummary(true) 
+    @Html.HiddenFor(model => model.Id)
+
+    <fieldset>
+
+        <div class="btn-toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index")" class="btn">@Resource.Back</a>
+        </div>
+
+        @*
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+        *@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email, new { disabled = "" })
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Hash)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Hash, new { disabled = "" })
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FullName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FullName, new { autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.FullName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhotoCount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhotoCount, new { autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.PhotoCount)
+        </div>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Observações</legend>
+        @Html.TextAreaFor(model => model.Memo, new { @class = "wysihtml5 m-wrap", rows = 12, style = "width:100%" })
+    </fieldset>
+
+    if (Model.SelectedMediaFiles.Any())
+    {
+    <fieldset>
+        <legend>Fotos Selecionadas</legend>
+        <div>
+            @{
+        var photos = new List<string>();
+
+        foreach (var mediaFile in Model.SelectedMediaFiles)
+        {
+                <div style="width: 105px; padding: 4px; float: left" class="img-rounded" title="@mediaFile.Title">@Url.Thumbnail(mediaFile, 240, 240, true)
+                </div>
+            photos.Add(mediaFile.Title);
+        }
+        var photosStr = photos.Aggregate("", (current, photo) => current + (photo + "\n"));
+            }
+        </div>
+    </fieldset>
+    <fieldset>
+        @Html.Label("Nomes dos arquivos")
+        @Html.TextArea("photos", photosStr, new { disabled = "", style = "width: 100%; height: 300px" })
+    </fieldset>
+
+    }
+    else
+    {
+    <fieldset>
+        <legend>Fotos Disponíveis</legend>
+        <div>
+            @Html.TextBoxFor(model => model.AvailableMediaFilesJson)
+        </div>
+    </fieldset>
+    <script>
+        $('#AvailableMediaFilesJson').mediaFileManager({
+            rootUrl: "@Url.Content("~")",
+            uploadUrl: "@Url.Action("Upload", "MediaFile")",
+            thumbUrl: "@Url.Content("~/Content/Uploads/Thumbs")",
+            selectText: 'Selecionar imagem',
+            removeText: 'Remover imagem',
+            uploadText: 'Fazer upload',
+            type: MediaFileManagerModule.MediaFileManagerType.Album
+        });
+    </script>
+    }
+    
+    <div class="btn-toolbar">
+        <button type="submit" class="btn btn-primary">@Resource.Save</button>
+        <a href="@Url.Action("Index")" class="btn">@Resource.Back</a>
+    </div>
+}

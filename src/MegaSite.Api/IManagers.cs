@@ -11,14 +11,7 @@ namespace MegaSite.Api
         FieldManager FieldManager { get; }
         UserManager UserManager { get; }
         MediaFileManager MediaFileManager { get; }
+        LicenseManager LicenseManager { get; }
         ClientManager ClientManager { get; }
-    }
-
-    public class ClientManager
-    {
-        public IOptions GetOptions()
-        {
-            return Options.Instance;
-        }
     }
 }

@@ -17,7 +17,7 @@ namespace MegaSite.Plugins.GoogleAnalyticsTracker
 
         public HtmlString OnFooter(IManagers managers)
         {
-            var tracker = managers.ClientManager.GetOptions().Get("GoogleAnalyticsTracker");
+            var tracker = managers.LicenseManager.GetOptions().Get("GoogleAnalyticsTracker");
 
             if (!string.IsNullOrEmpty(tracker))
             {

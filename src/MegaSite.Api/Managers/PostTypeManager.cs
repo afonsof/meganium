@@ -12,9 +12,9 @@ namespace MegaSite.Api.Managers
 {
     public class PostTypeManager
     {
-        private readonly IUnitOfWork _uow;
+        private readonly IRepositories _uow;
 
-        public PostTypeManager(IUnitOfWork uow)
+        public PostTypeManager(IRepositories uow)
         {
             _uow = uow;
         }

@@ -37,7 +37,7 @@ namespace MegaSite.Api
             {
                 using (var uow = CreateUnitOfWork())
                 {
-                    var client = uow.ClientRepository.AsQueryable().FirstOrDefault();
+                    var client = uow.LicenseRepository.AsQueryable().FirstOrDefault();
                     if (client != null)
                     {
                         _cachedOptions =
@@ -103,26 +103,26 @@ namespace MegaSite.Api
             {
                 _cachedOptions[name.ToLowerInvariant()] = value;
                 var optionsJson = JsonSimpleSerializer.SerializeToString(_cachedOptions);
-                var client = uow.ClientRepository.AsQueryable().FirstOrDefault();
+                var client = uow.LicenseRepository.AsQueryable().FirstOrDefault();
                 if (client != null)
                 {
                     client.OptionsJson = optionsJson;
-                    uow.ClientRepository.Edit(client);
+                    uow.LicenseRepository.Edit(client);
                 }
                 else
                 {
-                    client = new Client
+                    client = new License
                     {
                         OptionsJson = optionsJson
                     };
-                    uow.ClientRepository.Add(client);
+                    uow.LicenseRepository.Add(client);
                 }
                 uow.Commit();
             }
             Init();
         }
 
-        private static IUnitOfWork CreateUnitOfWork()
+        private static IRepositories CreateUnitOfWork()
         {
             return new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         }

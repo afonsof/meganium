@@ -160,6 +160,15 @@ namespace MegaSite.Api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administração.
+        /// </summary>
+        public static string Administration {
+            get {
+                return ResourceManager.GetString("Administration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Album.
         /// </summary>
         public static string Album {
@@ -385,6 +394,15 @@ namespace MegaSite.Api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administração de Clientes.
+        /// </summary>
+        public static string ClientAdmin {
+            get {
+                return ResourceManager.GetString("ClientAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Código.
         /// </summary>
         public static string Code {
@@ -444,6 +462,15 @@ namespace MegaSite.Api.Resources {
         public static string CreateCategory {
             get {
                 return ResourceManager.GetString("CreateCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Criar Cliente.
+        /// </summary>
+        public static string CreateClient {
+            get {
+                return ResourceManager.GetString("CreateClient", resourceCulture);
             }
         }
         
@@ -633,6 +660,15 @@ namespace MegaSite.Api.Resources {
         public static string EditCategory {
             get {
                 return ResourceManager.GetString("EditCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar Cliente.
+        /// </summary>
+        public static string EditClient {
+            get {
+                return ResourceManager.GetString("EditClient", resourceCulture);
             }
         }
         
@@ -930,6 +966,15 @@ namespace MegaSite.Api.Resources {
         public static string GoogleAnalyticsTracker {
             get {
                 return ResourceManager.GetString("GoogleAnalyticsTracker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Código.
+        /// </summary>
+        public static string Hash {
+            get {
+                return ResourceManager.GetString("Hash", resourceCulture);
             }
         }
         
@@ -1546,7 +1591,7 @@ namespace MegaSite.Api.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fotos.
+        ///   Looks up a localized string similar to Quantidade de Fotos.
         /// </summary>
         public static string PhotoCount {
             get {

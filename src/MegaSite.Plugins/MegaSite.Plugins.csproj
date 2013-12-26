@@ -62,7 +62,6 @@
     <Compile Include="FacebookPhotosImporter\FacebookPhotos.cs" />
     <Compile Include="GoogleAnalyticsTracker\GoogleAnalyticsTrackerAction.cs" />
     <Compile Include="ContactForm\ContactForm.cs" />
-    <Compile Include="PhotoSelector\PhotoSelectorAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VimeoVideosImporter\VimeoVideos.cs" />
     <Compile Include="WordpressPostsImporter\WordPressPosts.cs" />
