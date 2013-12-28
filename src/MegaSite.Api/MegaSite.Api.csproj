@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Tools\ImportHandler.cs" />
     <Compile Include="Tools\Mailer.cs" />
+    <Compile Include="Trash\InternalJsonSerializer.cs" />
     <Compile Include="Trash\SlugCreator.cs" />
     <Compile Include="Trash\UrlUtil.cs" />
     <Compile Include="Trash\HtmlExtensions.cs" />

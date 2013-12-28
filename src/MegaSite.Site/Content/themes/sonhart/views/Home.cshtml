@@ -36,7 +36,7 @@
             <div id="fullsize" class="clearfix pulldown-items" style="width: 3683px; margin-left: 0px;">
                 @foreach (var post in Model.Managers.PostManager.GetFeatured())
                 {
-                    var dataurl = HttpUtility.HtmlEncode(JsonSimpleSerializer.SerializeToString(new
+                    var dataurl = HttpUtility.HtmlEncode(InternalJsonSerializer.Serialize(new
                                                                                                     {
                                                                                                         type = "projectpage",
                                                                                                         title = post.Title,

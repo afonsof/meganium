@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dongle.Algorithms;
+using Dongle.Serialization;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.Repositories;
 using MegaSite.Api.Resources;
+using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 
 namespace MegaSite.Api.Managers
@@ -29,9 +32,8 @@ namespace MegaSite.Api.Managers
             var client = _repos.ClientRepository.GetById(vm.Id);
             client.FullName = vm.FullName;
             client.Enabled = vm.Enabled;
-            client.AvailableMediaFilesJson = vm.AvailableMediaFilesJson;
             client.Memo = vm.Memo;
-            client.PhotoCount = vm.PhotoCount;
+            client.DataJson = vm.DataJson;
             _repos.ClientRepository.Edit(client);
             _repos.Commit();
 

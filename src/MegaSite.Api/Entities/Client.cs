@@ -5,7 +5,7 @@ using NHibernate.Validator.Constraints;
 
 namespace MegaSite.Api.Entities
 {
-    public class Client : IHaveId
+    public class Client : IHaveId, IHaveDataJson
     {
         public virtual int Id { get; set; }
 
@@ -22,39 +22,7 @@ namespace MegaSite.Api.Entities
 
         #region PhotoSelector
 
-        public virtual int PhotoCount { get; set; }
-
         [Length(150000)]
-        public virtual string AvailableMediaFilesJson { get; set; }
-        public virtual List<MediaFile> AvailableMediaFiles
-        {
-            get
-            {
-                var value = JsonSimpleSerializer.UnserializeFromString<List<MediaFile>>(AvailableMediaFilesJson);
-                if (value == null)
-                {
-                    return new List<MediaFile>();
-                }
-                return value;
-            }
-        }
-
-        [Length(150000)]
-        public virtual string SelectedMediaFilesJson { get; set; }
-        public virtual IEnumerable<MediaFile> SelectedMediaFiles
-        {
-            get
-            {
-                var value = JsonSimpleSerializer.UnserializeFromString<List<MediaFile>>(SelectedMediaFilesJson);
-                if (value == null)
-                {
-                    return new List<MediaFile>();
-                }
-                return value;
-            }
-        }
-
-        [Length(1024)]
         public virtual string DataJson { get; set; }
 
         #endregion

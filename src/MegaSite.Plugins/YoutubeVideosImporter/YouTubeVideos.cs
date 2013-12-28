@@ -7,6 +7,7 @@ using Dongle.Serialization;
 using Google.YouTube;
 using MegaSite.Api;
 using MegaSite.Api.Plugins;
+using MegaSite.Api.Trash;
 
 namespace MegaSite.Plugins.YoutubeVideosImporter
 {
@@ -90,12 +91,12 @@ namespace MegaSite.Plugins.YoutubeVideosImporter
 
         private string CreateMediaFileJson(Video youTubeVideo)
         {
-            return JsonSimpleSerializer.SerializeToString(new MediaFile
+            return InternalJsonSerializer.Serialize(new MediaFile
             {
                 Title = youTubeVideo.Title,
                 Description = youTubeVideo.Description,
-                ExternalServiceId = youTubeVideo.VideoId,
-                Url = youTubeVideo
+                ExtId = youTubeVideo.VideoId,
+                ExtUrl = youTubeVideo
                     .Thumbnails
                     .OrderByDescending(t => t.Width)
                     .FirstOrDefault().Url

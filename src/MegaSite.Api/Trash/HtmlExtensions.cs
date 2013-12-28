@@ -25,7 +25,7 @@ namespace MegaSite.Api.Trash
                 return new HtmlString("");
             }
             string url;
-            switch (mediaFile.ExternalServiceName)
+            switch (mediaFile.ExtName)
             {
                 case "YoutubeVideos":
                     url = "http://www.youtube.com/embed/";
@@ -40,7 +40,7 @@ namespace MegaSite.Api.Trash
                 new HtmlString(
                     String.Format(
                         @"<iframe src=""{0}{1}"" width=""{2}"" height=""{3}"" frameborder=""0"" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>",
-                        url, mediaFile.ExternalServiceId, width, height));
+                        url, mediaFile.ExtId, width, height));
 
         }
 

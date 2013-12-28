@@ -47,7 +47,7 @@ namespace MegaSite.Api.Managers
             {
                 post.PostType = postType;
             }
-            post.FieldsValuesJson = JsonSimpleSerializer.SerializeToString(fieldValues);
+            post.FieldsValuesJson = InternalJsonSerializer.Serialize(fieldValues);
             post.Parent = parent;
 
             var slugCreator = new SlugCreator<Post>(_uow.PostRepository);
@@ -98,7 +98,7 @@ namespace MegaSite.Api.Managers
             }
 
             post.Parent = parent;
-            post.FieldsValuesJson = JsonSimpleSerializer.SerializeToString(fieldValues);
+            post.FieldsValuesJson = InternalJsonSerializer.Serialize(fieldValues);
 
             SaveCategoriesToPost(post, categoriesIds);
 

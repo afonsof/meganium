@@ -6,6 +6,7 @@ using Dongle.Serialization;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Plugins;
+using MegaSite.Api.Trash;
 
 namespace MegaSite.Api.Tools
 {
@@ -59,8 +60,8 @@ namespace MegaSite.Api.Tools
                 if (dbPost.FeaturedMediaFileJson != null)
                 {
                     var mf = dbPost.FeaturedMediaFile;
-                    mf.ExternalServiceName = externalServiceName;
-                    dbPost.FeaturedMediaFileJson = JsonSimpleSerializer.SerializeToString(mf);
+                    mf.ExtName = externalServiceName;
+                    dbPost.FeaturedMediaFileJson = InternalJsonSerializer.Serialize(mf);
                 }
                 if (dbPost.Id == 0)
                 {
@@ -84,10 +85,10 @@ namespace MegaSite.Api.Tools
                 if (dbPost != null && dbPost.MediaFiles != null)
                 {
                     //mescla com fotos locais
-                    var dbMediaFiles = dbPost.MediaFiles.Where(m => m.ExternalServiceId == null);
+                    var dbMediaFiles = dbPost.MediaFiles.Where(m => m.ExtId == null);
                     mediaFilesList.AddRange(dbMediaFiles);
                 }
-                post.MediaFilesJson = JsonSimpleSerializer.SerializeToString(mediaFilesList);
+                post.MediaFilesJson = InternalJsonSerializer.Serialize(mediaFilesList);
             }
         }
     }

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using MegaSite.Api.Entities;
 using MegaSite.Api.Resources;
 
 namespace MegaSite.Api.ViewModels
 {
-    public class ClientEditVm
+    public class ClientEditVm: IHaveDataJson
     {
         public int Id { get; set; }
 
@@ -31,5 +32,7 @@ namespace MegaSite.Api.ViewModels
 
         [Display(Name = "PhotoCount", ResourceType = typeof(Resource))]
         public int PhotoCount { get; set; }
+
+        public string DataJson { get; set; }
     }
 }

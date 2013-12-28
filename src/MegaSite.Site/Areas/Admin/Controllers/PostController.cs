@@ -7,6 +7,7 @@ using MegaSite.Api;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Messaging;
+using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
 using MegaSite.Api.Resources;
@@ -99,7 +100,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         private ViewResult ReturnValidationError(PostCreateEditVm vm, IEnumerable<int> categoryIds, int? parentId, PostType postType, Dictionary<string, string> fieldValues)
         {
             vm.PostType = postType;
-            vm.Fields = _managers.FieldManager.Bind(postType.FieldsJson, JsonSimpleSerializer.SerializeToString(fieldValues));
+            vm.Fields = _managers.FieldManager.Bind(postType.FieldsJson, InternalJsonSerializer.Serialize(fieldValues));
             FillSelects(postType, vm, vm.Id, parentId, categoryIds);
             SetMessage(Resource.ThereAreValidationErrors, MessageType.Error);
             return View(GetViewName(postType), vm);

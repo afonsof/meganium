@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Dongle.Serialization;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Trash;
 
 namespace MegaSite.Api.Managers
 {
@@ -10,11 +11,11 @@ namespace MegaSite.Api.Managers
     {
         public List<Field> Bind(string fieldsJson, string fieldValuesJson = null)
         {
-            var fields = JsonSimpleSerializer.UnserializeFromString<List<Field>>(fieldsJson) ?? new List<Field>();
+            var fields = InternalJsonSerializer.Deserialize<List<Field>>(fieldsJson) ?? new List<Field>();
 
             if (!string.IsNullOrEmpty(fieldValuesJson))
             {
-                var valueList = JsonSimpleSerializer.UnserializeFromString<Dictionary<string, string>>(fieldValuesJson);
+                var valueList = InternalJsonSerializer.Deserialize<Dictionary<string, string>>(fieldValuesJson);
                 foreach (var field in fields)
                 {
                     if (valueList.ContainsKey(field.Name))

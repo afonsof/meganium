@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using MegaSite.Api;
 using MegaSite.Api.Managers;
+using MegaSite.Api.Trash;
 using MegaSite.Api.Web;
 
 namespace MegaSite.Site.Areas.Admin.Controllers
@@ -26,7 +27,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         {
             if (fileData == null) return null;
             var mediaFile = _managers.MediaFileManager.Save(fileData);
-            return Json(mediaFile);
+            return Content(InternalJsonSerializer.Serialize(mediaFile));
         }
     }
 }

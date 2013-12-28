@@ -4,6 +4,7 @@ using System.Linq;
 using Dongle.Serialization;
 using Dongle.System;
 using MegaSite.Api.Resources;
+using MegaSite.Api.Trash;
 using NHibernate.Validator.Constraints;
 
 namespace MegaSite.Api.Entities
@@ -28,7 +29,7 @@ namespace MegaSite.Api.Entities
         {
             get
             {
-                return JsonSimpleSerializer.UnserializeFromString<MediaFile>(FeaturedMediaFileJson);
+                return InternalJsonSerializer.Deserialize<MediaFile>(FeaturedMediaFileJson);
             }
         }
 
@@ -38,7 +39,7 @@ namespace MegaSite.Api.Entities
         {
             get
             {
-                var value = JsonSimpleSerializer.UnserializeFromString<List<MediaFile>>(MediaFilesJson);
+                var value = InternalJsonSerializer.Deserialize<List<MediaFile>>(MediaFilesJson);
                 if (value == null)
                 {
                     return new List<MediaFile>();
@@ -92,7 +93,7 @@ namespace MegaSite.Api.Entities
             get
             {
                 return _fieldsValues ??
-                       (_fieldsValues = JsonSimpleSerializer.UnserializeFromString<Dictionary<string, string>>(
+                       (_fieldsValues = InternalJsonSerializer.Deserialize<Dictionary<string, string>>(
                            FieldsValuesJson) ?? new Dictionary<string, string>());
             }
         }
