@@ -92,7 +92,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Client.cs" />
-    <Compile Include="IManagers.cs" />
+    <Compile Include="Entities\ClientSubItem.cs" />
+    <Compile Include="Trash\DataJsonExtension.cs" />
+    <Compile Include="Entities\IHaveDataJson.cs" />
+    <Compile Include="Managers\ClientSubItemManager.cs" />
+    <Compile Include="Managers\IManagers.cs" />
     <Compile Include="Managers\ClientManager.cs" />
     <Compile Include="Managers\LicenseManager.cs" />
     <Compile Include="Managers\MediaFileManager.cs" />
@@ -111,6 +115,7 @@
     </Compile>
     <Compile Include="Tools\ImportHandler.cs" />
     <Compile Include="Tools\Mailer.cs" />
+    <Compile Include="Trash\InternalJsonSerializer.cs" />
     <Compile Include="Trash\SlugCreator.cs" />
     <Compile Include="Trash\UrlUtil.cs" />
     <Compile Include="Trash\HtmlExtensions.cs" />
@@ -118,7 +123,6 @@
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="ViewModels\AccountLoginVm.cs" />
     <Compile Include="Entities\Category.cs" />
-    <Compile Include="DataFactory.cs" />
     <Compile Include="Entities\Field.cs" />
     <Compile Include="Entities\FieldType.cs" />
     <Compile Include="Entities\IHaveId.cs" />
@@ -137,7 +141,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\License.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="IRepositories.cs" />
+    <Compile Include="Repositories\IRepositories.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\PostType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

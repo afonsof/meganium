@@ -1,11 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Dongle.Reflection;
+using Dongle.Serialization;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Messaging;
+using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
 using MegaSite.Api.Resources;
+using MegaSite.Site.Areas.Extension.Models;
 
 namespace MegaSite.Site.Areas.Admin.Controllers
 {
@@ -53,6 +58,11 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         {
             var client = _managers.ClientManager.GetById(id);
             var vm = ObjectFiller<Client, ClientEditVm>.Fill(client);
+
+            var data = client.GetData<PhotoSelectorData>();
+            vm.SelectedMediaFiles = data.SelectedMediaFiles ?? new List<MediaFile>();
+            vm.AvailableMediaFilesJson = InternalJsonSerializer.Serialize(data.AvailableMediaFiles ?? new List<MediaFile>());
+            vm.PhotoCount = data.PhotoCount;
             return View(vm);
         }
 
@@ -65,6 +75,15 @@ namespace MegaSite.Site.Areas.Admin.Controllers
                 SetMessage(Resource.ThereAreValidationErrors, MessageType.Error);
                 return View(vm);
             }
+
+            var photoSelectorData = new PhotoSelectorData
+            {
+                PhotoCount = vm.PhotoCount,
+                AvailableMediaFiles =
+                    InternalJsonSerializer.Deserialize<List<MediaFile>>(vm.AvailableMediaFilesJson)
+            };
+            vm.DataJson = InternalJsonSerializer.Serialize(photoSelectorData);
+
             var message = _managers.ClientManager.Change(vm);
             return RedirectToAction("Index", message);
         }

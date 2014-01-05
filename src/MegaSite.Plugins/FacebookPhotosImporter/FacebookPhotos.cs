@@ -5,6 +5,7 @@ using System.Linq;
 using Dongle.Serialization;
 using MegaSite.Api;
 using MegaSite.Api.Plugins;
+using MegaSite.Api.Trash;
 using RestSharp;
 
 namespace MegaSite.Plugins.FacebookPhotosImporter
@@ -63,11 +64,11 @@ namespace MegaSite.Plugins.FacebookPhotosImporter
             var photo = restResponse.Data.data.FirstOrDefault();
             if (photo != null)
             {
-                post.FeaturedMediaFileJson = JsonSimpleSerializer.SerializeToString(new MediaFile
+                post.FeaturedMediaFileJson = InternalJsonSerializer.Serialize(new MediaFile
                 {
                     Title = "",
-                    Url = photo.src_big,
-                    ExternalServiceId = photo.object_id,
+                    ExtUrl = photo.src_big,
+                    ExtId = photo.object_id,
                 });
             }
             return post;
@@ -79,10 +80,9 @@ namespace MegaSite.Plugins.FacebookPhotosImporter
         {
             var photo = new MediaFile
             {
-                Title = "",
-                Url = fbPhoto.src_big,
+                ExtUrl = fbPhoto.src_big,
                 ThumbUrl = fbPhoto.src,
-                ExternalServiceId = fbPhoto.object_id,
+                ExtId = fbPhoto.object_id,
             };
             return photo;
         }

@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Linq;
 using Dongle.Serialization;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Repositories;
+using MegaSite.Api.Trash;
 
 namespace MegaSite.Api
 {
@@ -41,7 +43,7 @@ namespace MegaSite.Api
                     if (client != null)
                     {
                         _cachedOptions =
-                            JsonSimpleSerializer.UnserializeFromString<Dictionary<string, string>>(client.OptionsJson);
+                            InternalJsonSerializer.Deserialize<Dictionary<string, string>>(client.OptionsJson);
                     }
                     else
                     {
@@ -102,7 +104,7 @@ namespace MegaSite.Api
             using (var uow = CreateUnitOfWork())
             {
                 _cachedOptions[name.ToLowerInvariant()] = value;
-                var optionsJson = JsonSimpleSerializer.SerializeToString(_cachedOptions);
+                var optionsJson = InternalJsonSerializer.Serialize(_cachedOptions);
                 var client = uow.LicenseRepository.AsQueryable().FirstOrDefault();
                 if (client != null)
                 {

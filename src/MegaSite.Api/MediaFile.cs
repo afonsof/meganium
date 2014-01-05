@@ -1,5 +1,6 @@
 ﻿using System;
 using Dongle.System;
+using Newtonsoft.Json;
 
 namespace MegaSite.Api
 {
@@ -8,34 +9,32 @@ namespace MegaSite.Api
         public string Title { get; set; }
         public string Description { get; set; }
 
-        private string _url;
+        public string ExtUrl { get; set; }
+
+        [JsonIgnore]
         public string Url
         {
             get
             {
-                if (_url == null && FileName != null)
+                if (ExtUrl == null && FileName != null)
                 {
-                    _url = "/Content/Uploads/Files/" + FileName + ".jpg";
+                    return "/Content/Uploads/Files/" + FileName + ".jpg";
                 }
-                return _url;
-            }
-            set
-            {
-                _url = value;
+                return ExtUrl;
             }
         }
         public string ThumbUrl { get; set; }
-        public string ExternalServiceId { get; set; }
-        public string ExternalServiceName { get; set; }
+        public string ExtId { get; set; }
+        public string ExtName { get; set; }
 
         private string _fileName;
         public string FileName
         {
             get
             {
-                if (String.IsNullOrEmpty(_fileName) && !String.IsNullOrEmpty(Url))
+                if (String.IsNullOrEmpty(_fileName) && !String.IsNullOrEmpty(ExtUrl))
                 {
-                    return Url.ToMd5();
+                    return ExtUrl.ToMd5();
                 }
                 return _fileName;
             }

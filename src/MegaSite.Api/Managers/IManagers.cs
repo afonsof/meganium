@@ -1,7 +1,6 @@
 ﻿using System;
-using MegaSite.Api.Managers;
 
-namespace MegaSite.Api
+namespace MegaSite.Api.Managers
 {
     public interface IManagers: IDisposable
     {
@@ -13,5 +12,6 @@ namespace MegaSite.Api
         MediaFileManager MediaFileManager { get; }
         LicenseManager LicenseManager { get; }
         ClientManager ClientManager { get; }
+        ClientSubItemManager ClientSubItemManager { get; }
     }
 }

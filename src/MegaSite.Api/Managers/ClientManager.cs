@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dongle.Algorithms;
+using Dongle.Serialization;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
+using MegaSite.Api.Repositories;
 using MegaSite.Api.Resources;
+using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 
 namespace MegaSite.Api.Managers
@@ -28,9 +32,8 @@ namespace MegaSite.Api.Managers
             var client = _repos.ClientRepository.GetById(vm.Id);
             client.FullName = vm.FullName;
             client.Enabled = vm.Enabled;
-            client.AvailableMediaFilesJson = vm.AvailableMediaFilesJson;
             client.Memo = vm.Memo;
-            client.PhotoCount = vm.PhotoCount;
+            client.DataJson = vm.DataJson;
             _repos.ClientRepository.Edit(client);
             _repos.Commit();
 
@@ -61,7 +64,7 @@ namespace MegaSite.Api.Managers
                 return new Message(Resource.CantSaveBecauseAItemWithSameEmailAlreadyExists, MessageType.Error);
             }
 
-            client.Hash = HumanReadableHash.Compute(new Random().Next().ToString(), Encoding.ASCII);
+            client.Code = HumanReadableHash.Compute(new Random().Next().ToString(), Encoding.ASCII);
             client.CreatedAt = DateTime.Now;
             _repos.ClientRepository.Add(client);
             _repos.Commit();
@@ -75,16 +78,7 @@ namespace MegaSite.Api.Managers
             {
                 return null;
             }
-            return _repos.ClientRepository.AsQueryable().FirstOrDefault(p=>p.Hash.ToLowerInvariant() == hash.ToLowerInvariant());
-        }
-
-        public Client GetHavingHashInObject(string hash)
-        {
-            if (string.IsNullOrEmpty(hash))
-            {
-                return null;
-            }
-            return _repos.ClientRepository.AsQueryable().FirstOrDefault(c => c.DataJson.ToLowerInvariant().Contains(hash.ToLowerInvariant()));
+            return _repos.ClientRepository.AsQueryable().FirstOrDefault(p=>p.Code.ToLowerInvariant() == hash.ToLowerInvariant());
         }
     }
 }

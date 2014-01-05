@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Dongle.Serialization;
 using MegaSite.Api;
 using MegaSite.Api.Plugins;
+using MegaSite.Api.Trash;
 
 namespace MegaSite.Plugins.VimeoVideosImporter
 {
@@ -76,7 +77,7 @@ namespace MegaSite.Plugins.VimeoVideosImporter
             using (var webClient = new WebClient())
             {
                 var json = webClient.DownloadString(address);
-                var videos = JsonSimpleSerializer.UnserializeFromString<List<VimeoVideo>>(json);
+                var videos = InternalJsonSerializer.Deserialize<List<VimeoVideo>>(json);
                 return videos;
             }
         }
@@ -92,12 +93,12 @@ namespace MegaSite.Plugins.VimeoVideosImporter
 
         private string CreateMediaFileJson(VimeoVideo vimeoVideo)
         {
-            return JsonSimpleSerializer.SerializeToString(new MediaFile
+            return InternalJsonSerializer.Serialize(new MediaFile
             {
                 Title = vimeoVideo.title,
                 Description = vimeoVideo.description,
-                ExternalServiceId = vimeoVideo.id,
-                Url = vimeoVideo.thumbnail_large,
+                ExtId = vimeoVideo.id,
+                ExtUrl = vimeoVideo.thumbnail_large,
             });
         }
 

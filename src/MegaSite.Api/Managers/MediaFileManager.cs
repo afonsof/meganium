@@ -68,8 +68,7 @@ namespace MegaSite.Api.Managers
             return new MediaFile
             {
                 Title = postedFile.FileName,
-                FileName = fileName,
-                Url = _rootUrl + _rawFilesRelPath + "/" + fileInfo.Name
+                FileName = fileName
             };
         }
 
@@ -182,8 +181,7 @@ namespace MegaSite.Api.Managers
                 .OrderByDescending(f => f.LastWriteTime)
                 .Select(f => new MediaFile
                 {
-                    FileName = f.Name.Replace(".jpg", ""),
-                    Url = _rootUrl + _rawFilesRelPath + "/" + f.Name
+                    FileName = f.Name.Replace(".jpg", "")
                 }).ToList();
         }
 

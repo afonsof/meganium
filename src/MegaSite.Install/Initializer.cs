@@ -8,6 +8,7 @@ using Dongle.System;
 using Dongle.System.IO;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 
 namespace MegaSite.Installer
 {

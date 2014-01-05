@@ -21,7 +21,7 @@ class PhotoSelector {
     private loading: JQuery;
     private tab1: JQuery;
     private tab2: JQuery;
-    private hash: JQuery;
+    private code: JQuery;
 
     private currentPhoto: JQuery;
 
@@ -35,7 +35,7 @@ class PhotoSelector {
         this.loading = element.find('.loading');
         this.tab1 = element.find('.tab1');
         this.tab2 = element.find('.tab2');
-        this.hash = element.find('.hash');
+        this.code = element.find('.code');
     }
 
     public selectCurrentPhoto() {
@@ -79,7 +79,7 @@ class PhotoSelector {
                 this.loading.show();
 
                 data = {
-                    hash: this.hash.val()
+                    hash: this.code.val()
                 };
 
                 jQuery.ajax(this.dataUrl, {
@@ -129,7 +129,7 @@ class PhotoSelector {
                             mediaFiles.push($($items[i]).data('mediaFile'));
                         }
                         data = {
-                            hash: this.hash.val(),
+                            hash: this.code.val(),
                             selectedMediaFilesJson: JSON.stringify(mediaFiles)
                         };
 

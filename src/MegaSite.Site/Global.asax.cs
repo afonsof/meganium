@@ -8,7 +8,6 @@ using DevTrends.MvcDonutCaching;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Tools;
 using MegaSite.Api.Trash;
-using MegaSite.Site.App_Start;
 
 namespace MegaSite.Site
 {
@@ -32,8 +31,6 @@ namespace MegaSite.Site
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
@@ -45,7 +42,7 @@ namespace MegaSite.Site
         {
 #if RELEASE
             var exc = Server.GetLastError();
-            Mailer.SendToAdmin("Meganium Site Error", "error@meganium.com.br", "Alerta de erro Meganium", exc.Message);
+            Mailer.SendToAdmin("Meganium Site Error", "error@meganium.com.br", "Alerta de erro Meganium", Request.Url + "\n" + exc.Message + "\n" + exc.StackTrace);
             Server.Transfer("~/Site/Home/Error");
             Server.ClearError();
 #endif

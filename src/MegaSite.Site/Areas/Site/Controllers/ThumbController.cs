@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using MegaSite.Api;
+using MegaSite.Api.Managers;
 
 namespace MegaSite.Site.Areas.Site.Controllers
 {

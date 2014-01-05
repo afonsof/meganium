@@ -5,7 +5,9 @@ using Dongle.System;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.Plugins;
+using MegaSite.Api.Repositories;
 using MegaSite.Api.Resources;
+using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 
 namespace MegaSite.Api.Managers
@@ -100,7 +102,7 @@ namespace MegaSite.Api.Managers
                     SelectList = string.IsNullOrEmpty(selectList) ? null : selectList.Split(',').Select(o => o.Trim()).ToList()
                 });
             }
-            return JsonSimpleSerializer.SerializeToString(fields);
+            return InternalJsonSerializer.Serialize(fields);
         }
 
         public PostType GetByImportPluginType(ImportPluginType importPluginType)

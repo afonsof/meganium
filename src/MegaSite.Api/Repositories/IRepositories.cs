@@ -1,8 +1,7 @@
 ﻿using System;
 using MegaSite.Api.Entities;
-using MegaSite.Api.Repositories;
 
-namespace MegaSite.Api
+namespace MegaSite.Api.Repositories
 {
     public interface IRepositories : IDisposable
     {
@@ -12,6 +11,7 @@ namespace MegaSite.Api
         IRepository<Category> CategoryRepository { get; }
         IRepository<License> LicenseRepository { get; }
         IRepository<Client> ClientRepository { get; }
+        IRepository<ClientSubItem> ClientSubItemRepository { get; }
         void Commit();
     }
 }

@@ -95,7 +95,7 @@
             });
         </script>
         @{
-    var items = JsonSimpleSerializer.UnserializeFromString<List<Field>>(Model.FieldsJson);
+    var items = InternalJsonSerializer.Deserialize<List<Field>>(Model.FieldsJson);
 
         }
         <div id="extra-columns">

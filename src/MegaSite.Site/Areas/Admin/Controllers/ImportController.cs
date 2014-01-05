@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using MegaSite.Api;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.Plugins;
 using MegaSite.Api.Resources;

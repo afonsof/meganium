@@ -59,7 +59,7 @@
                 <td>
                     @if (!string.IsNullOrEmpty(item.FeaturedMediaFileJson))
                     {
-                        <text>@Url.DefaultThumbnail(JsonSimpleSerializer.UnserializeFromString<MediaFile>(item.FeaturedMediaFileJson))</text>
+                        <text>@Url.DefaultThumbnail(InternalJsonSerializer.Deserialize<MediaFile>(item.FeaturedMediaFileJson))</text>
                     }
                 </td>
                 <td style="text-align: left">

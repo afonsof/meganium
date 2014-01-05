@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using MegaSite.Api;
+using MegaSite.Api.Managers;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.Resources;
 using MegaSite.Api.Web;

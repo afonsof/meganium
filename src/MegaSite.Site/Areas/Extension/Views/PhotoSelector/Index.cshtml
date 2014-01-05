@@ -83,7 +83,7 @@
                         <div class="tab1" data-ng-show="isTab1Visible">
                             <h3 class="block">Digite o código recebido para continuar</h3>
                             <div class="editor-field">
-                                <input class="hash" id="Hash" name="Hash" type="text" data-ng-model="hash" />
+                                <input class="code" id="Code" name="Code" type="text" data-ng-model="code" />
                             </div>
                         </div>
                         <div style="display: none" class="tab2" data-ng-show="isTab2Visible">
@@ -171,58 +171,4 @@
             gallery.next();
         }, 500);
     });
-
-    @*todo: migrar esta tela para angularjs
-    
-    var thumbUrl = '@Url.Content("~/Content/Uploads/Thumbs")';
-    var app = angular.module("PhotoSelectorApp", []);
-
-    app.service("PhotoSelectorService", [
-        "$http", "$q",
-        function ($http, $q) {
-
-            this.getData = function (hash) {
-                var dataDeferred = $q.defer();
-                $http.get('@Url.Action("Data")', { params: { hash: hash } }).then(
-                    function (client) {
-                        dataDeferred.resolve(client);
-                    },
-                    function (response) {
-                        dataDeferred.reject(response);
-                    });
-                return dataDeferred.promise;
-            };
-
-            function getPost(hash) {
-            }
-        }
-    ]);
-
-
-        app.controller("PhotoSelectorController", [
-            "$scope", "PhotoSelectorService",
-            function ($scope, repository) {
-                $scope.hash = "";
-                $scope.isTab1Visible = true;
-                $scope.isTab2Visible = false;
-
-                $scope.go1 = function () {
-                    $scope.isTab1Visible = false;
-                    $scope.isTab2Visible = true;
-                    repository.getData($scope.hash).then(function (response) {
-                        $scope.client = response.data;
-                        $scope.client.SelectedMediaFiles = [];
-                    });
-                };
-
-                $scope.go2 = function(mediaFile) {
-                    //var index = $scope.client.AvailableMediaFiles.indexOf(mediaFile);
-                    $scope.client.SelectedMediaFiles.push(mediaFile);
-                };
-
-                $scope.thumbUrl = function (mediaFile) {
-                    return MediaFileManagerModule.thumbImgUrl(mediaFile, thumbUrl, 240);
-                };
-            }
-        ]);*@
 </script>

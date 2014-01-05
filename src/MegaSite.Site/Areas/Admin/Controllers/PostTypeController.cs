@@ -7,6 +7,7 @@ using Dongle.Serialization;
 using Dongle.System;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
+using MegaSite.Api.Managers;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
 

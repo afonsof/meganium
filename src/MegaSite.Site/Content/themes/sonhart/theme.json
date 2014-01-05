@@ -147,16 +147,5 @@
 				}
 			]
 		}
-	],
-	
-	CustomOptions:
-	[
-		{
-			Type: 1,
-			Name: "asdfasdfas",
-			Value: "asdfasd",
-			SelectList: ["asdfa", "asdfasdfas", "asdfasdfad"],
-			Order: 0,
-		}
 	]
 }

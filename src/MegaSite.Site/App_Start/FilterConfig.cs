@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace MegaSite.Site.App_Start
+namespace MegaSite.Site
 {
     public class FilterConfig
     {
