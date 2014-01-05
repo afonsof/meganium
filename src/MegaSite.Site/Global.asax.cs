@@ -43,10 +43,12 @@ namespace MegaSite.Site
 
         protected void Application_Error(object sender, EventArgs e)
         {
+#if RELEASE
             var exc = Server.GetLastError();
             Mailer.SendToAdmin("Meganium Site Error", "error@meganium.com.br", "Alerta de erro Meganium", exc.Message);
             Server.Transfer("~/Site/Home/Error");
             Server.ClearError();
+#endif
         }
     }
 }

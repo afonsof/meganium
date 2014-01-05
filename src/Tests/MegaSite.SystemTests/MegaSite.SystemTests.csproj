@@ -46,6 +46,7 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -86,6 +87,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
     </Reference>
@@ -105,6 +107,11 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Features\Importação\ImportarFotosComPhotoSelector.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImportarFotosComPhotoSelector.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Importação\ImportarVideosDoYoutube.feature.cs">
       <DependentUpon>ImportarVideosDoYoutube.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -171,6 +178,10 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Importação\ImportarFotosComPhotoSelector.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportarFotosComPhotoSelector.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Importação\ImportarVideosDoYoutube.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

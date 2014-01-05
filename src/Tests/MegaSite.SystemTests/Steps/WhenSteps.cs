@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
-using System.Web.Mvc;
+using System.Windows.Forms;
 using Dongle.System.IO;
 using MegaSite.SystemTests.Tools;
+using Microsoft.VisualBasic.FileIO;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -20,6 +20,12 @@ namespace MegaSite.SystemTests.Steps
         public void QuandoDigitoNoCampo(string text, string name)
         {
             TestToolkit.TypeInField(text, name);
+        }
+
+        [When(@"clico no link ""(.*)""")]
+        public void QuandoClicoNoLink(string name)
+        {
+            TestToolkit.ClickLink(name);
         }
 
         [When(@"clico no botão ""(.*)""")]
@@ -89,6 +95,30 @@ namespace MegaSite.SystemTests.Steps
             Thread.Sleep(1000);
             buttonOk.Click();
             Thread.Sleep(1000);
+        }
+
+        [When(@"insiro a imagem ""(.+?)"" (\d+) vezes")]
+        public void QuandoInsiroAImagemVezes(string filename, int times)
+        {
+            var dirPath = ApplicationPaths.RootDirectory + "TestData\\";
+            var originalFile = dirPath + filename;
+            var button = TestToolkit.Driver.FindElement(By.ClassName("uploadifive-button"));
+            var inputs = button.FindElements(By.TagName("input"));
+            // Mas tive que fazer assim:
+            inputs[1].Click();
+            SendKeys.SendWait(dirPath);
+            SendKeys.SendWait("{ENTER}");
+            //
+            for (var i = 0; i < times; ++i)
+            {
+                FileSystem.CopyFile(originalFile, dirPath + i + ".jpg", true);
+                // Deveria ser assim:
+                //inputs[1].SendKeys(dirPath + i + ".jpg");
+                // Mas tive que fazer assim:
+                SendKeys.SendWait("\"" + i + ".jpg\" ");
+                //
+            }
+            SendKeys.SendWait("{ENTER}");
         }
 
         [When(@"limpo a seleção da caixa de multiseleção")]
