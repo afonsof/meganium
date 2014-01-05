@@ -16,6 +16,12 @@ namespace MegaSite.SystemTests.Steps
             TestToolkit.EnsureUserDoesntExist(userEmail);
         }
 
+        [Given(@"cliente ""(.*?)"" existe")]
+        public void DadoClienteExiste(string name)
+        {
+            TestToolkit.EnsureClientExists(name, "nao@existe.com");
+        }
+
         [Given(@"que estou logado")]
         public void DadoQueEstouLogado()
         {

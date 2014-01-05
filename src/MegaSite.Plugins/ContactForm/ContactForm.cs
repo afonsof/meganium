@@ -21,7 +21,7 @@ namespace MegaSite.Plugins.ContactForm
                     var name = Resource.ResourceManager.GetString(key) ?? key;
                     body += name + ": " + context.Request.Form[key] + "\n";
                 }
-
+                // TODO: Remover strings
                 Mailer.SendToAdmin(context.Request["Name"], context.Request["Email"], "Contato do Site " + Options.Instance.Get("SiteTitle"), body);
                 context.Response.Redirect("~/");
             }

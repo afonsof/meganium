@@ -120,6 +120,12 @@ namespace MegaSite.SystemTests.Tools
             Assert.AreEqual(rawUrl, MountUrl(page));
         }
 
+        public static void ClickLink(string name)
+        {
+            var element = Driver.FindElement(By.PartialLinkText(name));
+            element.Click();
+        }
+
         public static void ClickButton(string name)
         {
             IWebElement element;
@@ -129,7 +135,8 @@ namespace MegaSite.SystemTests.Tools
             }
             catch
             {
-                element = Driver.FindElements(By.ClassName("btn")).First(e => e.Text == name);
+                var btns = Driver.FindElements(By.ClassName("btn"));
+                element = btns.First(e => e.Text == name);
             }
             element.Click();
         }
@@ -291,6 +298,20 @@ namespace MegaSite.SystemTests.Tools
                                               });
                 Uow.Commit();
             }
+        }
+
+        public static void EnsureClientExists(string name, string email)
+        {
+            var client = Uow.ClientRepository
+                    .AsQueryable()
+                    .FirstOrDefault(u => u.FullName == name);
+            if (client != null) return;
+            Uow.ClientRepository.Add(new Client
+                                            {
+                                                Email = email,
+                                                FullName = name
+                                            });
+            Uow.Commit();
         }
 
         public static void Dispose()
