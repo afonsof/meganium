@@ -6,9 +6,9 @@
     var compiledMinFilePath = 'Content/admin/js/app.min.js';
     var slnPath = '../megasite/src/MegaSite.sln';
     grunt.initConfig({
-    
+
         pkg: grunt.file.readJSON('package.json'),
-    
+
         clean: {
             compile: ['Scripts'],
         },
@@ -71,6 +71,22 @@
                 files: [slnPath],
                 teamcity: true
             }
+        },
+
+        ftpush: {
+            build: {
+                auth: {
+                    host: 'afonsof.com',
+                    port: 21,
+                    authKey: 'key1'
+                },
+                src: 'D:/teste',
+                dest: '/',
+                exclusions: ['path/to/source/folder/**/.DS_Store', 'path/to/source/folder/**/Thumbs.db', 'dist/tmp'],
+                keep: ['/Content/Uploads'],
+                simple: false,
+                useList: false
+            }
         }
 
     });
@@ -99,4 +115,5 @@ function loadTasks(grunt) {
     grunt.loadNpmTasks('grunt-dotnet-assembly-info'); //change assembly info
     grunt.loadNpmTasks('grunt-msbuild'); //msbuild grunt task
     grunt.loadNpmTasks('grunt-nunit-runner');
+    grunt.loadNpmTasks('grunt-ftpush');
 }
