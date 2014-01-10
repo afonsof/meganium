@@ -732,7 +732,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir) &amp; npm install &amp; grunt compile</PostBuildEvent>
+    <PostBuildEvent>cd $(ProjectDir) &amp; npm install &amp; cd $(ProjectDir) npm version patch &amp; grunt compile</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

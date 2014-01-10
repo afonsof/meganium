@@ -4,28 +4,28 @@
     // load all grunt tasks
     var compiledTsFilePath = 'Content/admin/js/app.js';
     var compiledMinFilePath = 'Content/admin/js/app.min.js';
+    var slnPath = '../megasite/src/MegaSite.sln';
     grunt.initConfig({
+    
+        pkg: grunt.file.readJSON('package.json'),
+    
         clean: {
             compile: ['Scripts'],
         },
 
         ts: {
             options: {
-                // use to override the default options, See : http://gruntjs.com/configuring-tasks#options
-                target: 'es3',            // es3 (default) / or es5
-                module: 'amd',       // amd (default), commonjs
-                sourcemap: true,          // true  (default) | false
-                declaration: false,       // true | false  (default)
-                nolib: false,             // true | false (default)
-                comments: false           // true | false (default)
+                target: 'es3',
+                module: 'amd',
+                sourcemap: true,
+                declaration: false,
+                nolib: false,
+                comments: false
             },
             live: {
-                // a particular target
-                src: ['Content/admin/js/src/*.ts'], // The source typescript files, See : http://gruntjs.com/configuring-tasks#files
-                //watch: 'ts',         // If specified, configures this target to watch the specified director for ts changes and reruns itself.
+                src: ['Content/admin/js/src/*.ts'],
                 out: compiledTsFilePath,
                 options: {
-                    // override the main options, See : http://gruntjs.com/configuring-tasks#options
                     sourcemap: false
                 },
             },
@@ -38,15 +38,51 @@
                 }
             }
         },
+
+        assemblyinfo: {
+            options: {
+                files: [
+                    '../MegaSite.Site/MegaSite.Site.csproj',
+                    '../MegaSite.Plugins/MegaSite.Plugins.csproj',
+                    '../MegaSite.Api/MegaSite.Api.csproj',
+                    '../MegaSite.Install/MegaSite.Installer.csproj'
+                ],
+                info: {
+                    version: "<%= pkg.version %>.0",
+                    fileVersion: "<%= pkg.version %>.0",
+                    company: 'Meganium',
+                    product: 'Meganium Smart Site',
+                    copyright: 'Copyright 2014 (c) Meganium',
+                }
+            }
+        },
+
+        msbuild: {
+            src: [slnPath],
+            options: {
+                projectConfiguration: 'Release',
+                targets: ['Clean', 'Rebuild'],
+                stdout: true
+            }
+        },
+
+        nunit: {
+            options: {
+                files: [slnPath],
+                teamcity: true
+            }
+        }
+
     });
-    
+
     loadTasks(grunt);
 
+    grunt.registerTask('ci', ['assemblyinfo', 'msbuild', 'nunit']);
     grunt.registerTask('default', ['ts:live']);
     grunt.registerTask('pre-build', 'Build the Typescript project', ['clean', 'ts:live']);
     grunt.registerTask('post-build', 'Compiles all Typescript files to pub and minifies it', [/*'concat:dist',*/ 'uglify'/*, 'closure-compiler'*/]);
     grunt.registerTask('compile', 'Compiles all Typescript files to pub and minifies it', ['pre-build', 'post-build']);
-    grunt.registerTask('compile-hint', 'Compiles, run jshint and minification', ['pre-build','jshint', 'post-build']);
+    grunt.registerTask('compile-hint', 'Compiles, run jshint and minification', ['pre-build', 'jshint', 'post-build']);
     grunt.registerTask('pre-commit', 'Compiles the Typescript files, minify and run the unit tests', ['pre-build', 'post-build', 'qunit']);
 };
 
@@ -60,4 +96,7 @@ function loadTasks(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint'); // lint js files
     grunt.loadNpmTasks('grunt-contrib-qunit'); // unit tests support
     grunt.loadNpmTasks('grunt-closure-compiler'); //closure compiler
+    grunt.loadNpmTasks('grunt-dotnet-assembly-info'); //change assembly info
+    grunt.loadNpmTasks('grunt-msbuild'); //msbuild grunt task
+    grunt.loadNpmTasks('grunt-nunit-runner');
 }
