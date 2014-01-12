@@ -20,7 +20,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         {
             //Refactor: Que loucura é essa no controller???
 
-            var options = _managers.LicenseManager.GetOptions();
+            var options = _managers.License.Options;
             var vm = new BasicIndexVm
             {
                 FacebookId = options.GetLong("FacebookId"),
@@ -45,7 +45,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         [Authorize]
         public ActionResult Index(BasicIndexVm vm)
         {
-            var options = _managers.LicenseManager.GetOptions();
+            var options = _managers.License.Options;
             options.Set("FacebookId", vm.FacebookId);
             options.Set("GoogleAnalyticsTracker", vm.GoogleAnalyticsTracker);
             options.Set("SiteTitle", vm.SiteTitle);

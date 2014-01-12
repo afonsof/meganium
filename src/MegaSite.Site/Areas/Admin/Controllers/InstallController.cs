@@ -1,9 +1,7 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.IO;
 using System.Web.Mvc;
 using Dongle.Serialization;
-using MegaSite.Api;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
@@ -41,16 +39,16 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             }
 
             var configExchange = LoadConfigExchange(vm);
-            initializer.Initialize(vm.Theme, configExchange);
+            initializer.Initialize(vm.License, configExchange);
             return RedirectToAction("Index", "Post");
         }
 
         private ConfigExchange LoadConfigExchange(InstallResetThemeVm model)
         {
-            var pathResolver = new PathResolver(Options.Instance);
-            var path = Server.MapPath(pathResolver.Themes + model.Theme);
+            var pathResolver = new PathResolver(_managers.License.Options);
+            var path = Server.MapPath(pathResolver.Licenses + model.License);
 
-            var configExchange = JsonSimpleSerializer.UnserializeFromFile<ConfigExchange>(new FileInfo(path + "\\theme.json"));
+            var configExchange = JsonSimpleSerializer.UnserializeFromFile<ConfigExchange>(new FileInfo(path + "\\license.json"));
             return configExchange;
         }
     }

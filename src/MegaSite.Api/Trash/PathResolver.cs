@@ -21,6 +21,14 @@ namespace MegaSite.Api.Trash
             }
         }
 
+        public string Licenses
+        {
+            get
+            {
+                return "~/Content/licenses/";
+            }
+        }
+
         public string CurrentTheme
         {
             get

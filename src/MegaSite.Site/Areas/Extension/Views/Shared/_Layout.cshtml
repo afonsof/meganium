@@ -1,62 +1,65 @@
 ﻿@using MegaSite.Api
+@using MegaSite.Api.Managers
 <html>
-<head>
-    <link href="~/Content/admin/js/libs/bootstrap3/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        body {
-            background-color: rgba(0,0,0,0.5) !important;
-            overflow: hidden !important;
-            margin: 0 !important;
+    <head>
+        @using (IManagers managers = new UnitOfWork())
+        {
+            <link href="~/Content/admin/js/libs/bootstrap3/css/bootstrap.min.css" rel="stylesheet" />
+            <style>
+                body {
+                    background-color: rgba(0, 0, 0, 0.5) !important;
+                    overflow: hidden !important;
+                    margin: 0 !important;
+                }
+
+                .modal {
+                    display: block;
+                    overflow: auto;
+                }
+                .modal-dialog {
+                    width: 90%;
+                }
+
+                .btn-primary {
+                    background-color: @managers.License.Options.Get("Color1");
+                    border-color: @managers.License.Options.Get("Color2");
+                }
+
+                .btn-primary.disabled {
+                    background-color: @managers.License.Options.Get("Color1");
+                    border-color: @managers.License.Options.Get("Color2");
+                }
+
+                .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:visited {
+                    background-color: @managers.License.Options.Get("Color2");
+                    border-color: @managers.License.Options.Get("Color1");
+                }
+
+                .loading-overlay:after {
+                    border-color: @managers.License.Options.Get("Color2")
+                }
+
+                .loading-overlay div {
+                    color: @managers.License.Options.Get("Color1")
+                }
+            </style>
+            <link href="~/Content/admin/css/loading.css" rel="stylesheet" />
+
+            <script src="~/Content/admin/js/libs/jquery/jquery-1.9.1.min.js"></script>
+            <script src="~/Content/admin/js/libs/bootstrap3/js/bootstrap.min.js"></script>
+
+            <script>
+                function show(closeFunc) {
+                    $('.modal').modal('show');
+                    $('.modal').on('hide.bs.modal', function() {
+                        closeFunc();
+                    });
+                }
+            </script>
+
+            @RenderSection("Head")
         }
-
-        .modal {
-            display: block;
-            overflow: auto;
-        }
-        .modal-dialog {
-            width: 90%;
-        }
-
-        .btn-primary {
-            background-color: @Options.Instance.Get("Color1");
-            border-color: @Options.Instance.Get("Color2");
-        }
-
-        .btn-primary.disabled {
-            background-color: @Options.Instance.Get("Color1");
-            border-color: @Options.Instance.Get("Color2");
-        }
-
-        .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:visited{
-            background-color: @Options.Instance.Get("Color2");
-            border-color: @Options.Instance.Get("Color1");
-        }
-
-        .loading-overlay:after {
-            border-color: @Options.Instance.Get("Color2")
-        }
-
-        .loading-overlay div {
-            color: @Options.Instance.Get("Color1")
-        }
-    </style>
-    <link href="~/Content/admin/css/loading.css" rel="stylesheet" />
-
-    <script src="~/Content/admin/js/libs/jquery/jquery-1.9.1.min.js"></script>
-    <script src="~/Content/admin/js/libs/bootstrap3/js/bootstrap.min.js"></script>
-
-    <script>
-        function show(closeFunc) {
-            $('.modal').modal('show');
-            $('.modal').on('hide.bs.modal', function () {
-                closeFunc();
-            });
-        }
-    </script>
-
-    @RenderSection("Head")
-
-</head>
+    </head>
 <body>
     @RenderBody()
 </body>

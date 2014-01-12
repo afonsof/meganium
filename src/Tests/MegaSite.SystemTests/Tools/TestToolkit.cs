@@ -64,12 +64,12 @@ namespace MegaSite.SystemTests.Tools
 
         public static IRepositories Uow
         {
-            get { return _bundle ?? (_bundle = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)); }
+            get { return _bundle ?? (_bundle = new UnitOfWork()); }
         }
 
         public static IManagers Managers
         {
-            get { return _bundle ?? (_bundle = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString)); }
+            get { return _bundle ?? (_bundle = new UnitOfWork()); }
         }
 
         private static string MountUrl(string page)

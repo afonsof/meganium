@@ -1,70 +1,111 @@
-﻿using DevTrends.MvcDonutCaching;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Web;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Repositories;
-using NHibernate;
+using NHibernate.Linq;
 
 namespace MegaSite.Api
 {
     public sealed class UnitOfWork : IRepositories, IManagers
     {
-        private ITransaction _transaction;
-        private readonly string _connectionString;
+        private static readonly Dictionary<int, License> Licenses = new Dictionary<int, License>(); 
 
-        public UnitOfWork(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
+        private License _license;
 
-        #region Database
-
-        private ISession _session;
-        public ISession Session
+        public License License
         {
             get
             {
-                if (_session != null) return _session;
-
-                using (var sessionFactory = NHibernateBuilder.GetSessionFactory(_connectionString))
+                if (_license != null)
                 {
-                    _session = sessionFactory.OpenSession();
+                    return _license;
                 }
-                return _session;
+
+                int? licenseId = null;
+                var httpContext = HttpContext.Current;
+
+                if (httpContext.Session != null && httpContext.Session["licenseId"] != null)
+                {
+                    licenseId = Convert.ToInt32(httpContext.Session["licenseId"]);
+                }
+
+                if (!licenseId.HasValue)
+                {
+                    if (httpContext.User.Identity.IsAuthenticated)
+                    {
+                        var user = Db.Session.Query<User>().FirstOrDefault(u=>u.UserName == httpContext.User.Identity.Name);
+                        if (user != null && user.License != null)
+                        {
+                            licenseId = user.License.Id;
+                        }
+                    }
+                }
+                if (!licenseId.HasValue)
+                {
+                    _license = LicenseManager.GetByUrl(httpContext.Request.Url.Authority);
+                    if (_license != null)
+                    {
+                        Licenses[_license.Id] = _license;
+                        if (httpContext.Session != null)
+                        {
+                            httpContext.Session["licenseId"] = _license.Id;
+                        }
+                        return _license;
+                    }
+                }
+                if (!licenseId.HasValue)
+                {
+                    var value = ConfigurationManager.AppSettings.Get("DefaultLicenseId");
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        licenseId = Convert.ToInt32(value);
+                    }
+                }
+
+                if (licenseId.HasValue)
+                {
+                    if (httpContext.Session != null)
+                    {
+                        httpContext.Session["licenseId"] = licenseId.Value;
+                    }
+                    if (Licenses.ContainsKey(licenseId.Value))
+                    {
+                        _license = Licenses[licenseId.Value];
+                        return _license;
+                    }
+                    _license = LicenseRepository.GetById(licenseId.Value);
+                    if (_license != null)
+                    {
+                        Licenses[licenseId.Value] = _license;
+                        return _license;
+                    }
+                }
+                return new License();
             }
         }
+        public Database Db { get; private set; }
 
-        public void BeginTransaction()
+        public UnitOfWork()
         {
-            if (_transaction == null)
-            {
-                _transaction = Session.BeginTransaction();
-            }
+            Db = new Database(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         }
-
-        public void Commit()
-        {
-            if (_transaction == null) return;
-            _transaction.Commit();
-            _transaction.Dispose();
-            _transaction = null;
-            var cacheManager = new OutputCacheManager();
-            cacheManager.RemoveItems();
-        }
-
-        #endregion
 
         #region Repositories
 
         private IRepository<User> _users;
         public IRepository<User> UserRepository
         {
-            get { return _users ?? (_users = new Repository<User>(this)); }
+            get { return _users ?? (_users = new LicensedRepository<User>(Db, this)); }
         }
 
         private IRepository<Post> _postRepositoryReader;
         public IRepository<Post> PostRepository
         {
-            get { return _postRepositoryReader ?? (_postRepositoryReader = new PostRepository(this)); }
+            get { return _postRepositoryReader ?? (_postRepositoryReader = new LicensedRepository<Post>(Db, this)); }
         }
 
         private IRepository<PostType> _postTypeRepository;
@@ -73,7 +114,7 @@ namespace MegaSite.Api
             get
             {
                 return _postTypeRepository ??
-                       (_postTypeRepository = new Repository<PostType>(this));
+                       (_postTypeRepository = new LicensedRepository<PostType>(Db, this));
             }
         }
 
@@ -83,7 +124,7 @@ namespace MegaSite.Api
             get
             {
                 return _categoryRepository ??
-                       (_categoryRepository = new Repository<Category>(this));
+                       (_categoryRepository = new LicensedRepository<Category>(Db, this));
             }
         }
 
@@ -92,7 +133,7 @@ namespace MegaSite.Api
         {
             get
             {
-                return _licenseRepository ?? (_licenseRepository = new Repository<License>(this));
+                return _licenseRepository ?? (_licenseRepository = new Repository<License>(Db));
             }
         }
 
@@ -101,7 +142,7 @@ namespace MegaSite.Api
         {
             get
             {
-                return _clientRepository ?? (_clientRepository = new Repository<Client>(this));
+                return _clientRepository ?? (_clientRepository = new LicensedRepository<Client>(Db, this));
             }
         }
 
@@ -110,7 +151,7 @@ namespace MegaSite.Api
         {
             get
             {
-                return _clientSubItemRepository ?? (_clientSubItemRepository = new Repository<ClientSubItem>(this));
+                return _clientSubItemRepository ?? (_clientSubItemRepository = new Repository<ClientSubItem>(Db));
             }
         }
 
@@ -127,7 +168,7 @@ namespace MegaSite.Api
         private PostTypeManager _postTypeManager;
         public PostTypeManager PostTypeManager
         {
-            get { return _postTypeManager ?? (_postTypeManager = new PostTypeManager(this)); }
+            get { return _postTypeManager ?? (_postTypeManager = new PostTypeManager(this, License)); }
 
         }
 
@@ -152,7 +193,7 @@ namespace MegaSite.Api
         private LicenseManager _licenseManager;
         public LicenseManager LicenseManager
         {
-            get { return _licenseManager ?? (_licenseManager = new LicenseManager()); }
+            get { return _licenseManager ?? (_licenseManager = new LicenseManager(this)); }
         }
 
         private ClientManager _clientManager;
@@ -162,6 +203,7 @@ namespace MegaSite.Api
         }
 
         private ClientSubItemManager _clientSubItemManager;
+
         public ClientSubItemManager ClientSubItemManager
         {
             get { return _clientSubItemManager ?? (_clientSubItemManager = new ClientSubItemManager(this)); }
@@ -174,16 +216,14 @@ namespace MegaSite.Api
 
         #endregion
 
+        public void Commit()
+        {
+            Db.Commit();
+        }
+
         public void Dispose()
         {
-            if (_transaction != null)
-            {
-                _transaction.Dispose();
-            }
-            if (_session != null)
-            {
-                _session.Dispose();
-            }
+            Db.Dispose();
         }
     }
 }

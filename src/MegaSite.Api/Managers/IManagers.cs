@@ -1,4 +1,5 @@
 ﻿using System;
+using MegaSite.Api.Entities;
 
 namespace MegaSite.Api.Managers
 {
@@ -10,8 +11,10 @@ namespace MegaSite.Api.Managers
         FieldManager FieldManager { get; }
         UserManager UserManager { get; }
         MediaFileManager MediaFileManager { get; }
-        LicenseManager LicenseManager { get; }
         ClientManager ClientManager { get; }
         ClientSubItemManager ClientSubItemManager { get; }
+        LicenseManager LicenseManager { get; }
+
+        License License { get; }
     }
 }

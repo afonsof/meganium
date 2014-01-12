@@ -2,10 +2,8 @@
 using System.Web.Mvc;
 using DevTrends.MvcDonutCaching;
 using Dongle.System;
-using MegaSite.Api;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Managers;
-using MegaSite.Api.Tools;
 using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 using MegaSite.Api.Web;
@@ -17,26 +15,26 @@ namespace MegaSite.Site.Areas.Site.Controllers
     public class HomeController : BaseController
     {
         private readonly IManagers _managers;
-        private readonly PathResolver _pathResolver;
         private readonly SiteViewModel _vm;
 
-        public HomeController(IManagers managers, ActionPluginManager pluginManager, PathResolver pathResolver)
+        public HomeController(IManagers managers, ActionPluginManager pluginManager)
         {
             _managers = managers;
-            _pathResolver = pathResolver;
             _vm = new SiteViewModel(managers, pluginManager);
         }
 
         [DonutOutputCache(Duration = 3600)]
         public ActionResult Index()
         {
-            _vm.Title = Options.Instance.Get("SiteTitle");
-            return View(GetHomeFile(), _vm);
+            var pathResolver = new PathResolver(_managers.License.Options);
+            _vm.Title = _managers.License.Options.Get("SiteTitle");
+            return View(GetHomeFile(pathResolver), _vm);
         }
 
         [DonutOutputCache(Duration = 3600)]
         public ActionResult SlugShow(int postTypeId, string slug)
         {
+            var pathResolver = new PathResolver(_managers.License.Options);
             if (String.IsNullOrEmpty(slug))
             {
                 return new HttpNotFoundResult();
@@ -47,26 +45,29 @@ namespace MegaSite.Site.Areas.Site.Controllers
             {
                 return new HttpNotFoundResult();
             }
-            _vm.Title = Options.Instance.Get("SiteTitle") + " » " + _vm.CurrentPost.Title;
-            return View(GetShowFile(_vm.CurrentPost), _vm);
+            _vm.Title = _managers.License.Options.Get("SiteTitle") + " » " + _vm.CurrentPost.Title;
+            return View(GetShowFile(_vm.CurrentPost, pathResolver), _vm);
         }
 
         [DonutOutputCache(Duration = 3600)]
         public ActionResult SlugIndex(int postTypeId)
         {
+            var pathResolver = new PathResolver(_managers.License.Options);
             var postType = _managers.PostTypeManager.GetById(postTypeId);
             if (postType == null)
             {
                 return new HttpNotFoundResult();
             }
             _vm.CurrentPosts = _managers.PostManager.GetPublishedByPostType(postTypeId);
-            _vm.Title = Options.Instance.Get("SiteTitle") + " » " + postType.PluralName;
-            return View(GetIndexFile(postType), _vm);
+            _vm.Title = _managers.License.Options.Get("SiteTitle") + " » " + postType.PluralName;
+            return View(GetIndexFile(postType, pathResolver), _vm);
         }
 
         [DonutOutputCache(Duration = 3600)]
         public ActionResult SlugCategory(int postTypeId, string slug)
         {
+            var pathResolver = new PathResolver(_managers.License.Options);
+
             var postType = _managers.PostTypeManager.GetById(postTypeId);
             if (postType == null)
             {
@@ -82,9 +83,9 @@ namespace MegaSite.Site.Areas.Site.Controllers
             _vm.CurrentPosts = _managers.PostManager.GetPublishedByCategoryAndPostType(category, postTypeId);
             _vm.CurrentCategory = category;
 
-            _vm.Title = Options.Instance.Get("SiteTitle") + " » " + String.Format("{0} {1} {2}", postType.PluralName, Resource.Of, category.Title);
+            _vm.Title = _managers.License.Options.Get("SiteTitle") + " » " + String.Format("{0} {1} {2}", postType.PluralName, Resource.Of, category.Title);
 
-            return View(GetCategoryFile(category), _vm);
+            return View(GetCategoryFile(category, pathResolver), _vm);
         }
 
         public ActionResult SlugPluginAction(string pluginName, string pluginAction)
@@ -101,29 +102,29 @@ namespace MegaSite.Site.Areas.Site.Controllers
 
         #region PrivateMethods
 
-        private string GetShowFile(Post post)
+        private string GetShowFile(Post post, PathResolver pathResolver)
         {
             var postTypeSlug = post.PostType.SingularName.ToSlug();
 
-            var relpath = _pathResolver.CurrentThemeViews + "Show-" + postTypeSlug + "-" + post.Slug + ".cshtml";
+            var relpath = pathResolver.CurrentThemeViews + "Show-" + postTypeSlug + "-" + post.Slug + ".cshtml";
             string path = Server.MapPath(relpath);
             if (System.IO.File.Exists(path))
             {
                 return relpath;
             }
 
-            relpath = _pathResolver.CurrentThemeViews + "Show-" + postTypeSlug + ".cshtml";
+            relpath = pathResolver.CurrentThemeViews + "Show-" + postTypeSlug + ".cshtml";
             path = Server.MapPath(relpath);
             if (System.IO.File.Exists(path))
             {
                 return relpath;
             }
-            return _pathResolver.CurrentThemeViews + "Show.cshtml";
+            return pathResolver.CurrentThemeViews + "Show.cshtml";
         }
 
-        private string GetIndexFile(PostType type)
+        private string GetIndexFile(PostType type, PathResolver pathResolver)
         {
-            var relPath = _pathResolver.CurrentThemeViews;
+            var relPath = pathResolver.CurrentThemeViews;
 
             relPath += "Index-" + type.SingularName.ToSlug() + ".cshtml";
 
@@ -133,24 +134,24 @@ namespace MegaSite.Site.Areas.Site.Controllers
             {
                 return relPath;
             }
-            return _pathResolver.CurrentThemeViews + "Index.cshtml";
+            return pathResolver.CurrentThemeViews + "Index.cshtml";
         }
 
-        private string GetHomeFile()
+        private string GetHomeFile(PathResolver pathResolver)
         {
-            var relPath = _pathResolver.CurrentThemeViews + "Home.cshtml";
+            var relPath = pathResolver.CurrentThemeViews + "Home.cshtml";
             var path = Server.MapPath(relPath);
 
             if (System.IO.File.Exists(path))
             {
                 return relPath;
             }
-            return _pathResolver.CurrentThemeViews + "Index.cshtml";
+            return pathResolver.CurrentThemeViews + "Index.cshtml";
         }
 
-        private string GetCategoryFile(Category category)
+        private string GetCategoryFile(Category category, PathResolver pathResolver)
         {
-            var relPath = _pathResolver.CurrentThemeViews;
+            var relPath = pathResolver.CurrentThemeViews;
 
             relPath += "Index-" + category.PostType.SingularName.ToSlug() + "-" + category.Slug + ".cshtml";
 
@@ -160,7 +161,7 @@ namespace MegaSite.Site.Areas.Site.Controllers
             {
                 return relPath;
             }
-            return GetIndexFile(category.PostType);
+            return GetIndexFile(category.PostType, pathResolver);
         }
 
         #endregion

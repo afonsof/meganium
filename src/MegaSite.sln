@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaSite.Api", "MegaSite.Api\MegaSite.Api.csproj", "{2B77B45A-A05C-45B7-AA06-14855A85D3C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaSite.Installer", "MegaSite.Install\MegaSite.Installer.csproj", "{1444BD89-B836-430F-9605-B116549B5957}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaSite.Site", "MegaSite.Site\MegaSite.Site.csproj", "{FED6BCFF-72E6-403D-989C-0E35E6F8AA58}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2771EB6E-62CA-4698-AC05-87B88345F41B}"
@@ -14,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaSite.SystemTests", "Tests\MegaSite.SystemTests\MegaSite.SystemTests.csproj", "{EA8DE3C1-B9D4-451C-934C-CC7AF3ECBA3C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaSite.Plugins", "MegaSite.Plugins\MegaSite.Plugins.csproj", "{41864B50-202F-4F0B-B4F8-30689E05656D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaSite.Installer", "MegaSite.Installer\MegaSite.Installer.csproj", "{1444BD89-B836-430F-9605-B116549B5957}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{2B77B45A-A05C-45B7-AA06-14855A85D3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B77B45A-A05C-45B7-AA06-14855A85D3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B77B45A-A05C-45B7-AA06-14855A85D3C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1444BD89-B836-430F-9605-B116549B5957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1444BD89-B836-430F-9605-B116549B5957}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1444BD89-B836-430F-9605-B116549B5957}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1444BD89-B836-430F-9605-B116549B5957}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FED6BCFF-72E6-403D-989C-0E35E6F8AA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FED6BCFF-72E6-403D-989C-0E35E6F8AA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FED6BCFF-72E6-403D-989C-0E35E6F8AA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{41864B50-202F-4F0B-B4F8-30689E05656D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41864B50-202F-4F0B-B4F8-30689E05656D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41864B50-202F-4F0B-B4F8-30689E05656D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1444BD89-B836-430F-9605-B116549B5957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1444BD89-B836-430F-9605-B116549B5957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1444BD89-B836-430F-9605-B116549B5957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1444BD89-B836-430F-9605-B116549B5957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

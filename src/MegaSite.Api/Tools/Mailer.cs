@@ -6,18 +6,13 @@ namespace MegaSite.Api.Tools
 {
     public class Mailer
     {
-        public static void SendToAdmin(string name, string email, string subject, string body)
-        {
-            Send(name, email, subject, body, Options.Instance.Get("AdminEmail"));
-        }
-
         public static void Send(string name, string email, string subject, string body, string to)
         {
-            var smtpServer = Options.Instance.Get("SmtpServer");
-            var smtpPort = Options.Instance.Get("SmtpPort", 587);
-            var smtpUserName = Options.Instance.Get("SmtpUserName");
-            var smtpPassword = Options.Instance.Get("SmtpPassword");
-            var smtpUseSsl = Options.Instance.Get("SmtpUseSsl", true);
+            var smtpServer = Options.GlobalOptions.Get("SmtpServer");
+            var smtpPort = Options.GlobalOptions.Get("SmtpPort", 587);
+            var smtpUserName = Options.GlobalOptions.Get("SmtpUserName");
+            var smtpPassword = Options.GlobalOptions.Get("SmtpPassword");
+            var smtpUseSsl = Options.GlobalOptions.Get("SmtpUseSsl", true);
 
             var message = new MailMessage();
             message.To.Add(to);

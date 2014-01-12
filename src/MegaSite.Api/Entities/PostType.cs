@@ -5,9 +5,10 @@ using NHibernate.Validator.Constraints;
 
 namespace MegaSite.Api.Entities
 {
-    public class PostType : IHaveId
+    public class PostType : IHaveId, IHaveLicense
     {
         public virtual int Id { get; set; }
+        public virtual License License { get; set; }
 
         [Required]
         public virtual string SingularName { get; set; }

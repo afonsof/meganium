@@ -76,7 +76,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
             {
                 if (Request["back"] == null)
                 {
-                    var facebookClientId = _managers.LicenseManager.GetOptions().Get("FacebookId");
+                    var facebookClientId = _managers.License.Options.Get("FacebookId");
                     var url = String.Format(FacebookFormat, FacebookOauthUrl, facebookClientId, redirectUrl);
                     return Redirect(url);
                 }

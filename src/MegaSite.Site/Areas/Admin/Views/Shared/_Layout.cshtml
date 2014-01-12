@@ -1,12 +1,11 @@
-﻿@using System.Configuration
-@using MegaSite.Api
+﻿@using MegaSite.Api
 @using MegaSite.Api.Managers
 @using MegaSite.Api.Messaging
 @using MegaSite.Api.Trash
 @using MegaSite.Api.Resources
 
 <!DOCTYPE html>
-@using (IManagers managers = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+@using (IManagers managers = new UnitOfWork())
 {
     <html>
     <head>
@@ -84,11 +83,11 @@
                         <div class="nav-collapse collapse">
                             <p class="navbar-text pull-right">
                                 @{
-        var postTypeId = Options.Instance.GetInt("DefaultPostTypeId");
+        var postTypeId = managers.License.Options.GetInt("DefaultPostTypeId");
 
         if (postTypeId != 0)
         {
-            var ptype = managers.PostTypeManager.GetById(Options.Instance.GetInt("DefaultPostTypeId"));
+            var ptype = managers.PostTypeManager.GetById(managers.License.Options.GetInt("DefaultPostTypeId"));
                                     <a href="@Url.Action("Create", "Post", new { postTypeId = ptype.Id })" class="btn">@String.Format(Resource.CreateCustomEntity, ptype.SingularName)</a>
         }
                                 }
@@ -143,7 +142,7 @@
                         <ul class="nav nav-list bs-docs-sidenav">
                             <li class="nav-header">Avançado</li>
                             @Html.Partial("_MenuItem", new Tuple<string, string, string>("User", Resource.Users, "user"))
-                            @if (Options.Instance.Get("AllowImportMediaFiles", true))
+                            @if (managers.License.Options.Get("AllowImportMediaFiles", true))
                             {
                                 @Html.Partial("_MenuItem", new Tuple<string, string, string>("Import", Resource.Importing, "download-alt"))
                             }

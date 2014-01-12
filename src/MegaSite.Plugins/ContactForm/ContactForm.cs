@@ -22,7 +22,8 @@ namespace MegaSite.Plugins.ContactForm
                     body += name + ": " + context.Request.Form[key] + "\n";
                 }
                 // TODO: Remover strings
-                Mailer.SendToAdmin(context.Request["Name"], context.Request["Email"], "Contato do Site " + Options.Instance.Get("SiteTitle"), body);
+                var options = managers.License.Options;
+                Mailer.Send(context.Request["Name"], context.Request["Email"], "Contato do Site " + options.Get("SiteTitle"), body, options.Get("AdminEmail"));
                 context.Response.Redirect("~/");
             }
             return null;

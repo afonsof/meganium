@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Dongle.Serialization;
 using Dongle.System;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
@@ -15,17 +14,24 @@ namespace MegaSite.Api.Managers
     public class PostTypeManager
     {
         private readonly IRepositories _uow;
+        private readonly License _license;
 
-        public PostTypeManager(IRepositories uow)
+        public PostTypeManager(IRepositories uow, License license)
         {
             _uow = uow;
+            _license = license;
         }
 
         public PostType GetById(int? id = null)
         {
-            id = id ?? Options.Instance.GetInt("DefaultPostTypeId");
-            return _uow.PostTypeRepository.GetById(id.Value);
+            PostType postType = null;
+            if (id != null)
+            {
+                postType = _uow.PostTypeRepository.GetById(id.Value);
+            }
+            return postType ?? _uow.PostTypeRepository.GetById(_license.Options.GetInt("DefaultPostTypeId"));
         }
+
         public IEnumerable<PostType> GetAll()
         {
             return _uow.PostTypeRepository
@@ -111,13 +117,17 @@ namespace MegaSite.Api.Managers
 
             if (importPluginType == ImportPluginType.Album)
             {
-                id = Options.Instance.GetInt("DefaultAlbumImportingPostTypeId");
+                id = _license.Options.GetInt("DefaultAlbumImportingPostTypeId");
             }
             else if (importPluginType == ImportPluginType.Video)
             {
-                id = Options.Instance.GetInt("DefaultVideoImportingPostTypeId");
+                id = _license.Options.GetInt("DefaultVideoImportingPostTypeId");
             }
-            return GetById(id);
+            if (id.HasValue)
+            {
+                return GetById(id.Value);
+            }
+            return null;
         }
     }
 }

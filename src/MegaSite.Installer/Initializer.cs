@@ -23,6 +23,9 @@ namespace MegaSite.Installer
 
         public void Initialize(string theme, ConfigExchange configExchange)
         {
+            var license = _managers.LicenseManager.Create(theme);
+            license.Options.Set("theme", theme);
+
             InitRootUser(configExchange);
             InitPostTypes(configExchange);
             InitOptions(theme, configExchange);
@@ -62,7 +65,7 @@ namespace MegaSite.Installer
 
         private void InitOptions(string theme, ConfigExchange configExchange)
         {
-            _managers.LicenseManager.GetOptions().Set("Theme", theme);
+            _managers.License.Options.Set("License", theme);
             foreach (var option in configExchange.Options)
             {
                 var value = option.Value;
@@ -79,7 +82,7 @@ namespace MegaSite.Installer
                         }
                     }
                 }
-                _managers.LicenseManager.GetOptions().Set(option.Key, value);
+                _managers.License.Options.Set(option.Key, value);
             }
         }
 

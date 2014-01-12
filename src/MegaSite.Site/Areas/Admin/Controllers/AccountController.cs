@@ -33,7 +33,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
                 ModelState.AddModelError("", Resource.UserNameOrPasswordProvidedIsIncorrect);
                 return View(vm);
             }
-
+            Session["licenseId"] = null;
             var url = vm.ReturnUrl ?? Url.Content("~/Admin");
             FormsAuthentication.SetAuthCookie(user.UserName, false);
             if (string.IsNullOrEmpty(url) && !Url.IsLocalUrl(url))
@@ -46,6 +46,7 @@ namespace MegaSite.Site.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session["licenseId"] = null;
             Response.Clear();
             var url = Request.UrlReferrer != null ? Request.UrlReferrer.ToString() : Url.Content("~/Admin");
             return Redirect(url);

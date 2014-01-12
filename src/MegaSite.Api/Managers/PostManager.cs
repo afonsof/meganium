@@ -26,6 +26,12 @@ namespace MegaSite.Api.Managers
             var now = DateTime.Now;
             now = now.AddSeconds(-now.Second);
 
+            /*todo
+             * if (postType == null)
+            {
+                postType = _uow.PostTypeRepository.AsQueryable().FirstOrDefault(pt => pt.Id == _uow.LicenseManager.GetOptions(licenseId).GetInt("DefaultPostTypeId"));
+            }*/
+
             return new Post
             {
                 PostType = postType,

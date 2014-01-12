@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Mvc;
 using Dongle.Reflection;
-using Dongle.Serialization;
 using MegaSite.Api;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Managers;
@@ -70,7 +69,7 @@ namespace MegaSite.Site.Areas.Extension.Controllers
             body += "Fotos:\n";
             body = data.SelectedMediaFiles.Aggregate(body, (current, selectedMediaFile) => current + ("\n+ " + selectedMediaFile.Title));
 
-            Mailer.Send(client.FullName, client.Email, "Escolha de Fotos", body, Options.Instance.Get("PhotoSelectorEmailReporter"));
+            Mailer.Send(client.FullName, client.Email, "Escolha de Fotos", body, _managers.License.Options.Get("PhotoSelectorEmailReporter"));
 
             //todo: tratar se não tiver cliente e erro de salvar
             return Json(new Message("Fotos enviadas com sucesso", MessageType.Success));

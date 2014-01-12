@@ -15,7 +15,10 @@ namespace MegaSite.Api.Trash
     {
         public static MvcHtmlString Option(this HtmlHelper helper, string name)
         {
-            return new MvcHtmlString(Options.Instance.Get(name));
+            using (var uow = new UnitOfWork())
+            {
+                return new MvcHtmlString(uow.License.Options.Get(name));
+            }
         }
 
         public static HtmlString Video(this HtmlHelper helper, MediaFile mediaFile, int width = 450, int height = 310)

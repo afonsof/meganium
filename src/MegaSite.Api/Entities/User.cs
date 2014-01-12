@@ -2,9 +2,10 @@
 
 namespace MegaSite.Api.Entities
 {
-    public class User : IHaveId
+    public class User : IHaveId, IHaveLicense
     {
         public virtual int Id { get; set; }
+        public virtual License License { get; set; }
 
         public virtual string Email { get; set; }
         public virtual string Password { get; set; }

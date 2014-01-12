@@ -9,5 +9,10 @@ namespace MegaSite.Api.Entities
         public virtual string Domain { get; set; }
         [Length(10000)]
         public virtual string OptionsJson { get; set; }
+
+        public virtual IOptions Options
+        {
+            get { return Api.Options.GetOptions(Id); }
+        }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using System.Configuration;
+using System.Diagnostics;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Dongle.System;
 using MegaSite.Api;
+using MegaSite.Api.Entities;
+using MegaSite.Api.Repositories;
 
 namespace MegaSite.Site
 {
@@ -14,9 +17,10 @@ namespace MegaSite.Site
 
             try
             {
-                using (var data = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+                using (var db = new Database(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
                 {
-                    foreach (var postType in data.PostTypeManager.GetAll())
+                    var repo = new Repository<PostType>(db);
+                    foreach (var postType in repo.AsQueryable())
                     {
                         if (string.IsNullOrEmpty(postType.SingularName) || string.IsNullOrEmpty(postType.PluralName))
                         {

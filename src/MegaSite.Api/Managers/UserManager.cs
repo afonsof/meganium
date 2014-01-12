@@ -7,21 +7,22 @@ using MegaSite.Api.Messaging;
 using MegaSite.Api.Repositories;
 using MegaSite.Api.Resources;
 using MegaSite.Api.ViewModels;
+using NHibernate.Linq;
 
 namespace MegaSite.Api.Managers
 {
     public class UserManager
     {
-        private readonly IRepositories _uow;
+        private readonly IRepositories _repositories;
 
-        public UserManager(IRepositories uow)
+        public UserManager(IRepositories repositories)
         {
-            _uow = uow;
+            _repositories = repositories;
         }
 
         public User GetById(int id)
         {
-            return _uow.UserRepository.GetById(id);
+            return _repositories.UserRepository.GetById(id);
         }
 
         public User GetFromUsernameAndPassword(string username, string password)
@@ -29,7 +30,9 @@ namespace MegaSite.Api.Managers
             var md5Password = password.ToMd5();
             var login = username;
 
-            return _uow.UserRepository
+            return _repositories.Db
+                .Session
+                .Query<User>()
                 .AsQueryable()
                 .FirstOrDefault(u => u.Email == login && u.Password == md5Password);
         }
@@ -47,46 +50,46 @@ namespace MegaSite.Api.Managers
 
             user.Password = user.Password.ToMd5();
             user.CreatedAt = DateTime.Now;
-            _uow.UserRepository.Add(user);
-            _uow.Commit();
+            _repositories.UserRepository.Add(user);
+            _repositories.Commit();
 
             return new Message(Resource.ItemSuccessfullyAdd, MessageType.Success);
         }
 
         public User GetByUserNameOrEmail(string userNameOrEmail)
         {
-            return _uow.UserRepository.AsQueryable().FirstOrDefault(u => u.Email == userNameOrEmail || u.UserName == userNameOrEmail);
+            return _repositories.UserRepository.AsQueryable().FirstOrDefault(u => u.Email == userNameOrEmail || u.UserName == userNameOrEmail);
         }
 
         private bool Exists(string userNameOrEmail)
         {
-            return _uow.UserRepository.AsQueryable().Any(u => u.Email == userNameOrEmail || u.UserName == userNameOrEmail);
+            return _repositories.UserRepository.AsQueryable().Any(u => u.Email == userNameOrEmail || u.UserName == userNameOrEmail);
         }
 
         public IEnumerable<User> GetAll()
         {
-            return _uow.UserRepository.AsQueryable().OrderBy(u => u.FullName);
+            return _repositories.UserRepository.AsQueryable().OrderBy(u => u.FullName);
         }
 
         public Message Change(UserEditVm vm)
         {
-            var user = _uow.UserRepository.GetById(vm.Id);
+            var user = _repositories.UserRepository.GetById(vm.Id);
             user.FullName = vm.FullName;
             user.Enabled = vm.Enabled;
-            _uow.UserRepository.Edit(user);
-            _uow.Commit();
+            _repositories.UserRepository.Edit(user);
+            _repositories.Commit();
 
             return new Message(Resource.ItemSuccessfullyAdd, MessageType.Success);
         }
 
         public Message Remove(int id)
         {
-            var user = _uow.UserRepository.GetById(id);
+            var user = _repositories.UserRepository.GetById(id);
 
-            if (!_uow.PostRepository.AsQueryable().Any(p => p.CreatedBy == user || p.UpdatedBy == user))
+            if (!_repositories.PostRepository.AsQueryable().Any(p => p.CreatedBy == user || p.UpdatedBy == user))
             {
-                _uow.UserRepository.Remove(id);
-                _uow.Commit();
+                _repositories.UserRepository.Remove(id);
+                _repositories.Commit();
                 return new Message(Resource.ItemSuccessfullyDeleted, MessageType.Success);
             }
             return new Message(Resource.CantRemoveBecauseThisUserHavePosts, MessageType.Error);

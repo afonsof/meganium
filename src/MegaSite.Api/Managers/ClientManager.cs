@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dongle.Algorithms;
-using Dongle.Serialization;
 using MegaSite.Api.Entities;
 using MegaSite.Api.Messaging;
 using MegaSite.Api.Repositories;
 using MegaSite.Api.Resources;
-using MegaSite.Api.Trash;
 using MegaSite.Api.ViewModels;
 
 namespace MegaSite.Api.Managers

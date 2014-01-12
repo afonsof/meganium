@@ -319,10 +319,8 @@
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.js" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.js" />
     <None Include="Content\admin\js\src\PhotoSelector.ts" />
-    <None Include="gruntfile.js" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <None Include="package.json" />
     <None Include="Content\admin\js\src\MediaFile.ts" />
     <None Include="Content\admin\js\src\VideoManager.ts" />
     <None Include="Content\admin\js\src\FrameModal.ts" />
@@ -595,7 +593,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Content\themes\julianaeafonso\theme.json" />
     <Content Include="Content\themes\julianaeafonso\views\Index.cshtml" />
     <Content Include="Content\themes\julianaeafonso\views\Web.config" />
     <Content Include="Content\themes\julianaeafonso\views\Home.cshtml" />
@@ -604,7 +601,11 @@
     <Content Include="Content\themes\julianaeafonso\font\fontawesome-webfont.woff" />
     <Content Include="Content\themes\julianaeafonso\font\FontAwesome.otf" />
     <Content Include="Content\themes\julianaeafonso\views\_CenterAlbum.cshtml" />
-    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <Content Include="Content\licenses\afonsof\license.json" />
+    <Content Include="Content\licenses\julianaeafonso\license.json" />
+    <Content Include="Content\licenses\kayzo\license.json" />
+    <Content Include="Content\licenses\sonhart\license.json" />
+    <None Include="Properties\PublishProfiles\temp.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\admin\js\libs\bootstrap3\fonts\" />
@@ -617,8 +618,8 @@
       <Project>{2B77B45A-A05C-45B7-AA06-14855A85D3C7}</Project>
       <Name>MegaSite.Api</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MegaSite.Install\MegaSite.Installer.csproj">
-      <Project>{1444bd89-b836-430f-9605-b116549b5957}</Project>
+    <ProjectReference Include="..\MegaSite.Installer\MegaSite.Installer.csproj">
+      <Project>{1444BD89-B836-430F-9605-B116549B5957}</Project>
       <Name>MegaSite.Installer</Name>
     </ProjectReference>
     <ProjectReference Include="..\MegaSite.Plugins\MegaSite.Plugins.csproj">
@@ -665,7 +666,6 @@
     <Content Include="Content\admin\js\libs\font-awesome\font\fontawesome-webfont.woff" />
     <Content Include="Content\admin\js\libs\font-awesome\font\FontAwesome.otf" />
     <Content Include="Content\admin\js\libs\jquery\jquery-1.9.1.min.map" />
-    <Content Include="Content\themes\afonsof\theme.json" />
     <Content Include="Content\themes\afonsof\views\Home.cshtml" />
     <Content Include="Content\themes\afonsof\views\Index.cshtml" />
     <Content Include="Content\themes\afonsof\views\Show-Pagina-Contato.cshtml" />
@@ -673,7 +673,6 @@
     <Content Include="Content\themes\afonsof\views\Web.config" />
     <Content Include="Content\themes\afonsof\views\_Layout.cshtml" />
     <Content Include="Content\themes\afonsof\views\_ViewStart.cshtml" />
-    <Content Include="Content\themes\kayzo\theme.json" />
     <Content Include="Content\themes\kayzo\views\Home.cshtml" />
     <Content Include="Content\themes\kayzo\views\Index-Evento.cshtml" />
     <Content Include="Content\themes\kayzo\views\Index.cshtml" />
@@ -686,7 +685,6 @@
     <Content Include="Content\themes\kayzo\views\_ViewStart.cshtml" />
     <Content Include="Content\themes\sonhart\images\nivo\desktop.ini" />
     <Content Include="Content\themes\sonhart\images\slides\desktop.ini" />
-    <Content Include="Content\themes\sonhart\theme.json" />
     <Content Include="Content\themes\sonhart\views\Home.cshtml" />
     <Content Include="Content\themes\sonhart\views\Index-Album.cshtml" />
     <Content Include="Content\themes\sonhart\views\Index-Video.cshtml" />

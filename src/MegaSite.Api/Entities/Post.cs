@@ -10,9 +10,10 @@ using NHibernate.Validator.Constraints;
 namespace MegaSite.Api.Entities
 {
     //refactor: rever metodos desta classe
-    public class Post : IHaveId, IHaveSlug
+    public class Post : IHaveId, IHaveSlug, IHaveLicense
     {
         public virtual int Id { get; set; }
+        public virtual License License { get; set; }
 
         //Main Infomation
         public virtual string Title { get; set; }
@@ -178,5 +179,7 @@ namespace MegaSite.Api.Entities
         }
 
         #endregion
+
+        
     }
 }

@@ -4,13 +4,17 @@
     // load all grunt tasks
     var compiledTsFilePath = 'Content/admin/js/app.js';
     var compiledMinFilePath = 'Content/admin/js/app.min.js';
-    var slnPath = '../megasite/src/MegaSite.sln';
+    var slnPath = 'MegaSite.sln';
     grunt.initConfig({
+    
+        execOpts: {
+          maxBuffer: Infinity
+        },
 
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            compile: ['Scripts'],
+            compile: ['MegaSite.Site/Temp'],
         },
 
         ts: {
@@ -23,7 +27,7 @@
                 comments: false
             },
             live: {
-                src: ['Content/admin/js/src/*.ts'],
+                src: ['MegaSite.Site/Content/admin/js/src/*.ts'],
                 out: compiledTsFilePath,
                 options: {
                     sourcemap: false
@@ -34,7 +38,7 @@
         uglify: {
             my_target: {
                 files: {
-                    'Content/admin/js/app.min.js': [compiledTsFilePath]
+                    'MegaSite.Site/Content/admin/js/app.min.js': [compiledTsFilePath]
                 }
             }
         },
@@ -42,10 +46,10 @@
         assemblyinfo: {
             options: {
                 files: [
-                    '../MegaSite.Site/MegaSite.Site.csproj',
-                    '../MegaSite.Plugins/MegaSite.Plugins.csproj',
-                    '../MegaSite.Api/MegaSite.Api.csproj',
-                    '../MegaSite.Install/MegaSite.Installer.csproj'
+                    'MegaSite.Site/MegaSite.Site.csproj',
+                    'MegaSite.Plugins/MegaSite.Plugins.csproj',
+                    'MegaSite.Api/MegaSite.Api.csproj',
+                    'MegaSite.Installer/MegaSite.Installer.csproj'
                 ],
                 info: {
                     version: "<%= pkg.version %>.0",
@@ -62,14 +66,20 @@
             options: {
                 projectConfiguration: 'Release',
                 targets: ['Clean', 'Rebuild'],
-                stdout: true
+                stdout: true,
+                verbosity: 'minimal',
+                buildParameters: {
+                    WarningLevel: 3,
+                    DeployOnBuild: true,
+                    PublishProfile: "temp"
+                },
             }
         },
 
         nunit: {
             options: {
-                files: [slnPath],
-                teamcity: true
+                path: 'c:\\Program Files\\NUnit\\bin',
+                files: ['MegaSite.Site/MegaSite.Site.csproj']
             }
         },
 
@@ -80,12 +90,12 @@
                     port: 21,
                     authKey: 'key1'
                 },
-                src: 'D:/teste',
+                src: 'MegaSite.Site/Temp',
                 dest: '/',
-                exclusions: ['path/to/source/folder/**/.DS_Store', 'path/to/source/folder/**/Thumbs.db', 'dist/tmp'],
+                exclusions: ['MegaSite.Site/**/*.cs'],
                 keep: ['/Content/Uploads'],
-                simple: false,
-                useList: false
+                simple: true,
+                useList: true
             }
         }
 
@@ -95,7 +105,7 @@
 
     grunt.registerTask('ci', ['assemblyinfo', 'msbuild', 'nunit']);
     grunt.registerTask('default', ['ts:live']);
-    grunt.registerTask('pre-build', 'Build the Typescript project', ['clean', 'ts:live']);
+    grunt.registerTask('pre-build', 'Build the Typescript project', ['ts:live']);
     grunt.registerTask('post-build', 'Compiles all Typescript files to pub and minifies it', [/*'concat:dist',*/ 'uglify'/*, 'closure-compiler'*/]);
     grunt.registerTask('compile', 'Compiles all Typescript files to pub and minifies it', ['pre-build', 'post-build']);
     grunt.registerTask('compile-hint', 'Compiles, run jshint and minification', ['pre-build', 'jshint', 'post-build']);

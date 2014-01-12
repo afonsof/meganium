@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web;
-using System.Web.Mvc;
-using MegaSite.Api;
-using MegaSite.Api.Entities;
+﻿using System.Web;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Plugins;
 using MegaSite.Api.Trash;
@@ -18,7 +14,7 @@ namespace MegaSite.Plugins.GoogleAnalyticsTracker
 
         public HtmlString OnFooter(IManagers managers)
         {
-            var tracker = managers.LicenseManager.GetOptions().Get("GoogleAnalyticsTracker");
+            var tracker = managers.License.Options.Get("GoogleAnalyticsTracker");
 
             if (!string.IsNullOrEmpty(tracker))
             {

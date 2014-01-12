@@ -2,9 +2,10 @@ using System.Collections.Generic;
 
 namespace MegaSite.Api.Entities
 {
-    public class Category : IHaveId, IHaveSlug
+    public class Category : IHaveId, IHaveSlug, IHaveLicense
     {
         public virtual int Id { get; set; }
+        public virtual License License { get; set; }
 
         public virtual string Title { get; set; }
         public virtual string Slug { get; set; }

@@ -8,6 +8,7 @@ node_modules
 [Bb]in/
 [Oo]bj/
 .grunt/
+[Tt]emp/
 
 # mstest test results
 TestResults

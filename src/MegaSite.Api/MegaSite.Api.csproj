@@ -94,8 +94,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\ClientSubItem.cs" />
+    <Compile Include="Entities\IHaveLicense.cs" />
+    <Compile Include="Repositories\LicensedRepository.cs" />
     <Compile Include="Trash\DataJsonExtension.cs" />
     <Compile Include="Entities\IHaveDataJson.cs" />
     <Compile Include="Managers\ClientSubItemManager.cs" />
@@ -110,7 +113,6 @@
     <Compile Include="Plugins\IImportPlugin.cs" />
     <Compile Include="Plugins\ImportPluginType.cs" />
     <Compile Include="Plugins\ImportPost.cs" />
-    <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <DependentUpon>Resource.resx</DependentUpon>
       <AutoGen>True</AutoGen>

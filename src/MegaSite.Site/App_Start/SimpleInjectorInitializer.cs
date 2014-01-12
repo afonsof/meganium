@@ -1,7 +1,10 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Reflection;
+using System.Web;
 using System.Web.Mvc;
 using MegaSite.Api;
+using MegaSite.Api.Entities;
 using MegaSite.Api.Managers;
 using MegaSite.Api.Plugins;
 using MegaSite.Plugins;
@@ -29,14 +32,13 @@ namespace MegaSite.Site
         private static void InitializeContainer(Container container)
         {
             var webLifestyle = new WebRequestLifestyle();
-            container.Register(() => Options.Instance);
             container.Register(CreateManagers, webLifestyle);
             container.Register<IActionPluginManager, ActionPluginManager>();
         }
 
         private static IManagers CreateManagers()
         {
-            IManagers managers = new UnitOfWork(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            IManagers managers = new UnitOfWork();
             return managers;
         }
     }

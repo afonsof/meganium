@@ -12,6 +12,7 @@ namespace MegaSite.Api.Repositories
         IRepository<License> LicenseRepository { get; }
         IRepository<Client> ClientRepository { get; }
         IRepository<ClientSubItem> ClientSubItemRepository { get; }
+        Database Db { get; }
         void Commit();
     }
 }
