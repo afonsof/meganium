@@ -1,0 +1,59 @@
+﻿@using Meganium.Api
+@using Meganium.Api.Resources
+@model IEnumerable<Meganium.Api.Entities.User>
+@{
+    ViewBag.Title = Resource.UserAdmin;
+    ViewBag.Icon = "user";
+}
+<div class="btn-toolbar">
+    <a class="btn btn-primary" href="@Url.Action("Create")">@Resource.CreateUser</a>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Resource.Name
+        </th>
+        <th>
+            @Resource.UserName
+        </th>
+        <th>
+            @Resource.Email
+        </th>
+        <th>
+            @Resource.CreatedAt
+        </th>
+        <th>
+            @Resource.Enabled
+        </th>
+        <th>@Resource.Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enabled)
+            </td>
+            <td>
+                @Html.ActionLink(Resource.Edit, "Edit", new { id = item.Id })
+
+                @if (item.UserName != User.Identity.Name)
+                {
+                    <text> | </text>
+                    @Html.ActionLink(Resource.Delete, "Delete", new { id = item.Id }, new { @class = "delete-button" })
+                }
+            </td>
+        </tr>
+    }
+</table>

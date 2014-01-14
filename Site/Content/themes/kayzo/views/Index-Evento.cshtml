@@ -1,0 +1,77 @@
+@using Meganium.Api.Trash
+@using Meganium.Api.Trash
+@model Meganium.Api.ViewModels.SiteViewModel
+
+<div class="container row" style="margin-top: 20px">
+    <div class="sixteen columns left">
+        <h1 class="heading">Próximos eventos</h1>
+        <!-- Album Detail Start -->
+        <div class="in-sec nopad-bot">
+            <div id="tab-rock">
+                <ul class="prod-list">
+                    @foreach (var post in Model.CurrentPosts.OrderBy(e=>e.StartedAt).Where(e=>e.StartedAt > DateTime.Now))
+                    {
+                        <li>
+                            <a href="@Url.Content(post.UrlPath)" class="thumb">
+                                @Url.Thumbnail(post.FeaturedMediaFile, 208, 198, true)<span>&nbsp;</span>
+                            </a>
+                            <h4 class="title"><a href="@Url.Content(post.UrlPath)">@post.Title</a></h4>
+                            <p style="font-size: 13px">@post.StartedAt.ToString("dd/MMM' às 'hh'h'mm")</p>
+                        </li>
+                    }
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- Tabs Section End -->
+        <div class="clear"></div>
+    </div>
+    <div class="sixteen columns left">
+        <h1 class="heading">Últimos eventos</h1>
+        <!-- Album Detail Start -->
+        <div class="in-sec nopad-bot">
+            <div id="tab-rock">
+                <ul class="prod-list">
+                    @foreach (var post in Model.CurrentPosts.OrderByDescending(e=>e.StartedAt).Where(e=>e.StartedAt < DateTime.Now))
+                    {
+                        <li>
+                            <a href="@Url.Content(post.UrlPath)" class="thumb">
+                                @Url.Thumbnail(post.FeaturedMediaFile, 208, 198, true)<span>&nbsp;</span>
+                            </a>
+                            <h4 class="title"><a href="@Url.Content(post.UrlPath)">@post.Title</a></h4>
+                            <p style="font-size: 13px">@post.StartedAt.ToString("dd/MMM' às 'hh'h'mm")</p>
+                        </li>
+                    }
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- Tabs Section End -->
+        <div class="clear"></div>
+    </div>
+</div>
+
+@*
+<div id="single-page" class="clearfix left-sidebar">
+    <div id="primary" style="margin-top: 0px;">
+        <h1 class="entry-title">Blog</h1>
+        @foreach (var post in Model.CurrentPosts)
+        {
+            <article>
+                <header class="entry-header">
+                    <h2 class="entry-title">
+                        <a href="@Url.Content(@post.UrlPath)">@post.Title</a></h2>
+                </header>
+                <div class="post-header">
+                    <p class="post-author">
+                        <span>Em <b>@post.PublishedAt.ToString("d \"de\" MMMM \"de\" yyyy")</b> por <strong>@post.CreatedBy.DisplayName</strong></span>
+                    </p>
+                </div>
+                @Html.Raw(post.PreviewContent) <a href="@Url.Content(@post.UrlPath)">[ler postagem...]</a>
+            </article>
+        }
+    </div>
+</div>
+*@

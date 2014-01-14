@@ -1,0 +1,41 @@
+﻿@using Meganium.Api.Resources
+@model Meganium.Api.ViewModels.CategoryVm
+@{
+    ViewBag.Title = Model.Category.Id > 0 ? Resource.EditCategory : Resource.CreateCategory;
+    ViewBag.Icon = "tags";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        @Html.HiddenFor(model => model.Category.Id)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Category.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Category.Title)
+            @Html.ValidationMessageFor(model => model.Category.Title)
+        </div>
+        @if (Model.Category.Id > 0)
+        {
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Category.Slug)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Category.Slug)
+                @Html.ValidationMessageFor(model => model.Category.Slug)
+            </div>
+        }
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Category.PostType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PostTypeId", Model.PostTypeSelect)
+            @Html.ValidationMessageFor(model => model.Category.PostType)
+        </div>
+        <div class="toolbar">
+            <button type="submit" class="btn btn-primary">@Resource.Save</button>
+            <a href="@Url.Action("Index")" class="btn">@Resource.Back</a>
+        </div>
+    </fieldset>
+}

@@ -1,0 +1,201 @@
+﻿@using Meganium.Api.Trash
+@using Meganium.Api
+@using Meganium.Api.Resources
+@using Meganium.Api.Trash
+<script type="text/javascript">
+    function showMessage(message, type) {
+        var alert = $('<div class="alert alert-' + type + '" style="position: absolute; z-index: 10000; left: 50%; margin-left: -200px; width: 400px; top: 10px; text-align:center">\
+                <button type="button" class="close" data-dismiss="alert">&times;</button>' + message + '</div>');
+
+        $(document.body).prepend(alert);
+        alert.alert();
+
+        if (type == 'info' || type == 'success') {
+            $(document).ready(function () {
+                setTimeout(function () {
+                    alert.alert('close');
+                }, 5000);
+            });
+        }
+    }
+    $(document).ready(function () {
+        $('.delete-button').click(function () {
+            if (!confirm("@Html.Raw(Resource.AreYouSureYouWantDeleteThisItem)?")) {
+                return false;
+            }
+            $(this).text('@Resource.Deleting...');
+            return true;
+        });
+
+        $('.multiselect').chosen({
+            placeholder_text_multiple: '@Html.Raw(Resource.SelectSomeOptions)',
+            placeholder_single_text: '@Html.Raw(Resource.SelectAnOption)',
+            placeholder_no_result_text: '@Html.Raw(Resource.NoResultsMatch)'
+        });
+
+        var dateTimePickerOptions = { language: 'pt-BR', format: 'dd/mm/yyyy hh:ii:ss', autoclose: true };
+
+        $('.datetimepicker').datetimepicker(dateTimePickerOptions);
+        $('.datepicker').datetimepicker({ language: 'pt-BR', format: 'dd/mm/yyyy', autoclose: true, minView: 2 });
+        $('[data-val-required]').attr('data-val-required', '@Html.Raw(Resource.FieldRequired)');
+        $('[data-val-number]').attr('data-val-number', '@Html.Raw(Resource.MustBeANumber)');
+        $('.wysihtml5').wysihtml5({
+            "stylesheets": ["/Content/admin/js/libs/bootstrap-wysihtml5/wysiwyg-color.css"]
+        });
+
+        $.validator.messages.email = '@Resource.InvalidEmail';
+        $.validator.messages.required = 'asdfadfas';
+
+        $('#daterange').daterangepicker(
+            {
+                format: 'DD/MM/YYYY HH:mm',
+                showDropdowns: true,
+                timePicker: true,
+                timePicker12Hour: false,
+                timePickerIncrement: 15,
+                locale: {
+                    cancelLabel: '@Resource.Cancel',
+                    applyLabel: '@Resource.Ok',
+                    fromLabel: '@Resource.From',
+                    toLabel: '@Resource.To',
+                    daysOfWeek: ['@Resource.Sun', '@Resource.Mon', '@Resource.Tue', '@Resource.Wed', '@Resource.Thu', '@Resource.Fri', '@Resource.Sat'],
+                    monthNames: ['@Resource.January', '@Resource.February', '@Resource.March', '@Resource.April', '@Resource.May', '@Resource.June', '@Resource.July', '@Resource.August', '@Resource.September', '@Resource.October', '@Resource.November', '@Resource.December'],
+                    firstDay: 1
+                }
+            },
+            function (start, end) {
+                $(this.element.attr('data-start')).val(start.format('DD/MM/YYYY HH:mm:ss'));
+                $(this.element.attr('data-end')).val(end.format('DD/MM/YYYY HH:mm:ss'));
+            }
+        );
+    });
+</script>
+
+<style>
+        html, body
+        {
+            height: 100%; /* The html and body elements cannot have any padding or margin. */
+            padding-top: 0;
+        }
+        
+        /* Wrapper for page content to push down footer */
+        #wrap
+        {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%; /* Negative indent footer by it's height */
+            margin: 0 auto -60px;
+        }
+        
+        /* Set the fixed height of the footer here */
+        #push, #footer
+        {
+            height: 60px;
+            display: block;
+        }
+        #footer
+        {
+            background-color: #f5f5f5;
+        }
+        
+        footer p
+        {
+            margin: 20px 0;
+        }
+        
+        .header
+        {
+            position: relative;
+            padding: 20px 0;
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+            background: #020031; /* Old browsers */
+            background: -moz-linear-gradient(45deg,  @Html.Option("Color1") 0%, @Html.Option("Color2") 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,@Html.Option("Color1")), color-stop(100%,@Html.Option("Color2"))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(45deg,  @Html.Option("Color1") 0%,@Html.Option("Color2") 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(45deg,  @Html.Option("Color1") 0%,@Html.Option("Color2") 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(45deg,  @Html.Option("Color1") 0%,@Html.Option("Color2") 100%); /* IE10+ */
+            background: linear-gradient(45deg,  @Html.Option("Color1") 0%,@Html.Option("Color2") 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@Html.Option("Color1")', endColorstr='@Html.Option("Color2")',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+            -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+            -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+            box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+        }
+        .nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus {
+        color: #ffffff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+        background-color: @Html.Option("Color1");
+        }
+
+        a {
+            color: @Html.Option("Color1");
+            text-decoration: none;
+        }
+
+        .default-color {
+            background-color: @Html.Option("Color1");
+        }
+
+        .btn-primary {
+            color: #ffffff;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+            background-color: @Html.Option("Color1");
+            background-image: -moz-linear-gradient(top, @Html.Option("Color1"), @Html.Option("Color2"));
+            background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@Html.Option("Color1")), to(@Html.Option("Color2")));
+            background-image: -webkit-linear-gradient(top, @Html.Option("Color1"), @Html.Option("Color2"));
+            background-image: -o-linear-gradient(top, @Html.Option("Color1"), @Html.Option("Color2"));
+            background-image: linear-gradient(to bottom, @Html.Option("Color1"), @Html.Option("Color2"));
+            background-repeat: repeat-x;
+            border-color: #0044cc #0044cc #002a80;
+            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+            filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        }
+        .btn-primary:hover,
+            .btn-primary:focus,
+            .btn-primary:active,
+            .btn-primary.active,
+            .btn-primary.disabled,
+            .btn-primary[disabled] {
+              color: #ffffff;
+              background-color: @Html.Option("Color1");
+              *background-color: #003bb3;
+        }
+
+        .btn-primary:active,
+        .btn-primary.active {
+          background-color: @Html.Option("Color1") \9;
+        }
+
+        .item.selected img {
+            border: 3px solid @Html.Option("Color1");
+            padding: 1px;
+        }
+
+
+    .tint {  
+    position: relative;  
+    float: left;  
+    cursor: pointer;  
+}  
+  
+.tint:before {  
+    content: "";  
+    display: block;  
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    background: rgba(0,255,255, 0.5);  
+    -moz-transition: background .3s linear;  
+    -webkit-transition: background .3s linear;  
+    -ms-transition: background .3s linear;  
+    -o-transition: background .3s linear;  
+    transition: background .3s linear;  
+}  
+  
+.tint:hover:before {  
+    background: none;  
+}
+    </style>

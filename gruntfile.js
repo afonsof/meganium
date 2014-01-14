@@ -2,9 +2,9 @@
     'use strict';
 
     // load all grunt tasks
-    var compiledTsFilePath = 'Content/admin/js/app.js';
-    var compiledMinFilePath = 'Content/admin/js/app.min.js';
-    var slnPath = 'MegaSite.sln';
+    var compiledTsFilePath = 'Site/Content/admin/js/app.js';
+    var compiledMinFilePath = 'Site/Content/admin/js/app.min.js';
+    var slnPath = 'Meganium.sln';
     grunt.initConfig({
     
         execOpts: {
@@ -14,7 +14,7 @@
         pkg: grunt.file.readJSON('package.json'),
 
         clean: {
-            compile: ['MegaSite.Site/Temp'],
+            compile: ['Site/Temp'],
         },
 
         ts: {
@@ -27,7 +27,7 @@
                 comments: false
             },
             live: {
-                src: ['MegaSite.Site/Content/admin/js/src/*.ts'],
+                src: ['Site/Content/admin/js/src/*.ts'],
                 out: compiledTsFilePath,
                 options: {
                     sourcemap: false
@@ -38,7 +38,7 @@
         uglify: {
             my_target: {
                 files: {
-                    'MegaSite.Site/Content/admin/js/app.min.js': [compiledTsFilePath]
+                    'Site/Content/admin/js/app.min.js': [compiledTsFilePath]
                 }
             }
         },
@@ -46,10 +46,12 @@
         assemblyinfo: {
             options: {
                 files: [
-                    'MegaSite.Site/MegaSite.Site.csproj',
-                    'MegaSite.Plugins/MegaSite.Plugins.csproj',
-                    'MegaSite.Api/MegaSite.Api.csproj',
-                    'MegaSite.Installer/MegaSite.Installer.csproj'
+                    'Site/Site.csproj',
+                    'Plugins/Plugins.csproj',
+                    'Api/Api.csproj',
+                    'Installer/Installer.csproj',
+                    'Tests/SystemTests/SystemTests.csproj',
+                    'Tests/UnitTests/UnitTests.csproj'
                 ],
                 info: {
                     version: "<%= pkg.version %>.0",
@@ -79,7 +81,7 @@
         nunit: {
             options: {
                 path: 'c:\\Program Files\\NUnit\\bin',
-                files: ['MegaSite.Site/MegaSite.Site.csproj']
+                files: ['Site/Site.csproj']
             }
         },
 
@@ -90,9 +92,9 @@
                     port: 21,
                     authKey: 'key1'
                 },
-                src: 'MegaSite.Site/Temp',
+                src: 'Site/Temp',
                 dest: '/',
-                exclusions: ['MegaSite.Site/**/*.cs'],
+                exclusions: ['Site/**/*.cs'],
                 keep: ['/Content/Uploads'],
                 simple: true,
                 useList: true

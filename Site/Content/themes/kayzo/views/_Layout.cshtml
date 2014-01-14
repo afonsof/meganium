@@ -1,0 +1,128 @@
+﻿@using Meganium.Api.Trash
+@using Meganium.Api.Trash
+@model Meganium.Api.ViewModels.SiteViewModel
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="pt-BR">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.Title</title>
+    <meta name="description" content="@Html.Option("SiteDescription")" />
+    <meta name="author" content="Afonso França" />
+    <!--// Mobile Metas //-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--// Stylesheets //-->
+    <link rel="stylesheet" href="~/Content/themes/kayzo/css/base.css" />
+    <link rel="stylesheet" href="~/Content/themes/kayzo/css/skeleton.css" />
+    <link rel="stylesheet" href="~/Content/themes/kayzo/css/layout.css" />
+    <link rel="stylesheet" href="~/Content/themes/kayzo/css/style.css" />
+    <link rel="stylesheet" href="~/Content/themes/kayzo/css/player.css" />
+    <link rel="stylesheet" href="~/Content/themes/kayzo/css/color.css" />
+    <link rel="stylesheet" href="~/Content/themes/kayzo/css/fancybox.css" />
+    <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    <!--// Favicons //-->
+    <link rel="shortcut icon" href="~/Content/themes/kayzo/images/favicon.png" />
+    <!--// Javascript //-->
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.infinite-carousel.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/animatedcollapse.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/ddsmoothmenu.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/scrolltopcontrol.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.fancybox-1.3.1.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/lightbox.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Content/themes/kayzo/js/jquery.validate.unobtrusive.min.js"></script>
+
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=491046120957636";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+
+    <!-- Outer Wrapper Start -->
+    <div id="outer-wrapper">
+        <div class="inner">
+            <!-- Header Start -->
+            <div id="header">
+                <span class="topbar">&nbsp;</span>
+                <!-- Container Start -->
+                <div class="container">
+                    <!-- Logo Start -->
+                    <div class="five columns left">
+                        <a href="~/" class="logo">
+                            <img src="~/Content/themes/kayzo/images/logo.png" alt="@Html.Option("SiteTitle")" /></a>
+                    </div>
+                    <!-- Logo End -->
+                    <div class="eleven columns right">
+                        <!-- Navigation Start -->
+                        <div class="navigation">
+                            <div id="smoothmenu1" class="ddsmoothmenu">
+                                <ul>
+                                    <li><a href="~/">Home</a></li>
+                                    <li><a href="~/pagina/empresa">Empresa</a></li>
+                                    <li><a href="~/eventos">Eventos</a></li>
+                                    <li><a href="~/depoimentos">Depoimentos</a></li>
+                                    <li><a href="~/pagina/orcamento">Orçamento</a></li>
+                                    <li><a href="~/pagina/contato">Contato</a></li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <!-- Navigation End -->
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <!-- Container End -->
+            </div>
+            <!-- Header End -->
+            <div class="clear"></div>
+            <div class="inner shadow">
+                @RenderBody()
+                <div class="clear"></div>
+                <!-- Footer Start -->
+                <div id="footer">
+                    <div class="foot-bottom">
+                        <!-- Copyrights Start -->
+                        <div class="copyrights">
+                            <p>copyright @DateTime.Now.Year @Html.Option("SiteTitle")</p>
+                        </div>
+                        <!-- Copyrights End -->
+                        <!-- Follow Us and Top Start -->
+                        <div class="followus-top">
+                            <a href="#top" class="top">TOPO</a>
+                            <!-- Follow Us Start -->
+                            <ul>
+                                <li><a href="http://afonsof.com" title="Faça também o seu site!">Powered by Mega Site</a></li>
+                            </ul>
+                            <!-- Follow Us End -->
+                        </div>
+                        <!-- Follow Us and Top End -->
+                    </div>
+                </div>
+                <!-- Footer End -->
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- Outer Wrapper End -->
+    @Model.PluginManager.OnFooter()
+</body>
+</html>

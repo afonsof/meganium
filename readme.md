@@ -1,2 +1,2 @@
-megasite
-========
+Meganium Smart Site
+===================

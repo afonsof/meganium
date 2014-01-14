@@ -119,5 +119,5 @@ UpgradeLog*.XML
 #Output JS file
 tscommand.tmp.txt
 app*.js
-/MegaSite.Site/Content/admin/js/src/*.js
-/MegaSite.Site/Content/admin/js/src/*.js.map
+/Site/Content/admin/js/src/*.js
+/Site/Content/admin/js/src/*.js.map
