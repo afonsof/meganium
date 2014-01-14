@@ -1,0 +1,97 @@
+﻿@using Meganium.Api.Resources
+@model Meganium.Api.ViewModels.BasicIndexVm
+@{
+    ViewBag.Title = Resource.BasicAdmin;
+}
+<div class="alert">
+    <strong>Atenção:</strong> Esta é uma área para usuários avançados. Não faça nenhuma
+    alteração a não ser que você tenha certeza do que está fazendo.
+</div>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SiteTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SiteTitle)
+            @Html.ValidationMessageFor(model => model.SiteTitle)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SiteDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SiteDescription)
+            @Html.ValidationMessageFor(model => model.SiteDescription)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AdminEmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AdminEmail)
+            @Html.ValidationMessageFor(model => model.AdminEmail)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FacebookId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FacebookId)
+            @Html.ValidationMessageFor(model => model.FacebookId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GoogleAnalyticsTracker)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GoogleAnalyticsTracker)
+            @Html.ValidationMessageFor(model => model.GoogleAnalyticsTracker)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Theme)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Theme)
+            @Html.ValidationMessageFor(model => model.Theme)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DefaultAlbumImportingPostTypeId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.DefaultAlbumImportingPostTypeId, Model.PostTypeSelect)
+            @Html.ValidationMessageFor(model => model.DefaultAlbumImportingPostTypeId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DefaultVideoImportingPostTypeId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.DefaultVideoImportingPostTypeId, Model.PostTypeSelect)
+            @Html.ValidationMessageFor(model => model.DefaultVideoImportingPostTypeId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DefaultPostTypeId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.DefaultPostTypeId, Model.PostTypeSelect)
+            @Html.ValidationMessageFor(model => model.DefaultPostTypeId)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Color1)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Color1, new { @class = "colorpicker" })
+            @Html.ValidationMessageFor(model => model.Color1)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Color2)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Color2, new { @class = "colorpicker" })
+            @Html.ValidationMessageFor(model => model.Color2)
+        </div>
+        <button type="submit" class="btn btn-primary">@Resource.Save</button>
+    </fieldset>
+    
+    <script type="text/javascript">
+        $('.colorpicker').colorpicker();
+    </script>
+}

@@ -1,0 +1,45 @@
+﻿@using Dongle.System
+@using Meganium.Api.Entities
+@using Meganium.Api.Entities
+@using Meganium.Api.Resources
+@model Meganium.Api.Entities.Field
+@{
+    var list = Enum.GetValues(typeof(FieldType)).Cast<FieldType>().Select(o => new
+    {
+        Id = (int)o,
+        Name = Resource.ResourceManager.GetString(o.ToString())
+    });
+}
+<fieldset class="extra-column">
+    <div class="btn btn-remove">@Resource.Delete</div>
+    <div class="editor-label">
+        @Html.Label(@Resource.Name)
+    </div>
+    <div class="editor-field">
+        @Html.TextBox("Item_Name", Model != null ? Model.Name : "")
+    </div>
+    <div class="item-type-panel">
+        <div class="editor-label">
+            @Html.Label(@Resource.Type)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Item_Type", new SelectList(list, "Id", "Name", Model != null ? (int?)Model.Type : null),
+                           "[" + Resource.Select + "]")
+        </div>
+    </div>
+    <div class="select-list-panel">
+        <div class="editor-label">
+            @Html.Label(@Resource.SelectList + " (separado por vírgula)")
+        </div>
+        <div class="editor-field">
+            @if (Model != null && Model.SelectList != null)
+            { 
+                @Html.TextBox("Item_SelectList", Model.SelectList.ToCsv())
+            }
+            else
+            {
+                @Html.TextBox("Item_SelectList")
+            }
+        </div>
+    </div>
+</fieldset>

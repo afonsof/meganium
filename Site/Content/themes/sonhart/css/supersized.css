@@ -1,0 +1,90 @@
+/*
+	Supersized - Fullscreen Slideshow jQuery Plugin
+	Version 3.1
+	www.buildinternet.com/project/supersized
+	
+	By Sam Dunn / One Mighty Roar (www.onemightyroar.com)
+	Released under MIT License / GPL License
+*/
+
+	#supersized-loader { 
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 48px;
+		height: 48px;
+		margin: -24px 0 0 -24px;
+		overflow: hidden;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		z-index: 10001;
+	}
+	
+	#supersized { position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; width:100%; }
+		#supersized img{ position:relative; display:none; outline:none; border:none; }
+			#supersized.speed img { -ms-interpolation-mode:nearest-neighbor; image-rendering: -moz-crisp-edges; }	/*Speed*/
+			#supersized.quality img { -ms-interpolation-mode:bicubic; image-rendering: optimizeQuality; }			/*Quality*/
+		
+		#supersized a { z-index:-30; position:absolute; overflow:hidden; top:0; left:0; width:100%; height:100%; background:#111;}
+			#supersized a.prevslide { z-index:-20; }
+			#supersized a.activeslide { z-index:-10; }
+			#supersized a.prevslide img, #supersized a.activeslide img{ display:inline; }
+	
+	/*Controls Section*/
+	#controls-wrapper { margin:0 auto; height: 42px; width: 100%; bottom:0; left:0; z-index: 16; position:fixed; }
+		#controls { overflow:hidden; height:100%; text-align:left; z-index:5; padding: 0; /* Increase padding to give thumbnails room */ }
+			#controls-wrapper .has_thumbs { padding: 0 114px; }
+			#slidecounter { float: left; color: #999; font-size: 19px;  margin: 11px 10px 0 14px; }
+			#slidecaption { float: left; font-size: 22px;  margin: 9px 24px 0px 20px;  }
+
+	#controls-nav {
+		position: absolute;
+		bottom: 100%; 
+		left: 50%;
+		top: 50%;
+		margin-top: -17px;
+		margin-left: -50px;
+		padding: 5px;
+	}
+	
+	#controls-nav a { 
+		display: block; 
+		float: left; 
+		text-indent: -999em;
+		margin: 0 5px;
+	}
+	
+	#controls-nav .fullsize-control {	
+		width: 24px;
+		height: 24px;
+	}
+	
+	#controls-nav .fullsize-link {	
+		width: 16px;
+		height: 16px;
+		margin: 4px 5px;
+	}
+	#controls-nav .fullsize-start { background-position: 0 -56px; }
+	#controls-nav .fullsize-stop  { background-position: 0 -32px; }
+	#controls-nav .fullsize-prev  { background-position: 0 0; }
+	#controls-nav .fullsize-next  { background-position: 0 -16px; }
+
+
+	/*Thumbnail Navigation*/	
+	#nextthumb, #prevthumb { 
+		z-index:6; 
+		display: none; 
+		position: absolute; 
+		bottom: 10px;
+		height: 64px; width:85px; 
+		overflow:hidden; 
+		-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+		-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+		cursor: pointer;
+	}
+		#nextthumb { right: 20px; }
+		#prevthumb { left: 20px; }
+			#nextthumb img, #prevthumb img { width: 100px; height:auto;  }
+			#nextthumb:active, #prevthumb:active { bottom:10px; }

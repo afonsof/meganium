@@ -1,0 +1,40 @@
+h1, h2, h3, h4, h5, h6 {
+  color: #FF679A; 
+}
+a {
+  color: #FF679A;
+}
+
+a:hover {
+  color: #FF679A;
+}
+
+.red {
+	color: #FF679A;
+}
+.img-210 {
+  border: 0px #FF679A solid;
+}
+/*.square-all {
+  background: url(img/red/circle.png) center center no-repeat;
+}
+ul.navi li a{
+  background-image: url(img/red/button-menu.png);
+}
+#submit {
+  background: url(img/red/send-button.png) no-repeat top right;
+}
+.social-network {  
+	background: url(img/red/social-networks.png) no-repeat top left; 
+}*/
+.flex-control-paging li a.flex-active,.flex-control-paging li a:hover {
+	background: #FF679A;
+}
+/*
+.slider2 .flex-direction-nav a {
+	background: url(img/red/bg_direction_nav_hover.png) no-repeat 0 0;
+}
+*/
+.square {
+  background-color: #FF679A;
+}

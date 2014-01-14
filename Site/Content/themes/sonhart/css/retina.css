@@ -1,0 +1,8 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2) {
+
+  /** Logo Settings **/
+  #site-title .logo { display: none; }
+  #site-title .logo-retina { display: block; }
+
+}

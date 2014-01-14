@@ -1,0 +1,570 @@
+﻿@charset "utf-8";
+/*-----------------------------------------------------------------------------------
+
+	Black-Theme CSS Document for Invictus Fullsize Background Photographer Wordpress Theme
+
+	Theme Name: Invictus
+	Theme URI:
+	Description: Black-Theme CSS for "Invictus Fullsize Background Photographer Wordpress Theme"
+	Author: Dennis Osterkamp
+	Author URI: http://www.doitmax.de
+	License: GNU General Public License version 3.0
+	License URI: http://www.gnu.org/licenses/gpl-3.0.html
+	Version: 2.3.31
+
+	All files, unless otherwise stated, are released under the GNU General Public License
+	version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
+
+/* -----------------------------------------------------------------------------------
+/*
+	Table of Contents
+
+	1. =Body, Typography and some main Elements
+	2. =Header
+	3. =Nav Menu
+	4. =Footer
+	5. =Content
+	6. =Forms
+	7. =Comments
+	8. =Shortcodes
+	9. =Widgets
+	10. =Images
+	11. =SuperBgImage & Thumbnails
+	12. =My Custom Loader Styles
+	13. =Slider
+
+/*-----------------------------------------------------------------------------------*/
+/*	1. =Body, Typography and some main Elements
+/*-----------------------------------------------------------------------------------*/
+
+body { background-color: #1a1a1a; color: #bbb; }
+
+.wp_syntax {
+	border-color: #555 !important;
+	border-style: dotted !important;
+	color: #999 !important;
+
+	background: #111 !important;
+}
+abbr,acronym { border-bottom-color: #666;  }
+
+#primary, #sidebar .widget, #nivoHolder, .external-video {
+	background: #121212;
+	background: rgba(20,20,20,0.9);
+	border: 1px solid #111;
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.page-template-template-grid-fullsize-php #primary {
+	box-shadow: none;
+}
+
+.fullsize-gallery #primary { text-shadow: 0 1px 1px rgba(20,20,20,.55); }
+
+h2.page-description, h2.entry-description {
+	border-color: #444;
+	color: #fff;
+}
+
+h1.page-title, h1.entry-title, h2.page-description, h2.entry-description {
+	text-shadow: 0 1px 1px rgba(20,20,20,.55);
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	2. =Header
+/*-----------------------------------------------------------------------------------*/
+
+#site-title { background: transparent url('../images/bg-scanlines.png') repeat 0 0; }
+
+/* Blank logo reset */
+.blank-logo #site-title {
+	background: none;
+	box-shadow: none;
+}
+
+#welcomeTeaser, .max_widget_teaser {
+	background: rgba(20,20,20,0.35) url('../images/bg-scanlines.png') repeat 0 0;
+	color: #ddd;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	3. =Nav Menu
+/*-----------------------------------------------------------------------------------*/
+
+nav#navigation {
+	background: rgba(20,20,20,0.35) url('../images/bg-scanlines.png') repeat 0 0;
+}
+
+nav#navigation ul a {
+	color: #eee;
+}
+
+nav#navigation ul a:hover,
+nav#navigation ul li.sfHover a,
+nav#navigation ul li.current-cat a,
+nav#navigation ul li.current_page_item a,
+nav#navigation ul li.current-menu-item a,
+nav#navigation ul li.current_page_ancestor a,
+nav#navigation ul li.current_page_parent a {
+	color: #eee;
+}
+
+nav#navigation ul ul li a:hover, nav#navigation ul ul li a:active {
+	color: black
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 4. =Footer
+/*-----------------------------------------------------------------------------------*/
+
+#colophon {
+	color: #ccc;
+	/*background: #000 url('../images/bg-scanlines.png') 0 0 repeat;*/
+    background: #222;
+}
+
+/** Back Top Link **/
+#anchorTop a {
+	background-image: url(../images/bg-top.png);
+}
+
+#anchorTop a:link, #anchorTop a:visited {
+	color: #fff;
+}
+#anchorTop a:hover, #anchorTop a:active {
+	color: #fff;
+}
+
+#colophon .keynav {}
+
+/*-----------------------------------------------------------------------------------*/
+/* 5. =Content
+/*-----------------------------------------------------------------------------------*/
+
+.entry-image a,
+.portfolio-list li .shadow a,
+.portfolio-list li.photo .shadow a,
+.pretty_image { background: #292929 url(../images/bg-thmb-photo.png) 50% 50% no-repeat; }
+
+.portfolio-list li.video .shadow a { background: #292929 url(../images/bg-thmb-video.png) 50% 50% no-repeat; }
+.portfolio-list li.link .shadow a { background: #292929 url(../images/bg-thmb-link.png) 50% 50% no-repeat; }
+.portfolio-list li.external .shadow a { background: #292929 url(../images/bg-thmb-external.png) 50% 50% no-repeat; }
+.portfolio-list li img 		{ background: #151515; }
+
+.portfolio-list li.detail-link .shadow a {
+  background-position: 45% 50%;
+}
+
+.portfolio-list li .shadow a.hover-link-icon {
+  background: transparent url(../images/bg-thmb-link.png) 50% 50% no-repeat;
+  text-indent:  -999px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 6px;
+  filter: Alpha(Opacity=0);
+  opacity: 0;
+}
+
+.portfolio-list li:hover .shadow a.hover-link-icon {
+  filter: Alpha(Opacity=50);
+  opacity: 0.5;
+
+  -webkit-transition: opacity 300ms;
+	   -moz-transition: opacity 300ms;
+	     -o-transition: opacity 300ms;
+	        transition: opacity 300ms;
+
+}
+
+.portfolio-fullsize-scroller a.scroller-arrow {
+	background: transparent url('../images/bg-scroller-arrow.png') 0 0 no-repeat;
+}
+
+.portfolio-fullsize-scroller .scroll-bar a.ui-slider-handle {
+	background-color: #222;
+}
+
+.portfolio-fullsize-scroller .scroll-bar-wrap { background: rgba(20,20,20,.75); }
+
+#primary.portfolio-fullsize-closed .protected-post-form { background: rgba(20,20,20,0.80); border: 1px solid #111; }
+
+#portfolioList li ul  { background: #111 }
+
+
+blockquote { background: transparent url(../images/bg-quote.png) 0 15px no-repeat; }
+
+/** Pagination **/
+.pagination span, .pagination a { background: none; }
+.pagination a:hover { color: #fff; }
+.pagination span.current { color: #fff; }
+
+/* Fullsize Grid */
+.portfolio-fullsize-grid .pagination { background: #121212; background: rgba(20,20,20, 0.65) }
+.portfolio-fullsize-grid .portfolio-list,
+#flickrPortfolio { background: transparent url('../images/loading.gif') 50% 150px no-repeat; }
+
+.content-sort, .splitter-top { border-color: #323434; }
+.content-sort li a { color: #ddd; }
+.content-sort li.current a { background: #282828 url(../images/bg-sort-check.png) 5px 30% no-repeat; }
+
+#respond { border-color: #000; }
+.entry-meta, .entry-share, .entry-tags, #respond, #relatedGalleryImages li a.title, #related-posts li a.title,
+.slides-slider {
+	color: #868686;
+	border-top: 1px solid #1a1a1a;
+	border-bottom: 1px solid #000;
+	background-color: rgba(20,20,20, 0.5)
+}
+
+#recent-posts .entry-meta { background: none; border: 0 none; }
+
+.slides-slider { background-color: rgba(20,20,20, 0.35); border-top: 0 none; }
+
+.entry-meta li span { color: #ccc; }
+
+.respond-title, .author-title, .related-title, .recent-title {
+	border-color: #444;
+}
+
+/** Tag list **/
+.entry-tags li a:link, .widget_taxonomy_terms li a:link,
+.entry-tags li a:visited, .widget_taxonomy_terms li a:visited { background: #333; color: #999; }
+
+.entry-tags li a:hover, .widget_taxonomy_terms li a:hover,
+.entry-tags li a:active, .widget_taxonomy_terms li a:active { background: #444; color: #fff; }
+
+/** Next and Prev link of posts **/
+.entry-meta ul.nav-posts li { background: transparent url(../images/slides/bg-direction.png) 0 -50px no-repeat; }
+.entry-meta ul.nav-posts li.nav-next { background-position: -25px -50px; }
+
+.entry-meta li.nav-previous a,
+.entry-meta li.nav-next a {
+	background: transparent url(../images/slides/bg-direction.png) 0 0 no-repeat;
+}
+.entry-meta li.nav-next a:link, .entry-meta li.nav-next a:visited { background-position: -25px 0; }
+
+.entry-meta li.nav-previous a:hover, .entry-meta li.nav-previous a:active { background-position: 0 -25px; }
+.entry-meta li.nav-next a:hover, .entry-meta li.nav-next a:active { background-position: -25px -25px; }
+
+.entry-meta li.cnt-comment a:link .icon, .entry-meta li.cnt-comment a:visited .icon { background: transparent url(../images/icon-comment.png) 0 0 no-repeat; }
+.entry-meta li.cnt-comment a:hover .icon, .entry-meta li.cnt-comment a:active .icon { background-position: 0 -16px; }
+
+
+/** Recent Posts **/
+#recent-posts .entry-image {
+	border: 1px solid #050505;
+	background: #151515;
+}
+
+/** Blog page **/
+.blog .date-badge,
+.tag .date-badge {
+	color: #fff;
+	border-color: #111;
+}
+
+.image-attachment .entry-content .entry-attachment {
+	background: #222;
+}
+
+/** adding some nice shadows */
+#site-title,
+#expander,
+#navigation,
+#navigation ul ul,
+#portfolioList li,
+#related-posts li,
+#relatedGalleryImages li,
+#thumbnails .pulldown-items a.item,
+input[type=submit],
+input[type=button],
+a.button, button,
+#colophon,
+#anchorTop,
+#thumbnails .item {
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 6. =Forms
+/*-----------------------------------------------------------------------------------*/
+
+input[type=submit], input[type=button], a.button, button {
+	color: #333 !important;
+	border-color: #A08223;
+	background: #d5b03f;
+	background: -webkit-gradient(linear, left top, left bottom, from(#d5b03f), to(#A08223));
+	background: -moz-linear-gradient(top,  #d5b03f,  #A08223);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d5b03f', endColorstr='#A08223');
+	text-shadow: 0px 1px 1px #A08223;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* 7. =Comments
+/*-----------------------------------------------------------------------------------*/
+
+h3#reply-title 	{ color: #ccc; }
+.comment-author cite { color: #888; }
+.comment-meta 	{ color: #999; }
+
+.comment-meta a:active,
+.comment-meta a:hover,
+.reply a:hover,
+a.comment-edit-link:hover,
+#respond .required {
+	color: #ff4b33;
+}
+.commentlist .children li div:first-child, .commentlist li.comment div:first-child {
+	background: #111;
+
+}
+#comments .pingback { border-bottom-color: #e7e7e7; }
+#comments .pingback p { color: #aaa; }
+
+/* Comments form */
+input[type=submit] { color: #999; }
+#respond label { color: #ccc; }
+#respond .form-allowed-tags { color: #aaa; }
+
+
+/*-----------------------------------------------------------------------------------*/
+/* 8. =Shortcodes
+/*-----------------------------------------------------------------------------------*/
+
+/* Hightlight Shortcode */
+.highlight-dark { background: #000; color: #eee; }
+.highlight-light { background: #999; color: #222; }
+.highlight-yellow { background: #FFC; color: #333; }
+.highlight-red { background: #900; color: #fff; }
+
+/* Dropcap */
+.dropcap {
+	color: #666;
+}
+.dropcap-dark  { color: #fff; background: #555;  }
+.dropcap-light { color: #666; background: #eee;  }
+
+/* Image Alignment */
+.image-left, .image-right {
+    background: #151515;
+    border: 1px solid #050505;
+}
+.image-left .caption, .image-right .caption {
+    color: #999;
+}
+
+.img-caption { background: #151515; border: 1px solid #050505; }
+.img-caption .caption { background: #151515; }
+
+/* Box Shortcode */
+.info-box .box-title { color: #fff; background: #151515; }
+.info-box .box-content { background: #212121; }
+
+.info-dark { color: #fff; }
+.info-dark .box-title { background: #000; }
+.info-dark .box-content { background: #0e0e0e; }
+
+.info-light .box-content { background: #333; }
+
+/* Toggle Box Shortcode */
+.toggle-box .box-title a {
+	color: #fff;
+	background: #151515 url(../images/bg-sprite.png) 100% 100% no-repeat;
+}
+.toggle-box .box-title a.open { background-position: 100% -230px; }
+.toggle-box .box-inner { color: #fff; background: #212121}
+
+.toggle-dark .box-title a {
+	color: #fff;
+	background: #000 url(../images/bg-sprite.png) 100% 100% no-repeat;
+}
+.toggle-dark .box-inner { background: #0e0e0e; }
+
+.toggle-light .box-title a {
+	color: #fff;
+	background: #333 url(../images/bg-sprite.png) 100% -198px no-repeat;
+}
+.toggle-light .box-title a.open { background-position: 100% -166px; }
+.toggle-light .box-inner { background: #444; color: #eee }
+
+/* Tab Shortcode */
+.tabs li { border-right: 1px solid #111; }
+.tab-wrapper {
+	background: #222;
+	border: 1px solid #111;
+}
+.tabs ul.nav {
+    background: #333;
+
+}
+.tabs ul.nav li a {
+    color: #fff;
+}
+.tabs ul.nav li a:hover { background: #758288; }
+.tabs ul.nav li.ui-tabs-active a { background: #222; color: #fff; }
+
+hr.shortcode { border-bottom: 1px dotted #333 }
+
+/*-----------------------------------------------------------------------------------*/
+/* 9. =Widgets
+/*-----------------------------------------------------------------------------------*/
+
+/** Recent Comments Widget **/
+#sidebar .widget_recent_comments li { border-bottom: 1px dotted #333; background: transparent url(../images/icon-comment.png) 0 -14px no-repeat; }
+
+/** Recent Tweets Widget **/
+#sidebar .widget_recent_tweets li { border-bottom: 1px dotted #333; background: transparent url(../images/bg-twitter-inner-small.png) 0 3px no-repeat; }
+
+/* Custom Recent entries */
+#sidebar .widget_custom_recent_entries li img { background: #0e0e0e; border: 1px solid #111; }
+
+/* Custom Flickr Stream */
+#sidebar .widget_flickr_stream div.flickr_badge_image img { background: #0e0e0e; border: 1px solid #111;}
+
+/*-----------------------------------------------------------------------------------*/
+/* 10. =Images
+/*-----------------------------------------------------------------------------------*/
+
+/** Item Caption for Images */
+.item-caption {
+	background: #000;
+	background: rgba(20,20,20,0.8)
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 11.  =SuperBgImage & Thumbnails
+/*-----------------------------------------------------------------------------------*/
+
+#fullsizeTimerBG { background: #f5f5f5; background: rgba(255,255,255,.35); }
+
+#thumbnails .rel, #controls-wrapper {
+	background: rgba(20,20,20,0.35) url('../images/bg-scanlines.png') 0 0 repeat;
+}
+
+#toggleThumbs {
+	background-image: url('../images/bg-expander-arrow.png');
+}
+
+#thumbnails a { border-color: #292929; }
+
+#thumbnails .pulldown-items a.item .overlay {
+	background-color: transparent;
+}
+
+#thumbnails .pulldown-items a.selfhosted .overlay,
+#thumbnails .pulldown-items a.youtube_embed .overlay,
+#thumbnails .pulldown-items a.vimeo_embed .overlay {
+	background-image: url('../images/bg-thmb-video.png')
+}
+
+#thumbnails .pulldown-items a.lightbox .overlay,
+#thumbnails .pulldown-items a.project_page .overlay,
+#thumbnails .pulldown-items a.projectpage .overlay,
+#thumbnails .pulldown-items a.external .overlay {
+	background-image: url('../images/bg-thmb-photo.png')
+}
+
+#thumbnails .controls {
+	background-image: url('../images/bg-scanlines-thumbs.png');
+}
+
+#thumbnails .controls a, #controls-nav a {
+	background-image:url('../images/bg-thumb-controls.png');
+}
+
+
+
+/*  scroll links */
+#thumbnails .scroll-link {
+	background-image: url('../images/bg-fullsize-arrow.png');
+}
+
+
+#superbgimage {
+	background: #222 none center center no-repeat;
+}
+
+#showtitle .imagecaption, #showlink, #showtitle .more {
+	background-image: url("../images/bg-scanlines-thumbs.png");
+}
+
+#showtitle .imagecaption, #showtitle .more { color: #fff; }
+#showtitle .more a {
+  background-image: url('../images/bg-fullsize-arrow.png');
+}
+
+
+#showlink a { background: transparent url('../images/bg-thumb-controls.png') -81px -77px no-repeat; }
+#showlink a:hover { background-color: rgba(20,20,20,0.5); }
+
+#showtitle div a { color: #fff; }
+
+/* Fullsize Overlay Pattern */
+.overlay-dotted { background: url('../images/grid.png'); }
+.overlay-squared { background: url('../images/overlay-squared.png'); }
+.overlay-scanlines { background: url('../images/overlay-scanlines.png'); }
+.overlay-carbon { background: url('../images/overlay-carbon.png'); }
+.overlay-triangles { background: url('../images/overlay-triangle.png'); }
+
+
+#supersized-loader { background:rgba(20,20,20,0.8) url(../images/loading.gif) no-repeat center center;}
+#slide-caption, #slide-counter { text-shadow: #000 0 1px 0; }
+#nextthumb, #prevthumb { background: #000; border: 1px solid #000 }
+
+/* Fullsize Gallery Play Button */
+#fsg_playbutton { background-color: #222; }
+#fsg_playbutton {
+	background: rgba(20,20,20,.75) url(../images/bg-fsg-play.png) 50% 50% no-repeat;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 12.  =My Custom Loader Styles
+/*-----------------------------------------------------------------------------------*/
+
+#my-loading div {
+	background-color: #000;
+	background-color: rgba(20,20,20,0.75);
+	background-image: url('../images/loading.gif');
+	background-repeat: no-repeat;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 13.  =Slider
+/*-----------------------------------------------------------------------------------*/
+
+/** Slides **/
+a.slidesjs-next,
+a.slidesjs-previous,
+a.slidesjs-play,
+a.slidesjs-stop {
+  background-image: url('../images/slides/bg-direction.png');
+}
+
+.slidesjs-pagination li a {
+	background-image: url('../images/slides/bg-control.png');
+}
+
+/* Flexslider */
+#main .flex-direction-nav a { background-color: #222; }
+#main .flex-control-paging li a {
+	background: transparent url('../images/slides/bg-control.png') 0 0 no-repeat;
+}
+
+/** Nivo **/
+.nivoSlider {
+	background: transparent url('../images/loading.gif') no-repeat 50% 50%;
+}
+.nivo-controlNav a {
+	background: transparent url('../images/slides/bg-control.png') 0 0 no-repeat;
+}
+.nivo-directionNav a {
+	background: #222 url('../images/slides/bg-direction.png') 0 0 no-repeat;
+}

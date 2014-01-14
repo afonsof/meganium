@@ -1,0 +1,41 @@
+﻿@using Meganium.Api.Resources
+@model Meganium.Api.ViewModels.InstallResetThemeVm
+@{
+    ViewBag.Title = Resource.BasicAdmin;
+    Layout = null;
+}
+<div class="alert">
+    <strong>Atenção:</strong> Esta é uma área para usuários avançados. Não faça nenhuma
+    alteração a não ser que você tenha certeza do que está fazendo.
+</div>
+@using (Html.BeginForm(null,null,FormMethod.Post, new{ autocomplete = "off"}))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.License)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.License)
+            @Html.ValidationMessageFor(model => model.License)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReinitializeDatabase)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReinitializeDatabase)
+            @Html.ValidationMessageFor(model => model.ReinitializeDatabase)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <button type="submit" class="btn btn-primary">@Resource.ResetTheme</button>
+    </fieldset>
+}

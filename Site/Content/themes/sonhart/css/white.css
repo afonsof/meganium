@@ -1,0 +1,513 @@
+﻿@charset "utf-8";
+/*-----------------------------------------------------------------------------------
+	
+	White-Theme CSS Document for Invictus Fullsize Background Photographer Wordpress Theme
+
+	Theme Name: MafiaShare.net -  Invictus
+	Theme URI: http://www.mafiashare.net 
+	Description: White-Theme CSS for "Invictus Fullsize Background Photographer Wordpress Theme"
+	Author: (Shared on MafiaShare.net) Dennis Osterkamp
+	Author URI: http://www.mafiashare.net  http://www.doitmax.de
+	License: GNU General Public License version 3.0
+	License URI: http://www.gnu.org/licenses/gpl-3.0.html
+	Version: 2.3.31
+	
+	All files, unless otherwise stated, are released under the GNU General Public License
+	version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
+
+/* -----------------------------------------------------------------------------------
+/* 
+	Table of Contents
+
+	1. =Body, Typography and some main Elements
+	2. =Header
+	3. =Nav Menu
+	4. =Footer	
+	5. =Content
+	6. =Forms
+	7. =Comments	
+	8. =Shortcodes
+	9. =Widgets	
+	10. =Images	
+	11. =SuperBgImage & Thumbnails
+	12. =My Custom Loader Styles	
+	13. =Slider
+	
+/*-----------------------------------------------------------------------------------*/
+/*	1. =Body, Typography and some main Elements
+/*-----------------------------------------------------------------------------------*/
+
+body { background-color: #e5e5e5; color: #444; }
+
+.wp_syntax { 
+	border-color: #d9d9d9 !important; 
+	border-style: dotted !important; 
+	color: #666 !important; 
+
+	background: #f5f5f5 !important;
+}
+abbr,acronym { border-bottom-color: #d9d9d9;  }
+
+#primary, #sidebar .widget, #nivoHolder, .external-video { background: rgba(255,255,255,0.9); border: 1px solid #eee; }
+
+.fullsize-gallery #primary { text-shadow: 0 1px 1px rgba(0,0,0,.55); }
+
+h2.page-description, h2.entry-description { 
+	border-color: #d9d9d9;
+	color: #444;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	2. =Header
+/*-----------------------------------------------------------------------------------*/
+
+#site-title { background: transparent url('white/bg-scanlines.png') repeat 0 0; }
+
+/* Blank logo reset */
+.blank-logo #site-title {
+	background: none;
+	box-shadow: none;
+}
+
+#welcomeTeaser, .max_widget_teaser {
+	background: transparent url('white/bg-scanlines.png') repeat 0 0; 
+	color: #444;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	3. =Nav Menu
+/*-----------------------------------------------------------------------------------*/
+
+nav#navigation {
+	background: transparent url('white/bg-scanlines.png') repeat 0 0;
+}
+
+nav#navigation ul a {
+	color: #666;
+}
+
+nav#navigation ul a:hover,
+nav#navigation ul li.sfHover a,
+nav#navigation ul li.current-cat a,
+nav#navigation ul li.current_page_item a,
+nav#navigation ul li.current-menu-item a,
+nav#navigation ul li.current_page_ancestor a,
+nav#navigation ul li.current_page_parent a {
+	color: #000;
+}
+
+nav#navigation ul ul.sub-menu li a {
+	color: white;
+}
+
+nav#navigation ul ul li a:hover, nav#navigation ul ul li a:active {
+	color: black
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 4. =Footer
+/*-----------------------------------------------------------------------------------*/
+
+#colophon { 
+	color: #444;
+	background: #fff url('white/bg-scanlines.png') 0 0 repeat; 
+}
+
+/** Back Top Link **/
+#anchorTop { background: rgba(255,255,255,0.80); }
+#anchorTop a {
+	background-image: url(white/bg-back-top.png);
+}
+
+#anchorTop a:link, #anchorTop a:visited { 
+	color: #777;
+}
+#anchorTop a:hover, #anchorTop a:active { 
+	color: #333;
+}
+
+#colophon .keynav { background: transparent url(white/bg-keynav.png) 0 0 no-repeat; }
+
+/*-----------------------------------------------------------------------------------*/
+/* 5. =Content
+/*-----------------------------------------------------------------------------------*/
+
+.entry-image a,
+.portfolio-list li .shadow a, 
+.portfolio-list li.photo .shadow a,
+.pretty_image { background: #eee url(white/bg-thmb-photo.png) 50% 50% no-repeat; }
+.portfolio-list li.video .shadow a { background: #eee url(white/bg-thmb-video.png) 50% 50% no-repeat; }
+.portfolio-list li.link .shadow a { background: #eee url(white/bg-thmb-link.png) 50% 50% no-repeat; }
+.portfolio-list li.external .shadow a { background: #eee url(white/bg-thmb-external.png) 50% 50% no-repeat; }
+.portfolio-list li img 	{ background: #eee; }
+
+.portfolio-fullsize-scroller a.scroller-arrow {
+	background: transparent url('white/bg-scroller-arrow.png') 0 0 no-repeat;
+}
+
+.portfolio-fullsize-scroller .scroll-bar a.ui-slider-handle { 
+	background-color: #222;
+}
+
+.portfolio-fullsize-scroller .scroll-bar-wrap { background: rgba(255,255,255,.75); }
+
+#primary.portfolio-fullsize-closed .protected-post-form { background: rgba(255,255,255,0.9); border: 1px solid #eee; }
+
+
+#portfolioList li ul  { background: #fff }
+
+blockquote { background: transparent url('white/bg-quote.png') 0 15px no-repeat; }
+
+/** Pagination **/
+.pagination span, .pagination a { background: none; }
+.pagination a:hover { color: #fff; }
+.pagination span.current { color: #fff; }
+
+.portfolio-fullsize-grid .pagination { background: #121212; background: rgba(0,0,0, 0.65) }
+
+.content-sort, .splitter-top { border-color: #d9d9d9; }
+.content-sort li a { color: #555; }
+.content-sort li.current a { background: transparent url('white/bg-sort-check.png') 0 30% no-repeat; }
+
+.entry-meta, .entry-share, .entry-tags, #respond, #relatedGalleryImages li a.title, #related-posts li a.title,
+.slides-slider, .slides-slider .slides_container { 
+	color: #666; 
+	border-top: 1px solid #f5f5f5; 
+	border-bottom: 1px solid #e5e5e5; 
+	background: rgba(0,0,0, 0.05)
+}
+.entry-meta li span { color: #888; }
+
+#recent-posts .entry-meta { background: none; border: 0 none; }
+
+.respond-title, .author-title, .related-title, .recent-title {
+	border-color: #444;
+}
+
+/** Tag list **/
+.entry-tags li a:link, .widget_taxonomy_terms li a:link,
+.entry-tags li a:visited, .widget_taxonomy_terms li a:visited { background: #eee; color: #666; }
+
+.entry-tags li a:hover, .widget_taxonomy_terms li a:hover,
+.entry-tags li a:active, .widget_taxonomy_terms li a:active { background: #fff; color: #333; }
+
+/** Next and Prev link of posts **/
+.entry-meta ul.nav-posts li { background: transparent url(white/slides/bg-direction.png) 0 -50px no-repeat; }
+.entry-meta ul.nav-posts li.nav-next { background-position: -25px -50px; }
+
+.entry-meta li.nav-previous a,
+.entry-meta li.nav-next a { 
+	background: transparent url(white/slides/bg-direction.png) 0 0 no-repeat;
+}
+.entry-meta li.nav-next a:link, .entry-meta li.nav-next a:visited { background-position: -25px 0; }
+
+.entry-meta li.nav-previous a:hover, .entry-meta li.nav-previous a:active { background-position: 0 -25px; }
+.entry-meta li.nav-next a:hover, .entry-meta li.nav-next a:active { background-position: -25px -25px; }
+
+.entry-meta li.cnt-comment a:link .icon, .entry-meta li.cnt-comment a:visited .icon { background: transparent url(white/icon-comment.png) 0 0 no-repeat; }
+.entry-meta li.cnt-comment a:hover .icon, .entry-meta li.cnt-comment a:active .icon { background-position: 0 -16px; }
+
+
+/** Recent Posts **/
+#recent-posts .entry-image {
+	border: 1px solid #d9d9d9;
+	background: #eee;
+}
+
+/** Blog page **/
+.blog .date-badge,
+.tag .date-badge { 
+	color: #fff;
+	border-color: #f5f5f5;
+}
+
+.image-attachment .entry-content .entry-attachment {
+	background: #eee;
+}
+
+/** adding some nice shadows */
+#site-title,
+#expander, 
+#navigation,
+#navigation ul ul,
+#portfolioList li,
+#related-posts .entry-image,
+#relatedGalleryImages li .entry-image, 
+#thumbnails .pulldown-items a.item, 
+input[type=submit], 
+input[type=button],
+a.button, button,
+#colophon, 
+#anchorTop,
+#thumbnails .item {
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 6. =Forms
+/*-----------------------------------------------------------------------------------*/
+
+input[type=submit], input[type=button], a.button, button {
+	color: #444;
+	border-color: #ddd;
+	background: #eee;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#eeeeee));
+	background: -moz-linear-gradient(top,  #f5f5f5,  #eeeeee);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee');
+	text-shadow: 0px -1px -1px #fff;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* 7. =Comments
+/*-----------------------------------------------------------------------------------*/
+
+h3#reply-title 	{ color: #444; }
+.comment-author cite { color: #666; }
+.comment-meta 	{ color: #777; }
+
+.comment-meta a:active, 
+.comment-meta a:hover,
+.reply a:hover,
+a.comment-edit-link:hover, 
+#respond .required { 
+	color: #ff4b33; 
+}
+.commentlist .children li div:first-child, .commentlist li.comment div:first-child {
+	background: #fff;
+
+}
+#comments .pingback { border-bottom-color: #e7e7e7; }
+#comments .pingback p { color: #aaa; }
+
+/* Comments form */
+input[type=submit] { color: #444; }
+#respond { background: #fff; border-color: #eee; }
+#respond label { color: #666; }
+#respond .form-allowed-tags { color: #444; }
+
+
+/*-----------------------------------------------------------------------------------*/
+/* 8. =Shortcodes
+/*-----------------------------------------------------------------------------------*/
+
+/* Hightlight Shortcode */
+.highlight-dark { background: #333; color: #fff; }
+.highlight-light { background: #ddd; color: #333; }
+.highlight-yellow { background: #FFC; color: #333; }
+.highlight-red { background: #900; color: #fff; }
+
+/* Dropcap */
+.dropcap {
+	color: #666;
+}
+.dropcap-dark  { color: #fff; background: #555;  }
+.dropcap-light { color: #666; background: #eee;  }
+
+/* Image Alignment */
+.image-left, .image-right {
+    background: #FFF;
+    border: 1px solid #CCC;
+}
+.image-left .caption, .image-right .caption {
+    color: #999;
+}
+
+.img-caption { background: #f5f5f5; border: 1px solid #ddd; }
+.img-caption .caption { background: #f5f5f5; }
+
+/* Box Shortcode */
+.info-box .box-title { color: #fff; background: #777; }
+.info-box .box-content { background: #eee; }
+
+.info-dark { color: #fff; }
+.info-dark .box-title { background: #777; }
+.info-dark .box-content { background: #aaa; }
+
+.info-light .box-content { background: #f1f1f1; }
+
+/* Toggle Box Shortcode */
+.toggle-box .box-title a { 
+	color: #fff; 
+	background: #777 url('white/bg-sprite.png') 100% 100% no-repeat; 
+}
+.toggle-box .box-title a.open { background-position: 100% -230px; }
+.toggle-box .box-inner { background: #eee; }
+
+.toggle-dark .box-title a { 
+	color: #fff; 
+	background: #777 url('white/bg-sprite.png') 100% 100% no-repeat; 
+}
+.toggle-dark .box-inner { background: #aaa; color: #fff; }
+
+.toggle-light .box-title a { 
+	color: #777; 
+	background: #ddd url('white/bg-sprite.png') 100% -198px no-repeat; 
+}
+.toggle-light .box-title a.open { background-position: 100% -166px; }
+.toggle-light .box-inner { background: #f1f1f1; }
+
+/* Tab Shortcode */
+.tabs li { border-right: 1px solid #e9e9e9; }
+.tab-wrapper {
+	background: #eee;
+	border: 1px solid #e9e9e9;
+}
+.tabs ul.nav {
+    background: #777;
+
+}
+.tabs ul.nav li a {
+    color: #fff;
+}
+.tabs ul.nav li a:hover { background: #aaa; }
+.tabs ul.nav li.ui-tabs-selected a { background: #eee; color: #555; }
+
+hr.shortcode { border-bottom: 1px solid #e5e5e5 }
+
+/*-----------------------------------------------------------------------------------*/
+/* 9. =Widgets
+/*-----------------------------------------------------------------------------------*/
+
+/** Recent Comments Widget **/
+#sidebar .widget_recent_comments li { border-bottom: 1px dotted #ccc; background: transparent url(white/icon-comment.png) 0 -14px no-repeat; }
+
+/** Recent Tweets Widget **/
+#sidebar .widget_recent_tweets li { border-bottom: 1px dotted #ccc; background: transparent url(white/bg-twitter-inner-small.png) 0 3px no-repeat; }
+
+/* Custom Recent entries */
+#sidebar .widget_custom_recent_entries li img { background: #f5f5f5; border: 1px solid #eee; }
+
+/* Custom Flickr Stream */
+#sidebar .widget_flickr_stream div.flickr_badge_image img { background: #f5f5f5; border: 1px solid #eee;}
+
+/*-----------------------------------------------------------------------------------*/
+/* 10. =Images
+/*-----------------------------------------------------------------------------------*/
+
+/** Item Caption for Images */
+.item-caption { 
+	background: #fff;
+	background: rgba(255,255,255,0.8)
+}	
+
+/*-----------------------------------------------------------------------------------*/
+/* 11.  =SuperBgImage & Thumbnails
+/*-----------------------------------------------------------------------------------*/
+
+#thumbnails .rel, #controls-wrapper { 
+	background: transparent url('white/bg-scanlines.png') 0 0 repeat; 
+    -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.25);		
+}
+
+#toggleThumbs {
+	background-image: url('white/bg-expander-arrow.png');
+}
+
+#thumbnails .pulldown-items a.item .overlay { 
+	background-color: transparent
+}
+
+#thumbnails .pulldown-items a.selfhosted .overlay,
+#thumbnails .pulldown-items a.youtube_embed .overlay,
+#thumbnails .pulldown-items a.vimeo_embed .overlay {
+	background-image: url('white/bg-thmb-video.png') 
+}
+
+#thumbnails .pulldown-items a.lightbox .overlay,
+#thumbnails .pulldown-items a.project_page .overlay,
+#thumbnails .pulldown-items a.external .overlay {
+	background-image: url('white/bg-thmb-photo.png') 
+}
+
+#thumbnails .pulldown-items a.item { 
+	border-color: #ccc;
+}
+
+#thumbnails .controls {
+	background-image: url('white/bg-scanlines-thumbs.png'); 
+}
+
+#thumbnails .controls a, #controls-nav a { 
+	background-image:url('white/bg-thumb-controls.png'); 
+}
+
+/*  scroll links */
+#thumbnails .scroll-link { 
+	background-image: url('white/bg-fullsize-arrow.png');
+}
+
+
+#superbgimage {
+	background: #f5f5f5 none center center no-repeat;
+}
+
+#showtitle .imagecaption { color: #444; text-shadow: none }
+
+#showtitle .imagecaption, #showlink { 
+	background-image: url("white/bg-scanlines-thumbs.png");
+}
+#showlink a { background: url('white/bg-thumb-controls.png') -81px -77px no-repeat; }
+
+#showtitle div a { color: #fff; }
+
+/* Fullsize Overlay Pattern */
+.overlay-dotted { background: url('white/grid.png'); }
+.overlay-squared { background: url('white/overlay-squared.png'); }
+.overlay-scanlines { background: url('white/overlay-scanlines.png'); }
+.overlay-carbon { background: url('white/overlay-carbon.png'); }
+.overlay-triangles { background: url('white/overlay-triangle.png'); }
+
+
+#supersized-loader { background:rgba(255,255,255,0.8) url(white/loading.gif) no-repeat center center;}
+#slide-caption, #slide-counter { text-shadow: none; }
+#nextthumb, #prevthumb { background: #fff; border: 1px solid #fff; }
+
+/* Fullsize Gallery Play Button */
+#fsg_playbutton {
+	background: rgba(255,255,255,.75);	
+}
+
+#fsg_playbutton a{
+	background: transparent url(white/bg-fsg-play.png) 50% 50% no-repeat;
+
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 12.  =My Custom Loader Styles
+/*-----------------------------------------------------------------------------------*/
+
+#my-loading div {
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.75);
+	background-image: url('white/loading.gif');
+	background-repeat: no-repeat;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* 13.  =Slider
+/*-----------------------------------------------------------------------------------*/
+
+/** Slides **/
+.slides-slider .pagination li a { 
+	background: transparent url('white/slides/bg-control.png') 0 0 no-repeat; 
+}
+
+.slides-slider a.next, .slides-slider a.prev { 
+	background: transparent url('white/slides/bg-direction.png') 0 0 no-repeat; 
+}
+
+/** Nivo **/
+.nivoSlider {
+	background: transparent url('white/loading.gif') no-repeat 50% 50%;
+}
+.nivoSlider .nivo-controlNav a { 
+	background: transparent url('white/slides/bg-control.png') 0 0 no-repeat; 
+}
+.nivoSlider .nivo-directionNav a { 
+	background: transparent url('white/slides/bg-direction.png') 0 0 no-repeat; 
+}

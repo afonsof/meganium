@@ -1,0 +1,30 @@
+﻿@using Meganium.Api.Entities
+@using Meganium.Api.Trash
+@using Meganium.Api.Entities
+@using Meganium.Api.Trash
+@model dynamic
+
+@{
+    var post = Model as Post;
+}
+
+@if (post != null && post.FeaturedMediaFile != null)
+{
+    <a href="@Url.Content(post.FeaturedMediaFile.Url)" data-rel="prettyPhoto[@Model.Id]">
+        <div class="square-all">
+            <div class="img-container">
+                @Url.Thumbnail(post.FeaturedMediaFile, 370, 370, true, null, "img-circle")
+                <div class="about-icon"></div>
+            </div>
+        </div>
+    </a>
+
+    foreach (var mediaFile in post.MediaFiles)
+    {
+    <a class="none" href="@Url.Content(mediaFile.Url)" data-rel="prettyPhoto[@Model.Id]"></a>
+    }
+}
+else
+{
+    <div>Não existe o Álbum</div>
+}

@@ -1,0 +1,32 @@
+﻿@using Meganium.Api.Trash
+@using Meganium.Api
+@using Meganium.Api.Trash
+@model Meganium.Api.ViewModels.SiteViewModel
+<div class="post type-post">
+    @if (Model.CurrentPost.FeaturedMediaFile != null)
+    {
+        <div class="gridly-image">
+            @Url.Thumbnail(Model.CurrentPost.FeaturedMediaFile, 770, 500, true)
+        </div>
+
+        <div class="gridly-category">
+            <p>
+                @{
+                    var len = Model.CurrentPost.Categories.Count();
+                    var i = 0;
+                }
+                @foreach (var cat in Model.CurrentPost.Categories)
+                {
+                    i++;
+                    var comma = (i != len) ? "," : "";
+                    <a href="~/projetos/@cat.Slug">@cat.Title @comma</a>
+                }
+            </p>
+        </div>
+    }
+    <div class="gridly-copy">
+        <h1>@Model.CurrentPost.Title</h1>
+        <p class="gridly-date">@Model.CurrentPost.PublishedAt.Value.ToString("D")</p>
+        <p>@Html.Raw(Model.CurrentPost.Content)</p>
+    </div>
+</div>

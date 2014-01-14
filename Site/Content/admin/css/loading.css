@@ -1,0 +1,45 @@
+﻿.loading-overlay {
+    position: absolute;
+    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1100;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.loading-overlay div {
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    padding-top: 75px;
+    font-size: 16px;
+}
+
+.loading-overlay:after {
+	border-width: 0 6px 0 0;
+	border-style: solid;
+	border-radius: 50%;
+	display: block;
+	height: 100px;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	width: 100px;
+	content: "";
+    margin-left: -50px;
+    margin-top: -50px;
+	animation: spin 1s infinite linear;
+	-webkit-animation: spin 1s infinite linear;
+}
+@keyframes spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+	from { -webkit-transform: rotate(0deg); }
+	to { -webkit-transform: rotate(360deg); }
+}

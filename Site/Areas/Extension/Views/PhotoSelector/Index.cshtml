@@ -1,0 +1,174 @@
+﻿@section Head
+{
+    <link href="~/Content/admin/js/libs/blueimp-gallery/css/blueimp-gallery.min.css" rel="stylesheet" />
+    <link href="~/Content/admin/js/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Content/admin/js/libs/base64/base64.js"></script>
+    <script src="~/Content/admin/js/app.js"></script>
+    @*<script src="~/Content/admin/js/libs/angularjs/angular.min.js"></script>*@
+
+    <style>
+        .items {
+            overflow-y: auto;
+            height: 50%;
+        }
+
+            .items div {
+                position: relative;
+                float: left;
+                display: block;
+                cursor: pointer;
+            }
+
+            .items img {
+                width: 105px;
+                padding: 4px;
+            }
+
+            .items a {
+                position: absolute;
+                left: 69px;
+                top: 9px;
+                float: left;
+                font-size: 20px;
+                color: #FFF;
+                padding: 4px;
+                background-color: #000000;
+                background-color: rgba(0,0,0,0.5);
+                border-radius: 4px;
+                text-decoration: none;
+            }
+
+                .items a:hover {
+                    text-decoration: none;
+                }
+
+        .blueimp-gallery > .select-button {
+            position: absolute;
+            top: 30px;
+            left: 15px;
+            color: #fff;
+            display: none;
+        }
+
+        .blueimp-gallery-controls > .select-button {
+            display: block;
+        }
+    </style>
+}
+
+<div class="loading hide">Carregando...</div>
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <p class="select-button btn"></p>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<div class="modal" data-ng-app="PhotoSelectorApp">
+    <div class="modal-dialog" data-ng-controller="PhotoSelectorController">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                @*todo: angularjs <h3 class="modal-title">Seleção de Fotos - {{client.FullName}}</h3>*@
+                <h3 class="modal-title">Seleção de Fotos</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-body">
+                    <div class="tab-content">
+                        <div class="tab1" data-ng-show="isTab1Visible">
+                            <h3 class="block">Digite o código recebido para continuar</h3>
+                            <div class="editor-field">
+                                <input class="code" id="Code" name="Code" type="text" data-ng-model="code" />
+                            </div>
+                        </div>
+                        <div style="display: none" class="tab2" data-ng-show="isTab2Visible">
+                            <div class="alert alert-info">Clique no <i class="icon-zoom-in"></i>&nbsp;para visualizar em tamanho maior. Clique na foto para selecionar</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="available-title">Fotos Disponíveis</h4>
+                                    <div class="items available-items">
+                                        @*<img data-ng-click="go2(mediaFile)" data-ng-repeat="mediaFile in client.AvailableMediaFiles" data-ng-src="{{thumbUrl(mediaFile)}}" />*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="selected-title">Fotos Selecionadas</h4>
+                                    <div class="items selected-items">
+                                        @*<img data-ng-click="go3(mediaFile)" data-ng-repeat="mediaFile in client.SelectedMediaFiles" data-ng-src="{{thumbUrl(mediaFile)}}" />*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="ok-button btn btn-primary" data-ng-click="go1()">Avançar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/admin/js/libs/blueimp-gallery/jquery.blueimp-gallery.min.js"></script>
+
+<script>
+    var resource =
+    {
+        AvailablePhotos: 'Fotos Disponíveis',
+        SelectedPhotos: 'Fotos Selecionadas',
+        PhotosOf: 'Fotos de',
+        CouldNotFindAClientWithThisCode: 'Não foi possível localizar um cliente com este código',
+        AreYouSureYouWanToSendThisPhotoSelection: 'Tem certeza que deseja enviar esta seleção de fotos? Esta ação não poderá ser desfeita.',
+        CantSavePhotos: 'Não foi possível salvar as fotos',
+        YouSignAAlbumWith: 'ATENÇÃO: Você contratou um álbum com ',
+        PhotosButYouAreTryingToSend: ' fotos, porém está tentando enviar ',
+        PhotosItWillAddCost: ' fotos.\n\nIsto acarretará em CUSTOS EXTRAS. Deseja continuar?',
+        Of: 'de'
+    };
+
+    var selectedImg;
+    var gallery;
+    var dataUrl = '@Url.Action("Data")';
+    var thumbUrl = '@Url.Content("~/Content/Uploads/Thumbs")';
+    var btn = $('.select-button');
+
+    var photoSelector = new PhotoSelector(dataUrl, thumbUrl, $('.modal'), resource);
+    photoSelector.init();
+
+    $(document).on('click', '[data-gallery]', function () {
+        var items = $('.items a');
+        gallery = blueimp.Gallery(items,
+        {
+            container: '#blueimp-gallery',
+            index: this,
+            onslide: function (index) {
+                selectedImg = this.list[index];
+                if ($(selectedImg).closest('.available-items').length) {
+                    btn.html('<i class="icon-plus"></i> Adicionar ao Álbum');
+                    btn.addClass('btn-success');
+                    btn.removeClass('btn-danger');
+                } else {
+                    btn.html('<i class="icon-minus"></i> Remover do Álbum');
+                    btn.addClass('btn-danger');
+                    btn.removeClass('btn-success');
+                }
+            }
+        });
+    });
+
+    $('.select-button').on('click', function () {
+        photoSelector.toggleImg(selectedImg);
+
+        if ($(selectedImg).closest('.available-items').length) {
+            btn.html('<i class="icon-check"></i> Adicionado');
+        } else {
+            btn.html('<i class="icon-minus"></i> Removido');
+        }
+        setTimeout(function () {
+            gallery.next();
+        }, 500);
+    });
+</script>

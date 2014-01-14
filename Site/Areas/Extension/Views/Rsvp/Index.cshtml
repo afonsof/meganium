@@ -1,0 +1,234 @@
+﻿@section Head
+{
+    <link href="~/Content/admin/js/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Content/admin/js/libs/base64/base64.js"></script>
+    <script src="~/Content/admin/js/app.js"></script>
+    <script src="~/Content/admin/js/libs/angularjs/angular.min.js"></script>
+
+    <style>
+        .panel-title {
+            display: inline;
+            font-weight: bold;
+        }
+
+        .checkbox.pull-right {
+            margin: 0;
+        }
+
+        .pl-ziro {
+            padding-left: 0;
+        }
+
+        .shape {
+            border-style: solid;
+            border-width: 0 70px 40px 0;
+            float: right;
+            height: 0px;
+            width: 0px;
+            -ms-transform: rotate(360deg); /* IE 9 */
+            -o-transform: rotate(360deg); /* Opera 10.5 */
+            -webkit-transform: rotate(360deg); /* Safari and Chrome */
+            transform: rotate(360deg);
+        }
+
+        .offer {
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            margin: 15px 0 30px;
+            text-align: center;
+            width: 320px;
+            height: 150px;
+        }
+
+        .offer-radius {
+            border-radius: 7px;
+        }
+
+        .offer-default {
+            border-color: #999999;
+        }
+
+            .offer-default .shape {
+                border-color: transparent #999999 transparent transparent;
+                border-color: rgba(255,255,255,0) #999999 rgba(255,255,255,0) rgba(255,255,255,0);
+            }
+
+
+        .shape-text {
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            position: relative;
+            right: -40px;
+            top: 2px;
+            white-space: nowrap;
+            -ms-transform: rotate(30deg); /* IE 9 */
+            -o-transform: rotate(360deg); /* Opera 10.5 */
+            -webkit-transform: rotate(30deg); /* Safari and Chrome */
+            transform: rotate(30deg);
+        }
+
+        .offer-content {
+            padding: 0 20px;
+        }
+    </style>
+}
+<div data-ng-app="RsvpApp" data-ng-controller="RsvpController">
+    <div class="loading-overlay" data-ng-show="isLoadingVisible">
+        <div>Carregando...</div>
+    </div>
+
+    <div class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title">Confirmação de presença</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-body">
+                        <div class="tab1 container" style="margin: 0 auto; text-align: center">
+                            <div class="row">
+                                <div class="col-lg-4" style="margin: 0 auto; float: none">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <h3 data-ng-show="!guest" class="title">Digite o número que consta no verso do convite</h3>
+                                            <h3 data-ng-show="!!guest.Name" class="title">Confira o nome no convite e clique em confirmar presença</h3>
+                                            <h3 data-ng-show="!!guest && !guest.Name" class="title">Digite o seu nome completo e clique em confirmar presença</h3>
+                                            <div style="height: 200px">
+                                                <div class="flip-container">
+                                                    <div class="flipper">
+                                                        <div data-ng-show="!guest" class="offer offer-radius offer-content front">
+                                                            <img src="~/Content/admin/images/ticket.png" style="margin-top: 10px" />
+                                                            <h3 class="lead" style="margin: 5px 0">123456</h3>
+                                                        </div>
+                                                        <div data-ng-show="!!guest.Name" class="offer offer-radius offer-content back">
+                                                            <h2>{{guest.Name}}</h2>
+                                                        </div>
+                                                        <div data-ng-show="!!guest && !guest.Name" class="offer offer-radius offer-content back">
+                                                            <textarea data-ng-model="name" class="form-control" placeholder="Nome Completo" style="margin-top: 25px; height: 100px;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-ng-show="!guest" class="form-group">
+                                                <div class="input-group" style="margin-top: 16px">
+                                                    <input data-ng-model="code" type="text" class="form-control" placeholder="Código" autofocus />
+                                                    <span class="input-group-addon"><span class="icon-lock"></span></span>
+                                                </div>
+                                            </div>
+                                            <a data-ng-show="!guest" data-ng-click="go()" class="btn btn-primary btn-lg btn-block">Avançar</a>
+                                            <a data-ng-show="!!guest" data-ng-click="back()" class="btn btn-default btn-lg btn-block">Voltar</a>
+                                            <a data-ng-show="!!guest" data-ng-click="accept()" class="btn btn-primary btn-lg btn-block">Confirmar presença</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showStatusMessage(response) {
+        if (response.status == 400) {
+            alert('Este convidado não existe ou já teve o convite confirmado.');
+        }
+        else if (response.status == 404) {
+            alert('Não foi possível encontrar o item.');
+        } else {
+            alert('Não foi possível processar sua requisição.');
+        }
+    }
+
+    function httpMethod(method, $q, url, data) {
+        var dataDeferred = $q.defer();
+        method(url, { params: data }).then(
+            function (client) {
+                dataDeferred.resolve(client);
+            },
+            function (response) {
+                dataDeferred.reject(response);
+            });
+        return dataDeferred.promise;
+    }
+
+    function httpGet($http, $q, url, data) {
+        var dataDeferred = $q.defer();
+        $http.get(url, { params: data }).then(
+            function (client) {
+                dataDeferred.resolve(client);
+            },
+            function (response) {
+                dataDeferred.reject(response);
+            });
+        return dataDeferred.promise;
+    }
+
+    function httpPost($http, $q, url, data) {
+        var dataDeferred = $q.defer();
+        $http.post(url, data).then(
+            function (client) {
+                dataDeferred.resolve(client);
+            },
+            function (response) {
+                dataDeferred.reject(response);
+            });
+        return dataDeferred.promise;
+    }
+
+    var app = angular.module("RsvpApp", []);
+
+    app.service("RsvpService", [
+        "$http", "$q",
+        function ($http, $q) {
+            this.getData = function (code) {
+                return httpGet($http, $q, '@Url.Action("GetInvitation")', { code: code });
+            };
+            this.accept = function (code, name) {
+                return httpPost($http, $q, '@Url.Action("AcceptInvitation")', { code: code, name: name });
+            };
+        }
+    ]);
+
+            app.controller("RsvpController", [
+                "$scope", "RsvpService",
+                function ($scope, repository) {
+                    $scope.code = "";
+                    $scope.isLoadingVisible = false;
+
+                    $scope.go = function () {
+                        $scope.isLoadingVisible = true;
+                        repository.getData($scope.code).then(function (response) {
+
+                            $scope.guest = response.data;
+                            $scope.isLoadingVisible = false;
+
+                        }, function (response) {
+                            $scope.isLoadingVisible = false;
+                            showStatusMessage(response);
+                        });
+                    };
+
+                    $scope.accept = function () {
+                        $scope.isLoadingVisible = true;
+                        repository.accept($scope.code, $scope.name).then(function (response) {
+                            $scope.isLoadingVisible = false;
+                            alert('Presença confirmada com sucesso!');
+                            $('.modal').modal('hide');
+                        }).catch(function (response) {
+                            $scope.isLoadingVisible = false;
+                            showStatusMessage(response);
+                        });
+                    };
+
+                    $scope.back = function () {
+                        $scope.guest = null;
+                    };
+                }
+            ]);
+</script>
