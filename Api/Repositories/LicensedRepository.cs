@@ -31,7 +31,9 @@ namespace Meganium.Api.Repositories
         public void Remove(TEntity obj)
         {
             _database.BeginTransaction();
-            _database.Session.Delete(obj);
+            var command = _database.Session.Connection.CreateCommand();
+            command.CommandText = string.Format("DELETE FROM {0} WHERE ID={1}", typeof(TEntity).Name, obj.Id);
+            command.ExecuteNonQuery();
         }
 
         public virtual void Edit(TEntity obj)

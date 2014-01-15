@@ -64,7 +64,8 @@ namespace Meganium.SystemTests.Steps
                 TestToolkit.Uow.PostRepository.Add(new Post
                 {
                     CreatedBy = user,
-                    Title = "Post do " + user.FullName
+                    Title = "Post do " + user.FullName,
+                    PostType = TestToolkit.Uow.PostTypeRepository.GetById(PostTypeIdDefault.Get())
                 });
                 TestToolkit.Uow.Commit();
             }
@@ -73,32 +74,7 @@ namespace Meganium.SystemTests.Steps
         [Given(@"que o existe um tipo de objeto com todos os comportamentos")]
         public void DadoQueOExisteUmTipoDeObjetoComTodosOsComportamentos()
         {
-            if (!TestToolkit.Uow.PostTypeRepository.AsQueryable().Any(p => p.SingularName == "Receita"))
-            {
-                var postType = new PostType
-                {
-                    SingularName = "Receita",
-                    PluralName = "Receitas",
-                    IconId = "book"
-                };
-                postType.SetBehavior(
-                    PostType.BehaviorFlags.AllowCategories |
-                    PostType.BehaviorFlags.AllowComments |
-                    PostType.BehaviorFlags.AllowDescription |
-                    PostType.BehaviorFlags.AllowExternalId |
-                    PostType.BehaviorFlags.AllowHash |
-                    PostType.BehaviorFlags.AllowLocation |
-                    PostType.BehaviorFlags.AllowMarkAsFeatured |
-                    PostType.BehaviorFlags.AllowPhotos |
-                    PostType.BehaviorFlags.AllowTimeBox |
-                    PostType.BehaviorFlags.AllowTree |
-                    PostType.BehaviorFlags.AllowVideo);
-
-                TestToolkit.Uow.PostTypeRepository.Add(postType);
-                TestToolkit.Uow.Commit();
-
-                TestToolkit.Managers.License.Options.Set("DefaultPostTypeId", postType.Id);
-            }
+            PostTypeIdDefault.Get();
         }
 
         [Given(@"as seguintes postagens existem")]
@@ -112,7 +88,9 @@ namespace Meganium.SystemTests.Steps
                     {
                         Title = row["Título"],
                         IsFeatured = row.ContainsKey("Destaque") && row["Destaque"] == "Sim",
-                        Published = true
+                        Published = true,
+                        PostType = TestToolkit.Uow.PostTypeRepository.GetById(PostTypeIdDefault.Get())
+
                     });
                     TestToolkit.Uow.Commit();
                 }

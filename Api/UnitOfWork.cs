@@ -28,33 +28,38 @@ namespace Meganium.Api
                 int? licenseId = null;
                 var httpContext = HttpContext.Current;
 
-                if (httpContext.Session != null && httpContext.Session["licenseId"] != null)
+                if (httpContext != null)
                 {
-                    licenseId = Convert.ToInt32(httpContext.Session["licenseId"]);
-                }
-
-                if (!licenseId.HasValue)
-                {
-                    if (httpContext.User.Identity.IsAuthenticated)
+                    if (httpContext.Session != null && httpContext.Session["licenseId"] != null)
                     {
-                        var user = Db.Session.Query<User>().FirstOrDefault(u=>u.UserName == httpContext.User.Identity.Name);
-                        if (user != null && user.License != null)
+                        licenseId = Convert.ToInt32(httpContext.Session["licenseId"]);
+                    }
+
+                    if (!licenseId.HasValue)
+                    {
+                        if (httpContext.User.Identity.IsAuthenticated)
                         {
-                            licenseId = user.License.Id;
+                            var user =
+                                Db.Session.Query<User>()
+                                    .FirstOrDefault(u => u.UserName == httpContext.User.Identity.Name);
+                            if (user != null && user.License != null)
+                            {
+                                licenseId = user.License.Id;
+                            }
                         }
                     }
-                }
-                if (!licenseId.HasValue)
-                {
-                    _license = LicenseManager.GetByUrl(httpContext.Request.Url.Authority);
-                    if (_license != null)
+                    if (!licenseId.HasValue)
                     {
-                        Licenses[_license.Id] = _license;
-                        if (httpContext.Session != null)
+                        _license = LicenseManager.GetByUrl(httpContext.Request.Url.Authority);
+                        if (_license != null)
                         {
-                            httpContext.Session["licenseId"] = _license.Id;
+                            Licenses[_license.Id] = _license;
+                            if (httpContext.Session != null)
+                            {
+                                httpContext.Session["licenseId"] = _license.Id;
+                            }
+                            return _license;
                         }
-                        return _license;
                     }
                 }
                 if (!licenseId.HasValue)
@@ -68,7 +73,7 @@ namespace Meganium.Api
 
                 if (licenseId.HasValue)
                 {
-                    if (httpContext.Session != null)
+                    if (httpContext != null && httpContext.Session != null)
                     {
                         httpContext.Session["licenseId"] = licenseId.Value;
                     }

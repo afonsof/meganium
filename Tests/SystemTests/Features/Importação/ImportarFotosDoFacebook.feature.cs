@@ -81,7 +81,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 11
  testRunner.And("clico no botão \"Avançar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 12
- testRunner.And("digito \"meganiumteste@gmail.com\" no campo \"email\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("digito \"megasiteteste@gmail.com\" no campo \"email\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 13
  testRunner.And("digito \"123mudar*\" no campo \"pass\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 14

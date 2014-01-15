@@ -3,7 +3,6 @@
 
     // load all grunt tasks
     var compiledTsFilePath = 'Site/Content/admin/js/app.js';
-    var compiledMinFilePath = 'Site/Content/admin/js/app.min.js';
     var slnPath = 'Meganium.sln';
     grunt.initConfig({
     
@@ -80,8 +79,9 @@
 
         nunit: {
             options: {
-                path: 'c:\\Program Files\\NUnit\\bin',
-                files: ['Site/Site.csproj']
+                files: ['./Tests/UnitTests/UnitTests.csproj',
+                        './Tests/SystemTests/SystemTests.csproj']
+                //teamcity: true
             }
         },
 
@@ -106,14 +106,8 @@
     loadTasks(grunt);
 
     grunt.registerTask('ci', ['assemblyinfo', 'msbuild', 'nunit']);
-    grunt.registerTask('default', ['ts:live']);
-    grunt.registerTask('pre-build', 'Build the Typescript project', ['ts:live']);
-    grunt.registerTask('post-build', 'Compiles all Typescript files to pub and minifies it', [/*'concat:dist',*/ 'uglify'/*, 'closure-compiler'*/]);
-    grunt.registerTask('compile', 'Compiles all Typescript files to pub and minifies it', ['pre-build', 'post-build']);
-    grunt.registerTask('compile-hint', 'Compiles, run jshint and minification', ['pre-build', 'jshint', 'post-build']);
-    grunt.registerTask('pre-commit', 'Compiles the Typescript files, minify and run the unit tests', ['pre-build', 'post-build', 'qunit']);
+    grunt.registerTask('ts-compile', ['ts:live', 'uglify']);
 };
-
 
 function loadTasks(grunt) {
     grunt.loadNpmTasks('grunt-ts'); //compiles typescript

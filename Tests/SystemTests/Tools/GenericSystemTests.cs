@@ -55,6 +55,11 @@ namespace Meganium.SystemTests.Tools
                         var entity = typeof(IHaveId).Assembly.GetTypes().FirstOrDefault(type => type.Name == entityName);
                         var obj = Activator.CreateInstance(entity, null) as IHaveId;
 
+                        if (obj as Post != null)
+                        {
+                            (obj as Post).PostType = TestToolkit.Uow.PostTypeRepository.GetById(PostTypeIdDefault.Get());
+                        }
+
                         var repositoryProperty = TestToolkit.Uow.GetType().GetProperty(entityName + "Repository");
                         var repository = repositoryProperty.GetValue(TestToolkit.Uow, null);
                         var addMethod = repository.GetType().GetMethod("Add");

@@ -163,6 +163,7 @@
       <DependentUpon>ExcluirUsuario.feature</DependentUpon>
     </Compile>
     <Compile Include="Steps\GivenSteps.cs" />
+    <Compile Include="Tools\PostTypeIdDefault.cs" />
     <Compile Include="Tools\TestToolkit.cs" />
     <Compile Include="Features\Login.feature.cs">
       <AutoGen>True</AutoGen>

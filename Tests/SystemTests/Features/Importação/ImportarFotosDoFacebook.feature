@@ -9,7 +9,7 @@ Cenário: Importar Fotos do Facebook com sucesso
 	Quando entro na página "/Admin/Import"
 	E seleciono "Fotos do Facebook" no campo "PluginName"
 	E clico no botão "Avançar"
-	E digito "meganiumteste@gmail.com" no campo "email"
+	E digito "megasiteteste@gmail.com" no campo "email"
 	E digito "123mudar*" no campo "pass"
 	E clico no botão "login"
 	E clico no botão "Importar tudo"
