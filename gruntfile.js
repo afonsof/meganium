@@ -25,7 +25,7 @@
                 nolib: false,
                 comments: false
             },
-            live: {
+            files: {
                 src: ['Site/Content/admin/js/src/*.ts'],
                 out: compiledTsFilePath,
                 options: {
@@ -35,7 +35,7 @@
         },
 
         uglify: {
-            my_target: {
+            app: {
                 files: {
                     'Site/Content/admin/js/app.min.js': [compiledTsFilePath]
                 }
@@ -53,8 +53,8 @@
                     'Tests/UnitTests/UnitTests.csproj'
                 ],
                 info: {
-                    version: "<%= pkg.version %>.0",
-                    fileVersion: "<%= pkg.version %>.0",
+                    version: process.env.BUILD_NUMBER, 
+                    fileVersion: process.env.BUILD_NUMBER,
                     company: 'Meganium',
                     product: 'Meganium Smart Site',
                     copyright: 'Copyright 2014 (c) Meganium',
@@ -105,8 +105,11 @@
 
     loadTasks(grunt);
 
-    grunt.registerTask('ci', ['assemblyinfo', 'msbuild', 'nunit']);
-    grunt.registerTask('ts-compile', ['ts:live', 'uglify']);
+    grunt.registerTask('ts-compile', ['ts', 'uglify']);
+    grunt.registerTask('ps', ['msbuild', 'nunit']);
+    grunt.registerTask('ci', ['assemblyinfo', 'ps']);
+    grunt.registerTask('deploy', ['ci', 'ftpush']);
+    
 };
 
 function loadTasks(grunt) {
