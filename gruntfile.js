@@ -53,12 +53,20 @@
                     'Tests/UnitTests/UnitTests.csproj'
                 ],
                 info: {
-                    version: process.env.BUILD_NUMBER, 
-                    fileVersion: process.env.BUILD_NUMBER,
+                    version: "<%= pkg.version %>.0",
+                    fileVersion: "<%= pkg.version %>.0",
                     company: 'Meganium',
                     product: 'Meganium Smart Site',
                     copyright: 'Copyright 2014 (c) Meganium',
                 }
+            }
+        },
+        
+        shell:
+        {
+            version:
+            {
+                command: 'npm version patch'
             }
         },
 
@@ -107,7 +115,7 @@
 
     grunt.registerTask('ts-compile', ['ts', 'uglify']);
     grunt.registerTask('ps', ['msbuild', 'nunit']);
-    grunt.registerTask('ci', ['assemblyinfo', 'ps']);
+    grunt.registerTask('ci', ['shell:version', 'assemblyinfo', 'ps']);
     grunt.registerTask('deploy', ['ci', 'ftpush']);
     
 };
@@ -125,4 +133,5 @@ function loadTasks(grunt) {
     grunt.loadNpmTasks('grunt-msbuild'); //msbuild grunt task
     grunt.loadNpmTasks('grunt-nunit-runner');
     grunt.loadNpmTasks('grunt-ftpush');
+    grunt.loadNpmTasks('grunt-shell');
 }
