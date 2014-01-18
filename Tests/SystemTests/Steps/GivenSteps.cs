@@ -16,6 +16,21 @@ namespace Meganium.SystemTests.Steps
             TestToolkit.EnsureUserDoesntExist(userEmail);
         }
 
+        [Given(@"que o tipo de objeto ""(.*)"" não existe")]
+        public void DadoQueOTipoDeObjetoNaoExiste(string singularName)
+        {
+            PostType postType = null;
+            do
+            {
+                postType = TestToolkit.Uow.PostTypeManager.GetBySingularName(singularName);
+                if (postType != null)
+                {
+                    TestToolkit.Uow.PostTypeRepository.Remove(postType);
+                    TestToolkit.Uow.Commit();
+                }
+            } while (postType != null);
+        }
+
         [Given(@"cliente ""(.*?)"" existe")]
         public void DadoClienteExiste(string name)
         {
@@ -82,14 +97,16 @@ namespace Meganium.SystemTests.Steps
         {
             foreach (var row in table.Rows)
             {
-                if (!TestToolkit.Uow.PostRepository.AsQueryable().Any(p => p.Title == row["Título"]))
+                var postType = TestToolkit.Uow.PostTypeRepository.GetById(PostTypeIdDefault.Get());
+
+                if (!TestToolkit.Uow.PostRepository.AsQueryable().Any(p => p.Title == row["Título"] && p.PostType == postType))
                 {
                     TestToolkit.Uow.PostRepository.Add(new Post
                     {
                         Title = row["Título"],
                         IsFeatured = row.ContainsKey("Destaque") && row["Destaque"] == "Sim",
                         Published = true,
-                        PostType = TestToolkit.Uow.PostTypeRepository.GetById(PostTypeIdDefault.Get())
+                        PostType = postType
 
                     });
                     TestToolkit.Uow.Commit();

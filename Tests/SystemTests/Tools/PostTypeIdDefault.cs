@@ -43,8 +43,8 @@ namespace Meganium.SystemTests.Tools
                     TestToolkit.Managers.License.Options.Set("DefaultPostTypeId", postType.Id);
                     return _type = postType.Id;
                 }
+                return _type = postType.Id;
             }
-            return 0;
         }
     }
 }

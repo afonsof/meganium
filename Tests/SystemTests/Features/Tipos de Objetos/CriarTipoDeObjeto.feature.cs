@@ -10,12 +10,12 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-
-using TechTalk.SpecFlow;
-
 #pragma warning disable
-namespace Meganium.SystemTests.Features
+namespace Meganium.SystemTests.Features.TiposDeObjetos
 {
+    using TechTalk.SpecFlow;
+    
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
@@ -75,16 +75,18 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.Given("que estou logado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line 9
- testRunner.When("entro na página \"/Admin/postType/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+ testRunner.And("que o tipo de objeto \"Objeto\" não existe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 10
- testRunner.And("digito \"Objeto\" no campo \"SingularName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.When("entro na página \"/Admin/postType/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line 11
- testRunner.And("digito \"Objetos\" no campo \"PluralName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("digito \"Objeto\" no campo \"SingularName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 12
- testRunner.And("digito \"book\" no campo \"IconId\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("digito \"Objetos\" no campo \"PluralName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 13
- testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("digito \"book\" no campo \"IconId\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 14
+ testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 15
  testRunner.Then("estou na página \"/Admin/postType\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -93,7 +95,7 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "Objeto",
                         "Objetos"});
-#line 15
+#line 16
  testRunner.And("verifico que o seguinte item existe", ((string)(null)), table1, "E ");
 #line hidden
             this.ScenarioCleanup();
@@ -104,21 +106,21 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void CriarTipoDeObjetoComCamposVazios()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Criar tipo de objeto com campos vazios", ((string[])(null)));
-#line 19
-this.ScenarioSetup(scenarioInfo);
 #line 20
- testRunner.Given("que estou logado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
+this.ScenarioSetup(scenarioInfo);
 #line 21
- testRunner.When("entro na página \"/Admin/postType/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+ testRunner.Given("que estou logado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line 22
- testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.When("entro na página \"/Admin/postType/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line 23
- testRunner.Then("estou na página \"/Admin/postType/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+ testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 24
- testRunner.And("verifico uma mensagem de erro \"Campo obrigatório\" para o campo \"SingularName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.Then("estou na página \"/Admin/postType/Create\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line 25
- testRunner.And("verifico uma mensagem de erro \"Campo obrigatório\" para o campo \"PluralName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+ testRunner.And("verifico uma mensagem de erro \"Campo obrigatório\" para o campo \"SingularName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 26
+ testRunner.And("verifico uma mensagem de erro \"Campo obrigatório\" para o campo \"PluralName\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+#line 27
  testRunner.And("verifico uma mensagem de erro \"Campo obrigatório\" para o campo \"IconId\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line hidden
             this.ScenarioCleanup();

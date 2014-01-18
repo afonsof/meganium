@@ -10,12 +10,12 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-
-using TechTalk.SpecFlow;
-
 #pragma warning disable
-namespace Meganium.SystemTests.Features.Importação
+namespace Meganium.SystemTests.Features.Importacao
 {
+    using TechTalk.SpecFlow;
+    
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
@@ -63,35 +63,6 @@ namespace Meganium.SystemTests.Features.Importação
         public virtual void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Importar Fotos do meu computador com sucesso")]
-        public virtual void ImportarFotosDoMeuComputadorComSucesso()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Importar Fotos do meu computador com sucesso", ((string[])(null)));
-#line 7
-this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.Given("que estou logado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
-#line 9
- testRunner.And("cliente \"A e B\" existe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 10
- testRunner.When("entro na página \"/Admin/Client\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
-#line 11
- testRunner.And("clico em \"Editar\" do item \"A e B\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 12
- testRunner.And("insiro a imagem \"bala-de-coco.jpg\" 4 vezes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 13
- testRunner.And("clico no link \"Voltar para o topo\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 14
- testRunner.And("clico no botão \"Salvar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line 15
- testRunner.Then("estou na página \"/Admin/Client\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
-#line 16
- testRunner.And("deu uma mensagem de sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
-#line hidden
-            this.ScenarioCleanup();
         }
     }
 }

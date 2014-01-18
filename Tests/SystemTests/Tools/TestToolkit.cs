@@ -61,7 +61,7 @@ namespace Meganium.SystemTests.Tools
             }
         }
 
-        public static IRepositories Uow
+        public static UnitOfWork Uow
         {
             get { return _bundle ?? (_bundle = new UnitOfWork()); }
         }
@@ -343,7 +343,7 @@ namespace Meganium.SystemTests.Tools
             if (trFound != null)
             {
                 var el = trFound.FindElement(By.PartialLinkText(linkText));
-                el.Click();
+                ScrollAndClick(el);
                 return;
             }
             Assert.Fail("Can't find the link named \"" + linkText + "\"");
@@ -352,6 +352,14 @@ namespace Meganium.SystemTests.Tools
         public static void CleanField(string name)
         {
             FindElementByNameOrLabelName(name).Clear();
+        }
+
+        private static void ScrollAndClick(IWebElement element)
+        {
+            var elementPosition = element.Location.Y;
+            var js = String.Format("window.scroll(0, {0})", elementPosition);
+            ((IJavaScriptExecutor)Driver).ExecuteScript(js);
+            element.Click();
         }
     }
 }

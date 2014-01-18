@@ -6,6 +6,7 @@ Funcionalidade: Criar tipo de objeto
 
 Cenário: Criar tipo de objeto
 	Dado que estou logado
+	E que o tipo de objeto "Objeto" não existe
 	Quando entro na página "/Admin/postType/Create"
 	E digito "Objeto" no campo "SingularName"
 	E digito "Objetos" no campo "PluralName"
