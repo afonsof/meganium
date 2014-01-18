@@ -115,7 +115,7 @@
 
     grunt.registerTask('ts-compile', ['ts', 'uglify']);
     grunt.registerTask('ps', ['msbuild', 'nunit']);
-    grunt.registerTask('ci', ['shell:version', 'assemblyinfo', 'ps']);
+    grunt.registerTask('ci', ['assemblyinfo', 'ps']);
     grunt.registerTask('deploy', ['ci', 'ftpush']);
     
 };
