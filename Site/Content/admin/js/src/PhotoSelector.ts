@@ -84,6 +84,7 @@ class PhotoSelector {
 
                 jQuery.ajax(this.dataUrl, {
                     data: data,
+                    dataType: "json",
                     error: () => {
                         alert(this.resource.CouldNotFindAClientWithThisCode);
                         this.loading.hide();
@@ -99,7 +100,7 @@ class PhotoSelector {
                         for (i = 0; i < mediaFiles.length; i++) {
                             var $div = $('<div />');
                             var $img = $(MediaFileManagerModule.thumbHtml(mediaFiles[i], this.thumbUrl, 240));
-                            var $a = $('<a href="' + mediaFiles[i].Url + '" data-gallery><i class="icon-zoom-in"></i></a>');
+                            var $a = $('<a href="/Content/Uploads/Files/' + mediaFiles[i].FileName + '.jpg" data-gallery><i class="icon-zoom-in"></i></a>');
                             $div.append($img);
                             $div.append($a);
                             $div.data('mediaFile', mediaFiles[i]);

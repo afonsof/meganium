@@ -1,6 +1,6 @@
 {
   "name": "Meganium",
-  "version": "1.1.21",
+  "version": "1.1.22",
   "description": "No description",
   "scripts": {
     "ci": "npm version patch & grunt.cmd ci"
@@ -21,6 +21,7 @@
     "grunt-msbuild": "~0.1.9",
     "grunt-nunit-runner": "~1.0.16",
     "grunt-ftpush": "~0.3.3",
-    "grunt-shell": "~0.6.2"
+    "grunt-shell": "~0.6.2",
+    "grunt-contrib-compress": "~0.6.0"
   }
 }

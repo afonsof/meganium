@@ -9,6 +9,10 @@
 </div>
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => model.DataJson)
+
+   
+    
     @Html.ValidationSummary(true)
     <fieldset>
         <div class="editor-label">
@@ -88,10 +92,20 @@
             @Html.TextBoxFor(model => model.Color2, new { @class = "colorpicker" })
             @Html.ValidationMessageFor(model => model.Color2)
         </div>
-        <button type="submit" class="btn btn-primary">@Resource.Save</button>
     </fieldset>
+    <fieldset>
+        <legend>@Resource.Advanced</legend>
+        <div id="jsonEditor" class="json-editor"></div>
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">@Resource.Save</button>
     
     <script type="text/javascript">
         $('.colorpicker').colorpicker();
+        $('#jsonEditor').jsonEditor(JSON.parse($('#DataJson').val()), {
+            change: function(val) {
+                 $('#DataJson').val(JSON.stringify(val));
+            }
+        });
     </script>
 }

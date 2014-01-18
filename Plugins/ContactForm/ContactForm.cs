@@ -21,7 +21,7 @@ namespace Meganium.Plugins.ContactForm
                 }
                 // TODO: Remover strings
                 var options = managers.License.Options;
-                Mailer.Send(context.Request["Name"], context.Request["Email"], "Contato do Site " + options.Get("SiteTitle"), body, options.Get("AdminEmail"));
+                Mailer.Send(context.Request["Name"], context.Request["Email"], "Contato do Site " + options.Get("SiteTitle"), body, options.GetString("AdminEmail"));
                 context.Response.Redirect("~/");
             }
             return null;

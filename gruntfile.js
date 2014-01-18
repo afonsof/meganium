@@ -89,7 +89,7 @@
             options: {
                 files: ['./Tests/UnitTests/UnitTests.csproj',
                         './Tests/SystemTests/SystemTests.csproj'],
-                teamcity: true
+                /*teamcity: true*/
             }
         },
 
@@ -107,6 +107,22 @@
                 simple: true,
                 useList: true
             }
+        },
+
+        compress: {
+            main: {
+                options: {
+                    archive: 'pub/meganium-<%= pkg.version %>.zip',
+                    level: 9
+                },
+                files: [
+                    {
+                        expand: true,
+                        src: ['**/*'],
+                        cwd: 'Site/temp/'
+                    }
+                ]
+            }
         }
 
     });
@@ -114,9 +130,8 @@
     loadTasks(grunt);
 
     grunt.registerTask('ts-compile', ['ts', 'uglify']);
-    grunt.registerTask('ps', ['msbuild', 'nunit']);
-    grunt.registerTask('ci', ['assemblyinfo', 'ps']);
-    grunt.registerTask('deploy', ['ci', 'ftpush']);
+    grunt.registerTask('ci', ['assemblyinfo', 'msbuild', 'nunit']);
+    grunt.registerTask('publish', ['ci', 'compress']);
     
 };
 
@@ -134,4 +149,5 @@ function loadTasks(grunt) {
     grunt.loadNpmTasks('grunt-nunit-runner');
     grunt.loadNpmTasks('grunt-ftpush');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 }

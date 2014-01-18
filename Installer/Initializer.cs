@@ -70,7 +70,7 @@ namespace Meganium.Installer
             {
                 var value = option.Value;
 
-                var match = Regex.Match(option.Value, @"@(\w+)\[(\w+)\]");
+                var match = Regex.Match(option.Value.ToString(), @"@(\w+)\[(\w+)\]");
                 if (match.Captures.Count > 0)
                 {
                     if (match.Groups[1].Value.ToLowerInvariant() == "posttype")
@@ -78,11 +78,12 @@ namespace Meganium.Installer
                         var postType = _managers.PostTypeManager.GetBySingularName(match.Groups[2].Value);
                         if (postType != null)
                         {
-                            value = postType.Id.ToString(CultureInfo.InvariantCulture);
+                            value = postType.Id;
                         }
                     }
                 }
                 _managers.License.Options.Set(option.Key, value);
+                _managers.ClearCache();
             }
         }
 

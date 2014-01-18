@@ -22,10 +22,6 @@
 		DefaultPostTypeId : "@postType[Projeto]",
 		ThemeName: "afonsof",
 		AllowImportMediaFiles: true,
-
-		SmtpServer: "smtp.gmail.com",
-		SmtpUserName: "naoresponda@meganium.com.br",
-		SmtpPassword: "ms555511"
 	},
 
 	PostTypes:

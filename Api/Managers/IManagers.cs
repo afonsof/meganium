@@ -16,5 +16,6 @@ namespace Meganium.Api.Managers
         LicenseManager LicenseManager { get; }
 
         License License { get; }
+        void ClearCache();
     }
 }

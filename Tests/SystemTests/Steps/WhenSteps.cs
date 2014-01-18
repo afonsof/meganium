@@ -81,7 +81,7 @@ namespace Meganium.SystemTests.Steps
         public void QuandoInsiroAImagem(string filename)
         {
             var button = TestToolkit.Driver.FindElement(By.ClassName("media-file-picker-control"));
-            button.Click();
+            TestToolkit.ScrollAndClick(button);
 
             var modal = TestToolkit.Driver.FindElement(By.ClassName("media-picker-modal"));
             var button2 = modal.FindElement(By.ClassName("uploadifive-button"));
@@ -93,7 +93,7 @@ namespace Meganium.SystemTests.Steps
             input[1].SendKeys(ApplicationPaths.RootDirectory + "\\TestData\\" + filename);
             var buttonOk = modal.FindElement(By.ClassName("btn-ok"));
             Thread.Sleep(1000);
-            buttonOk.Click();
+            TestToolkit.ScrollAndClick(buttonOk);
             Thread.Sleep(1000);
         }
 

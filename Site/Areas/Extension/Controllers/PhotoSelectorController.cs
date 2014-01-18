@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Dongle.Reflection;
@@ -6,6 +7,7 @@ using Meganium.Api;
 using Meganium.Api.Entities;
 using Meganium.Api.Managers;
 using Meganium.Api.Messaging;
+using Meganium.Api.Resources;
 using Meganium.Api.Tools;
 using Meganium.Api.Trash;
 using Meganium.Api.ViewModels;
@@ -27,8 +29,6 @@ namespace Meganium.Site.Areas.Extension.Controllers
             return View();
         }
 
-
-
         public ActionResult Data(string hash)
         {
             var client = _managers.ClientManager.GetByHash(hash);
@@ -40,8 +40,7 @@ namespace Meganium.Site.Areas.Extension.Controllers
             var selected = data.SelectedMediaFiles ?? new List<MediaFile>();
             if (selected.Any())
             {
-                //todo: colocar no resource as mensagens
-                return Json(new Message("As fotos deste cliente já foram selecionadas", MessageType.Error), JsonRequestBehavior.AllowGet);
+                return Json(new Message(Resource.ThisClienAlreadySelectedHisPhotos, MessageType.Error), JsonRequestBehavior.AllowGet);
             }
 
             return Content(InternalJsonSerializer.Serialize(new
@@ -56,23 +55,32 @@ namespace Meganium.Site.Areas.Extension.Controllers
         [HttpPost]
         public ActionResult Data(string hash, string selectedMediaFilesJson)
         {
-            var client = _managers.ClientManager.GetByHash(hash);
-            var data = client.GetData<PhotoSelectorData>();
-            data.SelectedMediaFiles = InternalJsonSerializer.Deserialize<List<MediaFile>>(selectedMediaFilesJson);
+            try
+            {
+                var client = _managers.ClientManager.GetByHash(hash);
+                var data = client.GetData<PhotoSelectorData>();
+                data.SelectedMediaFiles = InternalJsonSerializer.Deserialize<List<MediaFile>>(selectedMediaFilesJson);
 
-            var vm = ObjectFiller<Client, ClientEditVm>.Fill(client);
-            vm.SetData(data);
+                var vm = ObjectFiller<Client, ClientEditVm>.Fill(client);
+                vm.SetData(data);
 
-            _managers.ClientManager.Change(vm);
+                _managers.ClientManager.Change(vm);
 
-            var body = "O cliente " + client.FullName + " finalizou a sua escolha de fotos\n";
-            body += "Fotos:\n";
-            body = data.SelectedMediaFiles.Aggregate(body, (current, selectedMediaFile) => current + ("\n+ " + selectedMediaFile.Title));
+                var body = string.Format(Resource.TheClientXFinishedHisPhotoSelection + "\n", client.FullName);
+                body += Resource.Photos + ":\n";
+                body = data.SelectedMediaFiles.Aggregate(body,
+                    (current, selectedMediaFile) => current + ("\n+ " + selectedMediaFile.Title));
 
-            Mailer.Send(client.FullName, client.Email, "Escolha de Fotos", body, _managers.License.Options.Get("PhotoSelectorEmailReporter"));
+                Mailer.Send(client.FullName, client.Email, Resource.PhotoSelection, body,
+                    _managers.License.Options.GetString("PhotoSelectorEmailReporter"));
 
-            //todo: tratar se não tiver cliente e erro de salvar
-            return Json(new Message("Fotos enviadas com sucesso", MessageType.Success));
+                return Json(new Message(Resource.PhotosSentSuccessfully, MessageType.Success));
+            }
+            catch (Exception)
+            {
+                return Json(new Message(Resource.ThereWasAnErrorSendingPhotos, MessageType.Error));
+            }
+
         }
     }
 }

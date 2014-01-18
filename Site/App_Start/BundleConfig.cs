@@ -20,6 +20,7 @@ namespace Meganium.Site
                 "~/Content/admin/js/libs/bootstrap-wysihtml5/bootstrap-wysihtml5.js",
                 "~/Content/admin/js/libs/bootstrap-daterangepicker/daterangepicker.js",
                 "~/Content/admin/js/libs/bootstrap-daterangepicker/moment.js",
+                "~/Content/admin/js/libs/jquery-jsoneditor/jquery.jsoneditor.js",
                 "~/Content/admin/js/libs/base64/base64.js",
                 "~/Content/admin/js/app.js"));
 
@@ -40,6 +41,7 @@ namespace Meganium.Site
                 .Include("~/Content/admin/js/libs/bootstrap-wysihtml5/bootstrap-wysihtml5.css", new CssRewriteUrlTransform())
                 .Include("~/Content/admin/js/libs/bootstrap-wysihtml5/wysihtml5-color.css", new CssRewriteUrlTransform())
                 .Include("~/Content/admin/js/libs/bootstrap-daterangepicker/daterangepicker-bs2.css", new CssRewriteUrlTransform())
+                .Include("~/Content/admin/js/libs/jquery-jsoneditor/jsoneditor.css", new CssRewriteUrlTransform())
                 .Include("~/Content/admin/css/mediafilemanager.css", new CssRewriteUrlTransform())
                 .Include("~/Content/admin/css/app.css", new CssRewriteUrlTransform()));
         }

@@ -918,4 +918,22 @@
   <data name="Hash" xml:space="preserve">
     <value>Código</value>
   </data>
+  <data name="PhotoSelection" xml:space="preserve">
+    <value>Escolha de Fotos</value>
+  </data>
+  <data name="PhotosSentSuccessfully" xml:space="preserve">
+    <value>Fotos enviadas com sucesso</value>
+  </data>
+  <data name="TheClientXFinishedHisPhotoSelection" xml:space="preserve">
+    <value>O cliente {0} finalizou a sua escolha de fotos</value>
+  </data>
+  <data name="ThereWasAnErrorSendingPhotos" xml:space="preserve">
+    <value>Ocorreu um erro ao enviar as fotos</value>
+  </data>
+  <data name="ThisClienAlreadySelectedHisPhotos" xml:space="preserve">
+    <value>As fotos deste cliente já foram selecionadas</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Avançado</value>
+  </data>
 </root>

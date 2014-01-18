@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Web.Mvc;
 using DevTrends.MvcDonutCaching;
 using Dongle.System;
@@ -37,7 +38,7 @@ namespace Meganium.Site.Areas.Site.Controllers
             .Append("<atom:link href=\"").Append(absoluteUrl).Append("\" rel=\"self\" type=\"application/rss+xml\" />")
             .Append("<link>").Append(absoluteUrl).Append("</link>")
             .Append("<description>").Append(options.Get("SiteDescription")).Append("</description>")
-            .Append("<lastBuildDate>").Append(lastItem.PublishedAt.Value.ToRssTime()).Append("</lastBuildDate>")
+            .Append("<lastBuildDate>").Append((lastItem.PublishedAt != null ? lastItem.PublishedAt.Value : DateTime.Now).ToRssTime()).Append("</lastBuildDate>")
             .Append("<language>").Append(options.Get("SiteLanguage")).Append("</language>")
             .Append("<generator>").Append(Resource.ProjectName).Append("</generator>");
             
@@ -47,7 +48,7 @@ namespace Meganium.Site.Areas.Site.Controllers
                 response.Append("<item>")
                 .Append("<title>").Append(item.Title).Append("</title>")
                 .Append("<link>").Append(PathResolver.AbsoluteUrl(Request.Url, item.UrlPath)).Append("</link>")
-                .Append("<pubDate>").Append(item.PublishedAt.Value.ToRssTime()).Append("</pubDate>")
+                .Append("<pubDate>").Append((item.PublishedAt!= null? item.PublishedAt.Value:DateTime.Now).ToRssTime()).Append("</pubDate>")
                 .Append("<dc:creator>").Append(creator).Append("</dc:creator>")
                 .Append("<description><![CDATA[").Append(item.PreviewContent).Append("]]></description>")
                 .Append("<content:encoded><![CDATA[").Append(item.Content).Append("]]></content:encoded>")

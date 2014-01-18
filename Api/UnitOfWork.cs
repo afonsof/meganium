@@ -92,6 +92,13 @@ namespace Meganium.Api
                 return new License();
             }
         }
+
+        public void ClearCache()
+        {
+            _license = null;
+            Licenses.Clear();
+        }
+
         public Database Db { get; private set; }
 
         public UnitOfWork()

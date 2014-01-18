@@ -27,7 +27,7 @@ namespace Meganium.Site.Areas.Site.Controllers
         public ActionResult Index()
         {
             var pathResolver = new PathResolver(_managers.License.Options);
-            _vm.Title = _managers.License.Options.Get("SiteTitle");
+            _vm.Title = _managers.License.Options.GetString("SiteTitle");
             return View(GetHomeFile(pathResolver), _vm);
         }
 

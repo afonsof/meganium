@@ -40,5 +40,7 @@ namespace Meganium.Api.ViewModels
         public int DefaultPostTypeId { get; set; }
 
         public bool AllowImportMediaFiles { get; set; }
+
+        public string DataJson { get; set; }
     }
 }

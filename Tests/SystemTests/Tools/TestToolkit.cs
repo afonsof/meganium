@@ -137,7 +137,7 @@ namespace Meganium.SystemTests.Tools
                 var btns = Driver.FindElements(By.ClassName("btn"));
                 element = btns.First(e => e.Text == name);
             }
-            element.Click();
+            ScrollAndClick(element);
         }
 
         public static void TypeInField(string text, string name)
@@ -354,9 +354,9 @@ namespace Meganium.SystemTests.Tools
             FindElementByNameOrLabelName(name).Clear();
         }
 
-        private static void ScrollAndClick(IWebElement element)
+        public static void ScrollAndClick(IWebElement element)
         {
-            var elementPosition = element.Location.Y;
+            var elementPosition = element.Location.Y -100;
             var js = String.Format("window.scroll(0, {0})", elementPosition);
             ((IJavaScriptExecutor)Driver).ExecuteScript(js);
             element.Click();

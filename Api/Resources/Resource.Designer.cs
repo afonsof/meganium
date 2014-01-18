@@ -169,6 +169,15 @@ namespace Meganium.Api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Avançado.
+        /// </summary>
+        public static string Advanced {
+            get {
+                return ResourceManager.GetString("Advanced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Album.
         /// </summary>
         public static string Album {
@@ -1618,6 +1627,24 @@ namespace Meganium.Api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Escolha de Fotos.
+        /// </summary>
+        public static string PhotoSelection {
+            get {
+                return ResourceManager.GetString("PhotoSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fotos enviadas com sucesso.
+        /// </summary>
+        public static string PhotosSentSuccessfully {
+            get {
+                return ResourceManager.GetString("PhotosSentSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Identificador do Picasa.
         /// </summary>
         public static string PicasaId {
@@ -2104,6 +2131,15 @@ namespace Meganium.Api.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O cliente {0} finalizou a sua escolha de fotos.
+        /// </summary>
+        public static string TheClientXFinishedHisPhotoSelection {
+            get {
+                return ResourceManager.GetString("TheClientXFinishedHisPhotoSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tema.
         /// </summary>
         public static string Theme {
@@ -2136,6 +2172,24 @@ namespace Meganium.Api.Resources {
         public static string ThereIsNothingToBeShowed {
             get {
                 return ResourceManager.GetString("ThereIsNothingToBeShowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocorreu um erro ao enviar as fotos.
+        /// </summary>
+        public static string ThereWasAnErrorSendingPhotos {
+            get {
+                return ResourceManager.GetString("ThereWasAnErrorSendingPhotos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As fotos deste cliente já foram selecionadas.
+        /// </summary>
+        public static string ThisClienAlreadySelectedHisPhotos {
+            get {
+                return ResourceManager.GetString("ThisClienAlreadySelectedHisPhotos", resourceCulture);
             }
         }
         

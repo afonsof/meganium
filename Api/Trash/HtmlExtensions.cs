@@ -17,7 +17,7 @@ namespace Meganium.Api.Trash
         {
             using (var uow = new UnitOfWork())
             {
-                return new MvcHtmlString(uow.License.Options.Get(name));
+                return new MvcHtmlString(uow.License.Options.GetString(name));
             }
         }
 

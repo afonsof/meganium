@@ -14,7 +14,7 @@ namespace Meganium.Plugins.GoogleAnalyticsTracker
 
         public HtmlString OnFooter(IManagers managers)
         {
-            var tracker = managers.License.Options.Get("GoogleAnalyticsTracker");
+            var tracker = managers.License.Options.GetString("GoogleAnalyticsTracker");
 
             if (!string.IsNullOrEmpty(tracker))
             {

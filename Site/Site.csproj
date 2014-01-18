@@ -183,6 +183,8 @@
     <Content Include="Content\admin\images\buttons.css" />
     <Content Include="Content\admin\images\docs.css" />
     <Content Include="Content\admin\images\ticket.png" />
+    <Content Include="Content\admin\js\libs\jquery-jsoneditor\jsoneditor.css" />
+    <Content Include="Content\admin\js\libs\jquery-jsoneditor\jquery.jsoneditor.js" />
     <Content Include="Content\themes\julianaeafonso\css\bootstrap-override.css" />
     <Content Include="Content\themes\julianaeafonso\css\bootstrap-responsive.css" />
     <Content Include="Content\themes\julianaeafonso\css\bootstrap.css" />

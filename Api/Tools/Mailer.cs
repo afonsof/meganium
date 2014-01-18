@@ -8,10 +8,10 @@ namespace Meganium.Api.Tools
     {
         public static void Send(string name, string email, string subject, string body, string to)
         {
-            var smtpServer = Options.GlobalOptions.Get("SmtpServer");
+            var smtpServer = Options.GlobalOptions.GetString("SmtpServer");
             var smtpPort = Options.GlobalOptions.Get("SmtpPort", 587);
-            var smtpUserName = Options.GlobalOptions.Get("SmtpUserName");
-            var smtpPassword = Options.GlobalOptions.Get("SmtpPassword");
+            var smtpUserName = Options.GlobalOptions.GetString("SmtpUserName");
+            var smtpPassword = Options.GlobalOptions.GetString("SmtpPassword");
             var smtpUseSsl = Options.GlobalOptions.Get("SmtpUseSsl", true);
 
             var message = new MailMessage();
