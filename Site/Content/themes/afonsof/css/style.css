@@ -1,0 +1,515 @@
+body{
+    background-color: #ECF0F1;
+    background-image: url(../img/bg.jpg);
+    background-attachment:fixed;
+}
+
+.navbar
+{
+    background-color: #16A086;
+}
+
+.navbar {
+    min-height: 75px;
+    color: #ECF0F1;
+}
+
+.navbar a {
+    color: #ECF0F1;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #16A086;
+}
+
+.jumbotron {
+    padding-top: 55px;
+    margin-top: 70px;
+    background: none;
+}
+
+.projects .col-md-4
+{
+    padding-bottom: 50px;
+}
+
+.projects h2
+{
+    font-family: 'Montserrat', sans-serif, "Helvetica Neue", Helvetica, Arial;
+    margin-bottom: 20px;
+    color: #2D3E50;
+    text-transform: uppercase;
+}
+
+*
+{
+    font-family: 'Montserrat', sans-serif, "Helvetica Neue", Helvetica, Arial;
+    color: #2D3E50;
+}
+
+.jumbotron h1, .jumbotron h2, .jumbotron h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif, "Helvetica Neue", Helvetica, Arial;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.jumbotron h1 {
+    font-size: 69px;
+}
+  
+.jumbotron h2 {
+    font-size: 42px;
+}
+
+.jumbotron h3 {
+    font-size: 35px;
+}
+
+.jumbotron p {
+    font-size: 15px;
+}
+
+.navbar-brand div {
+    line-height: 40px;
+    float:left;
+}
+
+.photo {
+    width: 330px;
+    position: absolute;
+    z-index: 1000;
+}
+
+footer {
+    background-color: #DFEEEB;
+    height: 100px;
+    padding: 10px;
+}
+
+.col-md-8 {
+    padding-left: 60px;
+}
+
+.social-links {
+    width: 360px;
+    display: block;
+    padding: 0;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #ECF0F1;
+    padding: 15px 15px;
+    opacity: 0.5;
+}
+
+.social-links a:hover {
+    opacity: 0.8; 
+    text-decoration: none;
+}
+
+.cl-blue {
+    background-color: #3498db;
+}
+
+.cl-red {
+    background-color: #e74c3c;
+}
+
+.cl-orange {
+    background-color: #f39c12;
+}
+
+.cl-green {
+    background-color: #2ecc71;
+}
+
+.cl-purple {
+    background-color: #9b59b6;
+}
+
+.cl-yellow {
+    background-color: #f1c40f;
+}
+
+.social-links .fa-facebook
+{
+    padding-left: 20px;
+}
+
+.banner
+{
+    width: 330px;
+    position: absolute;
+}
+
+.banner .square
+{
+    width: 55px;
+    float: left;
+    height: 55px;
+    opacity: 0.4;
+}
+
+.animate
+{
+    -webkit-animation:mymove 2s; /* Safari and Chrome */
+}
+
+.icon
+{
+    background-image: url('../img/afonsof.png');
+    background-size:330px 440px;
+}
+
+.icon-android
+{
+    background-position: 0 0;
+}
+
+.icon-chrome {
+    /*background-position: -55px 0;*/
+    background-position: -100% 0;
+}
+
+.icon-vs 
+{
+    background-position: -400% 0;
+}
+
+.icon-skype
+{
+    background-position: -500% 0;
+}
+
+.icon-meganium
+{
+    background-position: 0 -100%;
+}
+
+.icon-spiderman
+{
+    background-position: -400% -100%;
+}
+
+.icon-starwars
+{
+    background-position: -500% -100%;
+}
+
+.icon-js
+{
+    background-position: 0 -200%;
+}
+
+.icon-zelda 
+{
+    background-position: -400% -200%;
+}
+
+.icon-html5
+{
+    background-position: -500% -200%;
+}
+
+.icon-avengers
+{
+    background-position: 0 -300%;
+}
+
+.icon-usb
+{
+    background-position: -100% -300%;
+}
+.icon-apple 
+{
+    background-position: -400% -300%;
+}
+
+.icon-sonic
+{
+    background-position: -500% -300%;
+}
+
+.icon-mario
+{
+    background-position: 0 -400%;
+}
+
+.icon-css3
+{
+    background-position: -100% -400%;
+}
+
+.icon-plus 
+{
+    background-position: -400% -400%;
+}
+
+.icon-cs
+{
+    background-position: -500% -400%;
+}
+
+.icon-git
+{
+    background-position: 0 -500%;
+}
+
+.icon-superman
+{
+    background-position: -100% -500%;
+}
+
+.icon-dragonball
+{
+    background-position: -400% -500%;
+}
+
+.icon-whatsapp
+{
+    background-position: -500% -500%;
+}
+
+.icon-grunt
+{
+    background-position: 0 -600%;
+}
+
+.icon-space
+{
+    background-position: -100% -600%;
+}
+
+.icon-xmen 
+{
+    background-position: -400% -600%;
+}
+
+.icon-angular
+{
+    background-position: -500% -600%;
+}
+
+.icon-twitter 
+{
+    background-position: 0 -700%;
+}
+
+.icon-python 
+{
+    background-position: -100% -700%;
+}
+
+.icon-facebook
+{
+    background-position: -400% -700%;
+}
+
+.icon-pokeball
+{
+    background-position: -500% -700%;
+}
+
+@media (min-width: 1200px)
+{
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 768px)
+{
+    .navbar-nav > li > a {
+        padding-top: 28px;
+        padding-bottom: 28px;
+    }
+}
+
+@media (max-width: 1033px)
+{
+    .jumbotron h1
+    {
+        font-size: 65px;
+    }
+    
+    .jumbotron h2
+    {
+        font-size: 39px;
+    }
+    
+    .jumbotron h3
+    {
+        font-size: 33px;
+    }
+}
+
+@media (max-width: 991px)
+{
+    .jumbotron .col-md-4
+    {
+        height: 330px;
+        overflow: hidden;
+    }
+    
+    .photo, .banner {
+        width: 680px;
+        margin-top: -140px;
+    }
+    
+    .icon
+       {
+        background-size:680px 906px;
+    }
+    
+    .banner .square{
+        width: 113.3333333333334px;
+        height: 113.3333333333334px;
+    }
+    
+  
+    .jumbotron .col-md-8
+    {
+        margin-top: 20px;
+        padding-left: 15px;
+        text-align: center;
+    }
+    
+    .social-links
+    {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767px)
+{
+    .container
+    {
+        width: 275px;
+    }
+    
+    .photo, .banner {
+        width: 320px;
+        margin-top: -50px;
+    }
+    
+    .banner .square {
+        width: 53.33333333333333px;
+        height: 53.33333333333333px;
+    }
+    
+    .navbar-brand
+    {
+        padding: 10px 0;
+    }
+    
+    .navbar-brand img
+    {
+        width: 100%     ;
+    }
+    
+    .navbar-fixed-top
+    {
+        position: relative;
+    }
+    
+    .nav > li
+    {
+        float: left;
+    }
+    
+    .nav > li a
+    {
+        font-size: 13px;
+        padding: 10px;
+    }
+    
+    .navbar-nav
+    {
+        margin: 0 auto;
+        width: 236px;
+    }
+    
+    .jumbotron
+    {
+        margin-top: -20px;
+        padding-top: 0;
+    }
+    
+    .jumbotron .col-md-4
+    {
+        height: 190px;
+        margin-left: -45px; 
+        margin-right: -45px;
+    }
+    
+    .jumbotron .col-md-8
+    {
+        padding-left: 0px; 
+        padding-right: 0px;
+    }
+    
+    .jumbotron h1
+    {
+        font-size: 31px;
+    }
+    
+    .jumbotron h2
+    {
+        font-size: 18px;
+    }
+    
+    .jumbotron h3
+    {
+        font-size: 15px;
+    }
+    
+    .jumbotron p
+    {
+        font-size: 11px;
+    }
+    
+    .social-links {
+        width: 360px;
+    }
+
+    .social-links a {
+        font-size: 16px;
+        width: 37px;
+        height: 37px;
+        padding: 12px;
+        
+    }
+}
+
+.projects .col-md-4 {
+text-align: center;
+}
+
+
+@keyframes mymove
+{
+    0%   {opacity: 0.4}
+    50%  {opacity:1;}
+    100% {opacity:0.4;}
+}
+
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+    0%   {opacity: 0.4}
+    50%  {opacity:1;}
+    100% {opacity:0.4;}
+}

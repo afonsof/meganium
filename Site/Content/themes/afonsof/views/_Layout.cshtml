@@ -1,111 +1,54 @@
-﻿@using Meganium.Api.Trash
-@using Meganium.Api
-@using Meganium.Api.Trash
-@model Meganium.Api.ViewModels.SiteViewModel
+﻿@model Meganium.Api.ViewModels.SiteViewModel
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <!-- meta -->
-    <meta charset="UTF-8" />
-    <title>@Model.Title</title>
-    <meta name="description" content="@Html.Option("SiteDescription")" />
-    <meta name="keywords" content="Portifólio pessoal, desenvolvimento de sites, logotipos, intranet, banners, sistemas web">
-    <meta name="author" content="Afonso França">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="~/Content/themes/afonsof/img/favicon.png">
 
-    <!-- styles -->
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" media="all" href="~/Content/themes/afonsof/css/reset.css" />
-    <link rel="stylesheet" href="~/Content/themes/afonsof/css/light.css" />
-    <link rel="icon" type="image/png" href="~/Content/themes/afonsof/images/favicon.png">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" type="text/css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="~/Content/themes/afonsof/css/mobile.css" />
+    <title>Afonso França de Oliveira</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/themes/afonsof/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/themes/afonsof/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/themes/afonsof/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- wp head -->
-    <link rel="alternate" type="application/rss+xml" title="Feed de Afonso França - Portifólio &raquo;" href="~/Rss" />
-    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js?ver=3.5.1'></script>
-
-    <script type='text/javascript' src='~/Content/themes/afonsof/js/jquery.masonry.min.js'></script>
-    <script type='text/javascript' src='~/Content/themes/afonsof/js/functions.js'></script>
-
-    <style type="text/css" media="print">
-        #wpadminbar {
-            display: none;
-        }
-    </style>
-    <style type="text/css" media="screen">
-        html {
-            margin-top: 28px !important;
-        }
-
-        * html body {
-            margin-top: 28px !important;
-        }
-    </style>
-
-    <!-- Browser detected = Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.14 Safari/537.36 -->
-    <style type="text/css">
-        #wppa-overlay-ic {
-            padding-top: 5px !important;
-        }
-
-        #wppa-overlay-qt-txt, #wppa-overlay-qt-img {
-            top: 5px !important;
-        }
-    </style>
-    <!-- WPPA+ Rendering enabled -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
 
-<body class="home blog logged-in admin-bar no-customize-support">
-
-    <div id="wrap">
-        <div id="header">
-            <div id="logo" style="float: left; margin-right: 50px;">
-                <a href="/" title="Afonso França &#8211; Portifólio" rel="home">
-
-                    <img src="~/Content/themes/afonsof/images/logo.png" alt="Afonso França &#8211; Portifólio">
-                </a>
-            </div>
-
-            <div id="banner" style="float: left; background: rgba(70, 70, 70, 0.6); color: #ccc; padding: 10px 10px 0 10px; margin-top: 45px; max-width: 900px; font-family: arial; font-size: 13px; line-height: 20px; margin-bottom: 10px">
-                <div style="float: left; max-width: 500px; padding-right: 10px; padding-bottom: 10px">Olá! Meu nome é Afonso França, tenho 28 anos, sou curioso e maluco por criação desde de menino. Meu formei em Ciência da Computação e Pós-graduei em Gerenciamento de Projetos. Trabalho como coordenador de projetos de Software na GAS Tecnologia. Também gosto de trabalhar com sites e peças de arte por mim mesmo. Abaixo, você pode conferir um pouco mais do meu trabalho&#8230;</div>
-                <img src="~/Content/themes/afonsof/images/mcp.png" style="margin-top: 15px; margin-right: 10px; float: left" />
-                <img src="~/Content/themes/afonsof/images/scrum.png" style="margin-top: 10px; margin-right: 10px; float: left" />
-            </div>
+<body>
+    <div class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="~/">
+                <img src="~/Content/themes/afonsof/img/logo.png" title="Afonso França" /></a>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="~/blog">Blog</a></li>
+                <li><a href="~/projects">Projects</a></li>
+                <li><a href="~/page/contact">Contact</a></li>
+            </ul>
         </div>
-
-        <div id="nav">
-            <div class="menu-principal-container">
-                <ul id="menu-principal" class="menu">
-                    <li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="~/pagina/contato/">Contato</a></li>
-                    <li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-115"><a href="~/pagina/curriculo/">Currículo</a></li>
-                    <li id="menu-item-9" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-9"><a href="~/projetos/logotipos/">Logotipos</a></li>
-                    <li id="menu-item-201" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="~/projetos/programacao/">Programação</a></li>
-                    <li id="menu-item-44" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-44"><a href="~/projetos/sites/">Sites</a></li>
-                    <li id="menu-item-45" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45"><a href="~/projetos/arte/">Arte</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- // header -->
-
-        @RenderBody()
-
-
-        <div id="footer-area">
-            <div id="text-2" class="widget widget_text">
-                <div class="widget-copy">
-                </div>
-            </div>
-        </div>
-        <!-- // footer area -->
-
-        <div id="copyright">
-            <p>&copy; 2013 Afonso França &#8211; Portifólio</p>
-        </div>
-        <!-- // copyright -->
-
     </div>
-    <!-- // wrap -->
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+            <p>&copy; Company 2013</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/themes/afonsof/js/app.js"></script>
 </body>
 </html>

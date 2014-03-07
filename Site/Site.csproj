@@ -185,6 +185,16 @@
     <Content Include="Content\admin\images\ticket.png" />
     <Content Include="Content\admin\js\libs\jquery-jsoneditor\jsoneditor.css" />
     <Content Include="Content\admin\js\libs\jquery-jsoneditor\jquery.jsoneditor.js" />
+    <Content Include="Content\themes\afonsof\css\bootstrap.css" />
+    <Content Include="Content\themes\afonsof\css\font-awesome.css" />
+    <Content Include="Content\themes\afonsof\css\font-awesome.min.css" />
+    <Content Include="Content\themes\afonsof\css\style.css" />
+    <Content Include="Content\themes\afonsof\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\themes\afonsof\img\afonsof.png" />
+    <Content Include="Content\themes\afonsof\img\bg.jpg" />
+    <Content Include="Content\themes\afonsof\img\bg.png" />
+    <Content Include="Content\themes\afonsof\img\logo.png" />
+    <Content Include="Content\themes\afonsof\js\app.js" />
     <Content Include="Content\themes\julianaeafonso\css\bootstrap-override.css" />
     <Content Include="Content\themes\julianaeafonso\css\bootstrap-responsive.css" />
     <Content Include="Content\themes\julianaeafonso\css\bootstrap.css" />
@@ -326,21 +336,6 @@
     <None Include="Content\admin\js\src\MediaFile.ts" />
     <None Include="Content\admin\js\src\VideoManager.ts" />
     <None Include="Content\admin\js\src\FrameModal.ts" />
-    <Content Include="Content\themes\afonsof\css\light.css" />
-    <Content Include="Content\themes\afonsof\css\mobile.css" />
-    <Content Include="Content\themes\afonsof\css\reset.css" />
-    <Content Include="Content\themes\afonsof\images\bg.png" />
-    <Content Include="Content\themes\afonsof\images\favicon.png" />
-    <Content Include="Content\themes\afonsof\images\light\bg-row.png" />
-    <Content Include="Content\themes\afonsof\images\light\bg.jpg" />
-    <Content Include="Content\themes\afonsof\images\light\logo.png" />
-    <Content Include="Content\themes\afonsof\images\logo.png" />
-    <Content Include="Content\themes\afonsof\images\mcp.png" />
-    <Content Include="Content\themes\afonsof\images\scrum.png" />
-    <Content Include="Content\themes\afonsof\js\functions.js" />
-    <Content Include="Content\themes\afonsof\js\jquery.masonry.min.js" />
-    <Content Include="Content\themes\afonsof\js\jquery.validate.min.js" />
-    <Content Include="Content\themes\afonsof\js\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\themes\kayzo\css\base.css" />
     <Content Include="Content\themes\kayzo\css\color.css" />
     <Content Include="Content\themes\kayzo\css\fancybox.css" />
@@ -555,7 +550,6 @@
     <Content Include="Content\themes\sonhart\images\thumb\1.jpg" />
     <Content Include="Content\themes\sonhart\images\thumb\2.jpg" />
     <Content Include="Content\themes\sonhart\images\tipsy %281%29.gif" />
-    <Content Include="Content\themes\sonhart\js\app.js" />
     <Content Include="Content\themes\sonhart\js\custom-superbgimage.js" />
     <Content Include="Content\themes\sonhart\js\custom.js" />
     <Content Include="Content\themes\sonhart\js\froogaloop2.min.js" />
@@ -607,6 +601,10 @@
     <Content Include="Content\licenses\julianaeafonso\license.json" />
     <Content Include="Content\licenses\kayzo\license.json" />
     <Content Include="Content\licenses\sonhart\license.json" />
+    <Content Include="Content\themes\afonsof\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\themes\afonsof\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\themes\afonsof\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\themes\afonsof\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\temp.pubxml" />
   </ItemGroup>
   <ItemGroup>

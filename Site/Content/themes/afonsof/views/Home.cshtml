@@ -1,36 +1,96 @@
 @using Meganium.Api.Trash
-@using Meganium.Api.Trash
 @model Meganium.Api.ViewModels.SiteViewModel
-<!-- Banners End -->
 
-<div id="post-area" class="masonry">
-    @foreach (var post in Model.Managers.PostManager.GetPublishedByPostType("Projeto"))
-    {
-        <div class="post">
-            <div class="gridly-image">
-                <a href="@Url.Content(@post.UrlPath)">
-                    @Url.Thumbnail(post.FeaturedMediaFile, 310, 0)</a>
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="photo" src="~/Content/themes/afonsof/img/afonsof.png" />
+                <div class="banner">
+                    <div class="icon icon-android square cl-green"></div>
+                    <div class="icon icon-chrome square cl-yellow"></div>
+                    <div class="icon square cl-blue"></div>
+                    <div class="icon square cl-orange"></div>
+                    <div class="icon icon-vs square cl-purple"></div>
+                    <div class="icon icon-skype square cl-blue"></div>
+                    <div class="icon icon-meganium square cl-blue"></div>
+                    <div class="icon square cl-red"></div>
+                    <div class="icon square cl-purple"></div>
+                    <div class="icon square cl-green"></div>
+                    <div class="icon icon-spiderman square cl-red"></div>
+                    <div class="icon icon-starwars square cl-green"></div>
+                    <div class="icon icon-js square cl-yellow"></div>
+                    <div class="icon square cl-green"></div>
+                    <div class="icon square cl-blue"></div>
+                    <div class="icon square cl-orange"></div>
+                    <div class="icon icon-zelda square cl-yellow"></div>
+                    <div class="icon icon-html5 square cl-orange"></div>
+                    <div class="icon icon-avengers square cl-red"></div>
+                    <div class="icon icon-usb square cl-purple"></div>
+                    <div class="icon square cl-yellow"></div>
+                    <div class="icon square cl-purple"></div>
+                    <div class="icon icon-apple square cl-green"></div>
+                    <div class="icon icon-sonic square cl-blue"></div>
+                    <div class="icon icon-mario square cl-green"></div>
+                    <div class="icon icon-css3 square cl-blue"></div>
+                    <div class="icon square cl-red"></div>
+                    <div class="icon square cl-orange"></div>
+                    <div class="icon icon-plus square cl-red"></div>
+                    <div class="icon icon-cs square cl-purple"></div>
+                    <div class="icon icon-git square cl-purple"></div>
+                    <div class="icon icon-superman square cl-red"></div>
+                    <div class="icon square cl-purple"></div>
+                    <div class="icon square cl-green"></div>
+                    <div class="icon icon-dragonball square cl-yellow"></div>
+                    <div class="icon icon-whatsapp square cl-green"></div>
+                    <div class="icon icon-grunt square cl-orange"></div>
+                    <div class="icon icon-space square cl-green"></div>
+                    <div class="icon square cl-blue"></div>
+                    <div class="icon square cl-orange"></div>
+                    <div class="icon icon-xmen square cl-purple"></div>
+                    <div class="icon icon-angular square cl-red"></div>
+                    <div class="icon icon-twitter square cl-blue"></div>
+                    <div class="icon icon-python square cl-yellow"></div>
+                    <div class="icon square cl-purple"></div>
+                    <div class="icon square cl-green"></div>
+                    <div class="icon icon-facebook square cl-blue"></div>
+                    <div class="icon icon-pokeball square cl-orange"></div>
+                </div>
             </div>
-            <div class="gridly-category">
-                <p>
-                    @{
-                        var len = post.Categories.Count();
-                        var i = 0;
-                    }
-                    @foreach (var cat in post.Categories)
-                    {
-                        i++;
-                        var comma = (i != len) ? "," : "";
-                        <a href="~/projetos/@cat.Slug">@cat.Title @comma</a>
-                    }
+            <div class="col-md-8">
+                <h1>Web Enginner</h1>
+                <h2>Development Manager</h2>
+                <h3>and sometimes Illustrator</h3>
+                <p>Hi, I'm Afonso. I'm 29 year old curious man who lives in Rio and works as an Web Development Manager at Diebold Inc.</p>
+                <p class="small">Also a founder of Meganium Smart Sites, MBA in Project Management at FGV and graduated in Computer Science at UBM.</p>
+                <p class="small">Sometimes I like to make some art pieces by myself. Here you can see a little bit of my works.</p>
 
-                </p>
-            </div>
-
-            <div class="gridly-copy">
-                <h2><a href="@Url.Content(@post.UrlPath)">@post.Title</a></h2>
-                <p class="gridly-date">@post.PublishedAt.Value.ToString("MMMM' de 'yyyy")</p>
+                <ul class="social-links">
+                    <li><a target="_blank" class="fa fa-github cl-purple" href="https://github.com/afonsof"></a></li>
+                    <li><a target="_blank" class="fa fa-facebook cl-blue" href="http://facebook.com/afonsofranca"></a></li>
+                    <li><a target="_blank" class="fa fa-google-plus cl-red" href="http://google.com/+afonsof"></a></li>
+                    <li><a target="_blank" class="fa fa-twitter cl-blue" href="http://twitter.com/afonsof"></a></li>
+                    <li><a class="fa fa-envelope cl-green" href="mailto:contact@afonsof.com"></a></li>
+                    <li><a target="_blank" class="fa fa-rss cl-orange" href="~/rss"></a></li>
+                </ul>
             </div>
         </div>
-    }
+    </div>
+</div>
+
+<div style="background-color: rgba(22, 160, 134, 0.2);">
+
+    <div class="container projects">
+        <h2>Recent Projects</h2>
+        <!-- Example row of columns -->
+        <div class="row">
+            @foreach (var post in Model.Managers.PostManager.GetPublishedByPostType("Projeto"))
+            {
+                <div class="col-md-4">
+                    @Url.Thumbnail(post.FeaturedMediaFile, 290, 0)
+                </div>
+            }
+        </div>
+    </div>
 </div>
