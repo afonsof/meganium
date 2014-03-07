@@ -1,11 +1,11 @@
 ﻿/// <reference path="../definitions/jquery/jquery.d.ts" />
 
 interface VideoData {
-    ExternalServiceId: string;
-    ExternalServiceName: string;
+    ExtId: string;
+    ExtName: string;
     Title: string;
     Description: string;
-    Url: string;
+    ExtUrl: string;
 }
 
 class VideoManager {
@@ -46,14 +46,12 @@ class VideoManager {
     }
 
     public loadVideo(videoData: VideoData) {
-        var _this = this;
-
-        if (videoData.ExternalServiceName == 'YoutubeVideos') {
+        if (videoData.ExtName == 'YoutubeVideos') {
             $.ajax({
-                url: 'https://gdata.youtube.com/feeds/api/videos/' + videoData.ExternalServiceId + '?v=2&alt=json',
+                url: 'https://gdata.youtube.com/feeds/api/videos/' + videoData.ExtId + '?v=2&alt=json',
                 type: 'GET',
                 data: null,
-                success: function (data) {
+                success: data=> {
                     var entry = data.entry;
                     videoData.Title = entry.title.$t;
                     videoData.Description = entry.media$group.media$description.$t;
@@ -68,23 +66,23 @@ class VideoManager {
                             maxIndex = i;
                         }
                     }
-                    videoData.Url = entry.media$group.media$thumbnail[maxIndex].url;
-                    _this.setFields(videoData);
-                    _this.renderVideo(videoData);
+                    videoData.ExtUrl = entry.media$group.media$thumbnail[maxIndex].url;
+                    this.setFields(videoData);
+                    this.renderVideo(videoData);
                 }
             });
         }
-        else if (videoData.ExternalServiceName == 'VimeoVideos') {
+        else if (videoData.ExtName == 'VimeoVideos') {
             $.ajax({
-                url: 'http://vimeo.com/api/v2/video/' + videoData.ExternalServiceId + '.json',
+                url: 'http://vimeo.com/api/v2/video/' + videoData.ExtId + '.json',
                 type: 'GET',
                 data: null,
-                success: function (data) {
+                success: data=> {
                     videoData.Title = data[0].title;
                     videoData.Description = data[0].description;
-                    videoData.Url = data[0].thumbnail_large;
-                    _this.setFields(videoData);
-                    _this.renderVideo(videoData);
+                    videoData.ExtUrl = data[0].thumbnail_large;
+                    this.setFields(videoData);
+                    this.renderVideo(videoData);
                 }
             });
         }
@@ -99,11 +97,11 @@ class VideoManager {
 
     renderVideo(videoData: VideoData) {
         var html = '';
-        if (videoData.ExternalServiceName == 'YoutubeVideos') {
-            html = '<iframe width="260" height="160" src="//www.youtube.com/embed/' + videoData.ExternalServiceId + '" frameborder="0" allowfullscreen></iframe>';
+        if (videoData.ExtName == 'YoutubeVideos') {
+            html = '<iframe width="260" height="160" src="//www.youtube.com/embed/' + videoData.ExtId + '" frameborder="0" allowfullscreen></iframe>';
         }
-        else if (videoData.ExternalServiceName == 'VimeoVideos') {
-            html = '<iframe src = "//player.vimeo.com/video/' + videoData.ExternalServiceId + '?byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff" width="260" height="160" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+        else if (videoData.ExtName == 'VimeoVideos') {
+            html = '<iframe src = "//player.vimeo.com/video/' + videoData.ExtId + '?byline=0&amp;portrait=0&amp;badge=0&amp;color=ffffff" width="260" height="160" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         }
         this.video.html(html);
         this.button.removeAttr('disabled');
@@ -116,11 +114,11 @@ class VideoManager {
 
         if (id) {
             return {
-                ExternalServiceId: id,
-                ExternalServiceName: 'YoutubeVideos',
+                ExtId: id,
+                ExtName: 'YoutubeVideos',
                 Description: null,
                 Title: null,
-                Url: null
+                ExtUrl: null
             };
         }
 
@@ -130,11 +128,11 @@ class VideoManager {
 
         if (id) {
             return {
-                ExternalServiceId: id,
-                ExternalServiceName: 'VimeoVideos',
+                ExtId: id,
+                ExtName: 'VimeoVideos',
                 Description: null,
                 Title: null,
-                Url: null
+                ExtUrl: null
             };
         }
         return null;

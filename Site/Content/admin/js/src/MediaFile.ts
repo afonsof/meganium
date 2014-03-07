@@ -47,7 +47,7 @@ module MediaFileManagerModule {
             url = mediaFile.ThumbUrl;
         }
         else {
-            var u1 = (!mediaFile.Url) ? null : base64.encode(mediaFile.Url);
+            var u1 = (!mediaFile.Url) ? null : btoa(mediaFile.Url);
             url = thumbUrl + '/' + mediaFile.FileName + '-' + thumbSize + 'x' + thumbSize + '-crop.jpg';
             if (u1 != null) {
                 url += "?url=" + u1;
