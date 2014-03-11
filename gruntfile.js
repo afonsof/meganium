@@ -1,7 +1,8 @@
 ﻿module.exports = function (grunt) {
+    require('load-grunt-tasks')(grunt);
+    require('time-grunt')(grunt);
     'use strict';
 
-    // load all grunt tasks
     var compiledTsFilePath = 'Site/Content/admin/js/app.js';
     var slnPath = 'Meganium.sln';
     grunt.initConfig({
@@ -57,7 +58,7 @@
                     fileVersion: "<%= pkg.version %>.0",
                     company: 'Meganium',
                     product: 'Meganium Smart Site',
-                    copyright: 'Copyright 2014 (c) Meganium',
+                    copyright: 'Copyright © Meganium ' + (new Date().getYear() + 1900)
                 }
             }
         },
@@ -123,31 +124,17 @@
                     }
                 ]
             }
+        },
+        
+        clean: {
+            postbuild: {
+                src: ['Site/temp/Content/themes']
+            }
         }
 
     });
-
-    loadTasks(grunt);
-
     grunt.registerTask('ts-compile', ['ts', 'uglify']);
     grunt.registerTask('ci', ['assemblyinfo', 'msbuild', 'nunit']);
-    grunt.registerTask('publish', ['ci', 'compress']);
+    grunt.registerTask('publish', ['ci', 'clean:postbuild', 'compress']);
     
 };
-
-function loadTasks(grunt) {
-    grunt.loadNpmTasks('grunt-ts'); //compiles typescript
-    grunt.loadNpmTasks('grunt-contrib-uglify'); // minifies
-    grunt.loadNpmTasks('grunt-contrib-copy'); // copy files
-    grunt.loadNpmTasks('grunt-contrib-clean'); // erase files and folders
-    grunt.loadNpmTasks('grunt-contrib-concat'); // concat files
-    grunt.loadNpmTasks('grunt-contrib-jshint'); // lint js files
-    grunt.loadNpmTasks('grunt-contrib-qunit'); // unit tests support
-    grunt.loadNpmTasks('grunt-closure-compiler'); //closure compiler
-    grunt.loadNpmTasks('grunt-dotnet-assembly-info'); //change assembly info
-    grunt.loadNpmTasks('grunt-msbuild'); //msbuild grunt task
-    grunt.loadNpmTasks('grunt-nunit-runner');
-    grunt.loadNpmTasks('grunt-ftpush');
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-contrib-compress');
-}

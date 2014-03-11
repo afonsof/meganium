@@ -22,6 +22,8 @@
     "grunt-nunit-runner": "~1.0.16",
     "grunt-ftpush": "~0.3.3",
     "grunt-shell": "~0.6.2",
-    "grunt-contrib-compress": "~0.6.0"
+    "grunt-contrib-compress": "~0.6.0",
+    "load-grunt-tasks": "~0.4.0",
+    "time-grunt": "~0.2.10"
   }
 }
