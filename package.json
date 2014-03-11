@@ -1,6 +1,6 @@
 {
   "name": "Meganium",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "description": "No description",
   "scripts": {
     "ci": "npm version patch & grunt.cmd ci"
